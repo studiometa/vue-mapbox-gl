@@ -23,7 +23,7 @@ function testBuild(type = 'common') {
   const installedNames = Object.keys(localVue.options.components);
   const exportedNames = Object.keys(exportedComponents);
 
-  componentNames.forEach((name) => {
+  componentNames.forEach(name => {
     describe(`Testing "${name}" component installation and export...`, () => {
       it(`Component "${name}" has been installed.`, () => {
         expect(installedNames).toContain(name);
