@@ -1131,12 +1131,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5611afc2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMapbox.vue?vue&type=template&id=5ebec9e4&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[(_vm.isLoaded)?_c('div',[_vm._t("layers"),_vm._t("sources"),_vm._t("default")],2):_c('div',[_vm._t("loader")],2)])}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5611afc2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MapboxMap.vue?vue&type=template&id=62d32350&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[(_vm.isLoaded)?_c('div',[_vm._t("default")],2):_c('div',[_vm._t("loader")],2)])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/VMapbox.vue?vue&type=template&id=5ebec9e4&
+// CONCATENATED MODULE: ./src/components/MapboxMap.vue?vue&type=template&id=62d32350&
 
 // EXTERNAL MODULE: external {"amd":"mapbox-gl","commonjs2":"mapbox-gl","commonjs":"mapbox-gl","global":"mapbox-gl","root":"mapbox-gl","umd":"mapbox-gl"}
 var external_amd_mapbox_gl_commonjs2_mapbox_gl_commonjs_mapbox_gl_global_mapbox_gl_root_mapbox_gl_umd_mapbox_gl_ = __webpack_require__("2ff6");
@@ -1278,9 +1278,7 @@ const injectMap = () => ({
 
   }
 });
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMapbox.vue?vue&type=script&lang=js&
-//
-//
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MapboxMap.vue?vue&type=script&lang=js&
 //
 //
 //
@@ -1469,15 +1467,14 @@ const props = {
  */
 
 const events = ['resize', 'remove', 'mousedown', 'mouseup', 'mouseover', 'mousemove', 'click', 'dblclick', 'mouseenter', 'mouseleave', 'mouseout', 'contextmenu', 'wheel', 'touchstart', 'touchend', 'touchmove', 'touchcancel', 'movestart', 'move', 'moveend', 'dragstart', 'drag', 'dragend', 'zoomstart', 'zoom', 'zoomend', 'rotatestart', 'rotate', 'rotateend', 'pitchstart', 'pitch', 'pitchend', 'boxzoomstart', 'boxzoomend', 'boxzoomcancel', 'webglcontextlost', 'webglcontextrestored', 'load', 'render', 'idle', 'error', 'data', 'styledata', 'sourcedata', 'dataloading', 'styledataloading', 'sourcedataloading', 'styleimagemissing'];
-/* harmony default export */ var VMapboxvue_type_script_lang_js_ = ({
-  name: 'VMapbox',
+/* harmony default export */ var MapboxMapvue_type_script_lang_js_ = ({
+  name: 'MapboxMap',
   mixins: [provideMap()],
   props,
 
   data() {
     return {
-      isLoaded: false,
-      layers: []
+      isLoaded: false
     };
   },
 
@@ -1539,8 +1536,8 @@ const events = ['resize', 'remove', 'mousedown', 'mouseup', 'mouseover', 'mousem
 
   }
 });
-// CONCATENATED MODULE: ./src/components/VMapbox.vue?vue&type=script&lang=js&
- /* harmony default export */ var components_VMapboxvue_type_script_lang_js_ = (VMapboxvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/MapboxMap.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_MapboxMapvue_type_script_lang_js_ = (MapboxMapvue_type_script_lang_js_); 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
 /* globals __VUE_SSR_CONTEXT__ */
 
@@ -1636,7 +1633,7 @@ function normalizeComponent (
   }
 }
 
-// CONCATENATED MODULE: ./src/components/VMapbox.vue
+// CONCATENATED MODULE: ./src/components/MapboxMap.vue
 
 
 
@@ -1645,7 +1642,7 @@ function normalizeComponent (
 /* normalize component */
 
 var component = normalizeComponent(
-  components_VMapboxvue_type_script_lang_js_,
+  components_MapboxMapvue_type_script_lang_js_,
   render,
   staticRenderFns,
   false,
@@ -1655,13 +1652,13 @@ var component = normalizeComponent(
   
 )
 
-/* harmony default export */ var VMapbox = (component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5611afc2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMapboxCluster.vue?vue&type=template&id=388ca2ee&
-var VMapboxClustervue_type_template_id_388ca2ee_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('v-mapbox-source',{attrs:{"id":_vm.sourceId,"options":_vm.source}}),_c('v-mapbox-layer',{attrs:{"options":_vm.clustersLayer},on:{"click":_vm.clustersClickHandler,"mouseenter":_vm.clustersMouseenterHandler,"mouseleave":_vm.clustersMouseleaveHandler}}),_c('v-mapbox-layer',{attrs:{"options":_vm.clusterCountLayer}}),_c('v-mapbox-layer',{attrs:{"options":_vm.unclusteredPointLayer},on:{"click":_vm.unclusteredPointClickHandler,"mouseenter":_vm.unclusteredPointMouseenterHandler,"mouseleave":_vm.unclusteredPointMouseleaveHandler}})],1)}
-var VMapboxClustervue_type_template_id_388ca2ee_staticRenderFns = []
+/* harmony default export */ var MapboxMap = (component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5611afc2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MapboxCluster.vue?vue&type=template&id=1b91e3c2&
+var MapboxClustervue_type_template_id_1b91e3c2_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":_vm.id}},[_c('mapbox-source',{attrs:{"id":_vm.sourceId,"options":_vm.source}}),_c('mapbox-layer',{attrs:{"id":_vm.getId('cluster'),"options":_vm.clustersLayer},on:{"click":_vm.clustersClickHandler,"mouseenter":_vm.clustersMouseenterHandler,"mouseleave":_vm.clustersMouseleaveHandler}}),_c('mapbox-layer',{attrs:{"id":_vm.getId('cluster-count'),"options":_vm.clusterCountLayer}}),_c('mapbox-layer',{attrs:{"id":_vm.getId('unclustered-point'),"options":_vm.unclusteredPointLayer},on:{"click":_vm.unclusteredPointClickHandler,"mouseenter":_vm.unclusteredPointMouseenterHandler,"mouseleave":_vm.unclusteredPointMouseleaveHandler}})],1)}
+var MapboxClustervue_type_template_id_1b91e3c2_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/VMapboxCluster.vue?vue&type=template&id=388ca2ee&
+// CONCATENATED MODULE: ./src/components/MapboxCluster.vue?vue&type=template&id=1b91e3c2&
 
 // CONCATENATED MODULE: ./src/utils/uniq-id.js
 /**
@@ -1673,14 +1670,14 @@ function uniqId(prefix = '') {
   const uniq = new Date().getTime() + Math.floor(Math.random() * 10000 + 1);
   return prefix ? prefix + uniq.toString(16) : uniq.toString(16);
 }
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5611afc2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMapboxLayer.vue?vue&type=template&id=613f851a&
-var VMapboxLayervue_type_template_id_613f851a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div')}
-var VMapboxLayervue_type_template_id_613f851a_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5611afc2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MapboxLayer.vue?vue&type=template&id=85444b82&
+var MapboxLayervue_type_template_id_85444b82_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":_vm.id}})}
+var MapboxLayervue_type_template_id_85444b82_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/VMapboxLayer.vue?vue&type=template&id=613f851a&
+// CONCATENATED MODULE: ./src/components/MapboxLayer.vue?vue&type=template&id=85444b82&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMapboxLayer.vue?vue&type=script&lang=js&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MapboxLayer.vue?vue&type=script&lang=js&
 //
 //
 //
@@ -1693,11 +1690,21 @@ var VMapboxLayervue_type_template_id_613f851a_staticRenderFns = []
  * @type {Array}
  */
 
-const VMapboxLayervue_type_script_lang_js_events = ['mousedown', 'mouseup', 'click', 'dblclick', 'mousemove', 'mouseenter', 'mouseleave', 'mouseover', 'mouseout', 'contextmenu', 'touchstart', 'touchend', 'touchcancel'];
-/* harmony default export */ var VMapboxLayervue_type_script_lang_js_ = ({
-  name: 'VMapboxLayer',
+const MapboxLayervue_type_script_lang_js_events = ['mousedown', 'mouseup', 'click', 'dblclick', 'mousemove', 'mouseenter', 'mouseleave', 'mouseover', 'mouseout', 'contextmenu', 'touchstart', 'touchend', 'touchcancel'];
+/* harmony default export */ var MapboxLayervue_type_script_lang_js_ = ({
+  name: 'MapboxLayer',
   mixins: [injectMap()],
   props: {
+    /**
+     * Id of the layer
+     * @see  https://docs.mapbox.com/mapbox-gl-js/api/#map#addlayer
+     * @type {String}
+     */
+    id: {
+      type: String,
+      required: true
+    },
+
     /**
      * Options for the layer
      * @see  https://docs.mapbox.com/mapbox-gl-js/api/#map#addlayer
@@ -1719,12 +1726,6 @@ const VMapboxLayervue_type_script_lang_js_events = ['mousedown', 'mouseup', 'cli
       default: undefined
     }
   },
-  computed: {
-    id() {
-      return this.options.id || null;
-    }
-
-  },
 
   mounted() {
     if (this.id && this.layerExists()) {
@@ -1732,8 +1733,10 @@ const VMapboxLayervue_type_script_lang_js_events = ['mousedown', 'mouseup', 'cli
     } // Bind events
 
 
-    bindEvents(this, this.map, VMapboxLayervue_type_script_lang_js_events, this.id);
-    this.map.addLayer(this.options, this.beforeId);
+    bindEvents(this, this.map, MapboxLayervue_type_script_lang_js_events, this.id);
+    this.map.addLayer({ ...this.options,
+      id: this.id
+    }, this.beforeId);
   },
 
   destroyed() {
@@ -1754,9 +1757,9 @@ const VMapboxLayervue_type_script_lang_js_events = ['mousedown', 'mouseup', 'cli
 
   }
 });
-// CONCATENATED MODULE: ./src/components/VMapboxLayer.vue?vue&type=script&lang=js&
- /* harmony default export */ var components_VMapboxLayervue_type_script_lang_js_ = (VMapboxLayervue_type_script_lang_js_); 
-// CONCATENATED MODULE: ./src/components/VMapboxLayer.vue
+// CONCATENATED MODULE: ./src/components/MapboxLayer.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_MapboxLayervue_type_script_lang_js_ = (MapboxLayervue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/MapboxLayer.vue
 
 
 
@@ -1764,10 +1767,10 @@ const VMapboxLayervue_type_script_lang_js_events = ['mousedown', 'mouseup', 'cli
 
 /* normalize component */
 
-var VMapboxLayer_component = normalizeComponent(
-  components_VMapboxLayervue_type_script_lang_js_,
-  VMapboxLayervue_type_template_id_613f851a_render,
-  VMapboxLayervue_type_template_id_613f851a_staticRenderFns,
+var MapboxLayer_component = normalizeComponent(
+  components_MapboxLayervue_type_script_lang_js_,
+  MapboxLayervue_type_template_id_85444b82_render,
+  MapboxLayervue_type_template_id_85444b82_staticRenderFns,
   false,
   null,
   null,
@@ -1775,22 +1778,22 @@ var VMapboxLayer_component = normalizeComponent(
   
 )
 
-/* harmony default export */ var VMapboxLayer = (VMapboxLayer_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5611afc2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMapboxSource.vue?vue&type=template&id=7c00fba1&
-var VMapboxSourcevue_type_template_id_7c00fba1_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div')}
-var VMapboxSourcevue_type_template_id_7c00fba1_staticRenderFns = []
+/* harmony default export */ var MapboxLayer = (MapboxLayer_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5611afc2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MapboxSource.vue?vue&type=template&id=19293bc4&
+var MapboxSourcevue_type_template_id_19293bc4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":_vm.id}})}
+var MapboxSourcevue_type_template_id_19293bc4_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/VMapboxSource.vue?vue&type=template&id=7c00fba1&
+// CONCATENATED MODULE: ./src/components/MapboxSource.vue?vue&type=template&id=19293bc4&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMapboxSource.vue?vue&type=script&lang=js&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MapboxSource.vue?vue&type=script&lang=js&
 //
 //
 //
 //
 
-/* harmony default export */ var VMapboxSourcevue_type_script_lang_js_ = ({
-  name: 'VMapboxSource',
+/* harmony default export */ var MapboxSourcevue_type_script_lang_js_ = ({
+  name: 'MapboxSource',
   mixins: [injectMap()],
   props: {
     options: {
@@ -1822,9 +1825,9 @@ var VMapboxSourcevue_type_template_id_7c00fba1_staticRenderFns = []
   }
 
 });
-// CONCATENATED MODULE: ./src/components/VMapboxSource.vue?vue&type=script&lang=js&
- /* harmony default export */ var components_VMapboxSourcevue_type_script_lang_js_ = (VMapboxSourcevue_type_script_lang_js_); 
-// CONCATENATED MODULE: ./src/components/VMapboxSource.vue
+// CONCATENATED MODULE: ./src/components/MapboxSource.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_MapboxSourcevue_type_script_lang_js_ = (MapboxSourcevue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/MapboxSource.vue
 
 
 
@@ -1832,10 +1835,10 @@ var VMapboxSourcevue_type_template_id_7c00fba1_staticRenderFns = []
 
 /* normalize component */
 
-var VMapboxSource_component = normalizeComponent(
-  components_VMapboxSourcevue_type_script_lang_js_,
-  VMapboxSourcevue_type_template_id_7c00fba1_render,
-  VMapboxSourcevue_type_template_id_7c00fba1_staticRenderFns,
+var MapboxSource_component = normalizeComponent(
+  components_MapboxSourcevue_type_script_lang_js_,
+  MapboxSourcevue_type_template_id_19293bc4_render,
+  MapboxSourcevue_type_template_id_19293bc4_staticRenderFns,
   false,
   null,
   null,
@@ -1843,8 +1846,12 @@ var VMapboxSource_component = normalizeComponent(
   
 )
 
-/* harmony default export */ var VMapboxSource = (VMapboxSource_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMapboxCluster.vue?vue&type=script&lang=js&
+/* harmony default export */ var MapboxSource = (MapboxSource_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MapboxCluster.vue?vue&type=script&lang=js&
+//
+//
+//
+//
 //
 //
 //
@@ -1868,11 +1875,11 @@ var VMapboxSource_component = normalizeComponent(
 
 
 
-/* harmony default export */ var VMapboxClustervue_type_script_lang_js_ = ({
-  name: 'VMapboxCluster',
+/* harmony default export */ var MapboxClustervue_type_script_lang_js_ = ({
+  name: 'MapboxCluster',
   components: {
-    VMapboxLayer: VMapboxLayer,
-    VMapboxSource: VMapboxSource
+    MapboxLayer: MapboxLayer,
+    MapboxSource: MapboxSource
   },
   mixins: [injectMap()],
   props: {
@@ -2025,7 +2032,6 @@ var VMapboxSource_component = normalizeComponent(
      */
     clustersLayer() {
       return {
-        id: this.getId('cluster'),
         type: 'circle',
         source: this.sourceId,
         filter: ['has', 'point_count'],
@@ -2040,7 +2046,6 @@ var VMapboxSource_component = normalizeComponent(
      */
     clusterCountLayer() {
       return {
-        id: this.getId('cluster-count'),
         type: 'symbol',
         source: this.sourceId,
         filter: ['has', 'point_count'],
@@ -2055,7 +2060,6 @@ var VMapboxSource_component = normalizeComponent(
      */
     unclusteredPointLayer() {
       return {
-        id: this.getId('unclustered-point'),
         type: this.unclusteredPointLayerType,
         source: this.sourceId,
         filter: ['!', ['has', 'point_count']],
@@ -2162,9 +2166,9 @@ var VMapboxSource_component = normalizeComponent(
 
   }
 });
-// CONCATENATED MODULE: ./src/components/VMapboxCluster.vue?vue&type=script&lang=js&
- /* harmony default export */ var components_VMapboxClustervue_type_script_lang_js_ = (VMapboxClustervue_type_script_lang_js_); 
-// CONCATENATED MODULE: ./src/components/VMapboxCluster.vue
+// CONCATENATED MODULE: ./src/components/MapboxCluster.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_MapboxClustervue_type_script_lang_js_ = (MapboxClustervue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/MapboxCluster.vue
 
 
 
@@ -2172,10 +2176,10 @@ var VMapboxSource_component = normalizeComponent(
 
 /* normalize component */
 
-var VMapboxCluster_component = normalizeComponent(
-  components_VMapboxClustervue_type_script_lang_js_,
-  VMapboxClustervue_type_template_id_388ca2ee_render,
-  VMapboxClustervue_type_template_id_388ca2ee_staticRenderFns,
+var MapboxCluster_component = normalizeComponent(
+  components_MapboxClustervue_type_script_lang_js_,
+  MapboxClustervue_type_template_id_1b91e3c2_render,
+  MapboxClustervue_type_template_id_1b91e3c2_staticRenderFns,
   false,
   null,
   null,
@@ -2183,19 +2187,19 @@ var VMapboxCluster_component = normalizeComponent(
   
 )
 
-/* harmony default export */ var VMapboxCluster = (VMapboxCluster_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5611afc2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMapboxGeocoder.vue?vue&type=template&id=c1d57d7a&
-var VMapboxGeocodervue_type_template_id_c1d57d7a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div')}
-var VMapboxGeocodervue_type_template_id_c1d57d7a_staticRenderFns = []
+/* harmony default export */ var MapboxCluster = (MapboxCluster_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5611afc2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MapboxGeocoder.vue?vue&type=template&id=615b331a&
+var MapboxGeocodervue_type_template_id_615b331a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div')}
+var MapboxGeocodervue_type_template_id_615b331a_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/VMapboxGeocoder.vue?vue&type=template&id=c1d57d7a&
+// CONCATENATED MODULE: ./src/components/MapboxGeocoder.vue?vue&type=template&id=615b331a&
 
 // EXTERNAL MODULE: external {"amd":"@mapbox/mapbox-gl-geocoder","commonjs2":"@mapbox/mapbox-gl-geocoder","commonjs":"@mapbox/mapbox-gl-geocoder","global":"@mapbox/mapbox-gl-geocoder","root":"@mapbox/mapbox-gl-geocoder","umd":"@mapbox/mapbox-gl-geocoder"}
 var mapbox_gl_geocoder_ = __webpack_require__("7c06");
 var mapbox_gl_geocoder_default = /*#__PURE__*/__webpack_require__.n(mapbox_gl_geocoder_);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMapboxGeocoder.vue?vue&type=script&lang=js&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MapboxGeocoder.vue?vue&type=script&lang=js&
 //
 //
 //
@@ -2203,8 +2207,8 @@ var mapbox_gl_geocoder_default = /*#__PURE__*/__webpack_require__.n(mapbox_gl_ge
 
 
 
-/* harmony default export */ var VMapboxGeocodervue_type_script_lang_js_ = ({
-  name: 'VMapboxGeocoder',
+/* harmony default export */ var MapboxGeocodervue_type_script_lang_js_ = ({
+  name: 'MapboxGeocoder',
   mixins: [injectMap()],
   props: {
     options: {
@@ -2226,9 +2230,9 @@ var mapbox_gl_geocoder_default = /*#__PURE__*/__webpack_require__.n(mapbox_gl_ge
   }
 
 });
-// CONCATENATED MODULE: ./src/components/VMapboxGeocoder.vue?vue&type=script&lang=js&
- /* harmony default export */ var components_VMapboxGeocodervue_type_script_lang_js_ = (VMapboxGeocodervue_type_script_lang_js_); 
-// CONCATENATED MODULE: ./src/components/VMapboxGeocoder.vue
+// CONCATENATED MODULE: ./src/components/MapboxGeocoder.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_MapboxGeocodervue_type_script_lang_js_ = (MapboxGeocodervue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/MapboxGeocoder.vue
 
 
 
@@ -2236,10 +2240,10 @@ var mapbox_gl_geocoder_default = /*#__PURE__*/__webpack_require__.n(mapbox_gl_ge
 
 /* normalize component */
 
-var VMapboxGeocoder_component = normalizeComponent(
-  components_VMapboxGeocodervue_type_script_lang_js_,
-  VMapboxGeocodervue_type_template_id_c1d57d7a_render,
-  VMapboxGeocodervue_type_template_id_c1d57d7a_staticRenderFns,
+var MapboxGeocoder_component = normalizeComponent(
+  components_MapboxGeocodervue_type_script_lang_js_,
+  MapboxGeocodervue_type_template_id_615b331a_render,
+  MapboxGeocodervue_type_template_id_615b331a_staticRenderFns,
   false,
   null,
   null,
@@ -2247,22 +2251,22 @@ var VMapboxGeocoder_component = normalizeComponent(
   
 )
 
-/* harmony default export */ var VMapboxGeocoder = (VMapboxGeocoder_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5611afc2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMapboxMarker.vue?vue&type=template&id=2351e2a2&
-var VMapboxMarkervue_type_template_id_2351e2a2_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',{ref:"content"},[_vm._t("default")],2),(_vm.popup)?_c('v-mapbox-popup',_vm._b({ref:"popup"},'v-mapbox-popup',_vm.popup,false),[_vm._t("popup")],2):_vm._e()],1)}
-var VMapboxMarkervue_type_template_id_2351e2a2_staticRenderFns = []
+/* harmony default export */ var MapboxGeocoder = (MapboxGeocoder_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5611afc2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MapboxMarker.vue?vue&type=template&id=50fb8d83&
+var MapboxMarkervue_type_template_id_50fb8d83_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',{ref:"content"},[_vm._t("default")],2),(_vm.popup)?_c('mapbox-popup',_vm._b({ref:"popup"},'mapbox-popup',_vm.popup,false),[_vm._t("popup")],2):_vm._e()],1)}
+var MapboxMarkervue_type_template_id_50fb8d83_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/VMapboxMarker.vue?vue&type=template&id=2351e2a2&
+// CONCATENATED MODULE: ./src/components/MapboxMarker.vue?vue&type=template&id=50fb8d83&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5611afc2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMapboxPopup.vue?vue&type=template&id=60cfb3a0&
-var VMapboxPopupvue_type_template_id_60cfb3a0_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_vm._t("default")],2)}
-var VMapboxPopupvue_type_template_id_60cfb3a0_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5611afc2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MapboxPopup.vue?vue&type=template&id=9fe02538&
+var MapboxPopupvue_type_template_id_9fe02538_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_vm._t("default")],2)}
+var MapboxPopupvue_type_template_id_9fe02538_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/VMapboxPopup.vue?vue&type=template&id=60cfb3a0&
+// CONCATENATED MODULE: ./src/components/MapboxPopup.vue?vue&type=template&id=9fe02538&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMapboxPopup.vue?vue&type=script&lang=js&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MapboxPopup.vue?vue&type=script&lang=js&
 //
 //
 //
@@ -2279,7 +2283,7 @@ var VMapboxPopupvue_type_template_id_60cfb3a0_staticRenderFns = []
  * @type {Object}
  */
 
-const VMapboxPopupvue_type_script_lang_js_props = {
+const MapboxPopupvue_type_script_lang_js_props = {
   lngLat: {
     type: [external_amd_mapbox_gl_commonjs2_mapbox_gl_commonjs_mapbox_gl_global_mapbox_gl_root_mapbox_gl_umd_mapbox_gl_["LngLat"], Array, Object],
     required: true
@@ -2315,11 +2319,11 @@ const VMapboxPopupvue_type_script_lang_js_props = {
  * @type {Array}
  */
 
-const VMapboxPopupvue_type_script_lang_js_events = ['open', 'close'];
-/* harmony default export */ var VMapboxPopupvue_type_script_lang_js_ = ({
-  name: 'VMapboxPopup',
+const MapboxPopupvue_type_script_lang_js_events = ['open', 'close'];
+/* harmony default export */ var MapboxPopupvue_type_script_lang_js_ = ({
+  name: 'MapboxPopup',
   mixins: [injectMap()],
-  props: VMapboxPopupvue_type_script_lang_js_props,
+  props: MapboxPopupvue_type_script_lang_js_props,
 
   data() {
     return {
@@ -2340,8 +2344,8 @@ const VMapboxPopupvue_type_script_lang_js_events = ['open', 'close'];
 
   mounted() {
     this.popup = new external_amd_mapbox_gl_commonjs2_mapbox_gl_commonjs_mapbox_gl_global_mapbox_gl_root_mapbox_gl_umd_mapbox_gl_["Popup"](this.options).setLngLat(this.lngLat).setDOMContent(this.$el).addTo(this.map);
-    bindProps(this, this.popup, VMapboxPopupvue_type_script_lang_js_props);
-    bindEvents(this, this.popup, VMapboxPopupvue_type_script_lang_js_events);
+    bindProps(this, this.popup, MapboxPopupvue_type_script_lang_js_props);
+    bindEvents(this, this.popup, MapboxPopupvue_type_script_lang_js_events);
     this.$emit('mb-open', this.popup);
   },
 
@@ -2353,9 +2357,9 @@ const VMapboxPopupvue_type_script_lang_js_events = ['open', 'close'];
   }
 
 });
-// CONCATENATED MODULE: ./src/components/VMapboxPopup.vue?vue&type=script&lang=js&
- /* harmony default export */ var components_VMapboxPopupvue_type_script_lang_js_ = (VMapboxPopupvue_type_script_lang_js_); 
-// CONCATENATED MODULE: ./src/components/VMapboxPopup.vue
+// CONCATENATED MODULE: ./src/components/MapboxPopup.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_MapboxPopupvue_type_script_lang_js_ = (MapboxPopupvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/MapboxPopup.vue
 
 
 
@@ -2363,10 +2367,10 @@ const VMapboxPopupvue_type_script_lang_js_events = ['open', 'close'];
 
 /* normalize component */
 
-var VMapboxPopup_component = normalizeComponent(
-  components_VMapboxPopupvue_type_script_lang_js_,
-  VMapboxPopupvue_type_template_id_60cfb3a0_render,
-  VMapboxPopupvue_type_template_id_60cfb3a0_staticRenderFns,
+var MapboxPopup_component = normalizeComponent(
+  components_MapboxPopupvue_type_script_lang_js_,
+  MapboxPopupvue_type_template_id_9fe02538_render,
+  MapboxPopupvue_type_template_id_9fe02538_staticRenderFns,
   false,
   null,
   null,
@@ -2374,8 +2378,8 @@ var VMapboxPopup_component = normalizeComponent(
   
 )
 
-/* harmony default export */ var VMapboxPopup = (VMapboxPopup_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMapboxMarker.vue?vue&type=script&lang=js&
+/* harmony default export */ var MapboxPopup = (MapboxPopup_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MapboxMarker.vue?vue&type=script&lang=js&
 //
 //
 //
@@ -2402,7 +2406,7 @@ var VMapboxPopup_component = normalizeComponent(
  * @type {Object}
  */
 
-const VMapboxMarkervue_type_script_lang_js_props = {
+const MapboxMarkervue_type_script_lang_js_props = {
   lngLat: {
     type: Array,
     required: true
@@ -2439,14 +2443,14 @@ const VMapboxMarkervue_type_script_lang_js_props = {
  * @type {Array}
  */
 
-const VMapboxMarkervue_type_script_lang_js_events = ['dragstart', 'drag', 'dragend'];
-/* harmony default export */ var VMapboxMarkervue_type_script_lang_js_ = ({
-  name: 'VMapboxMarker',
+const MapboxMarkervue_type_script_lang_js_events = ['dragstart', 'drag', 'dragend'];
+/* harmony default export */ var MapboxMarkervue_type_script_lang_js_ = ({
+  name: 'MapboxMarker',
   components: {
-    VMapboxPopup: VMapboxPopup
+    MapboxPopup: MapboxPopup
   },
   mixins: [injectMap()],
-  props: VMapboxMarkervue_type_script_lang_js_props,
+  props: MapboxMarkervue_type_script_lang_js_props,
   computed: {
     hasPopup() {
       return this.popup !== null && this.$refs.popup;
@@ -2475,8 +2479,8 @@ const VMapboxMarkervue_type_script_lang_js_events = ['dragstart', 'drag', 'drage
   mounted() {
     this.marker = new external_amd_mapbox_gl_commonjs2_mapbox_gl_commonjs_mapbox_gl_global_mapbox_gl_root_mapbox_gl_umd_mapbox_gl_["Marker"](this.options).setLngLat(this.lngLat).addTo(this.map); // Bind props and events
 
-    bindProps(this, this.marker, VMapboxMarkervue_type_script_lang_js_props);
-    bindEvents(this, this.marker, VMapboxMarkervue_type_script_lang_js_events);
+    bindProps(this, this.marker, MapboxMarkervue_type_script_lang_js_props);
+    bindEvents(this, this.marker, MapboxMarkervue_type_script_lang_js_events);
 
     if (this.hasPopup) {
       this.marker.setPopup(this.popupInstance);
@@ -2491,9 +2495,9 @@ const VMapboxMarkervue_type_script_lang_js_events = ['dragstart', 'drag', 'drage
   }
 
 });
-// CONCATENATED MODULE: ./src/components/VMapboxMarker.vue?vue&type=script&lang=js&
- /* harmony default export */ var components_VMapboxMarkervue_type_script_lang_js_ = (VMapboxMarkervue_type_script_lang_js_); 
-// CONCATENATED MODULE: ./src/components/VMapboxMarker.vue
+// CONCATENATED MODULE: ./src/components/MapboxMarker.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_MapboxMarkervue_type_script_lang_js_ = (MapboxMarkervue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/MapboxMarker.vue
 
 
 
@@ -2501,10 +2505,10 @@ const VMapboxMarkervue_type_script_lang_js_events = ['dragstart', 'drag', 'drage
 
 /* normalize component */
 
-var VMapboxMarker_component = normalizeComponent(
-  components_VMapboxMarkervue_type_script_lang_js_,
-  VMapboxMarkervue_type_template_id_2351e2a2_render,
-  VMapboxMarkervue_type_template_id_2351e2a2_staticRenderFns,
+var MapboxMarker_component = normalizeComponent(
+  components_MapboxMarkervue_type_script_lang_js_,
+  MapboxMarkervue_type_template_id_50fb8d83_render,
+  MapboxMarkervue_type_template_id_50fb8d83_staticRenderFns,
   false,
   null,
   null,
@@ -2512,15 +2516,15 @@ var VMapboxMarker_component = normalizeComponent(
   
 )
 
-/* harmony default export */ var VMapboxMarker = (VMapboxMarker_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5611afc2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMapboxNavigationControl.vue?vue&type=template&id=3843864b&
-var VMapboxNavigationControlvue_type_template_id_3843864b_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div')}
-var VMapboxNavigationControlvue_type_template_id_3843864b_staticRenderFns = []
+/* harmony default export */ var MapboxMarker = (MapboxMarker_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5611afc2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MapboxNavigationControl.vue?vue&type=template&id=88f06d32&
+var MapboxNavigationControlvue_type_template_id_88f06d32_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div')}
+var MapboxNavigationControlvue_type_template_id_88f06d32_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/VMapboxNavigationControl.vue?vue&type=template&id=3843864b&
+// CONCATENATED MODULE: ./src/components/MapboxNavigationControl.vue?vue&type=template&id=88f06d32&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMapboxNavigationControl.vue?vue&type=script&lang=js&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MapboxNavigationControl.vue?vue&type=script&lang=js&
 //
 //
 //
@@ -2534,7 +2538,7 @@ var VMapboxNavigationControlvue_type_template_id_3843864b_staticRenderFns = []
  * @type {Object}
  */
 
-const VMapboxNavigationControlvue_type_script_lang_js_props = {
+const MapboxNavigationControlvue_type_script_lang_js_props = {
   showCompass: {
     type: Boolean,
     default: true
@@ -2549,14 +2553,14 @@ const VMapboxNavigationControlvue_type_script_lang_js_props = {
     bind: false
   }
 };
-/* harmony default export */ var VMapboxNavigationControlvue_type_script_lang_js_ = ({
-  name: 'VMapboxNavigationControl',
+/* harmony default export */ var MapboxNavigationControlvue_type_script_lang_js_ = ({
+  name: 'MapboxNavigationControl',
   mixins: [injectMap()],
-  props: VMapboxNavigationControlvue_type_script_lang_js_props,
+  props: MapboxNavigationControlvue_type_script_lang_js_props,
 
   mounted() {
     this.control = new external_amd_mapbox_gl_commonjs2_mapbox_gl_commonjs_mapbox_gl_global_mapbox_gl_root_mapbox_gl_umd_mapbox_gl_["NavigationControl"](this.options);
-    bindProps(this, this.control, VMapboxNavigationControlvue_type_script_lang_js_props);
+    bindProps(this, this.control, MapboxNavigationControlvue_type_script_lang_js_props);
     this.map.addControl(this.control, this.position);
   },
 
@@ -2565,9 +2569,9 @@ const VMapboxNavigationControlvue_type_script_lang_js_props = {
   }
 
 });
-// CONCATENATED MODULE: ./src/components/VMapboxNavigationControl.vue?vue&type=script&lang=js&
- /* harmony default export */ var components_VMapboxNavigationControlvue_type_script_lang_js_ = (VMapboxNavigationControlvue_type_script_lang_js_); 
-// CONCATENATED MODULE: ./src/components/VMapboxNavigationControl.vue
+// CONCATENATED MODULE: ./src/components/MapboxNavigationControl.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_MapboxNavigationControlvue_type_script_lang_js_ = (MapboxNavigationControlvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/MapboxNavigationControl.vue
 
 
 
@@ -2575,10 +2579,10 @@ const VMapboxNavigationControlvue_type_script_lang_js_props = {
 
 /* normalize component */
 
-var VMapboxNavigationControl_component = normalizeComponent(
-  components_VMapboxNavigationControlvue_type_script_lang_js_,
-  VMapboxNavigationControlvue_type_template_id_3843864b_render,
-  VMapboxNavigationControlvue_type_template_id_3843864b_staticRenderFns,
+var MapboxNavigationControl_component = normalizeComponent(
+  components_MapboxNavigationControlvue_type_script_lang_js_,
+  MapboxNavigationControlvue_type_template_id_88f06d32_render,
+  MapboxNavigationControlvue_type_template_id_88f06d32_staticRenderFns,
   false,
   null,
   null,
@@ -2586,7 +2590,7 @@ var VMapboxNavigationControl_component = normalizeComponent(
   
 )
 
-/* harmony default export */ var VMapboxNavigationControl = (VMapboxNavigationControl_component.exports);
+/* harmony default export */ var MapboxNavigationControl = (MapboxNavigationControl_component.exports);
 // CONCATENATED MODULE: ./src/main.js
 
 
@@ -2604,14 +2608,14 @@ var VMapboxNavigationControl_component = normalizeComponent(
  */
 
 function install(Vue) {
-  Vue.component('v-mapbox', VMapbox);
-  Vue.component('v-mapbox-cluster', VMapboxCluster);
-  Vue.component('v-mapbox-geocoder', VMapboxGeocoder);
-  Vue.component('v-mapbox-layer', VMapboxLayer);
-  Vue.component('v-mapbox-marker', VMapboxMarker);
-  Vue.component('v-mapbox-navigation-control', VMapboxNavigationControl);
-  Vue.component('v-mapbox-popup', VMapboxPopup);
-  Vue.component('v-mapbox-source', VMapboxSource);
+  Vue.component('mapbox-map', MapboxMap);
+  Vue.component('mapbox-cluster', MapboxCluster);
+  Vue.component('mapbox-geocoder', MapboxGeocoder);
+  Vue.component('mapbox-layer', MapboxLayer);
+  Vue.component('mapbox-marker', MapboxMarker);
+  Vue.component('mapbox-navigation-control', MapboxNavigationControl);
+  Vue.component('mapbox-popup', MapboxPopup);
+  Vue.component('mapbox-source', MapboxSource);
 } // Export each components separately
 
 
@@ -2619,14 +2623,14 @@ function install(Vue) {
 
 /* harmony default export */ var main = (install);
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
-/* concated harmony reexport VMapbox */__webpack_require__.d(__webpack_exports__, "VMapbox", function() { return VMapbox; });
-/* concated harmony reexport VMapboxCluster */__webpack_require__.d(__webpack_exports__, "VMapboxCluster", function() { return VMapboxCluster; });
-/* concated harmony reexport VMapboxGeocoder */__webpack_require__.d(__webpack_exports__, "VMapboxGeocoder", function() { return VMapboxGeocoder; });
-/* concated harmony reexport VMapboxLayer */__webpack_require__.d(__webpack_exports__, "VMapboxLayer", function() { return VMapboxLayer; });
-/* concated harmony reexport VMapboxMarker */__webpack_require__.d(__webpack_exports__, "VMapboxMarker", function() { return VMapboxMarker; });
-/* concated harmony reexport VMapboxNavigationControl */__webpack_require__.d(__webpack_exports__, "VMapboxNavigationControl", function() { return VMapboxNavigationControl; });
-/* concated harmony reexport VMapboxPopup */__webpack_require__.d(__webpack_exports__, "VMapboxPopup", function() { return VMapboxPopup; });
-/* concated harmony reexport VMapboxSource */__webpack_require__.d(__webpack_exports__, "VMapboxSource", function() { return VMapboxSource; });
+/* concated harmony reexport MapboxMap */__webpack_require__.d(__webpack_exports__, "MapboxMap", function() { return MapboxMap; });
+/* concated harmony reexport MapboxCluster */__webpack_require__.d(__webpack_exports__, "MapboxCluster", function() { return MapboxCluster; });
+/* concated harmony reexport MapboxGeocoder */__webpack_require__.d(__webpack_exports__, "MapboxGeocoder", function() { return MapboxGeocoder; });
+/* concated harmony reexport MapboxLayer */__webpack_require__.d(__webpack_exports__, "MapboxLayer", function() { return MapboxLayer; });
+/* concated harmony reexport MapboxMarker */__webpack_require__.d(__webpack_exports__, "MapboxMarker", function() { return MapboxMarker; });
+/* concated harmony reexport MapboxNavigationControl */__webpack_require__.d(__webpack_exports__, "MapboxNavigationControl", function() { return MapboxNavigationControl; });
+/* concated harmony reexport MapboxPopup */__webpack_require__.d(__webpack_exports__, "MapboxPopup", function() { return MapboxPopup; });
+/* concated harmony reexport MapboxSource */__webpack_require__.d(__webpack_exports__, "MapboxSource", function() { return MapboxSource; });
 
 
 /* harmony default export */ var entry_lib = __webpack_exports__["default"] = (main);

@@ -7,6 +7,7 @@
   "unpkg": "dist/vue-mapbox-gl.umd.min.js",
   "scripts": {
     "test": "npm run lint",
+    "prepare": "npm run build",
     "build": "vue-cli-service build --target lib --name vue-mapbox-gl src/main.js --report",
     "lint": "vue-cli-service lint --no-fix",
     "fix": "vue-cli-service lint"
