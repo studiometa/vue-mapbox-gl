@@ -1,12 +1,13 @@
 {
   "name": "@studiometa/vue-mapbox-gl",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "GPL-3.0-or-later",
   "main": "dist/vue-mapbox-gl.umd.min.js",
   "module": "dist/vue-mapbox-gl.common.js",
   "unpkg": "dist/vue-mapbox-gl.umd.min.js",
   "scripts": {
     "test": "npm run lint",
+    "prepare": "npm run build",
     "build": "vue-cli-service build --target lib --name vue-mapbox-gl src/main.js --report",
     "lint": "vue-cli-service lint --no-fix",
     "fix": "vue-cli-service lint"
