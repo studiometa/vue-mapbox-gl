@@ -1,34 +1,36 @@
 {
   "name": "@studiometa/vue-mapbox-gl",
   "version": "1.0.1",
-  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "build": "vue-cli-service build --target lib --name vue-mapbox-gl src/index.js && rm ./dist/demo.html",
+    "test": "vue-cli-service test:unit",
+    "lint": "vue-cli-service lint --no-fix",
+    "fix": "vue-cli-service lint",
+    "prepublishOnly": "npm run build",
+    "test:unit": "vue-cli-service test:unit"
+  },
   "main": "dist/vue-mapbox-gl.umd.min.js",
   "module": "dist/vue-mapbox-gl.common.js",
   "unpkg": "dist/vue-mapbox-gl.umd.min.js",
-  "scripts": {
-    "test": "npm run lint",
-    "prepare": "npm run build",
-    "build": "vue-cli-service build --target lib --name vue-mapbox-gl src/main.js --report",
-    "lint": "vue-cli-service lint --no-fix",
-    "fix": "vue-cli-service lint"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm test"
-    }
-  },
   "dependencies": {
     "resize-observer-polyfill": "^1.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-export-default-from": "^7.2.0",
     "@mapbox/mapbox-gl-geocoder": "^4.4.0",
     "@studiometa/eslint-config": "^1.1.3",
     "@vue/cli-plugin-babel": "^3.8.0",
     "@vue/cli-plugin-eslint": "^3.8.0",
+    "@vue/cli-plugin-unit-jest": "^3.9.0",
     "@vue/cli-service": "^3.8.0",
+    "@vue/test-utils": "1.0.0-beta.29",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
     "eslint": "^5.16.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.18.0",
     "eslint-plugin-vue": "^5.0.0",
     "husky": "^3.0.0",
     "mapbox-gl": "^1.1.0",
@@ -39,5 +41,11 @@
     "@mapbox/mapbox-gl-geocoder": "^4.4.0",
     "mapbox-gl": "^1.1.0",
     "vue": "^2.6.10"
-  }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "license": "GPL-3.0-or-later"
 }
