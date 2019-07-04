@@ -45,7 +45,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint"
+      "pre-commit": "npm run test && npm run lint"
     }
   },
   "license": "GPL-3.0-or-later"
