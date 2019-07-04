@@ -1,6 +1,6 @@
 {
   "name": "@studiometa/vue-mapbox-gl",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "scripts": {
     "build": "vue-cli-service build --target lib --name VueMapboxGl src/index.js && rm ./dist/demo.html",
     "test": "vue-cli-service test:unit",
@@ -9,9 +9,9 @@
     "prepublishOnly": "npm run build",
     "test:unit": "vue-cli-service test:unit"
   },
-  "main": "dist/vue-mapbox-gl.umd.min.js",
-  "module": "dist/vue-mapbox-gl.common.js",
-  "unpkg": "dist/vue-mapbox-gl.umd.min.js",
+  "main": "dist/VueMapboxGl.umd.min.js",
+  "module": "dist/VueMapboxGl.common.js",
+  "unpkg": "dist/VueMapboxGl.umd.min.js",
   "dependencies": {
     "resize-observer-polyfill": "^1.5.1"
   },
