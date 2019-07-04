@@ -1,14 +1,5 @@
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("mapbox-gl"), require("@mapbox/mapbox-gl-geocoder"));
-	else if(typeof define === 'function' && define.amd)
-		define(["mapbox-gl", "@mapbox/mapbox-gl-geocoder"], factory);
-	else if(typeof exports === 'object')
-		exports["vue-mapbox-gl"] = factory(require("mapbox-gl"), require("@mapbox/mapbox-gl-geocoder"));
-	else
-		root["vue-mapbox-gl"] = factory(root["mapbox-gl"], root["@mapbox/mapbox-gl-geocoder"]);
-})((typeof self !== 'undefined' ? self : this), function(__WEBPACK_EXTERNAL_MODULE__2ff6__, __WEBPACK_EXTERNAL_MODULE__7c06__) {
-return /******/ (function(modules) { // webpackBootstrap
+module.exports =
+/******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -99,7 +90,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ "2ff6":
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE__2ff6__;
+module.exports = require("mapbox-gl");
 
 /***/ }),
 
@@ -1043,7 +1034,7 @@ var index = (function () {
 /***/ "7c06":
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE__7c06__;
+module.exports = require("@mapbox/mapbox-gl-geocoder");
 
 /***/ }),
 
@@ -2668,5 +2659,4 @@ function install(Vue) {
 /***/ })
 
 /******/ });
-});
-//# sourceMappingURL=vue-mapbox-gl.umd.js.map
+//# sourceMappingURL=VueMapboxGl.common.js.map

@@ -2,7 +2,7 @@
   "name": "@studiometa/vue-mapbox-gl",
   "version": "1.0.1",
   "scripts": {
-    "build": "vue-cli-service build --target lib --name vue-mapbox-gl src/index.js && rm ./dist/demo.html",
+    "build": "vue-cli-service build --target lib --name VueMapboxGl src/index.js && rm ./dist/demo.html",
     "test": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint --no-fix",
     "fix": "vue-cli-service lint",

@@ -15,7 +15,7 @@ function testBuild(type = 'common') {
   const {
     default: VueMapboxGl,
     ...exportedComponents
-  } = require(`../../dist/vue-mapbox-gl.${type}`);
+  } = require(`../../dist/VueMapboxGl.${type}.js`);
 
   const localVue = createLocalVue();
   localVue.use(VueMapboxGl);
