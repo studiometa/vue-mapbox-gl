@@ -13,12 +13,12 @@ export function bindEvents(
   events = [],
   layerId = null,
 ) {
-  const { _events: vueEvents } = vueElement;
+  const { $listeners: vueEvents } = vueElement;
   // eslint-disable-next-line no-param-reassign
-  vueElement.$$events = Object.keys(vueEvents).map((vueEvent) => {
+  vueElement.$$events = Object.keys(vueEvents).reduce(($$events, vueEvent) => {
     const originalEvent = vueEvent.replace(/^mb-/, '');
     if (!events.includes(originalEvent)) {
-      return null;
+      return $$events;
     }
 
     const handler = (...payload) => {
@@ -33,8 +33,10 @@ export function bindEvents(
       mapboxElement.on(originalEvent, handler);
     }
 
-    return [ originalEvent, handler ];
-  });
+    $$events.push([ originalEvent, handler ]);
+
+    return $$events;
+  }, []);
 }
 
 

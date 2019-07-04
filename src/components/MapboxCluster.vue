@@ -4,16 +4,16 @@
       :id="sourceId"
       :options="source" />
     <mapbox-layer
-      :id="getId('cluster')"
+      :id="clustersLayer.id"
       :options="clustersLayer"
       @click="clustersClickHandler"
       @mouseenter="clustersMouseenterHandler"
       @mouseleave="clustersMouseleaveHandler" />
     <mapbox-layer
-      :id="getId('cluster-count')"
+      :id="clusterCountLayer.id"
       :options="clusterCountLayer" />
     <mapbox-layer
-      :id="getId('unclustered-point')"
+      :id="unclusteredPointLayer.id"
       :options="unclusteredPointLayer"
       @click="unclusteredPointClickHandler"
       @mouseenter="unclusteredPointMouseenterHandler"
@@ -167,6 +167,7 @@
        */
       clustersLayer() {
         return {
+          id: this.getId('clusters'),
           type: 'circle',
           source: this.sourceId,
           filter: [ 'has', 'point_count' ],
@@ -180,6 +181,7 @@
        */
       clusterCountLayer() {
         return {
+          id: this.getId('cluster-count'),
           type: 'symbol',
           source: this.sourceId,
           filter: [ 'has', 'point_count' ],
@@ -193,6 +195,7 @@
        */
       unclusteredPointLayer() {
         return {
+          id: this.getId('unclustered-point'),
           type: this.unclusteredPointLayerType,
           source: this.sourceId,
           filter: [ '!', [ 'has', 'point_count' ]],
