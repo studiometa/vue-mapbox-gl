@@ -9,9 +9,9 @@
     "prepublishOnly": "npm run build",
     "test:unit": "vue-cli-service test:unit"
   },
-  "main": "dist/vue-mapbox-gl.umd.min.js",
-  "module": "dist/vue-mapbox-gl.common.js",
-  "unpkg": "dist/vue-mapbox-gl.umd.min.js",
+  "main": "dist/VueMapboxGl.umd.min.js",
+  "module": "dist/VueMapboxGl.common.js",
+  "unpkg": "dist/VueMapboxGl.umd.min.js",
   "dependencies": {
     "resize-observer-polyfill": "^1.5.1"
   },

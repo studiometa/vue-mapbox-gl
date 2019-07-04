@@ -1,5 +1,7 @@
 require('./URL.mock');
 const { createLocalVue } = require('@vue/test-utils');
+const { existsSync } = require('fs');
+const packageJson = require('../../package.json');
 const components = require('@/components');
 
 /** @type {Array} A list of components keys in source */
@@ -36,7 +38,26 @@ function testBuild(type = 'common') {
   });
 }
 
-// Init test
+/**
+ * Test if the file path in the given package.json key is valid
+ *
+ * @param  {String} type The property to test: main, module, unpkg
+ * @return {void}
+ */
+function testFileExists(type = 'main') {
+  it(`The "${type}" field should refer to an existing file.`, () => {
+    const fileExists = existsSync(packageJson[type]);
+    expect(fileExists).toBe(true);
+  });
+}
+
+// Init tests
+describe('Testing package.json files reference', () => {
+  testFileExists('main');
+  testFileExists('module');
+  testFileExists('unpkg');
+});
+
 describe('Testing build exports', () => {
   describe('Common JS build', () => {
     testBuild('common');
