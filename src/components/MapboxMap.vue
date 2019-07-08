@@ -10,11 +10,15 @@
 </template>
 
 <script>
-  import mapboxgl from 'mapbox-gl';
+  import mapboxgl, { LngLatBounds, LngLat } from 'mapbox-gl';
   import ResizeObserver from 'resize-observer-polyfill';
   import bindProps from '../utils/bind-props';
   import { bindEvents, unbindEvents } from '../utils/bind-events';
   import { provideMap } from '../mixins/provide-inject-map';
+
+  if (!mapboxgl) {
+    throw new Error('mapboxgl is not installed.');
+  }
 
   /**
    * Component's props definition, we need to declare it outside the component
@@ -92,7 +96,7 @@
       default: true,
     },
     maxBounds: {
-      type: [ mapboxgl.LngLatBounds, Array ],
+      type: [ LngLatBounds, Array ],
       default: undefined,
     },
     scrollZoom: {
@@ -128,7 +132,7 @@
       default: true,
     },
     center: {
-      type: [ mapboxgl.LngLat, Array, Object ],
+      type: [ LngLat, Array, Object ],
       default: () => [ 0, 0 ],
     },
     zoom: {
@@ -144,7 +148,7 @@
       default: 0,
     },
     bounds: {
-      type: [ mapboxgl.LngLatBounds, Array ],
+      type: [ LngLatBounds, Array ],
       default: undefined,
     },
     fitBoundsOptions: {
@@ -261,7 +265,7 @@
     mounted() {
       mapboxgl.accessToken = this.accessToken;
       this.map = new mapboxgl.Map(this.options);
-      this.$on('mb-load', () => {
+      this.map.on('load', () => {
         this.isLoaded = true;
       });
 
