@@ -1,5 +1,7 @@
 ---
 sidebar: auto
+prev: false
+next: ./MapboxMarker.md
 ---
 
 # MapboxMap

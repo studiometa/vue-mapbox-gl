@@ -50,7 +50,7 @@
        */
       clusterMaxZoom: {
         type: Number,
-        required: true,
+        default: 14,
       },
       /**
        * Radius of each cluster when clustering point
