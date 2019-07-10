@@ -33,7 +33,7 @@
     mixins: [ injectMap() ],
     props,
     mounted() {
-      this.control = new NavigationControl(this.options);
+      this.control = new NavigationControl(this.$props);
       bindProps(this, this.control, props);
       this.map.addControl(this.control, this.position);
     },

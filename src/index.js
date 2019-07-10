@@ -6,7 +6,7 @@ import * as components from './components';
  * @param  {Vue}  Vue The Vue object
  * @return {void}
  */
-function install(Vue) {
+export function install(Vue) {
   Object.keys(components).forEach((name) => {
     Vue.component(name, components[name]);
   });

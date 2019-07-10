@@ -7,6 +7,14 @@
   import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
   import { injectMap } from '../mixins/provide-inject-map';
 
+  if (!mapboxgl) {
+    throw new Error('mapboxgl is not installed.');
+  }
+
+  if (!MapboxGeocoder) {
+    throw new Error('MapboxGeocoder is not installed.');
+  }
+
   export default {
     name: 'MapboxGeocoder',
     mixins: [ injectMap() ],

@@ -1,40 +1,18 @@
-# Vue Mapbox GL 🗺
+# 🗺 Vue Mapbox GL
+
+[![NPM Version](https://img.shields.io/npm/v/@studiometa/vue-mapbox-gl.svg?style=flat-square)](https://www.npmjs.com/package/@studiometa/vue-mapbox-gl)
+[![Dependency Status](https://img.shields.io/david/studiometa/vue-mapbox-gl.svg?label=deps&style=flat-square)](https://david-dm.org/studiometa/vue-mapbox-gl)
+[![devDependency Status](https://img.shields.io/david/dev/studiometa/vue-mapbox-gl.svg?label=devDeps&style=flat-square)](https://david-dm.org/studiometa/vue-mapbox-gl?type=dev)
 
 > A small components library to use Mapbox GL in Vue.
 
-## Usage
+## Installation & usage
 
-Add the package to your project and its peer dependencies:
+Have a look at the [small guide](https://studiometa.github.io/vue-mapbox-gl/guide/) for information on how to setup a simple map.
 
-```bash
-yarn add @studiometa/vue-mapbox-gl mapbox-gl
-# The geocoder package is only required if you use the `MapboxGeocoder` component
-yarn add @mapbox/mapbox-gl-geocoder
-```
+## Components
 
-Install all components in Vue:
-
-```js
-import Vue from 'vue';
-import VueMapbox from '@studiometa/vue-mapbox-gl';
-
-Vue.use(VueMapbox);
-```
-
-Or import only the ones you need in your Vue components:
-
-```js
-import { MapboxMap, MapboxMarker } from '@studiometa/vue-mapbox-gl';
-
-export default {
-  // ...
-  components: {
-    MapboxMap,
-    MapboxMarker,
-  },
-  // ...
-};
-```
+Check the [detailed documentation](https://studiometa.github.io/vue-mapbox-gl/components/) on each components for a more advanced usage.
 
 ## To do
 
