@@ -7,7 +7,9 @@
     "lint": "vue-cli-service lint --no-fix",
     "fix": "vue-cli-service lint",
     "prepublishOnly": "npm run build",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "main": "dist/VueMapboxGl.umd.min.js",
   "module": "dist/VueMapboxGl.common.js",
@@ -26,9 +28,12 @@
     "@vue/cli-plugin-unit-jest": "^3.9.0",
     "@vue/cli-service": "^3.8.0",
     "@vue/test-utils": "1.0.0-beta.29",
+    "@vuepress/plugin-register-components": "^1.0.0-rc.1",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
+    "dotenv": "^8.0.0",
+    "electron": "^5.0.6",
     "eslint": "^5.16.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.18.0",
@@ -36,7 +41,8 @@
     "husky": "^3.0.0",
     "mapbox-gl": "^1.1.0",
     "vue": "^2.6.10",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.10",
+    "vuepress": "^1.0.2"
   },
   "peerDependencies": {
     "@mapbox/mapbox-gl-geocoder": "^4.4.0",
