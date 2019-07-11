@@ -22,7 +22,7 @@ Display a marker on the map.
 <client-only>
 <mapbox-map
   style="margin-top: 1em; height: 400px;"
-  access-token="pk.eyJ1IjoiYWdlbmNlc3R1ZGlvbWV0YSIsImEiOiJjanV3ZG5naGQwYWRpM3pxcnBmMnF1azA1In0.e1g9a95jAbc7ZtIibBOOVg"
+  :access-token="MAPBOX_API_KEY"
   map-style="mapbox://styles/mapbox/streets-v11">
   <mapbox-marker :lng-lat="[0, 0]" />
 </mapbox-map>

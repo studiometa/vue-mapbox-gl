@@ -24,7 +24,7 @@ Display a cluster on the map with data coming from a GeoJSON source.
 <client-only>
 <mapbox-map
   style="margin-top: 1em; height: 400px;"
-  access-token="pk.eyJ1IjoiYWdlbmNlc3R1ZGlvbWV0YSIsImEiOiJjanV3ZG5naGQwYWRpM3pxcnBmMnF1azA1In0.e1g9a95jAbc7ZtIibBOOVg"
+  :access-token="MAPBOX_API_KEY"
   map-style="mapbox://styles/mapbox/streets-v11">
   <mapbox-cluster data="/earthquakes.json" />
 </mapbox-map>
