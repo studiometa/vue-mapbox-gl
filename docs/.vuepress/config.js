@@ -1,4 +1,6 @@
+require('dotenv').config();
 const { resolve } = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   title: '🗺 Vue Mapbox GL',
@@ -23,6 +25,10 @@ module.exports = {
       .options({
         configFile: true,
       });
+
+    config
+      .plugin('env')
+      .use(webpack.EnvironmentPlugin, [ 'MAPBOX_API_KEY' ]);
   },
   themeConfig: {
     nav: [
@@ -38,7 +44,10 @@ module.exports = {
           { text: 'MapboxGeocoder', link: '/components/MapboxGeocoder' },
           { text: 'MapboxImage', link: '/components/MapboxImage' },
           { text: 'MapboxLayer', link: '/components/MapboxLayer' },
-          { text: 'MapboxNavigationControl', link: '/components/MapboxNavigationControl' },
+          {
+            text: 'MapboxNavigationControl',
+            link: '/components/MapboxNavigationControl',
+          },
           { text: 'MapboxPopup', link: '/components/MapboxPopup' },
           { text: 'MapboxSource', link: '/components/MapboxSource' },
         ],

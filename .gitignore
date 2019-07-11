@@ -21,5 +21,6 @@ yarn-error.log*
 *.sublime-*
 
 # Build files
+.env
 dist/*.html
 docs/.vuepress/dist/
