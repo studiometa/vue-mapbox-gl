@@ -8,11 +8,23 @@
 
 ## Installation & usage
 
-Have a look at the [small guide](https://studiometa.github.io/vue-mapbox-gl/guide/) for information on how to setup a simple map.
+Have a look at the [small guide](https://vue-mapbox-gl.meta.fr/guide/) for information on how to setup a simple map.
 
 ## Components
 
-Check the [detailed documentation](https://studiometa.github.io/vue-mapbox-gl/components/) on each components for a more advanced usage.
+The following components are available:
+
+|                                          Component                                          |                                                         Description                                                         | Doc. |
+|---------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|------|
+| [MapboxMap](https://vue-mapbox-gl.meta.fr/components/MapboxMap)                             | Display a map with the given style.                                                                                         | ✅    |
+| [MapboxMarker](https://vue-mapbox-gl.meta.fr/components/MapboxMarker)                       | Display a simple or custom marker.                                                                                          | ✅    |
+| [MapboxCluster](https://vue-mapbox-gl.meta.fr/components/MapboxCluster)                     | Display a GeoJSON as clusters.                                                                                              | ✅    |
+| [MapboxGeocoder](https://vue-mapbox-gl.meta.fr/components/MapboxGeocoder)                   | Display a geocoder search input with the [@mapbox/mapbox-gl-geocoder](https://github.com/mapbox/mapbox-gl-geocoder) plugin. | ❌    |
+| [MapboxImage](https://vue-mapbox-gl.meta.fr/components/MapboxImage)                         | Load an image to be used on the map.                                                                                        | ❌    |
+| [MapboxLayer](https://vue-mapbox-gl.meta.fr/components/MapboxLayer)                         | Display a layer on the map.                                                                                                 | ❌    |
+| [MapboxNavigationControl](https://vue-mapbox-gl.meta.fr/components/MapboxNavigationControl) | Display the map's navigation controls                                                                                       | ❌    |
+| [MapboxPopup](https://vue-mapbox-gl.meta.fr/components/MapboxPopup)                         | Display a popup on the map                                                                                                  | ❌    |
+| [MapboxSource](https://vue-mapbox-gl.meta.fr/components/MapboxSource)                       | Load a source of data to be used on the map                                                                                 | ❌    |
 
 ## To do
 
