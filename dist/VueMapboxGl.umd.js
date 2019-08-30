@@ -1185,10 +1185,12 @@ function capitalizeFirstLetter(string) {
 
 
 function bindProps(vueElement, mapboxElement, props) {
-  Object.keys(vueElement.$props).filter(prop => prop !== undefined).forEach(prop => {
-    const setMethodName = prop === 'mapStyle' ? 'setStyle' : `set${capitalizeFirstLetter(prop)}`;
-    const methodExists = typeof mapboxElement[setMethodName] === 'function';
-    const propNeedsBinding = 'bind' in props[prop] ? props[prop].bind : true; // Do nothin if `setMethodName` is not a function of `mapBoxElement`
+  Object.keys(vueElement.$props).filter(function (prop) {
+    return prop !== undefined;
+  }).forEach(function (prop) {
+    var setMethodName = prop === 'mapStyle' ? 'setStyle' : "set".concat(capitalizeFirstLetter(prop));
+    var methodExists = typeof mapboxElement[setMethodName] === 'function';
+    var propNeedsBinding = 'bind' in props[prop] ? props[prop].bind : true; // Do nothin if `setMethodName` is not a function of `mapBoxElement`
     // or if the props is not to be bounded
 
     if (!methodExists || !propNeedsBinding) {
@@ -1196,18 +1198,24 @@ function bindProps(vueElement, mapboxElement, props) {
     } // Set deep option to true if prop type is or can be Object
 
 
-    const {
-      type
-    } = props[prop];
-    const options = {
+    var type = props[prop].type;
+    var options = {
       deep: type === Object || Array.isArray(type) && type.includes(Object)
     };
-    vueElement.$watch(prop, newValue => {
+    vueElement.$watch(prop, function (newValue) {
       mapboxElement[setMethodName](newValue);
     }, options);
   });
 }
 // CONCATENATED MODULE: ./src/utils/bind-events.js
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 /**
  * Map a mapbox element's events to the given vue element
  *
@@ -1217,20 +1225,24 @@ function bindProps(vueElement, mapboxElement, props) {
  * @param  {String} layerId       The layer on which the events are delegated
  * @return {Array}                The list of event/handler pair bounded
  */
-function bindEvents(vueElement, mapboxElement, events = [], layerId = null) {
-  const {
-    $listeners: vueEvents
-  } = vueElement; // eslint-disable-next-line no-param-reassign
+function bindEvents(vueElement, mapboxElement) {
+  var events = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+  var layerId = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
+  var vueEvents = vueElement.$listeners; // eslint-disable-next-line no-param-reassign
 
-  vueElement.$$events = Object.keys(vueEvents).reduce(($$events, vueEvent) => {
-    const originalEvent = vueEvent.replace(/^mb-/, '');
+  vueElement.$$events = Object.keys(vueEvents).reduce(function ($$events, vueEvent) {
+    var originalEvent = vueEvent.replace(/^mb-/, '');
 
     if (!events.includes(originalEvent)) {
       return $$events;
     }
 
-    const handler = (...payload) => {
-      vueElement.$emit(vueEvent, ...payload);
+    var handler = function handler() {
+      for (var _len = arguments.length, payload = new Array(_len), _key = 0; _key < _len; _key++) {
+        payload[_key] = arguments[_key];
+      }
+
+      vueElement.$emit.apply(vueElement, [vueEvent].concat(payload));
     }; // If layerId is not null, all events must be
     // delegated from the map to the given layerId
 
@@ -1254,8 +1266,13 @@ function bindEvents(vueElement, mapboxElement, events = [], layerId = null) {
  * @return {void}
  */
 
-function unbindEvents(vueElement, mapboxElement, layerId = null) {
-  vueElement.$$events.forEach(([event, handler]) => {
+function unbindEvents(vueElement, mapboxElement) {
+  var layerId = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+  vueElement.$$events.forEach(function (_ref) {
+    var _ref2 = _slicedToArray(_ref, 2),
+        event = _ref2[0],
+        handler = _ref2[1];
+
     // If layerId is not null, all events must be
     // delegated from the map to the given layerId
     if (layerId) {
@@ -1271,36 +1288,49 @@ function unbindEvents(vueElement, mapboxElement, layerId = null) {
  *
  * @return {Object}
  */
-const provideMap = () => ({
-  data() {
-    return {
-      map: null
-    };
-  },
+var provideMap = function provideMap() {
+  return {
+    data: function data() {
+      return {
+        map: null
+      };
+    },
+    provide: function provide() {
+      var _this = this;
 
-  provide() {
-    return {
-      $map: () => this.map
-    };
-  }
-
-});
+      return {
+        $map: function $map() {
+          return _this.map;
+        }
+      };
+    }
+  };
+};
 /**
  * Inject from parent component a $map function to retrieve a map object
  *
  * @return {Object}
  */
 
-const injectMap = () => ({
-  inject: ['$map'],
-  computed: {
-    map() {
-      return this.$map();
+var injectMap = function injectMap() {
+  return {
+    inject: ['$map'],
+    computed: {
+      map: function map() {
+        return this.$map();
+      }
     }
-
-  }
-});
+  };
+};
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MapboxMap.vue?vue&type=script&lang=js&
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
 //
 //
 //
@@ -1329,7 +1359,7 @@ if (!external_commonjs_mapbox_gl_commonjs2_mapbox_gl_amd_mapboxgl_root_mapboxgl_
  */
 
 
-const props = {
+var props = {
   accessToken: {
     type: String,
     default: 'no-token'
@@ -1436,7 +1466,9 @@ const props = {
   },
   center: {
     type: [external_commonjs_mapbox_gl_commonjs2_mapbox_gl_amd_mapboxgl_root_mapboxgl_["LngLat"], Array, Object],
-    default: () => [0, 0]
+    default: function _default() {
+      return [0, 0];
+    }
   },
   zoom: {
     type: Number,
@@ -1493,43 +1525,40 @@ const props = {
  * @type {Array}
  */
 
-const events = ['resize', 'remove', 'mousedown', 'mouseup', 'mouseover', 'mousemove', 'click', 'dblclick', 'mouseenter', 'mouseleave', 'mouseout', 'contextmenu', 'wheel', 'touchstart', 'touchend', 'touchmove', 'touchcancel', 'movestart', 'move', 'moveend', 'dragstart', 'drag', 'dragend', 'zoomstart', 'zoom', 'zoomend', 'rotatestart', 'rotate', 'rotateend', 'pitchstart', 'pitch', 'pitchend', 'boxzoomstart', 'boxzoomend', 'boxzoomcancel', 'webglcontextlost', 'webglcontextrestored', 'load', 'render', 'idle', 'error', 'data', 'styledata', 'sourcedata', 'dataloading', 'styledataloading', 'sourcedataloading', 'styleimagemissing'];
+var events = ['resize', 'remove', 'mousedown', 'mouseup', 'mouseover', 'mousemove', 'click', 'dblclick', 'mouseenter', 'mouseleave', 'mouseout', 'contextmenu', 'wheel', 'touchstart', 'touchend', 'touchmove', 'touchcancel', 'movestart', 'move', 'moveend', 'dragstart', 'drag', 'dragend', 'zoomstart', 'zoom', 'zoomend', 'rotatestart', 'rotate', 'rotateend', 'pitchstart', 'pitch', 'pitchend', 'boxzoomstart', 'boxzoomend', 'boxzoomcancel', 'webglcontextlost', 'webglcontextrestored', 'load', 'render', 'idle', 'error', 'data', 'styledata', 'sourcedata', 'dataloading', 'styledataloading', 'sourcedataloading', 'styleimagemissing'];
 /* harmony default export */ var MapboxMapvue_type_script_lang_js_ = ({
   name: 'MapboxMap',
   mixins: [provideMap()],
-  props,
-
-  data() {
+  props: props,
+  data: function data() {
     return {
       isLoaded: false
     };
   },
-
   computed: {
-    options() {
-      const {
-        accessToken,
-        mapStyle: style,
-        ...options
-      } = this.$props; // Use current component's element if container is not set
+    options: function options() {
+      var _this$$props = this.$props,
+          accessToken = _this$$props.accessToken,
+          style = _this$$props.mapStyle,
+          options = _objectWithoutProperties(_this$$props, ["accessToken", "mapStyle"]); // Use current component's element if container is not set
+
 
       if (!options.container && this.$el) {
         options.container = this.$el;
       }
 
-      return {
-        style,
-        ...options
-      };
+      return _objectSpread({
+        style: style
+      }, options);
     }
-
   },
+  mounted: function mounted() {
+    var _this = this;
 
-  mounted() {
     external_commonjs_mapbox_gl_commonjs2_mapbox_gl_amd_mapboxgl_root_mapboxgl_default.a.accessToken = this.accessToken;
     this.map = new external_commonjs_mapbox_gl_commonjs2_mapbox_gl_amd_mapboxgl_root_mapboxgl_default.a.Map(this.options);
-    this.map.on('load', () => {
-      this.isLoaded = true;
+    this.map.on('load', function () {
+      _this.isLoaded = true;
     }); // Bind props and events
 
     bindProps(this, this.map, props);
@@ -1538,29 +1567,26 @@ const events = ['resize', 'remove', 'mousedown', 'mouseup', 'mouseover', 'mousem
     // Create an observer  on this object
     // Call resize on the map when we change szie
 
-    const observer = new ResizeObserver_es["a" /* default */](this.resizeHandler);
+    var observer = new ResizeObserver_es["a" /* default */](this.resizeHandler);
     observer.observe(this.options.container);
     this.resizeObserver = observer;
   },
-
-  destroyed() {
+  destroyed: function destroyed() {
     unbindEvents(this, this.map);
     this.resizeObserver.disconnect();
     this.map.remove();
   },
-
   methods: {
     /**
      * Handler for any change of the map's size
      *
      * @return {void}
      */
-    resizeHandler() {
+    resizeHandler: function resizeHandler() {
       if (this.map) {
         this.map.resize();
       }
     }
-
   }
 });
 // CONCATENATED MODULE: ./src/components/MapboxMap.vue?vue&type=script&lang=js&
@@ -1693,8 +1719,9 @@ var MapboxClustervue_type_template_id_15b39ef1_staticRenderFns = []
  * @param  {String} prefix The prefix to add to the generated id
  * @return {String}        A (prefixed) uniq id
  */
-function uniqId(prefix = '') {
-  const uniq = new Date().getTime() + Math.floor(Math.random() * 10000 + 1);
+function uniqId() {
+  var prefix = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  var uniq = new Date().getTime() + Math.floor(Math.random() * 10000 + 1);
   return prefix ? prefix + uniq.toString(16) : uniq.toString(16);
 }
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"856537ac-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MapboxLayer.vue?vue&type=template&id=85444b82&
@@ -1705,6 +1732,10 @@ var MapboxLayervue_type_template_id_85444b82_staticRenderFns = []
 // CONCATENATED MODULE: ./src/components/MapboxLayer.vue?vue&type=template&id=85444b82&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MapboxLayer.vue?vue&type=script&lang=js&
+function MapboxLayervue_type_script_lang_js_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { MapboxLayervue_type_script_lang_js_defineProperty(target, key, source[key]); }); } return target; }
+
+function MapboxLayervue_type_script_lang_js_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -1717,7 +1748,7 @@ var MapboxLayervue_type_template_id_85444b82_staticRenderFns = []
  * @type {Array}
  */
 
-const MapboxLayervue_type_script_lang_js_events = ['mousedown', 'mouseup', 'click', 'dblclick', 'mousemove', 'mouseenter', 'mouseleave', 'mouseover', 'mouseout', 'contextmenu', 'touchstart', 'touchend', 'touchcancel'];
+var MapboxLayervue_type_script_lang_js_events = ['mousedown', 'mouseup', 'click', 'dblclick', 'mousemove', 'mouseenter', 'mouseleave', 'mouseover', 'mouseout', 'contextmenu', 'touchstart', 'touchend', 'touchcancel'];
 /* harmony default export */ var MapboxLayervue_type_script_lang_js_ = ({
   name: 'MapboxLayer',
   mixins: [injectMap()],
@@ -1740,7 +1771,7 @@ const MapboxLayervue_type_script_lang_js_events = ['mousedown', 'mouseup', 'clic
      */
     options: {
       type: Object,
-      default: () => {}
+      default: function _default() {}
     },
 
     /**
@@ -1753,35 +1784,31 @@ const MapboxLayervue_type_script_lang_js_events = ['mousedown', 'mouseup', 'clic
       default: undefined
     }
   },
-
-  mounted() {
+  mounted: function mounted() {
     if (this.id && this.layerExists()) {
       this.map.removeLayer(this.id);
     } // Bind events
 
 
     bindEvents(this, this.map, MapboxLayervue_type_script_lang_js_events, this.id);
-    this.map.addLayer({ ...this.options,
+    this.map.addLayer(MapboxLayervue_type_script_lang_js_objectSpread({}, this.options, {
       id: this.id
-    }, this.beforeId);
+    }), this.beforeId);
   },
-
-  destroyed() {
+  destroyed: function destroyed() {
     if (this.layerExists()) {
       unbindEvents(this, this.map, this.id);
       this.map.removeLayer(this.id);
     }
   },
-
   methods: {
     /**
      * Test if the component's exists in the Map object
      * @return {Boolean}
      */
-    layerExists() {
+    layerExists: function layerExists() {
       return typeof this.map.getLayer(this.id) !== 'undefined';
     }
-
   }
 });
 // CONCATENATED MODULE: ./src/components/MapboxLayer.vue?vue&type=script&lang=js&
@@ -1825,32 +1852,29 @@ var MapboxSourcevue_type_template_id_19293bc4_staticRenderFns = []
   props: {
     options: {
       type: Object,
-      default: () => {}
+      default: function _default() {}
     },
     id: {
       type: String,
       required: true
     }
   },
-
-  mounted() {
+  mounted: function mounted() {
     this.map.addSource(this.id, this.options);
   },
+  destroyed: function destroyed() {
+    var _this = this;
 
-  destroyed() {
     // Remove all layers tied to the source
-    const {
-      _layers: layers
-    } = this.map.style;
-    Object.values(layers).forEach(value => {
-      if (value.source === this.id) {
-        this.map.removeLayer(value.id);
+    var layers = this.map.style._layers;
+    Object.values(layers).forEach(function (value) {
+      if (value.source === _this.id) {
+        _this.map.removeLayer(value.id);
       }
     }); // And remove the source
 
     this.map.removeSource(this.id);
   }
-
 });
 // CONCATENATED MODULE: ./src/components/MapboxSource.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_MapboxSourcevue_type_script_lang_js_ = (MapboxSourcevue_type_script_lang_js_); 
@@ -1875,6 +1899,14 @@ var MapboxSource_component = normalizeComponent(
 
 /* harmony default export */ var MapboxSource = (MapboxSource_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MapboxCluster.vue?vue&type=script&lang=js&
+function MapboxClustervue_type_script_lang_js_slicedToArray(arr, i) { return MapboxClustervue_type_script_lang_js_arrayWithHoles(arr) || MapboxClustervue_type_script_lang_js_iterableToArrayLimit(arr, i) || MapboxClustervue_type_script_lang_js_nonIterableRest(); }
+
+function MapboxClustervue_type_script_lang_js_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function MapboxClustervue_type_script_lang_js_iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function MapboxClustervue_type_script_lang_js_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 //
 //
 //
@@ -1945,7 +1977,9 @@ var MapboxSource_component = normalizeComponent(
      */
     clustersLayout: {
       type: Object,
-      default: () => ({})
+      default: function _default() {
+        return {};
+      }
     },
 
     /**
@@ -1955,10 +1989,12 @@ var MapboxSource_component = normalizeComponent(
      */
     clustersPaint: {
       type: Object,
-      default: () => ({
-        'circle-color': '#000',
-        'circle-radius': 40
-      })
+      default: function _default() {
+        return {
+          'circle-color': '#000',
+          'circle-radius': 40
+        };
+      }
     },
 
     /**
@@ -1968,9 +2004,11 @@ var MapboxSource_component = normalizeComponent(
      */
     clusterCountLayout: {
       type: Object,
-      default: () => ({
-        'text-field': ['get', 'point_count_abbreviated']
-      })
+      default: function _default() {
+        return {
+          'text-field': ['get', 'point_count_abbreviated']
+        };
+      }
     },
 
     /**
@@ -1980,9 +2018,11 @@ var MapboxSource_component = normalizeComponent(
      */
     clusterCountPaint: {
       type: Object,
-      default: () => ({
-        'text-color': 'white'
-      })
+      default: function _default() {
+        return {
+          'text-color': 'white'
+        };
+      }
     },
 
     /**
@@ -2002,7 +2042,9 @@ var MapboxSource_component = normalizeComponent(
      */
     unclusteredPointLayout: {
       type: Object,
-      default: () => ({})
+      default: function _default() {
+        return {};
+      }
     },
 
     /**
@@ -2012,25 +2054,25 @@ var MapboxSource_component = normalizeComponent(
      */
     unclusteredPointPaint: {
       type: Object,
-      default: () => ({
-        'circle-color': '#000',
-        'circle-radius': 4
-      })
+      default: function _default() {
+        return {
+          'circle-color': '#000',
+          'circle-radius': 4
+        };
+      }
     }
   },
-
-  data() {
+  data: function data() {
     return {
       id: uniqId('mb-cluster-')
     };
   },
-
   computed: {
     /**
      * The source ID
      * @type {String}
      */
-    sourceId() {
+    sourceId: function sourceId() {
       return this.getId('source');
     },
 
@@ -2038,18 +2080,17 @@ var MapboxSource_component = normalizeComponent(
      * The source configuration
      * @type {Object}
      */
-    source() {
-      const {
-        data,
-        clusterMaxZoom,
-        clusterRadius
-      } = this.$props;
+    source: function source() {
+      var _this$$props = this.$props,
+          data = _this$$props.data,
+          clusterMaxZoom = _this$$props.clusterMaxZoom,
+          clusterRadius = _this$$props.clusterRadius;
       return {
         type: 'geojson',
         cluster: true,
-        data,
-        clusterMaxZoom,
-        clusterRadius
+        data: data,
+        clusterMaxZoom: clusterMaxZoom,
+        clusterRadius: clusterRadius
       };
     },
 
@@ -2057,7 +2098,7 @@ var MapboxSource_component = normalizeComponent(
      * The clusters layer configuration
      * @type {Object}
      */
-    clustersLayer() {
+    clustersLayer: function clustersLayer() {
       return {
         id: this.getId('clusters'),
         type: 'circle',
@@ -2072,7 +2113,7 @@ var MapboxSource_component = normalizeComponent(
      * The cluster count layer configuration
      * @type {Object}
      */
-    clusterCountLayer() {
+    clusterCountLayer: function clusterCountLayer() {
       return {
         id: this.getId('cluster-count'),
         type: 'symbol',
@@ -2087,7 +2128,7 @@ var MapboxSource_component = normalizeComponent(
      * The unclustered points layer
      * @type {Object}
      */
-    unclusteredPointLayer() {
+    unclusteredPointLayer: function unclusteredPointLayer() {
       return {
         id: this.getId('unclustered-point'),
         type: this.unclusteredPointLayerType,
@@ -2097,7 +2138,6 @@ var MapboxSource_component = normalizeComponent(
         paint: this.unclusteredPointPaint
       };
     }
-
   },
   methods: {
     /**
@@ -2106,8 +2146,8 @@ var MapboxSource_component = normalizeComponent(
      * @param  {String} suffix The suffix of the ID
      * @return {String}        The formatted ID
      */
-    getId(suffix) {
-      return `${this.id}-${suffix}`;
+    getId: function getId(suffix) {
+      return "".concat(this.id, "-").concat(suffix);
     },
 
     /**
@@ -2116,23 +2156,23 @@ var MapboxSource_component = normalizeComponent(
      * @param  {Object} event The Mapbox click event's object
      * @return {void}
      */
-    clustersClickHandler(event) {
-      const feature = this.map.queryRenderedFeatures(event.point, {
+    clustersClickHandler: function clustersClickHandler(event) {
+      var _this = this;
+
+      var feature = this.map.queryRenderedFeatures(event.point, {
         layers: [this.clustersLayer.id]
       })[0];
-      const {
-        cluster_id: clusterId
-      } = feature.properties; // Emit a cluster click event
+      var clusterId = feature.properties.cluster_id; // Emit a cluster click event
 
       this.$emit('mb-cluster-click', clusterId, event);
-      this.map.getSource(this.sourceId).getClusterExpansionZoom(clusterId, (err, zoom) => {
+      this.map.getSource(this.sourceId).getClusterExpansionZoom(clusterId, function (err, zoom) {
         if (err) {
           return;
         }
 
-        this.map.easeTo({
+        _this.map.easeTo({
           center: feature.geometry.coordinates,
-          zoom
+          zoom: zoom
         });
       });
     },
@@ -2142,7 +2182,7 @@ var MapboxSource_component = normalizeComponent(
      *
      * @return {void}
      */
-    clustersMouseenterHandler() {
+    clustersMouseenterHandler: function clustersMouseenterHandler() {
       this.map.getCanvas().style.cursor = 'pointer';
     },
 
@@ -2151,7 +2191,7 @@ var MapboxSource_component = normalizeComponent(
      *
      * @return {void}
      */
-    clustersMouseleaveHandler() {
+    clustersMouseleaveHandler: function clustersMouseleaveHandler() {
       this.map.getCanvas().style.cursor = '';
     },
 
@@ -2162,8 +2202,10 @@ var MapboxSource_component = normalizeComponent(
      * @param  {Object} event The Mapbox click event's object
      * @return {void}
      */
-    unclusteredPointClickHandler(event) {
-      const [feature] = event.features;
+    unclusteredPointClickHandler: function unclusteredPointClickHandler(event) {
+      var _event$features = MapboxClustervue_type_script_lang_js_slicedToArray(event.features, 1),
+          feature = _event$features[0];
+
       this.$emit('mb-feature-click', feature, event);
     },
 
@@ -2175,8 +2217,10 @@ var MapboxSource_component = normalizeComponent(
      * @param  {Object} event The Mapbox mouseenter event's object
      * @return {void}
      */
-    unclusteredPointMouseenterHandler(event) {
-      const [feature] = event.features;
+    unclusteredPointMouseenterHandler: function unclusteredPointMouseenterHandler(event) {
+      var _event$features2 = MapboxClustervue_type_script_lang_js_slicedToArray(event.features, 1),
+          feature = _event$features2[0];
+
       this.$emit('mb-feature-mouseenter', feature, event);
       this.map.getCanvas().style.cursor = 'pointer';
     },
@@ -2189,11 +2233,10 @@ var MapboxSource_component = normalizeComponent(
      * @param  {Object} event The Mapbox mouselvea event‘s object
      * @return {void}
      */
-    unclusteredPointMouseleaveHandler(event) {
+    unclusteredPointMouseleaveHandler: function unclusteredPointMouseleaveHandler(event) {
       this.$emit('mb-feature-mouseleave', event);
       this.map.getCanvas().style.cursor = '';
     }
-
   }
 });
 // CONCATENATED MODULE: ./src/components/MapboxCluster.vue?vue&type=script&lang=js&
@@ -2230,6 +2273,10 @@ var mapbox_gl_geocoder_amd_MapboxGeocoder_root_MapboxGeocoder_ = __webpack_requi
 var mapbox_gl_geocoder_amd_MapboxGeocoder_root_MapboxGeocoder_default = /*#__PURE__*/__webpack_require__.n(mapbox_gl_geocoder_amd_MapboxGeocoder_root_MapboxGeocoder_);
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MapboxGeocoder.vue?vue&type=script&lang=js&
+function MapboxGeocodervue_type_script_lang_js_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { MapboxGeocodervue_type_script_lang_js_defineProperty(target, key, source[key]); }); } return target; }
+
+function MapboxGeocodervue_type_script_lang_js_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -2252,22 +2299,19 @@ if (!mapbox_gl_geocoder_amd_MapboxGeocoder_root_MapboxGeocoder_default.a) {
   props: {
     options: {
       type: Object,
-      default: () => {}
+      default: function _default() {}
     }
   },
-
-  mounted() {
-    this.control = new mapbox_gl_geocoder_amd_MapboxGeocoder_root_MapboxGeocoder_default.a({ ...this.options,
+  mounted: function mounted() {
+    this.control = new mapbox_gl_geocoder_amd_MapboxGeocoder_root_MapboxGeocoder_default.a(MapboxGeocodervue_type_script_lang_js_objectSpread({}, this.options, {
       accessToken: external_commonjs_mapbox_gl_commonjs2_mapbox_gl_amd_mapboxgl_root_mapboxgl_default.a.accessToken,
       mapboxgl: external_commonjs_mapbox_gl_commonjs2_mapbox_gl_amd_mapboxgl_root_mapboxgl_default.a
-    });
+    }));
     this.map.addControl(this.control);
   },
-
-  destroyed() {
+  destroyed: function destroyed() {
     this.map.removeControl(this.control);
   }
-
 });
 // CONCATENATED MODULE: ./src/components/MapboxGeocoder.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_MapboxGeocodervue_type_script_lang_js_ = (MapboxGeocodervue_type_script_lang_js_); 
@@ -2306,6 +2350,10 @@ var MapboxPopupvue_type_template_id_9fe02538_staticRenderFns = []
 // CONCATENATED MODULE: ./src/components/MapboxPopup.vue?vue&type=template&id=9fe02538&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MapboxPopup.vue?vue&type=script&lang=js&
+function MapboxPopupvue_type_script_lang_js_objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = MapboxPopupvue_type_script_lang_js_objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function MapboxPopupvue_type_script_lang_js_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
 //
 //
 //
@@ -2322,7 +2370,7 @@ var MapboxPopupvue_type_template_id_9fe02538_staticRenderFns = []
  * @type {Object}
  */
 
-const MapboxPopupvue_type_script_lang_js_props = {
+var MapboxPopupvue_type_script_lang_js_props = {
   lngLat: {
     type: [external_commonjs_mapbox_gl_commonjs2_mapbox_gl_amd_mapboxgl_root_mapboxgl_["LngLat"], Array, Object],
     required: true
@@ -2358,43 +2406,37 @@ const MapboxPopupvue_type_script_lang_js_props = {
  * @type {Array}
  */
 
-const MapboxPopupvue_type_script_lang_js_events = ['open', 'close'];
+var MapboxPopupvue_type_script_lang_js_events = ['open', 'close'];
 /* harmony default export */ var MapboxPopupvue_type_script_lang_js_ = ({
   name: 'MapboxPopup',
   mixins: [injectMap()],
   props: MapboxPopupvue_type_script_lang_js_props,
-
-  data() {
+  data: function data() {
     return {
       popup: null
     };
   },
-
   computed: {
-    options() {
-      const {
-        lngLat,
-        ...options
-      } = this.$props;
+    options: function options() {
+      var _this$$props = this.$props,
+          lngLat = _this$$props.lngLat,
+          options = MapboxPopupvue_type_script_lang_js_objectWithoutProperties(_this$$props, ["lngLat"]);
+
       return options;
     }
-
   },
-
-  mounted() {
+  mounted: function mounted() {
     this.popup = new external_commonjs_mapbox_gl_commonjs2_mapbox_gl_amd_mapboxgl_root_mapboxgl_["Popup"](this.options).setLngLat(this.lngLat).setDOMContent(this.$el).addTo(this.map);
     bindProps(this, this.popup, MapboxPopupvue_type_script_lang_js_props);
     bindEvents(this, this.popup, MapboxPopupvue_type_script_lang_js_events);
     this.$emit('mb-open', this.popup);
   },
-
-  destroyed() {
+  destroyed: function destroyed() {
     if (this.popup) {
       unbindEvents(this, this.popup);
       this.popup.remove();
     }
   }
-
 });
 // CONCATENATED MODULE: ./src/components/MapboxPopup.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_MapboxPopupvue_type_script_lang_js_ = (MapboxPopupvue_type_script_lang_js_); 
@@ -2419,6 +2461,10 @@ var MapboxPopup_component = normalizeComponent(
 
 /* harmony default export */ var MapboxPopup = (MapboxPopup_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MapboxMarker.vue?vue&type=script&lang=js&
+function MapboxMarkervue_type_script_lang_js_objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = MapboxMarkervue_type_script_lang_js_objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function MapboxMarkervue_type_script_lang_js_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
 //
 //
 //
@@ -2445,7 +2491,7 @@ var MapboxPopup_component = normalizeComponent(
  * @type {Object}
  */
 
-const MapboxMarkervue_type_script_lang_js_props = {
+var MapboxMarkervue_type_script_lang_js_props = {
   lngLat: {
     type: Array,
     required: true
@@ -2482,7 +2528,7 @@ const MapboxMarkervue_type_script_lang_js_props = {
  * @type {Array}
  */
 
-const MapboxMarkervue_type_script_lang_js_events = ['dragstart', 'drag', 'dragend'];
+var MapboxMarkervue_type_script_lang_js_events = ['dragstart', 'drag', 'dragend'];
 /* harmony default export */ var MapboxMarkervue_type_script_lang_js_ = ({
   name: 'MapboxMarker',
   components: {
@@ -2491,20 +2537,18 @@ const MapboxMarkervue_type_script_lang_js_events = ['dragstart', 'drag', 'dragen
   mixins: [injectMap()],
   props: MapboxMarkervue_type_script_lang_js_props,
   computed: {
-    hasPopup() {
+    hasPopup: function hasPopup() {
       return this.popup !== null && this.$refs.popup;
     },
-
-    popupInstance() {
+    popupInstance: function popupInstance() {
       return this.hasPopup ? this.$refs.popup.popup : null;
     },
+    options: function options() {
+      var _this$$props = this.$props,
+          lngLat = _this$$props.lngLat,
+          popup = _this$$props.popup,
+          options = MapboxMarkervue_type_script_lang_js_objectWithoutProperties(_this$$props, ["lngLat", "popup"]); // Use current component's element if container is not set
 
-    options() {
-      const {
-        lngLat,
-        popup,
-        ...options
-      } = this.$props; // Use current component's element if container is not set
 
       if (this.$slots.default) {
         options.element = this.$refs.content;
@@ -2512,10 +2556,8 @@ const MapboxMarkervue_type_script_lang_js_events = ['dragstart', 'drag', 'dragen
 
       return options;
     }
-
   },
-
-  mounted() {
+  mounted: function mounted() {
     this.marker = new external_commonjs_mapbox_gl_commonjs2_mapbox_gl_amd_mapboxgl_root_mapboxgl_["Marker"](this.options).setLngLat(this.lngLat).addTo(this.map); // Bind props and events
 
     bindProps(this, this.marker, MapboxMarkervue_type_script_lang_js_props);
@@ -2525,14 +2567,12 @@ const MapboxMarkervue_type_script_lang_js_events = ['dragstart', 'drag', 'dragen
       this.marker.setPopup(this.popupInstance);
     }
   },
-
-  destroyed() {
+  destroyed: function destroyed() {
     if (this.marker) {
       unbindEvents(this, this.marker);
       this.marker.remove();
     }
   }
-
 });
 // CONCATENATED MODULE: ./src/components/MapboxMarker.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_MapboxMarkervue_type_script_lang_js_ = (MapboxMarkervue_type_script_lang_js_); 
@@ -2577,7 +2617,7 @@ var MapboxNavigationControlvue_type_template_id_2b9147ae_staticRenderFns = []
  * @type {Object}
  */
 
-const MapboxNavigationControlvue_type_script_lang_js_props = {
+var MapboxNavigationControlvue_type_script_lang_js_props = {
   showCompass: {
     type: Boolean,
     default: true
@@ -2596,17 +2636,14 @@ const MapboxNavigationControlvue_type_script_lang_js_props = {
   name: 'MapboxNavigationControl',
   mixins: [injectMap()],
   props: MapboxNavigationControlvue_type_script_lang_js_props,
-
-  mounted() {
+  mounted: function mounted() {
     this.control = new external_commonjs_mapbox_gl_commonjs2_mapbox_gl_amd_mapboxgl_root_mapboxgl_["NavigationControl"](this.$props);
     bindProps(this, this.control, MapboxNavigationControlvue_type_script_lang_js_props);
     this.map.addControl(this.control, this.position);
   },
-
-  destroyed() {
+  destroyed: function destroyed() {
     this.map.removeControl(this.control);
   }
-
 });
 // CONCATENATED MODULE: ./src/components/MapboxNavigationControl.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_MapboxNavigationControlvue_type_script_lang_js_ = (MapboxNavigationControlvue_type_script_lang_js_); 
@@ -2657,7 +2694,7 @@ var MapboxNavigationControl_component = normalizeComponent(
  */
 
 function install(Vue) {
-  Object.keys(components_namespaceObject).forEach(name => {
+  Object.keys(components_namespaceObject).forEach(function (name) {
     Vue.component(name, components_namespaceObject[name]);
   });
 } // Export each components separately
