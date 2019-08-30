@@ -3,9 +3,7 @@ module.exports = {
     [
       '@vue/app',
       {
-        targets: {
-          node: 'current',
-        },
+        useBuiltIns: false,
       },
     ],
   ],
