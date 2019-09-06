@@ -1824,12 +1824,12 @@ var MapboxLayer_component = normalizeComponent(
 )
 
 /* harmony default export */ var MapboxLayer = (MapboxLayer_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"856537ac-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MapboxSource.vue?vue&type=template&id=19293bc4&
-var MapboxSourcevue_type_template_id_19293bc4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":_vm.id}})}
-var MapboxSourcevue_type_template_id_19293bc4_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"856537ac-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MapboxSource.vue?vue&type=template&id=7e2167f8&
+var MapboxSourcevue_type_template_id_7e2167f8_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":_vm.id}})}
+var MapboxSourcevue_type_template_id_7e2167f8_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/MapboxSource.vue?vue&type=template&id=19293bc4&
+// CONCATENATED MODULE: ./src/components/MapboxSource.vue?vue&type=template&id=7e2167f8&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MapboxSource.vue?vue&type=script&lang=js&
 //
@@ -1848,6 +1848,11 @@ var MapboxSourcevue_type_template_id_19293bc4_staticRenderFns = []
     id: {
       type: String,
       required: true
+    }
+  },
+  watch: {
+    'options.data': function watchOptionsData(newData) {
+      this.map.getSource(this.id).setData(newData);
     }
   },
   mounted: function mounted() {
@@ -1879,8 +1884,8 @@ var MapboxSourcevue_type_template_id_19293bc4_staticRenderFns = []
 
 var MapboxSource_component = normalizeComponent(
   components_MapboxSourcevue_type_script_lang_js_,
-  MapboxSourcevue_type_template_id_19293bc4_render,
-  MapboxSourcevue_type_template_id_19293bc4_staticRenderFns,
+  MapboxSourcevue_type_template_id_7e2167f8_render,
+  MapboxSourcevue_type_template_id_7e2167f8_staticRenderFns,
   false,
   null,
   null,

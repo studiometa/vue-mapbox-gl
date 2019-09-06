@@ -18,6 +18,11 @@
         required: true,
       },
     },
+    watch: {
+      'options.data': function watchOptionsData(newData) {
+        this.map.getSource(this.id).setData(newData);
+      },
+    },
     mounted() {
       this.map.addSource(this.id, this.options);
     },
