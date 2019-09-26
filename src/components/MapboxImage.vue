@@ -22,7 +22,7 @@
        * The image as String, an HTMLImageElement, ImageData, or object with
        * width, height, and data properties with the same format as ImageData.
        * @see  https://docs.mapbox.com/mapbox-gl-js/api/#map#addimage
-       * @type {String|HTMLImageElement|Object}
+       * @type {String|HTMLImageElement|ImageData|Object}
        */
       src: {
         type: [ String, HTMLImageElement, ImageData, Object ],
