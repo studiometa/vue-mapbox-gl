@@ -1,6 +1,6 @@
 {
   "name": "@studiometa/vue-mapbox-gl",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "scripts": {
     "build": "vue-cli-service build --target lib --name VueMapboxGl src/index.js && rm ./dist/demo.html",
     "test": "vue-cli-service test:unit",
