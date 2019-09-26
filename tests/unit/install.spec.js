@@ -1,4 +1,5 @@
 require('./URL.mock');
+require('./ImageData.mock');
 const { createLocalVue } = require('@vue/test-utils');
 const { existsSync } = require('fs');
 const packageJson = require('../../package.json');
