@@ -1,5 +1,7 @@
 <template>
-  <div :id="id" />
+  <div :id="id">
+    <slot v-if="isReady" />
+  </div>
 </template>
 
 <script>
@@ -35,8 +37,13 @@
        */
       options: {
         type: Object,
-        default: null,
+        default: () => ({ pixelRatio: 1, sdf: false }),
       },
+    },
+    data() {
+      return {
+        isReady: false,
+      };
     },
     watch: {
       src: {
@@ -47,16 +54,22 @@
       },
     },
     async mounted() {
+      const { id, src, options } = this;
+
       // If source is not a string, we don't need to load the image and we can
       // add it to the map directly.
-      if (typeof this.src !== 'string') {
-        this.map.addImage(this.id, this.src, this.options);
+      if (typeof src !== 'string') {
+        this.map.addImage(id, src, options);
+        this.$emit('add', { id, src, options });
+        this.isReady = true;
         return;
       }
 
       try {
-        const image = await this.loadImage(this.src);
-        this.map.addImage(this.id, image, this.options);
+        const image = await this.loadImage(src);
+        this.map.addImage(id, image, options);
+        this.$emit('add', { id, src: image, options });
+        this.isReady = true;
       } catch (err) {
         throw err;
       }
