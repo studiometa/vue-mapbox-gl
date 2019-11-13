@@ -1942,12 +1942,12 @@ var injectMap = function injectMap() {
     }
   };
 };
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"856537ac-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MapboxLayer.vue?vue&type=template&id=85444b82&
-var MapboxLayervue_type_template_id_85444b82_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":_vm.id}})}
-var MapboxLayervue_type_template_id_85444b82_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"856537ac-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MapboxLayer.vue?vue&type=template&id=09492b96&
+var MapboxLayervue_type_template_id_09492b96_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":_vm.id}})}
+var MapboxLayervue_type_template_id_09492b96_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/MapboxLayer.vue?vue&type=template&id=85444b82&
+// CONCATENATED MODULE: ./src/components/MapboxLayer.vue?vue&type=template&id=09492b96&
 
 // CONCATENATED MODULE: ./src/utils/bind-events.js
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
@@ -2078,8 +2078,13 @@ var events = ['mousedown', 'mouseup', 'click', 'dblclick', 'mousemove', 'mouseen
     }
   },
   mounted: function mounted() {
-    if (this.id && this.layerExists()) {
+    // Make sure to remove any existing layer and/or source to avoid conflicts
+    if (this.layerExists()) {
       this.map.removeLayer(this.id);
+    }
+
+    if (this.sourceExists()) {
+      this.map.removeSource(this.id);
     } // Bind events
 
 
@@ -2093,14 +2098,26 @@ var events = ['mousedown', 'mouseup', 'click', 'dblclick', 'mousemove', 'mouseen
       unbindEvents(this, this.map, this.id);
       this.map.removeLayer(this.id);
     }
+
+    if (this.sourceExists()) {
+      this.map.removeSource(this.id);
+    }
   },
   methods: {
     /**
-     * Test if the component's exists in the Map object
+     * Test if the component's layer exists
      * @return {Boolean}
      */
     layerExists: function layerExists() {
       return typeof this.map.getLayer(this.id) !== 'undefined';
+    },
+
+    /**
+     * Test if a source with the layer's ID exists
+     * @return {Boolean}
+     */
+    sourceExists: function sourceExists() {
+      return typeof this.map.getSource(this.id) !== 'undefined';
     }
   }
 });
@@ -2211,8 +2228,8 @@ function normalizeComponent (
 
 var component = normalizeComponent(
   components_MapboxLayervue_type_script_lang_js_,
-  MapboxLayervue_type_template_id_85444b82_render,
-  MapboxLayervue_type_template_id_85444b82_staticRenderFns,
+  MapboxLayervue_type_template_id_09492b96_render,
+  MapboxLayervue_type_template_id_09492b96_staticRenderFns,
   false,
   null,
   null,
