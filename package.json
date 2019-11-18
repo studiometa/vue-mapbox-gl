@@ -1,19 +1,34 @@
 {
   "name": "@studiometa/vue-mapbox-gl",
-  "version": "1.0.8",
+  "version": "1.1.0-beta.1",
+  "description": "A small components library to use Mapbox GL in Vue.",
+  "homepage": "https://github.com/studiometa/vue-mapbox-gl#readme",
+  "bugs": {
+    "url": "https://github.com/studiometa/vue-mapbox-gl/issues"
+  },
+  "license": "GPL-3.0-or-later",
+  "author": "Studio Meta <agence@studiometa.fr> (https://www.studiometa.fr)",
+  "contributors": [
+    "Titouan Mathis <titouan@studiometa.fr>"
+  ],
+  "main": "dist/VueMapboxGl.umd.min.js",
+  "unpkg": "dist/VueMapboxGl.umd.min.js",
+  "module": "dist/VueMapboxGl.common.js",
   "scripts": {
     "build": "vue-cli-service build --target lib --name VueMapboxGl src/index.js && rm ./dist/demo.html",
-    "test": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint --no-fix",
-    "fix": "vue-cli-service lint",
-    "prepublishOnly": "npm run build",
-    "test:unit": "vue-cli-service test:unit",
+    "docs:build": "vuepress build docs",
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "fix": "vue-cli-service lint",
+    "lint": "vue-cli-service lint --no-fix",
+    "prepublishOnly": "npm run build",
+    "test": "vue-cli-service test:unit",
+    "test:unit": "vue-cli-service test:unit"
   },
-  "main": "dist/VueMapboxGl.umd.min.js",
-  "module": "dist/VueMapboxGl.common.js",
-  "unpkg": "dist/VueMapboxGl.umd.min.js",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test && npm run lint"
+    }
+  },
   "dependencies": {
     "resize-observer-polyfill": "^1.5.1"
   },
@@ -48,11 +63,5 @@
     "@mapbox/mapbox-gl-geocoder": "^4.4.0",
     "mapbox-gl": "^1.1.0",
     "vue": "^2.6.10"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run test && npm run lint"
-    }
-  },
-  "license": "GPL-3.0-or-later"
+  }
 }
