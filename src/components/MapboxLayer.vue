@@ -61,9 +61,15 @@
       },
     },
     mounted() {
-      if (this.id && this.layerExists()) {
+      // Make sure to remove any existing layer and/or source to avoid conflicts
+      if (this.layerExists()) {
         this.map.removeLayer(this.id);
       }
+
+      if (this.sourceExists()) {
+        this.map.removeSource(this.id);
+      }
+
       // Bind events
       bindEvents(this, this.map, events, this.id);
       this.map.addLayer({ ...this.options, id: this.id }, this.beforeId);
@@ -73,14 +79,25 @@
         unbindEvents(this, this.map, this.id);
         this.map.removeLayer(this.id);
       }
+
+      if (this.sourceExists()) {
+        this.map.removeSource(this.id);
+      }
     },
     methods: {
       /**
-       * Test if the component's exists in the Map object
+       * Test if the component's layer exists
        * @return {Boolean}
        */
       layerExists() {
         return typeof this.map.getLayer(this.id) !== 'undefined';
+      },
+      /**
+       * Test if a source with the layer's ID exists
+       * @return {Boolean}
+       */
+      sourceExists() {
+        return typeof this.map.getSource(this.id) !== 'undefined';
       },
     },
   };

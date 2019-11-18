@@ -2,8 +2,8 @@
 .DS_Store
 node_modules
 
-# NPM files
-package-lock.json
+# Yarn files
+yarn.lock
 
 # Log files
 npm-debug.log*
