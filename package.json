@@ -55,6 +55,8 @@
     "eslint-plugin-vue": "^5.0.0",
     "husky": "^3.0.0",
     "mapbox-gl": "^1.1.0",
+    "node-sass": "^4.13.0",
+    "sass-loader": "^8.0.0",
     "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10",
     "vuepress": "^1.0.2"
