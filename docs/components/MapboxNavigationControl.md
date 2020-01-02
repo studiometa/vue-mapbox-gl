@@ -8,6 +8,7 @@ next: ./MapboxPopup.md
 
 Display navigation controls on the map, including two zoom buttons + - and a compass button to rotate the map.
 
+- [Mapbox navigation controls documentation](https://docs.mapbox.com/mapbox-gl-js/api/#navigationcontrol)
 - [Mapbox navigation controls example](https://docs.mapbox.com/mapbox-gl-js/example/navigation/)
 
 
