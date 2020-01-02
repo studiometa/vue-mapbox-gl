@@ -8,6 +8,7 @@ next: ./MapboxSource.md
 
 Display a popup on the map.
 
+- [Mapbox popup documentation](https://docs.mapbox.com/mapbox-gl-js/api/#popup)
 - [Mapbox popup example](https://docs.mapbox.com/mapbox-gl-js/example/popup/)
 
 
@@ -25,8 +26,6 @@ Display a popup on the map.
 
 <<< @/docs/.vuepress/components/MapboxPopupDemo.vue
 
-### Advance usage
-@todo
 
 ## Props
 
@@ -58,7 +57,7 @@ Close the popup on close button click.
 - Type `[ String ]`
 - Required `false`
 
-@todo.
+A string indicating the part of the Popup that should be positioned closest to its coordinate. [See the mapbox-gl documentation for more details.](https://docs.mapbox.com/mapbox-gl-js/api/#popup).
 
 ### `offset`
 
@@ -85,7 +84,22 @@ Add a className to the popup.
 Set a max-width to the popup.
 
 ## Events
-@todo
+
+### `mb-open`
+
+Emitted when the popup is opened manually or programatically.
+
+**Params**
+- `popup`: the object that was opened
+- `event`: the Mapbox event object sent by the layer
+
+### `mb-close`
+
+Emitted when the popup is closed manually or programatically.
+
+**Params**
+- `popup`: the object that was closed
+- `event`: the Mapbox event object sent by the layer
 
 ## Slots
 
