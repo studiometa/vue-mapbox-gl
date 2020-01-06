@@ -42,20 +42,20 @@ git clone git@github.com:studiometa/vue-mapbox-gl.git
 # Cd in the repository
 cd vue-mapbox-gl
 # Install dependencies
-yarn
+npm i
 ```
 
 ### Useful commands
 
 ```bash
 # Build for deployment
-yarn run build
+npm run build
 # Test before deployment
-yarn run test
+npm run test
 # Lint files
-yarn run lint
+npm run lint
 # Fix linting errors
-yarn run fix
+npm run fix
 ```
 
 ## Note
