@@ -23,8 +23,8 @@ The following components are available:
 | [MapboxImage](https://vue-mapbox-gl.meta.fr/components/MapboxImage)                         | Load an image to be used on the map.                                                                                        | ✅    |
 | [MapboxImages](https://vue-mapbox-gl.meta.fr/components/MapboxImages)                       | Load multiple images to be used on the map.                                                                                 | ✅    |
 | [MapboxLayer](https://vue-mapbox-gl.meta.fr/components/MapboxLayer)                         | Display a layer on the map.                                                                                                 | ❌    |
-| [MapboxNavigationControl](https://vue-mapbox-gl.meta.fr/components/MapboxNavigationControl) | Display the map's navigation controls                                                                                       | ❌    |
-| [MapboxPopup](https://vue-mapbox-gl.meta.fr/components/MapboxPopup)                         | Display a popup on the map                                                                                                  | ❌    |
+| [MapboxNavigationControl](https://vue-mapbox-gl.meta.fr/components/MapboxNavigationControl) | Display the map's navigation controls                                                                                       | ✅    |
+| [MapboxPopup](https://vue-mapbox-gl.meta.fr/components/MapboxPopup)                         | Display a popup on the map                                                                                                  | ✅    |
 | [MapboxSource](https://vue-mapbox-gl.meta.fr/components/MapboxSource)                       | Load a source of data to be used on the map                                                                                 | ❌    |
 
 ## To do
