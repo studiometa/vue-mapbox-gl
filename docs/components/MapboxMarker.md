@@ -37,6 +37,22 @@ Display a marker on the map.
 </mapbox-map>
 ```
 
+### Custom HTML
+
+<client-only>
+<mapbox-marker-custom-html-demo style="margin-top: 1em;" />
+</client-only>
+
+<<< @/docs/.vuepress/components/MapboxMarkerCustomHtmlDemo.vue{8-10,14-20}
+
+### Linked popup
+
+<client-only>
+<mapbox-marker-popup-demo style="margin-top: 1em;" />
+</client-only>
+
+<<< @/docs/.vuepress/components/MapboxMarkerPopupDemo.vue{8-12}
+
 ## Props
 
 ### `lngLat`
@@ -89,3 +105,13 @@ Mapped to the [`drag` event](https://docs.mapbox.com/mapbox-gl-js/api/#marker.ev
 ### `mb-dragend`
 
 Mapped to the [`dragend` event](https://docs.mapbox.com/mapbox-gl-js/api/#marker.event:dragend) of the `Marker` class.
+
+## Slots
+
+### `default`
+
+The `default` slot is used for marker with custom HTML.
+
+### `popup`
+
+The `popup` slot will be rendered inside the attached popup.

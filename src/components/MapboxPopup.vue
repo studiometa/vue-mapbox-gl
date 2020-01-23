@@ -44,6 +44,15 @@
       type: String,
       default: '240px',
     },
+    /**
+     * Do not render the popup on the map.
+     * @type {Object}
+     */
+    renderless: {
+      type: Boolean,
+      default: false,
+      bind: false,
+    },
   };
 
   /**
@@ -71,8 +80,11 @@
     mounted() {
       this.popup = new Popup(this.options)
         .setLngLat(this.lngLat)
-        .setDOMContent(this.$el)
-        .addTo(this.map);
+        .setDOMContent(this.$el);
+
+      if (!this.renderless) {
+        this.popup.addTo(this.map);
+      }
 
       bindProps(this, this.popup, props);
       bindEvents(this, this.popup, events);
