@@ -40,7 +40,7 @@ It is recommended to have a look at their [API reference](https://docs.mapbox.co
 
 You will probably need to use the Mapbox instance to use some of its methods such as `flyTo`, `panTo`, etc. The `MapboxMap` component emits an `mb-ready` event right after the Mapbox instantiation, with the Mapbox instance of [`Map`](https://docs.mapbox.com/mapbox-gl-js/api/#map) as a parameter. See the example below:
 
-```vue{5,17}
+```vue{5,18}
 <template>
   <mapbox-map
     access-token="..."
@@ -79,7 +79,7 @@ Your Mapbox access token or `no-token` if you are not using a map style from Map
 - Type `[ String, Object ]`
 - Required `true`
 
-A map style definition, can be a JSON object following the [Mapbox Style specification] of an URL to such a JSON. This props is mapped to the `options.style` configuration on the map instantiation.
+A map style definition, can be a JSON object following the [Mapbox Style specification](https://docs.mapbox.com/mapbox-gl-js/style-spec/) of an URL to such a JSON. This prop is mapped to the `options.style` configuration of the map creation.
 
 ### `container`
 
@@ -95,7 +95,6 @@ A map style definition, can be a JSON object following the [Mapbox Style specifi
 
 - Type `Number`
 - Default `22`
-
 
 ### `hash`
 
@@ -276,3 +275,15 @@ All events available on the Mapbox `Map` class are also available on the `Mapbox
 - ...
 
 See the [API Reference](https://docs.mapbox.com/mapbox-gl-js/api/#map.event:resize) on the subject for more detailed information about each event.
+
+## Slots
+
+### `default`
+
+The `default` slot must contain all other components as the `mapbox-gl` instance is provided by this component to be injected in all its children.
+
+See the documentation on [provide / inject](https://vuejs.org/v2/api/#provide-inject) for more informations.
+
+### `loader`
+
+This slot is displayed while the map is loading.
