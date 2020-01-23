@@ -62,8 +62,8 @@ Display a marker on the map.
 
 ### `popup`
 
-- Type `Object`
-- Default: `null`
+- Type `[ Object, Boolean ]`
+- Default: `false`
 
 ### `element`
 
