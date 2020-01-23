@@ -276,3 +276,15 @@ All events available on the Mapbox `Map` class are also available on the `Mapbox
 - ...
 
 See the [API Reference](https://docs.mapbox.com/mapbox-gl-js/api/#map.event:resize) on the subject for more detailed information about each event.
+
+## Slots
+
+### `default`
+
+The `default` slot must contain all other components as the `mapbox-gl` instance is provided by this component to be injected in all its children.
+
+See the documentation on [provide / inject](https://vuejs.org/v2/api/#provide-inject) for more informations.
+
+### `loader`
+
+This slot is displayed while the map is loading.
