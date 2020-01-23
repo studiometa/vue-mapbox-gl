@@ -40,7 +40,7 @@ It is recommended to have a look at their [API reference](https://docs.mapbox.co
 
 You will probably need to use the Mapbox instance to use some of its methods such as `flyTo`, `panTo`, etc. The `MapboxMap` component emits an `mb-ready` event right after the Mapbox instantiation, with the Mapbox instance of [`Map`](https://docs.mapbox.com/mapbox-gl-js/api/#map) as a parameter. See the example below:
 
-```vue{5,17}
+```vue{5,18}
 <template>
   <mapbox-map
     access-token="..."
