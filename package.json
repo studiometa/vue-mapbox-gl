@@ -6,10 +6,15 @@
   "bugs": {
     "url": "https://github.com/studiometa/vue-mapbox-gl/issues"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/studiometa/vue-mapbox-gl.git"
+  },
   "license": "GPL-3.0-or-later",
   "author": "Studio Meta <agence@studiometa.fr> (https://www.studiometa.fr)",
   "contributors": [
-    "Titouan Mathis <titouan@studiometa.fr>"
+    "Titouan Mathis <titouan@studiometa.fr>",
+    "Ludovic Janot <ludovic@studiometa.fr>"
   ],
   "main": "dist/VueMapboxGl.umd.min.js",
   "unpkg": "dist/VueMapboxGl.umd.min.js",
