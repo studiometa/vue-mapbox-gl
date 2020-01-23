@@ -6,10 +6,10 @@ sidebar: auto
 
 ## Installation
 
-Install it with Yarn:
+Install it with npm:
 
 ```bash
-yarn add @studiometa/vue-mapbox-gl
+npm add @studiometa/vue-mapbox-gl
 ```
 Or with NPM:
 
@@ -17,16 +17,7 @@ Or with NPM:
 npm install @studiometa/vue-mapbox-gl
 ```
 
-You will have to install the package peer dependencies in order for the components to work correctly, with Yarn:
-
-```bash
-# Install mapbox-gl
-yarn add mapbox-gl
-# The geocoder package is only required if you use the `MapboxGeocoder` component
-yarn add @mapbox/mapbox-gl-geocoder
-```
-
-Or with NPM:
+You will have to install the package peer dependencies in order for the components to work correctly, with npm:
 
 ```bash
 # Install mapbox-gl

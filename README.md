@@ -23,8 +23,8 @@ The following components are available:
 | [MapboxImage](https://vue-mapbox-gl.meta.fr/components/MapboxImage)                         | Load an image to be used on the map.                                                                                        | ✅    |
 | [MapboxImages](https://vue-mapbox-gl.meta.fr/components/MapboxImages)                       | Load multiple images to be used on the map.                                                                                 | ✅    |
 | [MapboxLayer](https://vue-mapbox-gl.meta.fr/components/MapboxLayer)                         | Display a layer on the map.                                                                                                 | ❌    |
-| [MapboxNavigationControl](https://vue-mapbox-gl.meta.fr/components/MapboxNavigationControl) | Display the map's navigation controls                                                                                       | ❌    |
-| [MapboxPopup](https://vue-mapbox-gl.meta.fr/components/MapboxPopup)                         | Display a popup on the map                                                                                                  | ❌    |
+| [MapboxNavigationControl](https://vue-mapbox-gl.meta.fr/components/MapboxNavigationControl) | Display the map's navigation controls                                                                                       | ✅    |
+| [MapboxPopup](https://vue-mapbox-gl.meta.fr/components/MapboxPopup)                         | Display a popup on the map                                                                                                  | ✅    |
 | [MapboxSource](https://vue-mapbox-gl.meta.fr/components/MapboxSource)                       | Load a source of data to be used on the map                                                                                 | ❌    |
 
 ## To do
@@ -42,20 +42,20 @@ git clone git@github.com:studiometa/vue-mapbox-gl.git
 # Cd in the repository
 cd vue-mapbox-gl
 # Install dependencies
-yarn
+npm i
 ```
 
 ### Useful commands
 
 ```bash
 # Build for deployment
-yarn run build
+npm run build
 # Test before deployment
-yarn run test
+npm run test
 # Lint files
-yarn run lint
+npm run lint
 # Fix linting errors
-yarn run fix
+npm run fix
 ```
 
 ## Note
