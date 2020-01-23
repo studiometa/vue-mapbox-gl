@@ -6,7 +6,7 @@
     <mapbox-popup
       v-if="popup"
       ref="popup"
-      v-bind="popup">
+      v-bind="popupOptions">
       <slot name="popup" />
     </mapbox-popup>
   </div>
@@ -32,7 +32,7 @@
     },
     popup: {
       type: Object,
-      default: null,
+      default: () => ({}),
       bind: false,
     },
     element: {
@@ -77,6 +77,13 @@
       },
       popupInstance() {
         return this.hasPopup ? this.$refs.popup.popup : null;
+      },
+      popupOptions() {
+        return {
+          lngLat: this.lngLat,
+          ...this.popup,
+          renderless: true,
+        };
       },
       options() {
         const { lngLat, popup, ...options } = this.$props;

@@ -20,7 +20,7 @@ Add multiple images at once to be used used in `icon-image`, `background-pattern
   <mapbox-images-demo api-key="MAPBOX_API_KEY" />
 </client-only>
 
-<<< @/docs/.vuepress/components/MapboxImagesDemo.vue
+<<< @/docs/.vuepress/components/MapboxImagesDemo.vue{8-12,20-31,42,52,63}
 
 ## Props
 

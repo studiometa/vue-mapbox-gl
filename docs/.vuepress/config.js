@@ -5,15 +5,6 @@ const webpack = require('webpack');
 module.exports = {
   title: '🗺 Vue Mapbox GL',
   description: 'A small library of Vue components for mapbox-gl',
-  head: [
-    [
-      'link',
-      {
-        rel: 'stylesheet',
-        href: 'https://unpkg.com/mapbox-gl/dist/mapbox-gl.css',
-      },
-    ],
-  ],
   chainWebpack: (config) => {
     // Update babel-loader config to use the same configuration
     // as the project (especially the plugins).

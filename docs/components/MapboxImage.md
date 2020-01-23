@@ -61,7 +61,7 @@ Add an image to be used used in `icon-image`, `background-pattern`, `fill-patter
   </mapbox-map>
 </client-only>
 
-```vue
+```vue{7-9}
 <mapbox-map
   style="height: 400px"
   access-token="..."

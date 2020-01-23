@@ -21,10 +21,10 @@ Display navigation controls on the map, including two zoom buttons + - and a com
 ### Basic usage
 
 <client-only>
-  <mapbox-navigation-control-demo api-key="MAPBOX_API_KEY" />
+  <mapbox-navigation-control-demo style="margin-top: 1em;" />
 </client-only>
 
-<<< @/docs/.vuepress/components/MapboxNavigationControlDemo.vue
+<<< @/docs/.vuepress/components/MapboxNavigationControlDemo.vue{6}
 
 ## Props
 

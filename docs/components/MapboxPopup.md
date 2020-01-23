@@ -24,7 +24,7 @@ Display a popup on the map.
   <mapbox-popup-demo api-key="MAPBOX_API_KEY" />
 </client-only>
 
-<<< @/docs/.vuepress/components/MapboxPopupDemo.vue
+<<< @/docs/.vuepress/components/MapboxPopupDemo.vue{6-8}
 
 
 ## Props
@@ -82,6 +82,14 @@ Add a className to the popup.
 - default `240px`
 
 Set a max-width to the popup.
+
+### `renderless`
+
+- Type `[ Boolean ]`
+- Required `false`
+- default `false`
+
+Do not add the popup to the map on creation.
 
 ## Events
 
