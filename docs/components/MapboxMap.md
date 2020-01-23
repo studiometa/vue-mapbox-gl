@@ -79,7 +79,7 @@ Your Mapbox access token or `no-token` if you are not using a map style from Map
 - Type `[ String, Object ]`
 - Required `true`
 
-A map style definition, can be a JSON object following the [Mapbox Style specification] of an URL to such a JSON. This props is mapped to the `options.style` configuration on the map instantiation.
+A map style definition, can be a JSON object following the [Mapbox Style specification](https://docs.mapbox.com/mapbox-gl-js/style-spec/) of an URL to such a JSON. This prop is mapped to the `options.style` configuration of the map creation.
 
 ### `container`
 
@@ -95,7 +95,6 @@ A map style definition, can be a JSON object following the [Mapbox Style specifi
 
 - Type `Number`
 - Default `22`
-
 
 ### `hash`
 
