@@ -31,8 +31,8 @@
       required: true,
     },
     popup: {
-      type: Object,
-      default: () => ({}),
+      type: [ Object, Boolean ],
+      default: false,
       bind: false,
     },
     element: {
@@ -73,7 +73,7 @@
     props,
     computed: {
       hasPopup() {
-        return this.popup !== null && this.$refs.popup;
+        return this.popup !== false && this.$refs.popup !== undefined;
       },
       popupInstance() {
         return this.hasPopup ? this.$refs.popup.popup : null;

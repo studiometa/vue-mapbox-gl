@@ -5,7 +5,7 @@
     map-style="mapbox://styles/mapbox/streets-v11"
     :center="[0, 0]"
     :zoom="1">
-    <mapbox-marker :lng-lat="[0, 0]">
+    <mapbox-marker :lng-lat="[0, 0]" popup>
       <template v-slot:popup>
         <p>Hello world!</p>
       </template>
