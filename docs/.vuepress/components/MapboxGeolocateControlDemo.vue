@@ -11,16 +11,16 @@
     name: 'GeolocateControlDemo',
     methods: {
       ontrackuserlocationend() {
-        console.log('trackuserlocationend');
+        console.log('MapboxGeolocateControl - trackuserlocationend');
       },
       ontrackuserlocationstart() {
-        console.log('trackuserlocationstart');
+        console.log('MapboxGeolocateControl - trackuserlocationstart');
       },
       ongeolocate() {
-        console.log('geolocate');
+        console.log('MapboxGeolocateControl - geolocate');
       },
       onerror() {
-        console.log('Error');
+        console.log('MapboxGeolocateControl - error');
       },
     },
   };
