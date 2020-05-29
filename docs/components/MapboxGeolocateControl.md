@@ -46,43 +46,43 @@ This button **will not display** for user who are blocking the acces to the gps 
 
 ### `positionOptions`
 - Type `[ Object ]`
-- required: `false`
-- default `{ enableHighAccuracy:false, timeout:6000 }`
+- Required: `false`
+- Default `{ enableHighAccuracy:false, timeout:6000 }`
 
 A Geolocation API PositionOptions object.
 
 ### `fitBoundsOptions`
 - Type `[ Object ]`
-- required: `false`
-- default `{ maxZoom: 15 }`
+- Required: `false`
+- Default `{ maxZoom: 15 }`
 
 A fitBounds options object to use when the map is panned and zoomed to the user's location. The default is to use a maxZoom of 15 to limit how far the map will zoom in for very accurate locations.
 
 ### `trackUserLocation`
 - Type `[ Boolean ]`
-- required: `false`
-- default `false`
+- Required: `false`
+- Default `false`
 
 If true the Geolocate Control becomes a toggle button and when active the map will receive updates to the user's location as it changes.
 
 ### `showAccuracyCircle`
 - Type `[ Boolean ]`
-- required: `false`
-- default `true`
+- Required: `false`
+- Default `true`
 
 By default, if showUserLocation is true , a transparent circle will be drawn around the user location indicating the accuracy (95% confidence level) of the user's location. Set to false to disable. Always disabled when showUserLocation is false .
 
 ### `showUserLocation`
 - Type `[ Boolean ]`
-- required: `false`
-- default `true`
+- Required: `false`
+- Default `true`
 
 By default a dot will be shown on the map at the user's location. Set to false to disable.
 
 ### `position`
 - Type `[ String ]`
-- required: `false`
-- default `top-right`
+- Required: `false`
+- Default `top-right`
 
 The position for the geolocation control.
 
