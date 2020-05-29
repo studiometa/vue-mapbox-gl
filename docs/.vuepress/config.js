@@ -45,6 +45,7 @@ module.exports = {
           },
           { text: 'MapboxPopup', link: '/components/MapboxPopup' },
           { text: 'MapboxSource', link: '/components/MapboxSource' },
+          { text: 'MapboxGeolocateControl', link: '/components/MapboxGeolocateControl' },
         ],
       },
       { text: 'Github', link: 'https://github.com/studiometa/vue-mapbox-gl' },

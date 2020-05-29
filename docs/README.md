@@ -24,6 +24,7 @@ Check the detailed documentation on each components for a more advanced usage:
 | [MapboxImages](./components/MapboxImages.md)                       | Load multiple images to be used on the map.                                                                                 |
 | [MapboxLayer](./components/MapboxLayer.md)                         | Display a layer on the map.                                                                                                 |
 | [MapboxNavigationControl](./components/MapboxNavigationControl.md) | Display the map's navigation controls                                                                                       |
+| [MapboxGeolocateControl](./components/MapboxGeolocateControl.md)   | Display the map's geolocation control                                                                                 |
 | [MapboxPopup](./components/MapboxPopup.md)                         | Display a popup on the map                                                                                                  |
 | [MapboxSource](./components/MapboxSource.md)                       | Load a source of data to be used on the map                                                                                 |
 
