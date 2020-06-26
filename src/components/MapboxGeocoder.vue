@@ -77,7 +77,6 @@
     },
     language: {
       type: String,
-      default: '',
     },
     filter: {
       type: Function,
@@ -87,7 +86,7 @@
     },
     reverseMode: {
       type: String,
-      default: () => 'distance',
+      // default: () => 'distance',
     },
     reverseGeocode: {
       type: Boolean,
@@ -131,13 +130,15 @@
     props,
     mounted() {
       this.control = new MapboxGeocoder({
-        ...this.options,
         accessToken: mapboxgl.accessToken,
         mapboxgl,
+        ...this.$props,
       });
 
+      // Bind events
       bindEvents(this, this.control, events);
-      this.map.addControl(this.control);
+
+      this.control.addTo(this.map);
     },
     destroyed() {
       unbindEvents(this, this.control);
