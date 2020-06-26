@@ -17,8 +17,110 @@
   }
 
   /**
+   ** Component's props definition, we need to declare it outside the component
+   * to be able to test the default values and the types.
+   * @see https://github.com/mapbox/mapbox-gl-geocoder/blob/master/API.md#parameters
+   * @type {object}
+   */
+  const props = {
+    zoom: {
+      type: Number,
+      default: () => 16,
+    },
+    flyTo: {
+      type: [ Boolean, Object ],
+      default: () => true,
+    },
+    placeholder: {
+      type: String,
+      default: () => 'Search',
+    },
+    proximity: {
+      type: Object,
+      default: () => {},
+    },
+    trackProximity: {
+      type: Boolean,
+      default: () => true,
+    },
+    collapsed: {
+      type: Boolean,
+      default: () => false,
+    },
+    clearAndBlurOnEsc: {
+      type: Boolean,
+      default: () => false,
+    },
+    clearOnBlur: {
+      type: Boolean,
+      default: () => false,
+    },
+    bbox: {
+      type: Array,
+      default: () => [],
+    },
+    countries: {
+      type: String,
+      default: () => '',
+    },
+    types: {
+      type: String,
+      default: () => '',
+    },
+    minLength: {
+      type: Number,
+      default: () => 2,
+    },
+    limit: {
+      type: Number,
+      default: () => 5,
+    },
+    language: {
+      type: String,
+      default: '',
+    },
+    filter: {
+      type: Function,
+    },
+    localGeocoder: {
+      type: Function,
+    },
+    reverseMode: {
+      type: String,
+      default: () => 'distance',
+    },
+    reverseGeocode: {
+      type: Boolean,
+      default: () => false,
+    },
+    enableEventLogging: {
+      type: Boolean,
+      default: () => false,
+    },
+    marker: {
+      type: Boolean,
+      default: () => true,
+    },
+    render: {
+      type: Function,
+    },
+    getItemValue: {
+      type: Function,
+      default: item => item.place_name,
+    },
+    mode: {
+      type: String,
+      default: () => 'mapbox.places',
+    },
+    localGeocoderOnly: {
+      type: Boolean,
+      default: () => false,
+    },
+  };
+
+  /**
    * All Map events which will be mapped/bounded to the component
-   * @see  https://docs.mapbox.com/mapbox-gl-js/api/#marker.event:dragstart
+   * @see  https://github.com/mapbox/mapbox-gl-geocoder/blob/master/API.md#on
    * @type {Array}
    */
   const events = [ 'loading', 'results', 'result', 'error' ];
@@ -26,12 +128,7 @@
   export default {
     name: 'MapboxGeocoder',
     mixins: [ injectMap() ],
-    props: {
-      options: {
-        type: Object,
-        default: () => {},
-      },
-    },
+    props,
     mounted() {
       this.control = new MapboxGeocoder({
         ...this.options,
