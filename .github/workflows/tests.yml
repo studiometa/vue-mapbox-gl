@@ -2,7 +2,7 @@ name: Code Quality & Tests
 on: [push, pull_request]
 
 jobs:
-  Code Quality:
+  code-quality:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -16,7 +16,7 @@ jobs:
         npm run lint
       env:
         CI: true
-  Tests:
+  tests:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
