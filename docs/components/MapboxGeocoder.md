@@ -1,7 +1,7 @@
 ---
 sidebar: auto
 prev: ./MapboxCluster.md
-next: ./MapboxImage.md
+next: ./MapboxGeocoder.md
 ---
 
 # MapboxGeocoder

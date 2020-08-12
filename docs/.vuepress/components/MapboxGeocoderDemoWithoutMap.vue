@@ -2,6 +2,7 @@
   <div class="preview">
     <mapbox-geocoder
       :access-token="MAPBOX_API_KEY"
+      :reverse-geocode="reverseGeocode"
       @mb-loading="log('loading', $event)"
       @mb-results="log('results', $event)"
       @mb-result="log('result', $event)"
@@ -14,6 +15,12 @@
 
   export default {
     name: 'MapboxGeocoderDemoWithoutMap',
+    props: {
+      reverseGeocode: {
+        type: Boolean,
+        default: false,
+      },
+    },
     methods: {
       log: console.log,
     },
@@ -27,7 +34,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2em;
+    padding: 3em;
     background-color: #eee;
     border-radius: 6px;
   }
