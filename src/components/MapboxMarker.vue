@@ -4,8 +4,8 @@
       <slot />
     </div>
     <mapbox-popup
-      v-if="popup"
       ref="popup"
+      v-if="popup"
       v-bind="popupOptions">
       <slot name="popup" />
     </mapbox-popup>

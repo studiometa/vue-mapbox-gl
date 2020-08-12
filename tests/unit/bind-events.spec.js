@@ -11,7 +11,7 @@ const marker = new Marker();
 
 /** @type {Object} The Vue component definition */
 const vueComponent = {
-  render: h => h('div'),
+  render: (h) => h('div'),
   mounted() {
     bindEvents(this, marker, events);
   },

@@ -7,12 +7,7 @@
  * @param  {String} layerId       The layer on which the events are delegated
  * @return {Array}                The list of event/handler pair bounded
  */
-export function bindEvents(
-  vueElement,
-  mapboxElement,
-  events = [],
-  layerId = null,
-) {
+export function bindEvents(vueElement, mapboxElement, events = [], layerId = null) {
   const { $listeners: vueEvents } = vueElement;
   // eslint-disable-next-line no-param-reassign
   vueElement.$$events = Object.keys(vueEvents).reduce(($$events, vueEvent) => {
@@ -33,12 +28,11 @@ export function bindEvents(
       mapboxElement.on(originalEvent, handler);
     }
 
-    $$events.push([ originalEvent, handler ]);
+    $$events.push([originalEvent, handler]);
 
     return $$events;
   }, []);
 }
-
 
 /**
  * Unbind events from the map element
@@ -48,12 +42,8 @@ export function bindEvents(
  * @param  {String} layerId      The layer on which the events where delegated
  * @return {void}
  */
-export function unbindEvents(
-  vueElement,
-  mapboxElement,
-  layerId = null,
-) {
-  vueElement.$$events.forEach(([ event, handler ]) => {
+export function unbindEvents(vueElement, mapboxElement, layerId = null) {
+  vueElement.$$events.forEach(([event, handler]) => {
     // If layerId is not null, all events must be
     // delegated from the map to the given layerId
     if (layerId) {

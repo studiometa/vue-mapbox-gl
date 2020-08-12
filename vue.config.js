@@ -1,7 +1,7 @@
 module.exports = {
   configureWebpack: {
     resolve: {
-      extensions: [ '.vue', '.js', '.json' ],
+      extensions: ['.vue', '.js', '.json'],
     },
     externals: {
       'mapbox-gl': {

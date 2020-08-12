@@ -2,8 +2,8 @@ require('./URL.mock');
 require('./ImageData.mock');
 const { createLocalVue } = require('@vue/test-utils');
 const { existsSync } = require('fs');
-const packageJson = require('../../package.json');
 const components = require('@/components');
+const packageJson = require('../../package.json');
 
 /** @type {Array} A list of components keys in source */
 const componentNames = Object.keys(components);
@@ -26,7 +26,7 @@ function testBuild(type = 'common') {
   const installedNames = Object.keys(localVue.options.components);
   const exportedNames = Object.keys(exportedComponents);
 
-  componentNames.forEach(name => {
+  componentNames.forEach((name) => {
     describe(`Testing "${name}" component installation and export...`, () => {
       it(`Component "${name}" has been installed.`, () => {
         expect(installedNames).toContain(name);

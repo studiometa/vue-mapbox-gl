@@ -22,7 +22,7 @@ export const provideMap = () => ({
  * @return {Object}
  */
 export const injectMap = () => ({
-  inject: [ '$map' ],
+  inject: ['$map'],
   computed: {
     map() {
       return this.$map();
