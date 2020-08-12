@@ -22,10 +22,12 @@ export const provideMap = () => ({
  * @return {Object}
  */
 export const injectMap = () => ({
-  inject: ['$map'],
+  inject: {
+    $map: { default: null },
+  },
   computed: {
     map() {
-      return this.$map();
+      return typeof this.$map === 'function' ? this.$map() : null;
     },
   },
 });

@@ -1,6 +1,6 @@
 ---
 sidebar: auto
-prev: ./MapboxGeocoder.md
+prev: ./MapboxGeolocateControl.md
 next: ./MapboxLayer.md
 ---
 
