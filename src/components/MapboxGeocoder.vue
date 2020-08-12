@@ -90,7 +90,7 @@
     },
     reverseMode: {
       type: String,
-      // default: () => 'distance',
+      default: () => 'distance',
     },
     reverseGeocode: {
       type: Boolean,
@@ -134,6 +134,26 @@
     props,
     mounted() {
       const { accessToken, ...$props } = this.$props;
+
+      // Delete the `reverseMode` property if we are not reverse geocoding as it is not supported by
+      // the Mapbox SDK.
+      //
+      // The `reverseMode` option can not be supported yet as it is conditionned by the search
+      // query format following a specific regex:
+      //
+      // ```js
+      //  /(-?\d+\.?\d*)[, ]+(-?\d+\.?\d*)[ ]*$/.test(searchInput)
+      // ```
+      //
+      // @todo use the same regex as the mapbox-gl-geocoder lib or open an issue
+      //
+      // @see https://github.com/mapbox/mapbox-sdk-js/blob/main/services/geocoding.js (92-104)
+      // @see https://github.com/mapbox/mapbox-sdk-js/blob/main/services/geocoding.js (161-172)
+      // @see https://github.com/mapbox/mapbox-gl-geocoder/blob/master/lib/index.js (437-458)
+      // eslint-disable-next-line no-constant-condition
+      if (!$props.reverseGeocode || true) {
+        delete $props.reverseMode;
+      }
 
       this.control = new MapboxGeocoder({
         accessToken: mapboxgl.accessToken || accessToken,

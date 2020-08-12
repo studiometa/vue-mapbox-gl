@@ -2737,12 +2737,12 @@ var MapboxCluster_component = normalizeComponent(
 )
 
 /* harmony default export */ var MapboxCluster = (MapboxCluster_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"0b7cb649-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MapboxGeocoder.vue?vue&type=template&id=29972b9c&
-var MapboxGeocodervue_type_template_id_29972b9c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div')}
-var MapboxGeocodervue_type_template_id_29972b9c_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"0b7cb649-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MapboxGeocoder.vue?vue&type=template&id=681b3f66&
+var MapboxGeocodervue_type_template_id_681b3f66_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div')}
+var MapboxGeocodervue_type_template_id_681b3f66_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/MapboxGeocoder.vue?vue&type=template&id=29972b9c&
+// CONCATENATED MODULE: ./src/components/MapboxGeocoder.vue?vue&type=template&id=681b3f66&
 
 // EXTERNAL MODULE: external {"commonjs":"mapbox-gl","commonjs2":"mapbox-gl","amd":"mapboxgl","root":"mapboxgl"}
 var external_commonjs_mapbox_gl_commonjs2_mapbox_gl_amd_mapboxgl_root_mapboxgl_ = __webpack_require__("2ff6");
@@ -2878,8 +2878,10 @@ var props = {
     type: Function
   },
   reverseMode: {
-    type: String // default: () => 'distance',
-
+    type: String,
+    default: function _default() {
+      return 'distance';
+    }
   },
   reverseGeocode: {
     type: Boolean,
@@ -2935,7 +2937,16 @@ var MapboxGeocodervue_type_script_lang_js_events = ['loading', 'results', 'resul
   mounted: function mounted() {
     var _this$$props = this.$props,
         accessToken = _this$$props.accessToken,
-        $props = _objectWithoutProperties(_this$$props, ["accessToken"]);
+        $props = _objectWithoutProperties(_this$$props, ["accessToken"]); // Delete the `reverseMode` property if we are not reverse geocoding as it is not supported by
+    // the Mapbox SDK.
+    // @see https://github.com/mapbox/mapbox-sdk-js/blob/main/services/geocoding.js (92-104)
+    // @see https://github.com/mapbox/mapbox-sdk-js/blob/main/services/geocoding.js (161-172)
+    // @see https://github.com/mapbox/mapbox-gl-geocoder/blob/master/lib/index.js (437-458)
+
+
+    if (!$props.reverseGeocode) {
+      delete $props.reverseMode;
+    }
 
     this.control = new mapbox_gl_geocoder_amd_MapboxGeocoder_root_MapboxGeocoder_default.a(MapboxGeocodervue_type_script_lang_js_objectSpread({
       accessToken: external_commonjs_mapbox_gl_commonjs2_mapbox_gl_amd_mapboxgl_root_mapboxgl_default.a.accessToken || accessToken,
@@ -2965,8 +2976,8 @@ var MapboxGeocodervue_type_script_lang_js_events = ['loading', 'results', 'resul
 
 var MapboxGeocoder_component = normalizeComponent(
   components_MapboxGeocodervue_type_script_lang_js_,
-  MapboxGeocodervue_type_template_id_29972b9c_render,
-  MapboxGeocodervue_type_template_id_29972b9c_staticRenderFns,
+  MapboxGeocodervue_type_template_id_681b3f66_render,
+  MapboxGeocodervue_type_template_id_681b3f66_staticRenderFns,
   false,
   null,
   null,
