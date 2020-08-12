@@ -23,19 +23,49 @@ This component does not support outside of the map.
   <mapbox-geocoder-demo />
 </client-only>
 
-```vue{5}
-// MaboxGeocoder stylesheet needs to be imported manually.
-require('@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css');
+```vue
+<template>
+  <mapbox-map
+    style="margin-top: 1em; height: 400px;"
+    :access-token="MAPBOX_API_KEY"
+    map-style="mapbox://styles/mapbox/streets-v11">
+    <mapbox-geocoder />
+  </mapbox-map>
+</template>
 
-<mapbox-map
-  style="margin-top: 1em; height: 400px;"
-  :access-token="MAPBOX_API_KEY"
-  map-style="mapbox://styles/mapbox/streets-v11">
-  <mapbox-geocoder />
-</mapbox-map>
+<script>
+  // MaboxGeocoder stylesheet needs to be imported manually.
+  import '@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css';
+</script>
+```
+
+### Without a map
+
+This component can be used outside of the `<mapbox-map>` component. You will need to pass the `accessToken` props.
+
+<client-only>
+  <mapbox-geocoder-demo-without-map />
+</client-only>
+
+```vue
+<template>
+  <mapbox-geocoder :access-token="MAPBOX_API_KEY" />
+</template>
+
+<script>
+  // MaboxGeocoder stylesheet needs to be imported manually.
+  import '@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css';
+</script>
 ```
 
 ## Props
+
+### `acccessToken`
+- Type `String`
+- Required: only when used without a map
+- Default: `no-token`
+
+Your Mapbox access token or `no-token` if you are not using a map style from Mapbox.
 
 ### `zoom`
 - Type `Number`

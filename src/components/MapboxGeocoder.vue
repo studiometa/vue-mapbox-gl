@@ -23,6 +23,10 @@
    * @type {object}
    */
   const props = {
+    accessToken: {
+      type: String,
+      default: 'no-token',
+    },
     zoom: {
       type: Number,
       default: () => 16,
@@ -105,7 +109,7 @@
     },
     getItemValue: {
       type: Function,
-      default: item => item.place_name,
+      default: (item) => item.place_name,
     },
     mode: {
       type: String,
@@ -129,20 +133,24 @@
     mixins: [ injectMap() ],
     props,
     mounted() {
+      const { accessToken, ...$props } = this.$props;
+
       this.control = new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken,
+        accessToken: mapboxgl.accessToken || accessToken,
         mapboxgl,
-        ...this.$props,
+        ...$props,
       });
 
       // Bind events
       bindEvents(this, this.control, events);
 
-      this.control.addTo(this.map);
+      this.control.addTo(this.map || this.$el);
     },
     destroyed() {
       unbindEvents(this, this.control);
-      this.map.removeControl(this.control);
+      if (this.map) {
+        this.map.removeControl(this.control);
+      }
     },
   };
 </script>
