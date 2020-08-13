@@ -58,6 +58,10 @@ This component can be used outside of the `<mapbox-map>` component. You will nee
 </script>
 ```
 
+:::warning
+This feature requires a minimal version of `4.5.0` for the `@mapbox/mapbox-gl-geocoder` package, as per its [changelog entry](https://github.com/mapbox/mapbox-gl-geocoder/blob/master/CHANGELOG.md#v450).
+:::
+
 ## Props
 
 ### `acccessToken`
