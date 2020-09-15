@@ -3265,12 +3265,12 @@ var MapboxImages_component = normalizeComponent(
 )
 
 /* harmony default export */ var MapboxImages = (MapboxImages_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"0b7cb649-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MapboxMap.vue?vue&type=template&id=69a40954&
-var MapboxMapvue_type_template_id_69a40954_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[(_vm.isLoaded)?_c('div',[_vm._t("default")],2):_c('div',[_vm._t("loader")],2)])}
-var MapboxMapvue_type_template_id_69a40954_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"0b7cb649-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MapboxMap.vue?vue&type=template&id=15edc638&
+var MapboxMapvue_type_template_id_15edc638_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[(_vm.isLoaded)?_c('div',[_vm._t("default")],2):_c('div',[_vm._t("loader")],2)])}
+var MapboxMapvue_type_template_id_15edc638_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/MapboxMap.vue?vue&type=template&id=69a40954&
+// CONCATENATED MODULE: ./src/components/MapboxMap.vue?vue&type=template&id=15edc638&
 
 // EXTERNAL MODULE: ./node_modules/resize-observer-polyfill/dist/ResizeObserver.es.js
 var ResizeObserver_es = __webpack_require__("6dd8");
@@ -3607,8 +3607,8 @@ var MapboxMapvue_type_script_lang_js_events = ['resize', 'remove', 'mousedown', 
 
 var MapboxMap_component = normalizeComponent(
   components_MapboxMapvue_type_script_lang_js_,
-  MapboxMapvue_type_template_id_69a40954_render,
-  MapboxMapvue_type_template_id_69a40954_staticRenderFns,
+  MapboxMapvue_type_template_id_15edc638_render,
+  MapboxMapvue_type_template_id_15edc638_staticRenderFns,
   false,
   null,
   null,

@@ -47,7 +47,7 @@
       type: Number,
       default: 0,
     },
-    maxPitch : {
+    maxPitch: {
       type: Number,
       default: 60,
     },
@@ -120,7 +120,7 @@
       default: true,
     },
     dragPan: {
-      type: [Boolean, Object],
+      type: [ Boolean, Object ],
       default: true,
     },
     keyboard: {
