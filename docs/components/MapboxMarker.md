@@ -85,10 +85,31 @@ Display a marker on the map.
 - Type `String`
 - Default: `null`
 
+### `scale`
+
+- Type `Number`
+- Default: `1`
+
 ### `draggable`
 
 - Type `Boolean`
 - Default: `false`
+
+### `rotation`
+
+- Type: `Number`
+- Default: `0`
+
+### `pitchAlignment`
+
+- Type: `String`
+- Default: `'auto'`
+
+### `rotationAlignment`
+
+- Type: `String`
+- Default: `'auto'`
+
 
 ## Events
 

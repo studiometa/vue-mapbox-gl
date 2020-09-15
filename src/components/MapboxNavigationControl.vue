@@ -21,6 +21,10 @@
       type: Boolean,
       default: true,
     },
+    visualizePitch: {
+      type: Boolean,
+      default: false,
+    },
     position: {
       type: String,
       default: 'top-right',

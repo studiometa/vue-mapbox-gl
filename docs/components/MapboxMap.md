@@ -96,6 +96,16 @@ A map style definition, can be a JSON object following the [Mapbox Style specifi
 - Type `Number`
 - Default `22`
 
+### `minPitch`
+
+- Type: `Number`
+- Default: `0`
+
+### `maxPitch`
+
+- Type: `Number`
+- Default: `60`
+
 ### `hash`
 
 - Type `Boolean`
@@ -178,7 +188,7 @@ A map style definition, can be a JSON object following the [Mapbox Style specifi
 
 ### `dragPan`
 
-- Type `Boolean`
+- Type `[ Boolean, Object ]`
 - Default `true`
 
 ### `keyboard`
