@@ -95,6 +95,22 @@ Display a marker on the map.
 - Type `Boolean`
 - Default: `false`
 
+### `rotation`
+
+- Type: `Number`
+- Default: `0`
+
+### `pitchAlignment`
+
+- Type: `String`
+- Default: `'auto'`
+
+### `rotationAlignment`
+
+- Type: `String`
+- Default: `'auto'`
+
+
 ## Events
 
 All events available on the `Marker` class are also available on the `MapboxMarker` component, prefixed by `mb-`.

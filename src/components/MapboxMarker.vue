@@ -59,6 +59,18 @@
       type: Boolean,
       default: false,
     },
+    rotation: {
+      type: Number,
+      default: 0,
+    },
+    pitchAlignment: {
+      type: String,
+      default: 'auto',
+    },
+    rotationAlignment: {
+      type: String,
+      default: 'auto',
+    },
   };
 
   /**
