@@ -28,6 +28,10 @@
       type: Boolean,
       default: true,
     },
+    closeOnMove: {
+      type: Boolean,
+      default: false,
+    },
     anchor: {
       type: String,
       default: null,
