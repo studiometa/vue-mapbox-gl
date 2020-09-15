@@ -51,6 +51,10 @@
       type: String,
       default: null,
     },
+    scale: {
+      type: Number,
+      default: 1,
+    },
     draggable: {
       type: Boolean,
       default: false,

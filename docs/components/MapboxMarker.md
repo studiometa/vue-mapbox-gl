@@ -85,6 +85,11 @@ Display a marker on the map.
 - Type `String`
 - Default: `null`
 
+### `scale`
+
+- Type `Number`
+- Default: `1`
+
 ### `draggable`
 
 - Type `Boolean`
