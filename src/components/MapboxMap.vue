@@ -43,6 +43,14 @@
       type: Number,
       default: 22,
     },
+    minPitch: {
+      type: Number,
+      default: 0,
+    },
+    maxPitch : {
+      type: Number,
+      default: 60,
+    },
     mapStyle: {
       type: [ Object, String ],
       required: true,
