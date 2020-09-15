@@ -30,24 +30,28 @@ Display navigation controls on the map, including two zoom buttons + - and a com
 
 ### `position`
 
-- Type `[ String ]`
-- Required `false`
-- default `top-right`
+- Type: `String`
+- Default: `top-right`
 
 The position for the navigation control.
 
 ### `showCompass`
 
-- Type `[ Boolean ]`
-- Required `false`
-- default `true`
+- Type: `Boolean`
+- Default: `true`
 
 Show the compass button with the navigation control.
 
 ### `showZoom`
 
-- Type `[ Boolean ]`
-- Required `false`
-- default `true`
+- Type: `Boolean`
+- Default: `true`
 
 Show the zoom button with the navigation control.
+
+### `visualizePitch`
+
+- Type: `Boolean`
+- Default: `false`
+
+If `true` the pitch is visualized by rotating Y-axis of compass.
