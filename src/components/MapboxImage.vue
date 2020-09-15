@@ -65,14 +65,10 @@
         return;
       }
 
-      try {
-        const image = await this.loadImage(src);
-        this.map.addImage(id, image, options);
-        this.$emit('add', { id, src: image, options });
-        this.isReady = true;
-      } catch (err) {
-        throw err;
-      }
+      const image = await this.loadImage(src);
+      this.map.addImage(id, image, options);
+      this.$emit('add', { id, src: image, options });
+      this.isReady = true;
     },
     destroyed() {
       if (this.map.hasImage(this.id)) {

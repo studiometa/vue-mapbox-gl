@@ -18,11 +18,9 @@ function capitalizeFirstLetter(string) {
  */
 export default function bindProps(vueElement, mapboxElement, props) {
   Object.keys(vueElement.$props)
-    .filter(prop => prop !== undefined)
+    .filter((prop) => prop !== undefined)
     .forEach((prop) => {
-      const setMethodName = prop === 'mapStyle'
-        ? 'setStyle'
-        : `set${capitalizeFirstLetter(prop)}`;
+      const setMethodName = prop === 'mapStyle' ? 'setStyle' : `set${capitalizeFirstLetter(prop)}`;
 
       const methodExists = typeof mapboxElement[setMethodName] === 'function';
       const propNeedsBinding = 'bind' in props[prop] ? props[prop].bind : true;

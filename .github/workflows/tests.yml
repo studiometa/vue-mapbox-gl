@@ -1,0 +1,31 @@
+name: Code Quality & Tests
+on: [push, pull_request]
+
+jobs:
+  code-quality:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - name: npm install, and lint
+      run: |
+        npm ci
+        npm run lint
+      env:
+        CI: true
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - name: npm install, build, and test
+      run: |
+        npm ci
+        npm run build 
+        npm test
+      env:
+        CI: true

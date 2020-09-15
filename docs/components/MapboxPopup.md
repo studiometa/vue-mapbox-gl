@@ -52,6 +52,14 @@ Display a close button on the popup.
 
 Close the popup on close button click.
 
+### `closeOnMove`
+
+- Type `[ Boolean ]`
+- Required `false`
+- default `false`
+
+Close the popup when the map moves.
+
 ### `anchor`
 
 - Type `[ String ]`

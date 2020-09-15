@@ -4,8 +4,8 @@
       <slot />
     </div>
     <mapbox-popup
-      v-if="popup"
       ref="popup"
+      v-if="popup"
       v-bind="popupOptions">
       <slot name="popup" />
     </mapbox-popup>
@@ -51,9 +51,25 @@
       type: String,
       default: null,
     },
+    scale: {
+      type: Number,
+      default: 1,
+    },
     draggable: {
       type: Boolean,
       default: false,
+    },
+    rotation: {
+      type: Number,
+      default: 0,
+    },
+    pitchAlignment: {
+      type: String,
+      default: 'auto',
+    },
+    rotationAlignment: {
+      type: String,
+      default: 'auto',
     },
   };
 
