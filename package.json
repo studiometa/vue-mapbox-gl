@@ -63,7 +63,7 @@
   },
   "peerDependencies": {
     "@mapbox/mapbox-gl-geocoder": "^4.4.0",
-    "mapbox-gl": "^1.1.0",
+    "mapbox-gl": "^1.12.0",
     "vue": "^2.6.10"
   }
 }
