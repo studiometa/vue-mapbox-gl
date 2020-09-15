@@ -178,7 +178,7 @@ A map style definition, can be a JSON object following the [Mapbox Style specifi
 
 ### `dragPan`
 
-- Type `Boolean`
+- Type `[ Boolean, Object ]`
 - Default `true`
 
 ### `keyboard`

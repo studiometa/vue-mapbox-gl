@@ -112,7 +112,7 @@
       default: true,
     },
     dragPan: {
-      type: Boolean,
+      type: [Boolean, Object],
       default: true,
     },
     keyboard: {
