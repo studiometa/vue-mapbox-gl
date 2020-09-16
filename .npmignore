@@ -1,0 +1,8 @@
+*.code-workspace
+*.sublime-*
+.env
+.env.example
+tests/
+jest.config.js
+docs/
+.github/
