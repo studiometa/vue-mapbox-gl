@@ -8,3 +8,4 @@ export MapboxMarker from './MapboxMarker';
 export MapboxNavigationControl from './MapboxNavigationControl';
 export MapboxPopup from './MapboxPopup';
 export MapboxSource from './MapboxSource';
+export MapboxGeolocateControl from './MapboxGeolocateControl';
