@@ -11,7 +11,6 @@
 
 <script>
   import mapboxgl, { LngLatBounds, LngLat } from 'mapbox-gl';
-  import ResizeObserver from 'resize-observer-polyfill';
   import bindProps from '../utils/bind-props';
   import { bindEvents, unbindEvents } from '../utils/bind-events';
   import { provideMap } from '../mixins/provide-inject-map';
@@ -283,7 +282,7 @@
       this.$emit('mb-created', this.map);
 
       // Mapbox has some resize issues
-      // Create an observer  on this object
+      // Create an observer on this object
       // Call resize on the map when we change szie
       const observer = new ResizeObserver(this.resizeHandler);
       observer.observe(this.options.container);
