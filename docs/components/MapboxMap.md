@@ -50,7 +50,7 @@ You will probably need to use the Mapbox instance to use some of its methods suc
 
 <script>
   import 'mapbox-gl/dist/mapbox-gl.css';
-  import { MapboxMap } from '@studiometa/vue-mapbox-map';
+  import MapboxMap from '@studiometa/vue-mapbox-map/dist/components/MapboxMap';
 
   export default {
     components: {
