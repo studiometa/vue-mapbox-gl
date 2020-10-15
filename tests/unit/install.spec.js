@@ -11,10 +11,10 @@ const componentNames = Object.keys(components);
 /**
  * Test a given type of build for its exports values
  *
- * @param  {String} type The type of the build to test: common, umd, umd.min
+ * @param  {String} type The type of the build to test: cjs, umd, umd.min
  * @return {void}
  */
-function testBuild(type = 'common') {
+function testBuild(type = 'cjs') {
   const {
     default: VueMapboxGl,
     ...exportedComponents
@@ -61,12 +61,12 @@ describe('Testing package.json files reference', () => {
 
 describe('Testing build exports', () => {
   describe('Common JS build', () => {
-    testBuild('common');
+    testBuild('cjs');
   });
   describe('UMD build', () => {
     testBuild('umd');
   });
-  describe('Compressed UMD build', () => {
-    testBuild('umd.min');
+  describe('ESM build', () => {
+    testBuild('esm');
   });
 });
