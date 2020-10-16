@@ -43,7 +43,8 @@ Vue.use(VueMapbox);
 Or import only the ones you need in your Vue components:
 
 ```js
-import { MapboxMap, MapboxMarker } from '@studiometa/vue-mapbox-gl';
+import MapboxMap from '@studiometa/vue-mapbox-gl/dist/components/MapboxMap';
+import MapboxMarker from '@studiometa/vue-mapbox-gl/dist/components/MapboxMarker';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 export default {

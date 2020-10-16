@@ -45,12 +45,12 @@ You will probably need to use the Mapbox instance to use some of its methods suc
   <mapbox-map
     access-token="..."
     map-style="..."
-    @mb-ready="(mapInstance) => map = mapInstance" />
+    @mb-created="(mapInstance) => map = mapInstance" />
 </template>
 
 <script>
   import 'mapbox-gl/dist/mapbox-gl.css';
-  import { MapboxMap } from '@studiometa/vue-mapbox-map';
+  import MapboxMap from '@studiometa/vue-mapbox-map/dist/components/MapboxMap';
 
   export default {
     components: {
@@ -278,7 +278,16 @@ A map style definition, can be a JSON object following the [Mapbox Style specifi
 
 ## Events
 
-All events available on the Mapbox `Map` class are also available on the `MapboxMap` component, prefixed by `mb-`.
+### `mb-created`
+
+Emitted when the Mapbox instance has been created.
+
+**Params**
+- `map` (`Map`): the Mapbox map instance
+
+### Other events
+
+In addition to the `mb-created` event, all events available on the Mapbox `Map` class are also available on the `MapboxMap` component, prefixed by `mb-`.
 
 - `resize` → `mb-resize`
 - `click` → `mb-click`
