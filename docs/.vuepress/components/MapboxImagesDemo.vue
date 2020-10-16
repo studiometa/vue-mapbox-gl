@@ -1,6 +1,6 @@
 <template>
   <mapbox-map
-    style="height: 400px"
+    style="margin-top: 1em; height: 400px;"
     :access-token="MAPBOX_API_KEY"
     map-style="mapbox://styles/mapbox/streets-v11"
     :center="[0, 0]"
