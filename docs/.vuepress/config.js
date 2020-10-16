@@ -2,6 +2,11 @@ require('dotenv').config();
 const { resolve } = require('path');
 const webpack = require('webpack');
 
+// DOM API polyfills for SSR
+global.HTMLElement = () => ({});
+global.HTMLImageElement = () => ({});
+global.ImageData = () => ({});
+
 module.exports = {
   title: '🗺 Vue Mapbox GL',
   description: 'A small library of Vue components for mapbox-gl',
