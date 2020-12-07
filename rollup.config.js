@@ -7,6 +7,7 @@ const babel = require('rollup-plugin-babel');
 const { nodeResolve } = require('@rollup/plugin-node-resolve');
 const { terser } = require('rollup-plugin-terser');
 const globEntry = require('webpack-glob-entry');
+const css = require('rollup-plugin-css-only');
 
 // Get browserslist config and remove ie from es build targets
 const esbrowserslist = fs
@@ -30,8 +31,9 @@ const baseConfig = {
         },
       }),
     ],
+    postVue: [css({ output: 'components/StoreLocator/styles.css' })],
     vue: {
-      css: true,
+      css: false,
       template: {
         isProduction: true,
       },
@@ -68,6 +70,7 @@ const getEsConfig = (input, output = null) => ({
   plugins: [
     ...baseConfig.plugins.preVue,
     vue(baseConfig.plugins.vue),
+    ...baseConfig.plugins.postVue,
     babel({
       ...baseConfig.plugins.babel,
       presets: [
@@ -103,6 +106,7 @@ const getCjsConfig = () => ({
         optimizeSSR: true,
       },
     }),
+    ...baseConfig.plugins.postVue,
     babel(baseConfig.plugins.babel),
     commonjs(),
   ],
@@ -121,6 +125,7 @@ const getUmdConfig = (compressed = false) => ({
   plugins: [
     ...baseConfig.plugins.preVue,
     vue(baseConfig.plugins.vue),
+    ...baseConfig.plugins.postVue,
     babel(baseConfig.plugins.babel),
     commonjs(),
     compressed &&
@@ -133,7 +138,9 @@ const getUmdConfig = (compressed = false) => ({
 });
 
 module.exports = [
-  getEsConfig(globEntry(globEntry.basePath('src'), 'src/**/*.js', 'src/**/*.vue')),
+  getEsConfig(
+    globEntry(globEntry.basePath('src'), 'src/*/*.js', 'src/*/*.vue', 'src/components/*/index.js')
+  ),
   getEsConfig('src/index.js', 'VueMapboxGl.esm'),
   getCjsConfig(),
   getUmdConfig(),

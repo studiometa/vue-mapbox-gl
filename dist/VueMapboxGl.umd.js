@@ -1162,6 +1162,7 @@
       }, $props)); // Bind events
 
       bindEvents(this, this.control, events$1);
+      this.$emit('mb-created', this.control);
       this.control.addTo(this.map || this.$el);
     },
     destroyed: function destroyed() {

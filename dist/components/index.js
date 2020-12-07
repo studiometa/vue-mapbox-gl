@@ -9,6 +9,7 @@ export { default as MapboxCluster } from './MapboxCluster.js';
 import 'mapbox-gl';
 import '@mapbox/mapbox-gl-geocoder';
 export { default as MapboxGeocoder } from './MapboxGeocoder.js';
+import '../_chunks/index.20ce9193.js';
 export { default as MapboxImage } from './MapboxImage.js';
 export { default as MapboxImages } from './MapboxImages.js';
 import '../utils/bind-props.js';

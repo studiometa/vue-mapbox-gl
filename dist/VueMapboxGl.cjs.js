@@ -1163,6 +1163,7 @@ var script$3 = {
     }, $props)); // Bind events
 
     bindEvents(this, this.control, events$1);
+    this.$emit('mb-created', this.control);
     this.control.addTo(this.map || this.$el);
   },
   destroyed: function destroyed() {
@@ -1197,7 +1198,7 @@ var __vue_inject_styles__$3 = undefined;
 var __vue_scope_id__$3 = undefined;
 /* module identifier */
 
-var __vue_module_identifier__$3 = "data-v-5682bed3";
+var __vue_module_identifier__$3 = "data-v-eef77fce";
 /* functional template */
 
 var __vue_is_functional_template__$3 = false;

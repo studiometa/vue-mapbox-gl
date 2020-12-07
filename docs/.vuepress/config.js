@@ -40,6 +40,7 @@ module.exports = {
           { text: 'MapboxNavigationControl', link: '/components/MapboxNavigationControl' },
           { text: 'MapboxPopup', link: '/components/MapboxPopup' },
           { text: 'MapboxSource', link: '/components/MapboxSource' },
+          { text: 'StoreLocator', link: '/components/StoreLocator' },
         ],
       },
       { text: 'Github', link: 'https://github.com/studiometa/vue-mapbox-gl' },
@@ -49,10 +50,17 @@ module.exports = {
     toc: { includeLevel: [2] },
   },
   plugins: [
+    ['@silvanite/vuepress-plugin-tailwind', { purgecss: { enabled: false } }],
     [
       '@vuepress/register-components',
       {
         componentsDir: resolve(__dirname, '../../src/components'),
+        components: [
+          {
+            name: 'StoreLocator',
+            path: resolve(__dirname, '../../src/components/StoreLocator/StoreLocator.vue'),
+          },
+        ],
       },
     ],
   ],
