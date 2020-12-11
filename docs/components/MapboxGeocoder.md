@@ -49,7 +49,9 @@ This component can be used outside of the `<mapbox-map>` component. You will nee
 
 ```vue
 <template>
-  <mapbox-geocoder :access-token="MAPBOX_API_KEY" />
+  <mapbox-geocoder 
+    :access-token="MAPBOX_API_KEY"
+    @mb-created="instance => control = instance" />
 </template>
 
 <script>
@@ -222,6 +224,10 @@ If `true`, indicates that the localGeocoder results should be the only ones retu
 
 ## Events
 All events available on the `MapboxGeocoder` class are also available on the `MapboxGeocoder` component, prefixed by `mb-`.
+
+### `mb-created`
+
+Fired when the `MapboxGeocoder` instance is created with the instance as parameter.
 
 ### `mb-loading`
 
