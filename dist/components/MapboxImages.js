@@ -1,6 +1,7 @@
 import '../_chunks/_rollupPluginBabelHelpers.fa6f610a.js';
 import '../mixins/provide-inject-map.js';
 import { n as normalizeComponent } from '../_chunks/normalize-component.d57baabe.js';
+import '../_chunks/index.20ce9193.js';
 import __vue_component__$1 from './MapboxImage.js';
 
 //
