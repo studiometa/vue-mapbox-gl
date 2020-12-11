@@ -1,6 +1,6 @@
 {
   "name": "@studiometa/vue-mapbox-gl",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "A small components library to use Mapbox GL in Vue.",
   "homepage": "https://github.com/studiometa/vue-mapbox-gl#readme",
   "bugs": {
