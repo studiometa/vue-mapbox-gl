@@ -26,13 +26,25 @@
         @mb-moveend="onMapMoveend"
         @mb-load="onMapLoad">
         <mapbox-cluster
-          v-bind="{ ...mapboxCluster, data: geoJson }"
+          v-bind="{ ...mapboxCluster, data: filteredGeoJson }"
           @mb-feature-click="onClusterFeatureClick" />
         <!--
           @slot Use this slot to add components from @studiometa/vue-mapbox-gl to the map.
-            @binding {Object} map The map instance.
+            @binding {Object}  map             The map instance.
+            @binding {GeoJSON} geojson         The GeoJSON used for the cluster.
+            @binding {GeoJSON} filteredGeoJson The filtered GeoJSON.
+            @binding {Array}   items           The list of items.
+            @binding {Array}   filteredItems   The filtered list of items.
+            @binding {Object}  selectedItem    The selected item.
         -->
-        <slot name="map" :map="map" />
+        <slot
+          name="map"
+          :map="map"
+          :geojson="geoJson"
+          :filtered-geojson="filteredGeoJson"
+          :items="items"
+          :filtered-items="filteredItems"
+          :selected-item="selectedItem" />
       </mapbox-map>
 
       <!-- @slot Use this slot to display information after the map. -->
@@ -54,7 +66,11 @@
       </template>
 
       <!-- @slot Use this slot to display information before the search. -->
-      <slot name="before-search" />
+      <slot
+        name="before-search"
+        :items="items"
+        :filtered-items="filteredItems"
+        :selected-item="selectedItem" />
 
       <mapbox-geocoder
         :class="classes.search || {}"
@@ -62,7 +78,11 @@
         @mb-result="onGeocoderResult" />
 
       <!-- @slot Use this slot to display information after the search. -->
-      <slot name="after-search" />
+      <slot
+        name="after-search"
+        :items="items"
+        :filtered-items="filteredItems"
+        :selected-item="selectedItem" />
     </div>
     <div :class="(classes.region || {}).list || {}">
       <template v-if="isLoading || listIsLoading">
@@ -84,7 +104,11 @@
             @binding {Array} items         The full list of items.
             @binding {Array} filteredItems The filtered list of items.
         -->
-        <slot name="before-list" :items="items" :filtered-items="filteredItems">
+        <slot
+          name="before-list"
+          :items="items"
+          :filtered-items="filteredItems"
+          :selected-item="selectedItem">
           <p>Result(s): {{ filteredItems.length.toFixed(0) }}</p>
         </slot>
 
@@ -117,7 +141,12 @@
             @binding {Array} items         The full list of items.
             @binding {Array} filteredItems The filtered list of items.
         -->
-        <slot name="after-list" :items="items" :filtered-items="filteredItems" />
+        <slot
+          name="after-list"
+          :items="items"
+          :filtered-items="filteredItems"
+          :selected-item="selectedItem"
+          :filter-features-in-view="filterFeaturesInView" />
       </template>
     </div>
     <div :class="(classes.region || {}).panel || {}">
@@ -161,6 +190,7 @@
         type: Array,
         required: true,
       },
+
       /**
        * The zoom level to use when zooming in on an item.
        *
@@ -266,18 +296,49 @@
       geoJson() {
         return {
           type: 'FeatureCollection',
-          features: this.items.map(({ lat, lng, ...properties }) => ({
-            type: 'Feature',
-            geometry: {
-              type: 'Point',
-              coordinates: [ lng, lat ],
-            },
-            properties,
-          })),
+          features: this.items.map(this.itemToGeoJsonFeature),
+        };
+      },
+      filteredGeoJson() {
+        return {
+          type: 'FeatureCollection',
+          features: this.filteredItems.map(this.itemToGeoJsonFeature),
         };
       },
     },
     methods: {
+      /**
+       * Transform an item into a valid GeoJSON feature.
+       *
+       * @param  {Object} item The item to format.
+       * @return {Feature}     A GeoJSON feature.
+       */
+      itemToGeoJsonFeature({ lat, lng, ...properties }) {
+        return {
+          type: 'Feature',
+          geometry: {
+            type: 'Point',
+            coordinates: [ lng, lat ],
+          },
+          properties,
+        };
+      },
+
+      /**
+       * Transform a GeoJSON feature into an item.
+       *
+       * @param  {Geometry} options.geometry   A GeoJSON geometry object.
+       * @param  {Object}   options.properties The feature properties.
+       * @return {Object}                      An item.
+       */
+      geoJsonFeatureToItem({ geometry, properties }) {
+        return {
+          lat: geometry.coordinates[1],
+          lng: geometry.coordinates[0],
+          ...properties,
+        };
+      },
+
       /**
        * Handler for the geocoder result event.
        *
@@ -332,6 +393,7 @@
        * Filter the features in view.
        */
       async filterFeaturesInView() {
+        this.listIsLoading = true;
         const mapBounds = this.map.getBounds();
         this.filteredItems = this.items.filter(({ lng, lat }) => mapBounds.contains([ lng, lat ]));
         await this.$nextTick();

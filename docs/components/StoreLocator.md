@@ -244,6 +244,14 @@ Use this slot to display information before the map.
 
 Use this slot to inject additionnal Mapbox components in the map.
 
+**Props**
+- `map` (`Object`): the map instance.
+- `geojson` (`GeoJSON`): the GeoJSON used for the cluster.
+- `filteredGeoJson` (`GeoJSON`): the filtered GeoJSON.
+- `items` (`Array`): the list of items.
+- `filteredItems` (`Array`): the filtered list of items.
+- `selectedItem` (`Object`): the selected item.
+
 #### `after-map`
 
 Use this slot to display information after the map.
@@ -258,9 +266,19 @@ Use this slot to override the loader of the search region.
 
 Use this slot to display information before the search.
 
+**Props**
+- `items` (`Array`): the full list of items.
+- `filteredItems` (`Array`): the filtered list of items, based on the map bounding box.
+- `selectedItem` (`null | Object`): the selected item if defined, `null` otherwise.
+
 #### `after-search`
 
 Use this slot to display information after the search.
+
+**Props**
+- `items` (`Array`): the full list of items.
+- `filteredItems` (`Array`): the filtered list of items, based on the map bounding box.
+- `selectedItem` (`null | Object`): the selected item if defined, `null` otherwise.
 
 ### List region
 
@@ -275,6 +293,7 @@ Use this slot to display information before the list.
 **Props**
 - `items` (`Array`): the full list of items.
 - `filteredItems` (`Array`): the filtered list of items, based on the map bounding box.
+- `selectedItem` (`null | Object`): the selected item if defined, `null` otherwise.
 
 #### `list-item`
 
@@ -292,6 +311,7 @@ Use this slot to display information after the list.
 **Props**
 - `items` (`Array`): the full list of items.
 - `filteredItems` (`Array`): the filtered list of items, based on the map bounding box.
+- `selectedItem` (`null | Object`): the selected item if defined, `null` otherwise.
 
 ### Panel region
 
