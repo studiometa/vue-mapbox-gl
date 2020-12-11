@@ -31,7 +31,7 @@ jobs:
           echo "release_version=$VERSION" >> $GITHUB_ENV
 
           # Parse tag message
-          CHANGELOG=$(git show $GITHUB_REF | tail -n+7)
+          CHANGELOG=$(git for-each-ref $GITHUB_REF | tail -n+3)
 
           echo $CHANGELOG
 
