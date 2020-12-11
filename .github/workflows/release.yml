@@ -1,0 +1,76 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - '*.*.*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+
+      - run: npm ci
+      - run: npm run build
+      - run: npm test
+
+      # @see https://github.com/actions/create-release/issues/38#issuecomment-715327220
+      # @see https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-commands-for-github-actions#environment-files
+      - name: Prepare the changelog from the tag message
+        id: prepare_changelog
+        run: |
+          # Parse version
+          VERSION=${GITHUB_REF/refs\/tags\//}
+          echo "Setting release version to $VERSION"
+          echo "release_version=$VERSION" >> $GITHUB_ENV
+
+          # Parse tag message
+          CHANGELOG=$(git show $GITHUB_REF | tail -n+7)
+
+          echo $CHANGELOG
+
+          # Set markdown titles
+          CHANGELOG=${CHANGELOG/Added/## Added}
+          CHANGELOG=${CHANGELOG/Fixed/## Fixed}
+          CHANGELOG=${CHANGELOG/Changed/## Changed}
+          CHANGELOG=${CHANGELOG/Removed/## Removed}
+          CHANGELOG=${CHANGELOG/Deprecated/## Deprecated}
+          CHANGELOG=${CHANGELOG/Security/## Security}
+
+          echo $CHANGELOG
+
+          # Remove PGP signature
+          CHANGELOG="${CHANGELOG%-----BEGIN*}"
+
+          echo $CHANGELOG
+
+          # Change linebreaks and other special characters
+          CHANGELOG="${CHANGELOG//'%'/'%25'}"
+          CHANGELOG="${CHANGELOG//$'\n'/'%0A'}"
+          CHANGELOG="${CHANGELOG//$'\r'/'%0D'}"
+
+          echo "Setting changelog body to:"
+          echo $CHANGELOG
+
+          echo 'changelog<<EOF' >> $GITHUB_ENV
+          echo $CHANGELOG >> $GITHUB_ENV
+          echo 'EOF' >> $GITHUB_ENV
+
+      # @see https://github.com/actions/create-release
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: v${{ env.release_version }}
+          body: ${{ env.changelog }}
+          draft: false
+          prerelease: false
