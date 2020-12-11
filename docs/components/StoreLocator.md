@@ -91,7 +91,7 @@ export default {
 
 ### `items`
 
-- Type `Array<{ lat: Number, lng: number, id: string, [prop: string]: unknown }>`
+- Type `Array<{ lat: number, lng: number, id: string, [prop: string]: unknown }>`
 - Required `true`
 
 A list of items to display. Each item **must** have at least the following properties: `lat` and `lng` and a uniq `id`.
@@ -222,7 +222,7 @@ Emitted when the MapboxMap component is loaded.
 Emitted when an item is selected from the map or from the list.
 
 **Params**
-- `item` (`Objec`): the selected item
+- `item` (`Object`): the selected item
 
 ## Slots
 
