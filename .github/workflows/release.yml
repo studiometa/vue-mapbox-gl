@@ -19,6 +19,9 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm test
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
       # @see https://github.com/actions/create-release/issues/38#issuecomment-715327220
       # @see https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-commands-for-github-actions#environment-files
