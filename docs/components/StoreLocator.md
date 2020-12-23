@@ -217,6 +217,13 @@ Emitted when the MapboxMap component is loaded.
 **Params**
 - `map` (`Map`): the Mapbox map instance
 
+### `geocoder-created`
+
+Emitted when the Geocoder component is ready.
+
+**Params**
+- `geocoder` (`Geocoder`): the Geocoder instance
+
 ### `select-item`
 
 Emitted when an item is selected from the map or from the list.
