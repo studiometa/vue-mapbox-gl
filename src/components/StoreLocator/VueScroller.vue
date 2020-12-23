@@ -27,13 +27,12 @@
       this.setVars();
     },
     async mounted() {
-      this.$refs.scroller.addEventListener('scroll', this.setVars, { passive: true });
+      this.$refs.scroller.addEventListener('scroll', () => this.setVars(), { passive: true });
 
       let timer;
       this.debouncedSetVars = () => {
         clearTimeout(timer);
         timer = setTimeout(() => this.setVars(), 300);
-        return timer;
       };
       window.addEventListener('resize', this.debouncedSetVars);
 
@@ -47,6 +46,11 @@
     methods: {
       setVars() {
         const { scroller } = this.$refs;
+
+        if (!scroller) {
+          return;
+        }
+
         this.scrollTop = scroller.scrollTop;
         this.scrollMax = scroller.scrollHeight - scroller.clientHeight;
 

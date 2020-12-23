@@ -49,7 +49,9 @@ var script = {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _this.$refs.scroller.addEventListener('scroll', _this.setVars, {
+              _this.$refs.scroller.addEventListener('scroll', function () {
+                return _this.setVars();
+              }, {
                 passive: true
               });
 
@@ -58,7 +60,6 @@ var script = {
                 timer = setTimeout(function () {
                   return _this.setVars();
                 }, 300);
-                return timer;
               };
 
               window.addEventListener('resize', _this.debouncedSetVars);
@@ -83,6 +84,11 @@ var script = {
   methods: {
     setVars: function setVars() {
       var scroller = this.$refs.scroller;
+
+      if (!scroller) {
+        return;
+      }
+
       this.scrollTop = scroller.scrollTop;
       this.scrollMax = scroller.scrollHeight - scroller.clientHeight;
 
