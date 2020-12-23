@@ -75,7 +75,8 @@
       <mapbox-geocoder
         :class="classes.search || {}"
         v-bind="{ ...mapboxGeocoder, accessToken }"
-        @mb-result="onGeocoderResult" />
+        @mb-result="onGeocoderResult"
+        @mb-created="onGeocoderCreated" />
 
       <!-- @slot Use this slot to display information after the search. -->
       <slot
@@ -350,6 +351,16 @@
         } else if (result.center) {
           this.map.flyTo({ center: result.center });
         }
+      },
+
+      /**
+       * Propagate the `mb-created` event from the MapboxGeocoder component.
+       *
+       * @param  {Geocoder} geocoder The geocoder instance.
+       * @return {void}
+       */
+      onGeocoderCreated(geocoder) {
+        this.$emit('geocoder-created', geocoder);
       },
 
       /**
