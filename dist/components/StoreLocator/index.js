@@ -356,6 +356,16 @@ var script$1 = {
     },
 
     /**
+     * Propagate the `mb-created` event from the MapboxGeocoder component.
+     *
+     * @param  {Geocoder} geocoder The geocoder instance.
+     * @return {void}
+     */
+    onGeocoderCreated: function onGeocoderCreated(geocoder) {
+      this.$emit('geocoder-created', geocoder);
+    },
+
+    /**
      * Handler for the map created event.
      *
      * @param  {MapboxMap} instance The Mapbox instance.
@@ -554,7 +564,8 @@ var __vue_render__$1 = function __vue_render__() {
   }), _vm._v(" "), _c('mapbox-geocoder', _vm._b({
     class: _vm.classes.search || {},
     on: {
-      "mb-result": _vm.onGeocoderResult
+      "mb-result": _vm.onGeocoderResult,
+      "mb-created": _vm.onGeocoderCreated
     }
   }, 'mapbox-geocoder', Object.assign({}, _vm.mapboxGeocoder, {
     accessToken: _vm.accessToken
