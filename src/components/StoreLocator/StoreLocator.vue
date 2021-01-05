@@ -406,7 +406,24 @@
       async filterFeaturesInView() {
         this.listIsLoading = true;
         const mapBounds = this.map.getBounds();
-        this.filteredItems = this.items.filter(({ lng, lat }) => mapBounds.contains([ lng, lat ]));
+        const center = this.map.getCenter();
+
+        this.filteredItems = this.items
+          .filter(({ lng, lat }) => mapBounds.contains([ lng, lat ]))
+          .sort((a, b) => {
+            const distanceFromA = center.distanceTo(a);
+            const distanceFromB = center.distanceTo(b);
+
+            if (distanceFromA < distanceFromB) {
+              return -1;
+            }
+
+            if (distanceFromA > distanceFromB) {
+              return 1;
+            }
+
+            return 0;
+          });
         await this.$nextTick();
         this.listIsLoading = false;
       },
