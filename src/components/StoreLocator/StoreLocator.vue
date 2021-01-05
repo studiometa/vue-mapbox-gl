@@ -28,9 +28,9 @@
         <mapbox-cluster
           v-bind="{ ...mapboxCluster, data: filteredGeoJson }"
           @mb-feature-click="onClusterFeatureClick"
-          @mb-feature-mouseenter="(...args) => $emit('cluster-feature-mouseenter', ...args)"
-          @mb-feature-mouseleave="(...args) => $emit('cluster-feature-mouseleave', ...args)"
-          @mb-cluster-click="(...args) => $emit('cluster-cluster-click', ...args)" />
+          @mb-feature-mouseenter="onClusterFeatureMouseenter"
+          @mb-feature-mouseleave="onClusterFeatureMouseleave"
+          @mb-cluster-click="onClusterClusterClick" />
         <!--
           @slot Use this slot to add components from @studiometa/vue-mapbox-gl to the map.
             @binding {Object}  map             The map instance.
@@ -471,6 +471,15 @@
           this.selectedItem = item;
           this.map.flyTo({ center: feature.geometry.coordinates, zoom: this.itemZoomLevel });
         }
+      },
+      onClusterFeatureMouseenter(...args) {
+        this.$emit('cluster-feature-mouseenter', ...args);
+      },
+      onClusterFeatureMouseleave(...args) {
+        this.$emit('cluster-feature-mouseleave', ...args);
+      },
+      onClusterClusterClick(...args) {
+        this.$emit('cluster-cluster-click', ...args);
       },
     },
   };
