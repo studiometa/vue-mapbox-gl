@@ -542,6 +542,27 @@ var script$1 = {
           zoom: this.itemZoomLevel
         });
       }
+    },
+    onClusterFeatureMouseenter: function onClusterFeatureMouseenter() {
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      this.$emit.apply(this, ['cluster-feature-mouseenter'].concat(args));
+    },
+    onClusterFeatureMouseleave: function onClusterFeatureMouseleave() {
+      for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        args[_key2] = arguments[_key2];
+      }
+
+      this.$emit.apply(this, ['cluster-feature-mouseleave'].concat(args));
+    },
+    onClusterClusterClick: function onClusterClusterClick() {
+      for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+        args[_key3] = arguments[_key3];
+      }
+
+      this.$emit.apply(this, ['cluster-cluster-click'].concat(args));
     }
   }
 };
@@ -574,36 +595,9 @@ var __vue_render__$1 = function __vue_render__() {
   }), false), [_c('mapbox-cluster', _vm._b({
     on: {
       "mb-feature-click": _vm.onClusterFeatureClick,
-      "mb-feature-mouseenter": function mbFeatureMouseenter() {
-        var args = [],
-            len = arguments.length;
-
-        while (len--) {
-          args[len] = arguments[len];
-        }
-
-        return _vm.$emit.apply(void 0, ['cluster-feature-mouseenter'].concat(args));
-      },
-      "mb-feature-mouseleave": function mbFeatureMouseleave() {
-        var args = [],
-            len = arguments.length;
-
-        while (len--) {
-          args[len] = arguments[len];
-        }
-
-        return _vm.$emit.apply(void 0, ['cluster-feature-mouseleave'].concat(args));
-      },
-      "mb-cluster-click": function mbClusterClick() {
-        var args = [],
-            len = arguments.length;
-
-        while (len--) {
-          args[len] = arguments[len];
-        }
-
-        return _vm.$emit.apply(void 0, ['cluster-cluster-click'].concat(args));
-      }
+      "mb-feature-mouseenter": _vm.onClusterFeatureMouseenter,
+      "mb-feature-mouseleave": _vm.onClusterFeatureMouseleave,
+      "mb-cluster-click": _vm.onClusterClusterClick
     }
   }, 'mapbox-cluster', Object.assign({}, _vm.mapboxCluster, {
     data: _vm.filteredGeoJson
