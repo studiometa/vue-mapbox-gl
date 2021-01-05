@@ -210,7 +210,14 @@ interface StoreLocatorClassesProp {
 
 ## Events
 
-### `load`
+### `map-created`
+
+Emitted when the MapboxMap component is created.
+
+**Params**
+- `map` (`Map`): the Mapbox map instance
+
+### `map-load`
 
 Emitted when the MapboxMap component is loaded.
 
@@ -223,6 +230,22 @@ Emitted when the Geocoder component is ready.
 
 **Params**
 - `geocoder` (`Geocoder`): the Geocoder instance
+
+### `cluster-cluster-click`
+
+Emitted when the user clicks on a cluster. See the [MapboxCluster component API](./MapboxCluster.md#mb-cluster-click) for more information.
+
+### `cluster-feature-click`
+
+Emitted when the user clicks on a unclustered point (a feature). See the [MapboxCluster component API](./MapboxCluster.md#mb-feature-click) for more information.
+
+### `cluster-feature-mouseenter`
+
+Emitted when the user's mouse enters an unclustered point. See the [MapboxCluster component API](./MapboxCluster.md#mb-feature-mouseenter) for more information.
+
+### `cluster-feature-mouseleave`
+
+Emitted when the user's mouse leaves an unclustered point. See the [MapboxCluster component API](./MapboxCluster.md#mb-feature-mouseleave) for more information.
 
 ### `select-item`
 
