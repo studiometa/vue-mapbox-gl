@@ -386,9 +386,11 @@ var script$1 = {
               case 0:
                 _this.map = instance;
 
+                _this.$emit('map-created', instance);
+
                 _this.filterFeaturesInView();
 
-              case 2:
+              case 3:
               case "end":
                 return _context.stop();
             }
@@ -414,9 +416,15 @@ var script$1 = {
               case 2:
                 _this2.isLoading = false;
 
+                if (_this2.$listeners.load) {
+                  console.warn('[StoreLocator]', 'The `@load` event is deprecated, replace it with the `@map-load` event instead.');
+                }
+
                 _this2.$emit('load', _this2.map);
 
-              case 4:
+                _this2.$emit('map-load', _this2.map);
+
+              case 6:
               case "end":
                 return _context2.stop();
             }
@@ -452,25 +460,39 @@ var script$1 = {
       var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/regenerator.mark(function _callee3() {
-        var mapBounds;
+        var mapBounds, center;
         return regenerator.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
                 _this4.listIsLoading = true;
                 mapBounds = _this4.map.getBounds();
+                center = _this4.map.getCenter();
                 _this4.filteredItems = _this4.items.filter(function (_ref4) {
                   var lng = _ref4.lng,
                       lat = _ref4.lat;
                   return mapBounds.contains([lng, lat]);
+                }).sort(function (a, b) {
+                  var distanceFromA = center.distanceTo(a);
+                  var distanceFromB = center.distanceTo(b);
+
+                  if (distanceFromA < distanceFromB) {
+                    return -1;
+                  }
+
+                  if (distanceFromA > distanceFromB) {
+                    return 1;
+                  }
+
+                  return 0;
                 });
-                _context3.next = 5;
+                _context3.next = 6;
                 return _this4.$nextTick();
 
-              case 5:
+              case 6:
                 _this4.listIsLoading = false;
 
-              case 6:
+              case 7:
               case "end":
                 return _context3.stop();
             }
@@ -505,11 +527,12 @@ var script$1 = {
      *
      * @param  {Feature} feature The GeoJSON feature being clicked.
      */
-    onClusterFeatureClick: function onClusterFeatureClick(feature) {
+    onClusterFeatureClick: function onClusterFeatureClick(feature, event) {
       var item = this.items.find(function (_ref5) {
         var id = _ref5.id;
         return id === feature.properties.id;
       });
+      this.$emit('cluster-feature-click', feature, event);
 
       if (item) {
         this.$emit('select-item', item);
@@ -550,7 +573,37 @@ var __vue_render__$1 = function __vue_render__() {
     accessToken: _vm.accessToken
   }), false), [_c('mapbox-cluster', _vm._b({
     on: {
-      "mb-feature-click": _vm.onClusterFeatureClick
+      "mb-feature-click": _vm.onClusterFeatureClick,
+      "mb-feature-mouseenter": function mbFeatureMouseenter() {
+        var args = [],
+            len = arguments.length;
+
+        while (len--) {
+          args[len] = arguments[len];
+        }
+
+        return _vm.$emit.apply(void 0, ['cluster-feature-mouseenter'].concat(args));
+      },
+      "mb-feature-mouseleave": function mbFeatureMouseleave() {
+        var args = [],
+            len = arguments.length;
+
+        while (len--) {
+          args[len] = arguments[len];
+        }
+
+        return _vm.$emit.apply(void 0, ['cluster-feature-mouseleave'].concat(args));
+      },
+      "mb-cluster-click": function mbClusterClick() {
+        var args = [],
+            len = arguments.length;
+
+        while (len--) {
+          args[len] = arguments[len];
+        }
+
+        return _vm.$emit.apply(void 0, ['cluster-cluster-click'].concat(args));
+      }
     }
   }, 'mapbox-cluster', Object.assign({}, _vm.mapboxCluster, {
     data: _vm.filteredGeoJson
