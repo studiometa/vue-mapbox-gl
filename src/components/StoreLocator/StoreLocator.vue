@@ -27,7 +27,10 @@
         @mb-load="onMapLoad">
         <mapbox-cluster
           v-bind="{ ...mapboxCluster, data: filteredGeoJson }"
-          @mb-feature-click="onClusterFeatureClick" />
+          @mb-feature-click="onClusterFeatureClick"
+          @mb-feature-mouseenter="(...args) => $emit('cluster-feature-mouseenter', ...args)"
+          @mb-feature-mouseleave="(...args) => $emit('cluster-feature-mouseleave', ...args)"
+          @mb-cluster-click="(...args) => $emit('cluster-cluster-click', ...args)" />
         <!--
           @slot Use this slot to add components from @studiometa/vue-mapbox-gl to the map.
             @binding {Object}  map             The map instance.
@@ -370,6 +373,7 @@
        */
       async onMapCreated(instance) {
         this.map = instance;
+        this.$emit('map-created', instance);
         this.filterFeaturesInView();
       },
 
@@ -379,7 +383,16 @@
       async onMapLoad() {
         await this.$nextTick();
         this.isLoading = false;
+
+        if (this.$listeners.load) {
+          console.warn(
+            '[StoreLocator]',
+            'The `@load` event is deprecated, replace it with the `@map-load` event instead.',
+          );
+        }
+
         this.$emit('load', this.map);
+        this.$emit('map-load', this.map);
       },
 
       /**
@@ -449,8 +462,9 @@
        *
        * @param  {Feature} feature The GeoJSON feature being clicked.
        */
-      onClusterFeatureClick(feature) {
+      onClusterFeatureClick(feature, event) {
         const item = this.items.find(({ id }) => id === feature.properties.id);
+        this.$emit('cluster-feature-click', feature, event);
 
         if (item) {
           this.$emit('select-item', item);
