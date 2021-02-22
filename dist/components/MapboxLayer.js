@@ -57,6 +57,15 @@ var script = {
 
 
     bindEvents(this, this.map, events, this.id);
+
+    if (this.options.paint === null || this.options.paint === undefined) {
+      delete this.options.paint;
+    }
+
+    if (this.options.layout === null || this.options.layout === undefined) {
+      delete this.options.layout;
+    }
+
     this.map.addLayer(_objectSpread2(_objectSpread2({}, this.options), {}, {
       id: this.id
     }), this.beforeId);
