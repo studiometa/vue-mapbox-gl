@@ -6,18 +6,13 @@ sidebar: auto
 
 ## Installation
 
-Install it with npm:
-
-```bash
-npm add @studiometa/vue-mapbox-gl
-```
-Or with NPM:
+Install it with NPM:
 
 ```bash
 npm install @studiometa/vue-mapbox-gl
 ```
 
-You will have to install the package peer dependencies in order for the components to work correctly, with npm:
+You will have to install the peer dependencies in order for the components to work correctly:
 
 ```bash
 # Install mapbox-gl
