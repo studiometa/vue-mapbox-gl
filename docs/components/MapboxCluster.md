@@ -39,6 +39,26 @@ Display a cluster on the map with data coming from a GeoJSON source.
 </mapbox-map>
 ```
 
+### Open popup on feature click
+
+<client-only>
+  <mapbox-cluster-with-popup-demo style="margin-top: 1em; height: 400px;" />
+</client-only>
+
+<<< @/docs/.vuepress/components/MapboxClusterWithPopupDemo.vue{7-14,17,32-50}
+
+  :::warning
+  The `:center` prop of the `MapboxMap` component must be set via a data property (see `mapCenter` in the example above) instead of directly in the template, as it can create unexpected behaviours when clicking on a cluster feature.
+  :::
+
+### Custom marker for unclustured points
+
+<client-only>
+  <mapbox-cluster-with-custom-image-demo style="margin-top: 1em; height: 400px;" />
+</client-only>
+
+<<< @/docs/.vuepress/components/MapboxClusterWithCustomImageDemo.vue{8,12-15,17}
+
 ## Props
 
 
