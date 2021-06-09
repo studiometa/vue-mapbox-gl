@@ -31,7 +31,7 @@
       default: 'no-token',
     },
     container: {
-      type: [ HTMLElement, String ],
+      type: [ Object, String ],
       default: undefined,
     },
     minZoom: {

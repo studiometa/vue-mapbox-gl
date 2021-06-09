@@ -2314,7 +2314,7 @@ var props$1 = {
     default: 'no-token'
   },
   container: {
-    type: [HTMLElement, String],
+    type: [Object, String],
     default: undefined
   },
   minZoom: {
@@ -2736,7 +2736,7 @@ var props$3 = {
     bind: false
   },
   element: {
-    type: HTMLElement,
+    type: Object,
     default: null
   },
   offset: {

@@ -2323,7 +2323,7 @@ var props$1 = {
     default: 'no-token'
   },
   container: {
-    type: [HTMLElement, String],
+    type: [Object, String],
     default: undefined
   },
   minZoom: {
@@ -2579,7 +2579,7 @@ var __vue_inject_styles__$6 = undefined;
 var __vue_scope_id__$6 = undefined;
 /* module identifier */
 
-var __vue_module_identifier__$6 = "data-v-0e75cddf";
+var __vue_module_identifier__$6 = "data-v-fae3b0e2";
 /* functional template */
 
 var __vue_is_functional_template__$6 = false;
@@ -2745,7 +2745,7 @@ var props$3 = {
     bind: false
   },
   element: {
-    type: HTMLElement,
+    type: Object,
     default: null
   },
   offset: {
@@ -2866,7 +2866,7 @@ var __vue_inject_styles__$8 = undefined;
 var __vue_scope_id__$8 = undefined;
 /* module identifier */
 
-var __vue_module_identifier__$8 = "data-v-523b38f4";
+var __vue_module_identifier__$8 = "data-v-217c0c10";
 /* functional template */
 
 var __vue_is_functional_template__$8 = false;

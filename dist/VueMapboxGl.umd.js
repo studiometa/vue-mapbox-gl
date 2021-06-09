@@ -2322,7 +2322,7 @@
       default: 'no-token'
     },
     container: {
-      type: [HTMLElement, String],
+      type: [Object, String],
       default: undefined
     },
     minZoom: {
@@ -2744,7 +2744,7 @@
       bind: false
     },
     element: {
-      type: HTMLElement,
+      type: Object,
       default: null
     },
     offset: {

@@ -36,7 +36,7 @@
       bind: false,
     },
     element: {
-      type: HTMLElement,
+      type: Object,
       default: null,
     },
     offset: {
