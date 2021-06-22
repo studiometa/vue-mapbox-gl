@@ -42,7 +42,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.13.8",
     "@babel/plugin-proposal-export-default-from": "^7.12.13",
@@ -89,5 +88,8 @@
     "@mapbox/mapbox-gl-geocoder": "^4.4.0",
     "mapbox-gl": "^1.12.0",
     "vue": "^2.6.10"
+  },
+  "dependencies": {
+    "@juggle/resize-observer": "^3.3.1"
   }
 }

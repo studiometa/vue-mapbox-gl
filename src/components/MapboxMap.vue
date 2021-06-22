@@ -10,6 +10,9 @@
 </template>
 
 <script>
+
+  import { ResizeObserver as Polyfill } from '@juggle/resize-observer';
+
   import mapboxgl, { LngLatBounds, LngLat } from 'mapbox-gl';
   import bindProps from '../utils/bind-props';
   import { bindEvents, unbindEvents } from '../utils/bind-events';
@@ -25,7 +28,7 @@
    * @see  https://docs.mapbox.com/mapbox-gl-js/api/#map
    * @type {Object}
    */
-  const props = {
+  const props = { 
     accessToken: {
       type: String,
       default: 'no-token',
@@ -284,6 +287,8 @@
       // Mapbox has some resize issues
       // Create an observer on this object
       // Call resize on the map when we change szie
+      const ResizeObserver = window.ResizeObserver || Polyfill;
+      
       const observer = new ResizeObserver(this.resizeHandler);
       observer.observe(this.options.container);
       this.resizeObserver = observer;
