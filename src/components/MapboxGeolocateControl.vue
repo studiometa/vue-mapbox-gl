@@ -41,8 +41,7 @@
     },
     position: {
       type: String,
-      default: 'top-right',
-      bind: false,
+      default: 'top-right'
     },
   };
 
