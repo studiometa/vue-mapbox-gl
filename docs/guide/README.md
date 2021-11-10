@@ -57,7 +57,7 @@ If you need to access to the Mapbox `map` instance, you can get it via the `mb-c
 ```html
 <template>
   <mapbox-map
-    access-key="..."
+    access-token="..."
     @mb-created="(mapboxInstance) => map = mapboxInstance" />
 </template>
 
