@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div ref="root" v-bind="$attrs"></div>
     <div v-if="isLoaded">
       <slot />
     </div>
@@ -10,28 +11,19 @@
 </template>
 
 <script>
-  import mapboxgl, { LngLatBounds, LngLat } from 'mapbox-gl';
-  import bindProps from '../utils/bind-props';
-  import { bindEvents, unbindEvents } from '../utils/bind-events';
-  import { provideMap } from '../mixins/provide-inject-map';
-
-  if (!mapboxgl) {
-    throw new Error('mapboxgl is not installed.');
-  }
-
   /**
    * Component's props definition, we need to declare it outside the component
    * to be able to test the default values and the types.
    * @see  https://docs.mapbox.com/mapbox-gl-js/api/#map
    * @type {Object}
    */
-  const props = {
+  const propsConfig = {
     accessToken: {
       type: String,
       default: 'no-token',
     },
     container: {
-      type: [ HTMLElement, String ],
+      type: [String],
       default: undefined,
     },
     minZoom: {
@@ -51,7 +43,7 @@
       default: 60,
     },
     mapStyle: {
-      type: [ Object, String ],
+      type: [Object, String],
       required: true,
     },
     hash: {
@@ -79,7 +71,7 @@
       default: true,
     },
     customAttribution: {
-      type: [ String, Array ],
+      type: [String, Array],
       default: null,
     },
     logoPosition: {
@@ -103,11 +95,11 @@
       default: true,
     },
     maxBounds: {
-      type: [ LngLatBounds, Array ],
+      type: [LngLatBounds, Array],
       default: undefined,
     },
     scrollZoom: {
-      type: [ Boolean, Object ],
+      type: [Boolean, Object],
       default: true,
     },
     boxZoom: {
@@ -119,7 +111,7 @@
       default: true,
     },
     dragPan: {
-      type: [ Boolean, Object ],
+      type: [Boolean, Object],
       default: true,
     },
     keyboard: {
@@ -131,7 +123,7 @@
       default: true,
     },
     touchZoomRotate: {
-      type: [ Boolean, Object ],
+      type: [Boolean, Object],
       default: true,
     },
     trackResize: {
@@ -139,8 +131,8 @@
       default: true,
     },
     center: {
-      type: [ LngLat, Array, Object ],
-      default: () => [ 0, 0 ],
+      type: [LngLat, Array, Object],
+      default: () => [0, 0],
     },
     zoom: {
       type: Number,
@@ -155,7 +147,7 @@
       default: 0,
     },
     bounds: {
-      type: [ LngLatBounds, Array ],
+      type: [LngLatBounds, Array],
       default: undefined,
     },
     fitBoundsOptions: {
@@ -198,112 +190,113 @@
    * @type {Array}
    */
   const events = [
-    'resize',
-    'remove',
-    'mousedown',
-    'mouseup',
-    'mouseover',
-    'mousemove',
+    'boxzoomcancel',
+    'boxzoomend',
+    'boxzoomstart',
     'click',
-    'dblclick',
-    'mouseenter',
-    'mouseleave',
-    'mouseout',
     'contextmenu',
-    'wheel',
-    'touchstart',
-    'touchend',
-    'touchmove',
-    'touchcancel',
-    'movestart',
-    'move',
-    'moveend',
-    'dragstart',
+    'data',
+    'dataloading',
+    'dblclick',
     'drag',
     'dragend',
-    'zoomstart',
-    'zoom',
-    'zoomend',
-    'rotatestart',
-    'rotate',
-    'rotateend',
-    'pitchstart',
+    'dragstart',
+    'error',
+    'idle',
+    'load',
+    'mousedown',
+    'mouseenter',
+    'mouseleave',
+    'mousemove',
+    'mouseout',
+    'mouseover',
+    'mouseup',
+    'move',
+    'moveend',
+    'movestart',
     'pitch',
     'pitchend',
-    'boxzoomstart',
-    'boxzoomend',
-    'boxzoomcancel',
+    'pitchstart',
+    'remove',
+    'render',
+    'resize',
+    'rotate',
+    'rotateend',
+    'rotatestart',
+    'sourcedata',
+    'sourcedataloading',
+    'styledata',
+    'styledataloading',
+    'styleimagemissing',
+    'touchcancel',
+    'touchend',
+    'touchmove',
+    'touchstart',
     'webglcontextlost',
     'webglcontextrestored',
-    'load',
-    'render',
-    'idle',
-    'error',
-    'data',
-    'styledata',
-    'sourcedata',
-    'dataloading',
-    'styledataloading',
-    'sourcedataloading',
-    'styleimagemissing',
+    'wheel',
+    'zoom',
+    'zoomend',
+    'zoomstart',
   ];
 
   export default {
-    name: 'MapboxMap',
-    mixins: [ provideMap() ],
-    props,
-    data() {
-      return {
-        isLoaded: false,
-      };
-    },
-    computed: {
-      options() {
-        const { accessToken, mapStyle: style, ...options } = this.$props;
-
-        // Use current component's element if container is not set
-        if (!options.container && this.$el) {
-          options.container = this.$el;
-        }
-
-        return { style, ...options };
-      },
-    },
-    mounted() {
-      mapboxgl.accessToken = this.accessToken;
-      this.map = new mapboxgl.Map(this.options);
-      this.map.on('load', () => {
-        this.isLoaded = true;
-      });
-
-      // Bind props and events
-      bindProps(this, this.map, props);
-      bindEvents(this, this.map, events);
-      this.$emit('mb-created', this.map);
-
-      // Mapbox has some resize issues
-      // Create an observer on this object
-      // Call resize on the map when we change szie
-      const observer = new ResizeObserver(this.resizeHandler);
-      observer.observe(this.options.container);
-      this.resizeObserver = observer;
-    },
-    destroyed() {
-      unbindEvents(this, this.map);
-      this.resizeObserver.disconnect();
-      this.map.remove();
-    },
-    methods: {
-      /**
-       * Handler for any change of the map's size
-       *
-       * @return {void}
-       */
-      resizeHandler() {
-        if (this.map) {
-          this.map.resize();
-        }
-      },
-    },
+    inheritAttrs: false,
   };
+</script>
+
+<script setup>
+  import { ref, computed, onMounted, onUnmounted, provide } from 'vue';
+  import mapboxgl, { LngLatBounds, LngLat } from 'mapbox-gl';
+  import { useEventsBinding, usePropsBinding } from '../composables/index.js';
+
+  if (!mapboxgl) {
+    throw new Error('mapboxgl is not installed.');
+  }
+
+  const props = defineProps(propsConfig);
+  const emit = defineEmits()
+
+  const map = ref();
+  provide('mapbox-map', map);
+
+  const root = ref();
+  const isLoaded = ref(false);
+  const options = computed(() => {
+    const { accessToken, mapStyle: style, ...options } = props;
+
+    // Use current component's element if container is not set
+    if (!options.container && root.value) {
+      options.container = root.value;
+    }
+
+    return { style, ...options };
+  });
+
+  useEventsBinding(emit, () => map.value, events);
+  usePropsBinding(props, () => map.value, propsConfig);
+
+  onMounted(() => {
+    mapboxgl.accessToken = props.accessToken;
+
+    map.value = new mapboxgl.Map(options.value);
+    map.value.on('load', () => {
+      isLoaded.value = true;
+    });
+
+    emit('mb-created', map.value);
+
+    // Mapbox has some resize issues
+    // Create an observer on this object
+    // Call resize on the map when we change szie
+    const resizeObserver = new ResizeObserver(() => {
+      map.value.resize();
+    });
+    resizeObserver.observe(options.value.container);
+
+    onUnmounted(() => {
+      resizeObserver.disconnect();
+      map.value.remove();
+    });
+  });
 </script>
