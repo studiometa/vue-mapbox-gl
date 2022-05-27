@@ -24,7 +24,7 @@ export function usePropsBinding(props, getMapboxElement, propsConfig) {
     await nextTick();
     const mapboxElement = getMapboxElement();
     Object.keys(props)
-      .filter((prop) => props[prop] !== undefined)
+      .filter((prop) => props[prop] !== undefined && props[prop] !== null)
       .forEach((prop) => {
         const setMethodName =
           prop === 'mapStyle' ? 'setStyle' : `set${capitalizeFirstLetter(prop)}`;

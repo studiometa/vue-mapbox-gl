@@ -98,4 +98,6 @@
       popup.value.remove();
     }
   });
+
+  defineExpose({ popup })
 </script>
