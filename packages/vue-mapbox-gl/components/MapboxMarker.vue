@@ -1,46 +1,37 @@
 <template>
   <div>
-    <div ref="content">
+    <div ref="contentRef">
       <slot />
     </div>
-    <mapbox-popup
-      v-if="popup"
-      ref="popup"
-      v-bind="popupOptions">
+    <mapbox-popup v-if="hasPopup" ref="popupRef" v-bind="popupOptions">
       <slot name="popup" />
     </mapbox-popup>
   </div>
 </template>
 
 <script>
-  import { Marker, Point } from 'mapbox-gl';
-  import { injectMap } from '../mixins/provide-inject-map';
-  import bindProps from '../utils/bind-props';
-  import { bindEvents, unbindEvents } from '../utils/bind-events';
-  import MapboxPopup from './MapboxPopup';
-
   /**
    * Component's props definition, we need to declare it outside the component
    * to be able to test the default values and the types.
    * @see  https://docs.mapbox.com/mapbox-gl-js/api/#marker
    * @type {Object}
    */
-  const props = {
+  const propsConfig = {
     lngLat: {
       type: Array,
       required: true,
     },
     popup: {
-      type: [ Object, Boolean ],
+      type: [Object, Boolean],
       default: false,
       bind: false,
     },
     element: {
-      type: HTMLElement,
+      type: typeof HTMLElement !== 'undefined' ? HTMLElement : Object,
       default: null,
     },
     offset: {
-      type: [ Point, Array ],
+      type: [Point, Array],
       default: null,
     },
     anchor: {
@@ -78,58 +69,60 @@
    * @see  https://docs.mapbox.com/mapbox-gl-js/api/#marker.event:dragstart
    * @type {Array}
    */
-  const events = [ 'dragstart', 'drag', 'dragend' ];
+  const events = ['dragstart', 'drag', 'dragend'];
+</script>
 
-  export default {
-    name: 'MapboxMarker',
-    components: {
-      MapboxPopup,
-    },
-    mixins: [ injectMap() ],
-    props,
-    computed: {
-      hasPopup() {
-        return this.popup !== false && this.$refs.popup !== undefined;
-      },
-      popupInstance() {
-        return this.hasPopup ? this.$refs.popup.popup : null;
-      },
-      popupOptions() {
-        return {
-          lngLat: this.lngLat,
-          ...this.popup,
-          renderless: true,
-        };
-      },
-      options() {
-        const { lngLat, popup, ...options } = this.$props;
+<script setup>
+  import { computed, ref, onMounted, onUnmounted } from 'vue';
+  import { Marker, Point } from 'mapbox-gl';
+  import { useMap, useEventsBinding, usePropsBinding } from '../composables/index.js';
+  import MapboxPopup from './MapboxPopup.vue';
 
-        // Use current component's element if container is not set
-        if (this.$slots.default) {
-          options.element = this.$refs.content;
-        }
+  const props = defineProps(propsConfig);
+  const emit = defineEmits();
+  const slots = useSlots();
 
-        return options;
-      },
-    },
-    mounted() {
-      this.marker = new Marker(this.options)
-        .setLngLat(this.lngLat)
-        .addTo(this.map);
+  const marker = ref();
+  const contentRef = ref();
+  const popupRef = ref();
+  const hasPopup = computed(() => typeof slots.popup !== 'undefined');
 
-      // Bind props and events
-      bindProps(this, this.marker, props);
-      bindEvents(this, this.marker, events);
+  const popupInstance = computed(() => {
+    return hasPopup.value ? popupRef.value.popup : null;
+  });
 
-      if (this.hasPopup) {
-        this.marker.setPopup(this.popupInstance);
-      }
-    },
-    destroyed() {
-      if (this.marker) {
-        unbindEvents(this, this.marker);
-        this.marker.remove();
-      }
-    },
-  };
+  const popupOptions = computed(() => ({
+    lngLat: props.lngLat,
+    ...(props.popup ? props.popup : {}),
+    renderless: true,
+  }));
+
+  const options = computed(() => {
+    const { lngLat, popup, ...options } = props;
+
+    // Use current component's element if container is not set
+    if (slots.default) {
+      options.element = contentRef.value;
+    }
+
+    return options;
+  });
+
+  usePropsBinding(props, () => marker.value, propsConfig);
+  useEventsBinding(emit, () => marker.value, events);
+
+  onMounted(() => {
+    const { map } = useMap();
+    marker.value = new Marker(options.value).setLngLat(props.lngLat).addTo(map.value);
+
+    if (hasPopup.value) {
+      marker.value.setPopup(popupInstance.value);
+    }
+  });
+
+  onUnmounted(() => {
+    if (marker.value) {
+      marker.value.remove();
+    }
+  });
 </script>
