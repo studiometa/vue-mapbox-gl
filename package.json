@@ -1,93 +1,24 @@
 {
-  "name": "@studiometa/vue-mapbox-gl",
+  "name": "@studiometa/vue-mapbox-gl-workspace",
+  "private": true,
   "version": "1.4.7",
-  "description": "A small components library to use Mapbox GL in Vue.",
-  "homepage": "https://github.com/studiometa/vue-mapbox-gl#readme",
-  "bugs": {
-    "url": "https://github.com/studiometa/vue-mapbox-gl/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/studiometa/vue-mapbox-gl.git"
-  },
-  "license": "GPL-3.0-or-later",
-  "author": {
-    "name": "Studio Meta",
-    "email": "agence@studiometa.fr",
-    "url": "https://www.studiometa.fr"
-  },
-  "contributors": [
-    {
-      "name": "Titouan Mathis",
-      "email": "titouan@studiometa.fr"
-    },
-    {
-      "name": "Ludovic Janot",
-      "email": "ludovic@studiometa.fr"
-    }
+  "workspaces": [
+    "packages/*"
   ],
-  "main": "dist/VueMapboxGl.cjs.js",
-  "module": "dist/VueMapboxGl.esm.js",
-  "unpkg": "dist/VueMapboxGl.umd.min.js",
-  "es2015": "dist/index.js",
   "scripts": {
-    "build": "rm -rf dist/ && rollup --config rollup.config.js",
-    "docs:build": "vuepress build docs",
-    "docs:dev": "vuepress dev docs",
-    "fix": "vue-cli-service lint",
-    "lint": "vue-cli-service lint --no-fix",
+    "docs:dev": "npm run dev -w @studiometa/vue-mapbox-gl-docs",
+    "docs:build": "npm run build -w @studiometa/vue-mapbox-gl-docs",
+    "demo:dev": "npm run dev -w @studiometa/vue-mapbox-gl-demo",
+    "demo:build": "npm run build -w @studiometa/vue-mapbox-gl-demo",
+    "lint": "eslint packages/vue-mapbox-gl --ext=.js,.vue",
+    "fix": "npm run lint -- --fix",
     "prepublishOnly": "npm run build",
-    "test": "vue-cli-service test:unit"
+    "test": "echo '@todo add tests.'"
   },
-  "publishConfig": {
-    "access": "public"
-  },
-  "dependencies": {},
   "devDependencies": {
-    "@babel/core": "^7.12.0",
-    "@babel/plugin-proposal-export-default-from": "^7.10.4",
-    "@babel/preset-env": "^7.12.0",
-    "@mapbox/mapbox-gl-geocoder": "^4.7.0",
-    "@rollup/plugin-alias": "^3.1.1",
-    "@rollup/plugin-commonjs": "^15.1.0",
-    "@rollup/plugin-node-resolve": "^9.0.0",
-    "@rollup/plugin-replace": "^2.3.3",
-    "@silvanite/vuepress-plugin-tailwind": "^1.3.0",
     "@studiometa/eslint-config": "^2.1.3",
-    "@studiometa/prettier-config": "^2.0.1",
-    "@vue/cli-plugin-babel": "^4.5.7",
-    "@vue/cli-plugin-eslint": "^4.5.7",
-    "@vue/cli-plugin-unit-jest": "^4.5.7",
-    "@vue/cli-service": "^4.5.7",
-    "@vue/test-utils": "^1.1.0",
-    "@vuepress/plugin-register-components": "^1.7.1",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-loader": "^8.1.0",
-    "clean-webpack-plugin": "^3.0.0",
-    "cross-env": "^7.0.2",
-    "dotenv": "^8.2.0",
-    "electron": "^10.1.3",
-    "eslint": "^7.11.0",
-    "eslint-import-resolver-alias": "^1.1.2",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-vue": "^7.0.1",
-    "mapbox-gl": "^1.12.0",
-    "minimist": "^1.2.5",
-    "prettier": "^2.1.2",
-    "rollup": "^2.31.0",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-css-only": "^3.0.0",
-    "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-vue": "^5.1.9",
-    "sass": "^1.30.0",
-    "sass-loader": "^10.1.0",
-    "vue": "^2.6.12",
-    "vuepress": "^1.7.1",
-    "webpack-glob-entry": "^2.1.1"
-  },
-  "peerDependencies": {
-    "@mapbox/mapbox-gl-geocoder": "^4.4.0",
-    "mapbox-gl": "^1.12.0",
-    "vue": "^2.6.10"
+    "@studiometa/prettier-config": "^2.1.1",
+    "eslint": "^8.11.0",
+    "prettier": "^2.6.0"
   }
 }
