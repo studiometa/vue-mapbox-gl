@@ -1,23 +1,19 @@
 <template>
-  <div>
+  <div ref="root">
     <slot />
   </div>
 </template>
-<script>
-  import { Popup, Point, LngLat } from 'mapbox-gl';
-  import bindProps from '../utils/bind-props';
-  import { bindEvents, unbindEvents } from '../utils/bind-events';
-  import { injectMap } from '../mixins/provide-inject-map';
 
+<script>
   /**
    * Component's props definition, we need to declare it outside the component
    * to be able to test the default values and the types.
    * @see  https://docs.mapbox.com/mapbox-gl-js/api/#popup
    * @type {Object}
    */
-  const props = {
+  const propsConfig = {
     lngLat: {
-      type: [ LngLat, Array, Object ],
+      type: [LngLat, Array, Object],
       required: true,
     },
     closeButton: {
@@ -37,8 +33,8 @@
       default: null,
     },
     offset: {
-      type: [ Number, Point, Array, Object ],
-      default: null,
+      type: [Number, Point, Array, Object],
+      default: 0,
     },
     className: {
       type: String,
@@ -64,43 +60,42 @@
    * @see  https://docs.mapbox.com/mapbox-gl-js/api/#popup.event:open
    * @type {Array}
    */
-  const events = [ 'open', 'close' ];
+  const events = ['open', 'close'];
+</script>
 
-  export default {
-    name: 'MapboxPopup',
-    mixins: [ injectMap() ],
-    props,
-    data() {
-      return {
-        popup: null,
-      };
-    },
-    computed: {
-      options() {
-        const { lngLat, ...options } = this.$props;
-        return options;
-      },
-    },
-    mounted() {
-      this.popup = new Popup(this.options)
-        .setLngLat(this.lngLat)
-        .setDOMContent(this.$el);
+<script setup>
+  import { ref, computed, nextTick, onMounted, onUnmounted } from 'vue';
+  import { Popup, Point, LngLat } from 'mapbox-gl';
+  import { useMap, usePropsBinding, useEventsBinding } from '../composables/index.js';
 
-      if (!this.renderless) {
-        this.popup.addTo(this.map);
-      }
+  const props = defineProps(propsConfig);
+  const emit = defineEmits();
 
-      bindProps(this, this.popup, props);
-      bindEvents(this, this.popup, events);
+  const popup = ref();
+  const root = ref();
+  const options = computed(() => {
+    const { lngLat, ...options } = props;
+    return options;
+  });
 
-      this.$emit('mb-open', this.popup);
-    },
-    destroyed() {
-      if (this.popup) {
-        unbindEvents(this, this.popup);
-        this.popup.remove();
-      }
-    },
-  };
+  usePropsBinding(props, () => popup.value, propsConfig);
+  useEventsBinding(emit, () => popup.value, events);
 
+  onMounted(() => {
+    const { map } = useMap();
+
+    popup.value = new Popup(options.value).setLngLat(props.lngLat).setDOMContent(root.value);
+
+    if (!props.renderless) {
+      popup.value.addTo(map.value);
+    }
+
+    emit('mb-open', popup.value);
+  });
+
+  onUnmounted(() => {
+    if (popup.value) {
+      popup.value.remove();
+    }
+  });
 </script>
