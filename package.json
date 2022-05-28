@@ -18,7 +18,10 @@
   "devDependencies": {
     "@studiometa/eslint-config": "^2.1.3",
     "@studiometa/prettier-config": "^2.1.1",
+    "esbuild": "^0.14.41",
     "eslint": "^8.11.0",
-    "prettier": "^2.6.0"
+    "fast-glob": "^3.2.11",
+    "prettier": "^2.6.0",
+    "unplugin-vue": "^2.2.0"
   }
 }
