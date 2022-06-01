@@ -1,0 +1,215 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "nid": "362"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-95.225, 47.254]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nid": "362"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-95.208, 47.240]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nid": "362"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-95.195, 47.227]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nid": "362"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-94.878, 47.471]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nid": "362"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-94.521, 47.379]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nid": "362"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-93.799, 47.336]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nid": "362"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-93.508, 47.225]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nid": "362"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-93.297, 46.963]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nid": "362"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-93.489, 46.713]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nid": "362"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-93.465, 46.646]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nid": "362"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-93.707, 46.538]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nid": "362"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-93.955, 46.479]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nid": "362"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-94.168, 46.369]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nid": "362"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-94.366,45.970]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nid": "362"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-94.217, 45.753]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nid": "362"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-94.156,45.561]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nid": "362"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-93.795, 45.308]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nid": "362"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-93.569,45.303]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nid": "362"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-93.257, 44.979]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nid": "362"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-93.083, 44.947]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nid": "362"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-92.652, 44.632]
+      }
+    }
+  ]
+}
