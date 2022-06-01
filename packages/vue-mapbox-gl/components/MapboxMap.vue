@@ -299,4 +299,6 @@
       map.value.remove();
     });
   });
+
+  defineExpose({ map });
 </script>
