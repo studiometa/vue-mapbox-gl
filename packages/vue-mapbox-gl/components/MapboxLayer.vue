@@ -2,9 +2,9 @@
   <div :id="id" />
 </template>
 
-<script>
-  import { bindEvents, unbindEvents } from '../utils/bind-events';
-  import { injectMap } from '../mixins/provide-inject-map';
+<script setup>
+  import { onMounted, onUnmounted } from 'vue';
+  import { useEventsBinding, useMap } from '../composables/index.js';
 
   /**
    * All Map events which will be mapped/bounded to the component
@@ -27,87 +27,84 @@
     'touchcancel',
   ];
 
-  export default {
-    name: 'MapboxLayer',
-    mixins: [ injectMap() ],
-    props: {
-      /**
-       * Id of the layer
-       * @see  https://docs.mapbox.com/mapbox-gl-js/api/#map#addlayer
-       * @type {String}
-       */
-      id: {
-        type: String,
-        required: true,
-      },
-      /**
-       * Options for the layer
-       * @see  https://docs.mapbox.com/mapbox-gl-js/api/#map#addlayer
-       * @see  https://docs.mapbox.com/mapbox-gl-js/style-spec/#layers
-       * @type {Object}
-       */
-      options: {
-        type: Object,
-        default: () => {},
-      },
-      /**
-       * The ID of an existing layer to insert the new layer before.
-       * @see  https://docs.mapbox.com/mapbox-gl-js/api/#map#addlayer
-       * @type {String}
-       */
-      beforeId: {
-        type: String,
-        default: undefined,
-      },
+  const props = defineProps({
+    /**
+     * Id of the layer
+     * @see  https://docs.mapbox.com/mapbox-gl-js/api/#map#addlayer
+     * @type {String}
+     */
+    id: {
+      type: String,
+      required: true,
     },
-    mounted() {
-      // Make sure to remove any existing layer and/or source to avoid conflicts
-      if (this.layerExists()) {
-        this.map.removeLayer(this.id);
-      }
-
-      if (this.sourceExists()) {
-        this.map.removeSource(this.id);
-      }
-
-      // Bind events
-      bindEvents(this, this.map, events, this.id);
-
-      if (this.options.paint === null || this.options.paint === undefined) {
-        delete this.options.paint;
-      }
-
-      if (this.options.layout === null || this.options.layout === undefined) {
-        delete this.options.layout;
-      }
-
-      this.map.addLayer({ ...this.options, id: this.id }, this.beforeId);
+    /**
+     * Options for the layer
+     * @see  https://docs.mapbox.com/mapbox-gl-js/api/#map#addlayer
+     * @see  https://docs.mapbox.com/mapbox-gl-js/style-spec/#layers
+     * @type {Object}
+     */
+    options: {
+      type: Object,
+      default: () => {},
     },
-    destroyed() {
-      if (this.layerExists()) {
-        unbindEvents(this, this.map, this.id);
-        this.map.removeLayer(this.id);
+    /**
+     * The ID of an existing layer to insert the new layer before.
+     * @see  https://docs.mapbox.com/mapbox-gl-js/api/#map#addlayer
+     * @type {String}
+     */
+    beforeId: {
+      type: String,
+      default: undefined,
+    },
+  });
+  const emit = defineEmits();
+  useEventsBinding(emit, getMap, events, props.id);
+
+  /**
+   * Test if the component's layer exists
+   * @return {Boolean}
+   */
+  function layerExists(map) {
+    return map.getLayer(props.id) !== 'undefined';
+  }
+
+  /**
+   * Test if a source with the layer's ID exists
+   * @return {Boolean}
+   */
+  function sourceExists(map) {
+    return typeof map.getSource(props.id) !== 'undefined';
+  }
+
+  onMounted(() => {
+    const map = getMap();
+    // Make sure to remove any existing layer and/or source to avoid conflicts
+    if (layerExists(map)) {
+      map.removeLayer(props.id);
+    }
+
+    if (sourceExists(map)) {
+      map.removeSource(props.id);
+    }
+
+    if (props.options.paint === null || props.options.paint === undefined) {
+      delete props.options.paint;
+    }
+
+    if (props.options.layout === null || props.options.layout === undefined) {
+      delete props.options.layout;
+    }
+
+    map.addLayer({ ...props.options, id: props.id }, props.beforeId);
+
+    onUnmounted(() => {
+      if (layerExists(map)) {
+        map.removeLayer(props.id);
       }
 
-      if (this.sourceExists()) {
-        this.map.removeSource(this.id);
+      if (sourceExists(map)) {
+        map.removeSource(props.id);
       }
-    },
-    methods: {
-      /**
-       * Test if the component's layer exists
-       * @return {Boolean}
-       */
-      layerExists() {
-        return typeof this.map.getLayer(this.id) !== 'undefined';
-      },
-      /**
-       * Test if a source with the layer's ID exists
-       * @return {Boolean}
-       */
-      sourceExists() {
-        return typeof this.map.getSource(this.id) !== 'undefined';
-      },
-    },
-  };
+    });
+  });
 </script>

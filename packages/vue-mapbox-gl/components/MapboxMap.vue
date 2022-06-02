@@ -11,6 +11,14 @@
 </template>
 
 <script>
+  import mapboxgl from 'mapbox-gl';
+
+  if (!mapboxgl) {
+    throw new Error('mapboxgl is not installed.');
+  }
+
+  const { LngLatBounds, LngLat } = mapboxgl;
+
   /**
    * Component's props definition, we need to declare it outside the component
    * to be able to test the default values and the types.
@@ -247,12 +255,7 @@
 
 <script setup>
   import { ref, computed, onMounted, onUnmounted, provide } from 'vue';
-  import mapboxgl, { LngLatBounds, LngLat } from 'mapbox-gl';
   import { useEventsBinding, usePropsBinding } from '../composables/index.js';
-
-  if (!mapboxgl) {
-    throw new Error('mapboxgl is not installed.');
-  }
 
   const props = defineProps(propsConfig);
   const emit = defineEmits()

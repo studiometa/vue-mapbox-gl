@@ -5,6 +5,10 @@
 </template>
 
 <script>
+  import mapboxgl from 'mapbox-gl';
+
+  const { Popup, Point, LngLat } = mapboxgl;
+
   /**
    * Component's props definition, we need to declare it outside the component
    * to be able to test the default values and the types.
@@ -65,7 +69,6 @@
 
 <script setup>
   import { ref, computed, nextTick, onMounted, onUnmounted } from 'vue';
-  import { Popup, Point, LngLat } from 'mapbox-gl';
   import { useMap, usePropsBinding, useEventsBinding } from '../composables/index.js';
 
   const props = defineProps(propsConfig);
