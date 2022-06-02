@@ -7,12 +7,7 @@ const dirname = new URL('.', import.meta.url).pathname;
 
 const entryPoints = glob.sync(
   [
-    // 'packages/vue-mapbox-gl/index.js',
     'packages/vue-mapbox-gl/index.js',
-    'packages/vue-mapbox-gl/components/index.js',
-    'packages/vue-mapbox-gl/composables/*.js',
-    'packages/vue-mapbox-gl/utils/*.js',
-    'packages/vue-mapbox-gl/components/MapboxMap.vue',
     '!**/node_modules/**'
    ],
   {
@@ -29,7 +24,6 @@ const defaultOptions = {
   target: 'es2019',
   plugins: [vue()],
   bundle: true,
-  splitting: true,
   external: ['@mapbox/mapbox-gl-geocoder', 'mapbox-gl', 'vue'],
 };
 
@@ -63,10 +57,6 @@ build({
   format: 'cjs',
   splitting: false,
   outExtension: { '.js': '.cjs' },
-  // footer: {
-  //   // Fix `export default {}` assigned to `module.exports.default`
-  //   js: 'if (module.exports.default) module.exports = module.exports.default;',
-  // },
   plugins: [
     // @see https://github.com/evanw/esbuild/issues/622#issuecomment-769462611
     {

@@ -26,10 +26,8 @@
       "email": "ludovic@studiometa.fr"
     }
   ],
-  "main": "dist/VueMapboxGl.cjs.js",
-  "module": "dist/VueMapboxGl.esm.js",
-  "unpkg": "dist/VueMapboxGl.umd.min.js",
-  "es2015": "dist/index.js",
+  "type": "module",
+  "module": "index.js",
   "scripts": {
     "build": "rm -rf dist/ && rollup --config rollup.config.js"
   },
