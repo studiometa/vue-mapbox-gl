@@ -3,16 +3,16 @@
 </template>
 
 <script>
-  import { NavigationControl } from 'mapbox-gl';
-  import bindProps from '../utils/bind-props';
-  import { injectMap } from '../mixins/provide-inject-map';
+  import mapboxgl from 'mapbox-gl';
+
+  const { NavigationControl } = mapboxgl;
 
   /**
    * Component's props definition, we need to declare it outside the component
    * to be able to test the default values and the types.
    * @type {Object}
    */
-  const props = {
+  const propsConfig = {
     showCompass: {
       type: Boolean,
       default: true,
@@ -31,18 +31,29 @@
       bind: false,
     },
   };
+</script>
 
-  export default {
-    name: 'MapboxNavigationControl',
-    mixins: [ injectMap() ],
-    props,
-    mounted() {
-      this.control = new NavigationControl(this.$props);
-      bindProps(this, this.control, props);
-      this.map.addControl(this.control, this.position);
-    },
-    destroyed() {
-      this.map.removeControl(this.control);
-    },
-  };
+<script setup>
+  import { onMounted, onUnmounted, ref, unref } from 'vue';
+  import { useMap, usePropsBinding } from '../composables/index.js';
+
+  const props = defineProps(propsConfig);
+
+  const { map } = useMap();
+  const control = ref();
+
+  usePropsBinding(props, control, propsConfig);
+
+  onMounted(() => {
+    control.value = new NavigationControl(props);
+    unref(map).addControl(unref(control), props.position);
+  });
+
+  onUnmounted(() => {
+    if (unref(control)) {
+      unref(map).removeControl(unref(control));
+    }
+  });
+
+  defineExpose({ control });
 </script>

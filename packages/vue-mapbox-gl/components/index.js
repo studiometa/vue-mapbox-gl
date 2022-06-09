@@ -4,8 +4,8 @@
 // export MapboxImage from './MapboxImage.vue';
 // export MapboxImages from './MapboxImages.vue';
 // export MapboxLayer from './MapboxLayer.vue';
-// export MapboxNavigationControl from './MapboxNavigationControl.vue';
 // export MapboxSource from './MapboxSource.vue';
 export { default as MapboxMap } from './MapboxMap.vue';
 export { default as MapboxPopup } from './MapboxPopup.vue';
 export { default as MapboxMarker } from './MapboxMarker.vue';
+export { default as MapboxNavigationControl } from './MapboxNavigationControl.vue';
