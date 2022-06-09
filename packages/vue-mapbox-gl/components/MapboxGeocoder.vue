@@ -1,12 +1,10 @@
 <template>
-  <div />
+  <div ref="root" />
 </template>
 
 <script>
   import mapboxgl from 'mapbox-gl';
   import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
-  import { injectMap } from '../mixins/provide-inject-map';
-  import { bindEvents, unbindEvents } from '../utils/bind-events';
 
   if (!mapboxgl) {
     throw new Error('mapboxgl is not installed.');
@@ -22,7 +20,7 @@
    * @see https://github.com/mapbox/mapbox-gl-geocoder/blob/master/API.md#parameters
    * @type {object}
    */
-  const props = {
+  const propsConfig = {
     accessToken: {
       type: String,
       default: 'no-token',
@@ -32,7 +30,7 @@
       default: () => 16,
     },
     flyTo: {
-      type: [ Boolean, Object ],
+      type: [Boolean, Object],
       default: () => true,
     },
     placeholder: {
@@ -69,7 +67,7 @@
     },
     types: {
       type: String,
-      default: () => '',
+      default: () => 'place',
     },
     minLength: {
       type: Number,
@@ -126,52 +124,62 @@
    * @see  https://github.com/mapbox/mapbox-gl-geocoder/blob/master/API.md#on
    * @type {Array}
    */
-  const events = [ 'loading', 'results', 'result', 'error' ];
+  const events = ['loading', 'results', 'result', 'error'];
+</script>
 
-  export default {
-    name: 'MapboxGeocoder',
-    mixins: [ injectMap() ],
-    props,
-    mounted() {
-      const { accessToken, ...$props } = this.$props;
+<script setup>
+  import { onMounted, onUnmounted, ref, unref, computed, useAttrs } from 'vue';
+  import { useMap, useEventsBinding, usePropsBinding } from '../composables/index.js';
 
-      // Delete the `reverseMode` property if we are not reverse geocoding as it is not supported by
-      // the Mapbox SDK.
-      //
-      // The `reverseMode` option can not be supported yet as it is conditionned by the search
-      // query format following a specific regex:
-      //
-      // ```js
-      //  /(-?\d+\.?\d*)[, ]+(-?\d+\.?\d*)[ ]*$/.test(searchInput)
-      // ```
-      //
-      // @todo use the same regex as the mapbox-gl-geocoder lib or open an issue
-      //
-      // @see https://github.com/mapbox/mapbox-sdk-js/blob/main/services/geocoding.js (92-104)
-      // @see https://github.com/mapbox/mapbox-sdk-js/blob/main/services/geocoding.js (161-172)
-      // @see https://github.com/mapbox/mapbox-gl-geocoder/blob/master/lib/index.js (437-458)
-      // eslint-disable-next-line no-constant-condition
-      if (!$props.reverseGeocode || true) {
-        delete $props.reverseMode;
-      }
+  const props = defineProps(propsConfig);
+  const emit = defineEmits();
 
-      this.control = new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken || accessToken,
-        mapboxgl,
-        ...$props,
-      });
+  const { map } = useMap();
+  const root = ref();
+  const control = ref();
 
-      // Bind events
-      bindEvents(this, this.control, events);
-      this.$emit('mb-created', this.control);
+  useEventsBinding(emit, control, events);
+  usePropsBinding(props, control, propsConfig);
 
-      this.control.addTo(this.map || this.$el);
-    },
-    destroyed() {
-      unbindEvents(this, this.control);
-      if (this.map) {
-        this.map.removeControl(this.control);
-      }
-    },
-  };
+  const options = computed(() => {
+    const opts = {
+      mapboxgl,
+      ...props,
+      accessToken: mapboxgl.accessToken ?? props.accessToken,
+    };
+
+    // Delete the `reverseMode` property if we are not reverse geocoding as it is not supported by
+    // the Mapbox SDK.
+    //
+    // The `reverseMode` option can not be supported yet as it is conditionned by the search
+    // query format following a specific regex:
+    //
+    // ```js
+    //  /(-?\d+\.?\d*)[, ]+(-?\d+\.?\d*)[ ]*$/.test(searchInput)
+    // ```
+    //
+    // @todo use the same regex as the mapbox-gl-geocoder lib or open an issue
+    //
+    // @see https://github.com/mapbox/mapbox-sdk-js/blob/main/services/geocoding.js (92-104)
+    // @see https://github.com/mapbox/mapbox-sdk-js/blob/main/services/geocoding.js (161-172)
+    // @see https://github.com/mapbox/mapbox-gl-geocoder/blob/master/lib/index.js (437-458)
+    // eslint-disable-next-line no-constant-condition
+    if (!opts.reverseGeocode || true) {
+      delete opts.reverseMode;
+    }
+
+    return opts;
+  });
+
+  onMounted(() => {
+    control.value = new MapboxGeocoder(unref(options));
+    emit('mb-created', control);
+    control.value.addTo(unref(map) || unref(root));
+  });
+
+  onUnmounted(() => {
+    if (unref(map)) {
+      unref(map).removeControl(unref(control));
+    }
+  });
 </script>
