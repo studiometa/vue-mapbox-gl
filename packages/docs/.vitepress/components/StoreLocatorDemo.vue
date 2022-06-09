@@ -1,80 +1,96 @@
+<script>
+  let index = 0;
+
+  function getId() {
+    index += 1;
+    return `store-locator-demo-${index}`;
+  }
+</script>
+
+<script setup>
+  import { ref } from 'vue';
+  import '@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css';
+  import { StoreLocator } from '@studiometa/vue-mapbox-gl';
+  import data from '../assets/earthquakes.json';
+
+  const items = ref(
+    data.features.map(({ properties, geometry }) => ({
+      lat: geometry.coordinates[1],
+      lng: geometry.coordinates[0],
+      id: getId(),
+      ...properties,
+    }))
+  );
+</script>
+
 <template>
   <div class="store-locator-demo">
     <div class="store-locator-demo__inner">
-      <StoreLocator
-        :items="items"
-        :access-token="MAPBOX_API_KEY"
-        :mapbox-map="{ mapStyle: 'mapbox://styles/mapbox/streets-v11' }">
-        <template #loader>
-          <div class="z-50 absolute inset-0 bg-white flex items-center justify-center">
-            <div class="absolute inset-0 bg-gray-300 rounded animate-pulse" />
-            <svg
-              class="animate-spin h-4 w-4"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24">
-              <circle
-                class="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                stroke-width="4"></circle>
-              <path
-                class="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-            </svg>
-          </div>
-        </template>
-        <template #before-list="{ filteredItems }">
-          <p class="m-0">Total: {{ filteredItems.length }}</p>
-        </template>
-        <template #after-list="{ filteredItems }">
-          <p v-if="filteredItems.length <= 0">No result.</p>
-        </template>
-        <template #panel="{ close, item }">
-          <button @click="close">Close</button>
-          <p>{{ item }}</p>
-        </template>
-      </StoreLocator>
+      <div class="relative w-full h-full">
+        <StoreLocator
+          :items="items"
+          :access-token="MAPBOX_API_KEY"
+          :mapbox-map="{ mapStyle: 'mapbox://styles/mapbox/streets-v11' }">
+          <template #loader>
+            <div class="z-50 absolute inset-0 bg-vp flex items-center justify-center">
+              <div class="absolute inset-0 bg-vp-mute rounded animate-pulse" />
+              <svg
+                class="animate-spin h-4 w-4"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24">
+                <circle
+                  class="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"></circle>
+                <path
+                  class="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+            </div>
+          </template>
+          <template #before-list="{ filteredItems }">
+            <p class="m-0">Total: {{ filteredItems.length }}</p>
+          </template>
+          <template #after-list="{ filteredItems }">
+            <p v-if="filteredItems.length <= 0">No result.</p>
+          </template>
+          <template #panel="{ close, item }">
+            <button @click="close">Close</button>
+            <pre>{{ item }}</pre>
+          </template>
+        </StoreLocator>
+      </div>
     </div>
   </div>
 </template>
 
-<script>
-  import '@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css';
-  // import data from '/earthquakes.json';
-  const data = { features: [] };
-
-  // @from nanoid/non-secure
-  const urlAlphabet = 'ModuleSymbhasOwnPr-0123456789ABCDEFGHNRVfgctiUvz_KqYTJkLxpZXIjQW';
-  const nanoid = (size = 21) => {
-    let id = '';
-    let i = size;
-    while (i--) {
-      id += urlAlphabet[(Math.random() * 64) | 0];
-    }
-    return id;
-  };
-
-  export default {
-    data: () => ({
-      items: data.features.map(({ properties, geometry }) => ({
-        lat: geometry.coordinates[1],
-        lng: geometry.coordinates[0],
-        id: nanoid(),
-        ...properties,
-      })),
-    }),
-  };
-</script>
-
 <style lang="scss">
-  // @import '~tailwindcss/components';
-  // @import '~tailwindcss/utilities';
+  @import 'tailwindcss/components';
+  @import 'tailwindcss/utilities';
+
+  .bg-vp {
+    background-color: var(--vp-c-bg);
+  }
+
+  .bg-vp-mute {
+    background-color: var(--vp-c-bg-mute);;
+  }
 
   .store-locator-demo {
+    z-index: 10;
+    position: relative;
+    left: 50%;
+    width: 96vw;
+    padding-left: calc((100vw - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width));
+    padding-right: calc((100vw - var(--vp-layout-max-width)) / 4);
+    transform: translateX(-50%);
+    pointer-events: none;
+
     ul,
     ol {
       padding: 0;
@@ -91,12 +107,13 @@
   }
 
   .store-locator-demo__inner {
+    @apply rounded;
     position: relative;
-    left: 50%;
-    width: calc(100vw - 24rem);
-    min-width: 100%;
+    width: 100%;
     height: 80vh;
-    transform: translateX(-50%);
+    padding: 1rem;
+    background-color: var(--vp-c-bg-soft);
+    pointer-events: painted;
   }
 
   /*============================================================================*\
@@ -176,7 +193,7 @@
     width: $side-width;
     height: 100%;
     padding: $gap;
-    background-color: #fff;
+    background-color: var(--vp-c-bg-alt);
   }
 
   /* Transition modifiers.
@@ -207,14 +224,15 @@
 
   .store-locator__search {
     .mapboxgl-ctrl-geocoder {
-      @apply bg-gray-300;
       width: 100%;
       max-width: none;
+      background-color: var(--vp-c-bg-mute);
 
       &,
       * {
         font: inherit !important;
         box-shadow: none !important;
+        color: inherit !important;
       }
     }
   }
@@ -232,11 +250,12 @@
   .store-locator__list-item {
     padding: calc(#{$gap} / 2);
     cursor: pointer;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0);
     transition: background-color 0.2s ease-out;
+    margin: 0 !important;
 
     &:hover {
-      background-color: #f5f5f5;
+      background-color: var(--vp-c-bg-mute);
     }
 
     + .store-locator__list-item {

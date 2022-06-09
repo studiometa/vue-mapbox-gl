@@ -88,8 +88,8 @@
 </script>
 
 <style lang="scss">
-  // @import '~tailwindcss/components';
-  // @import '~tailwindcss/utilities';
+  @import 'tailwindcss/components';
+  @import 'tailwindcss/utilities';
 
   .store-locator-architecture {
     margin-top: 1rem !important;
