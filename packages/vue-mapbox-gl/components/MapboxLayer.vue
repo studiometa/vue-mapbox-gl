@@ -2,32 +2,8 @@
   <div :id="id" />
 </template>
 
-<script setup>
-  import { onMounted, onUnmounted } from 'vue';
-  import { useEventsBinding, useMap } from '../composables/index.js';
-
-  /**
-   * All Map events which will be mapped/bounded to the component
-   * @see  https://docs.mapbox.com/mapbox-gl-js/api/#map#on
-   * @type {Array}
-   */
-  const events = [
-    'mousedown',
-    'mouseup',
-    'click',
-    'dblclick',
-    'mousemove',
-    'mouseenter',
-    'mouseleave',
-    'mouseover',
-    'mouseout',
-    'contextmenu',
-    'touchstart',
-    'touchend',
-    'touchcancel',
-  ];
-
-  const props = defineProps({
+<script>
+  const propsConfig = {
     /**
      * Id of the layer
      * @see  https://docs.mapbox.com/mapbox-gl-js/api/#map#addlayer
@@ -56,55 +32,82 @@
       type: String,
       default: undefined,
     },
-  });
+  };
+
+  /**
+   * All Map events which will be mapped/bounded to the component
+   * @see  https://docs.mapbox.com/mapbox-gl-js/api/#map#on
+   * @type {Array}
+   */
+  const events = [
+    'mousedown',
+    'mouseup',
+    'click',
+    'dblclick',
+    'mousemove',
+    'mouseenter',
+    'mouseleave',
+    'mouseover',
+    'mouseout',
+    'contextmenu',
+    'touchstart',
+    'touchend',
+    'touchcancel',
+  ];
+</script>
+
+<script setup>
+  import { onMounted, onUnmounted, computed, unref } from 'vue';
+  import { useEventsBinding, useMap } from '../composables/index.js';
+
+  const props = defineProps(propsConfig);
   const emit = defineEmits();
-  useEventsBinding(emit, getMap, events, props.id);
+
+  const { map } = useMap();
+  const options = computed(() => {
+    const opts = { ...props.options, id: props.id };
+
+    if (opts.paint === null || opts.paint === undefined) {
+      delete opts.paint;
+    }
+
+    if (opts.layout === null || opts.layout === undefined) {
+      delete opts.layout;
+    }
+
+    return opts;
+  });
+
+  useEventsBinding(emit, map, events, props.id);
 
   /**
    * Test if the component's layer exists
    * @return {Boolean}
    */
-  function layerExists(map) {
-    return map.getLayer(props.id) !== 'undefined';
+  function removeLayer() {
+    if (typeof unref(map).getLayer(props.id) !== 'undefined') {
+      unref(map).removeLayer(props.id);
+    }
   }
 
   /**
    * Test if a source with the layer's ID exists
    * @return {Boolean}
    */
-  function sourceExists(map) {
-    return typeof map.getSource(props.id) !== 'undefined';
+  function removeSource() {
+    if (typeof unref(map).getSource(props.id) !== 'undefined') {
+      unref(map).removeSource(props.id);
+    }
   }
 
   onMounted(() => {
-    const map = getMap();
-    // Make sure to remove any existing layer and/or source to avoid conflicts
-    if (layerExists(map)) {
-      map.removeLayer(props.id);
-    }
+    removeLayer();
+    removeSource();
+    unref(map).addLayer(unref(options), props.beforeId);
+  });
 
-    if (sourceExists(map)) {
-      map.removeSource(props.id);
-    }
-
-    if (props.options.paint === null || props.options.paint === undefined) {
-      delete props.options.paint;
-    }
-
-    if (props.options.layout === null || props.options.layout === undefined) {
-      delete props.options.layout;
-    }
-
-    map.addLayer({ ...props.options, id: props.id }, props.beforeId);
-
-    onUnmounted(() => {
-      if (layerExists(map)) {
-        map.removeLayer(props.id);
-      }
-
-      if (sourceExists(map)) {
-        map.removeSource(props.id);
-      }
-    });
+  onUnmounted(() => {
+    removeLayer();
+    removeSource();
   });
 </script>
