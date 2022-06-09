@@ -1,6 +1,6 @@
 <template>
   <div>
-    <mapbox-image
+    <MapboxImage
       v-for="(source, index) in sources"
       :key="`mapbox-images-${source.id}`"
       v-bind="source"

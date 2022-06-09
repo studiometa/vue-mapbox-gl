@@ -3,9 +3,9 @@
     <div ref="contentRef">
       <slot />
     </div>
-    <mapbox-popup v-if="hasPopup" ref="popupRef" v-bind="popupOptions">
+    <MapboxPopup v-if="hasPopup" ref="popupRef" v-bind="popupOptions">
       <slot name="popup" />
-    </mapbox-popup>
+    </MapboxPopup>
   </div>
 </template>
 
