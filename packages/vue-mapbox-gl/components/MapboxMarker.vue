@@ -77,7 +77,7 @@
 </script>
 
 <script setup>
-  import { computed, ref, onMounted, onUnmounted } from 'vue';
+  import { computed, ref, onMounted, onUnmounted, useSlots } from 'vue';
   import { useMap, useEventsBinding, usePropsBinding } from '../composables/index.js';
   import MapboxPopup from './MapboxPopup.vue';
 

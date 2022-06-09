@@ -16,7 +16,7 @@
 </script>
 
 <script setup>
-  import { watch } from 'vue';
+  import { unref, watch, onMounted, onUnmounted } from 'vue';
   import { useMap } from '../composables/index.js';
 
   const props = defineProps(propsConfig);

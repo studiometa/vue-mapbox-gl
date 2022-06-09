@@ -38,7 +38,7 @@
 </script>
 
 <script setup>
-  import { ref, unref, watch } from 'vue';
+  import { ref, unref, watch, onMounted, onUnmounted } from 'vue';
   import { useMap } from '../composables/index.js';
 
   const props = defineProps(propsConfig);

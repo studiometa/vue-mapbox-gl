@@ -1,4 +1,4 @@
-import { inject } from 'vue';
+import { inject, watch } from 'vue';
 
 export function useMap() {
   const map = inject('mapbox-map');
