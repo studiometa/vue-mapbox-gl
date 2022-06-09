@@ -1,3 +1,4 @@
+export * from './StoreLocator/index.js';
 export { default as MapboxCluster } from './MapboxCluster.vue';
 export { default as MapboxGeocoder } from './MapboxGeocoder.vue';
 export { default as MapboxGeolocateControl } from './MapboxGeolocateControl.vue';
