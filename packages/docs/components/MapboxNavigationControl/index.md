@@ -1,3 +1,7 @@
+<script setup>
+  import { MapboxNavigationControlDemo } from '../../.vitepress/components/index.js';
+</script>
+
 # MapboxNavigationControl
 
 Display navigation controls on the map, including two zoom buttons + - and a compass button to rotate the map.
@@ -18,7 +22,7 @@ Display navigation controls on the map, including two zoom buttons + - and a com
   <MapboxNavigationControlDemo style="margin-top: 1em;" />
 </ClientOnly>
 
-<<< @/.vitepress/components/MapboxNavigationControlDemo.vue{6}
+<<< @/.vitepress/components/MapboxNavigationControlDemo.vue{10}
 
 ## Props
 

@@ -1,3 +1,7 @@
+<script setup>
+  import { MapboxGeocoderDemo, MapboxGeocoderDemoWithoutMap } from '../../.vitepress/components/index.js';
+</script>
+
 # MapboxGeocoder
 
 Display a search form to search for places using Mapbox Geocoding API.
@@ -13,18 +17,18 @@ This component does not support outside of the map.
 
 ### Basic usage
 
-<client-only>
-  <mapbox-geocoder-demo />
-</client-only>
+<ClientOnly>
+  <MapboxGeocoderDemo />
+</ClientOnly>
 
 ```vue
 <template>
-  <mapbox-map
+  <MapboxMap
     style="margin-top: 1em; height: 400px;"
     :access-token="MAPBOX_API_KEY"
     map-style="mapbox://styles/mapbox/streets-v11">
-    <mapbox-geocoder />
-  </mapbox-map>
+    <MapboxGeocoder />
+  </MapboxMap>
 </template>
 
 <script>
@@ -35,23 +39,27 @@ This component does not support outside of the map.
 
 ### Without a map
 
-This component can be used outside of the `<mapbox-map>` component. You will need to pass the `accessToken` props.
+This component can be used outside of the `<MapboxMap>` component. You will need to pass the `accessToken` props.
 
-<client-only>
-  <mapbox-geocoder-demo-without-map />
-</client-only>
+<ClientOnly>
+  <MapboxGeocoderDemoWithoutMap />
+</ClientOnly>
 
 ```vue
+<script setup>
+  import { ref } from 'vue';
+
+  // MaboxGeocoder stylesheet needs to be imported manually.
+  import '@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css';
+
+  const control = ref();
+</script>
+
 <template>
-  <mapbox-geocoder
+  <MapboxGeocoder
     :access-token="MAPBOX_API_KEY"
     @mb-created="instance => control = instance" />
 </template>
-
-<script>
-  // MaboxGeocoder stylesheet needs to be imported manually.
-  import '@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css';
-</script>
 ```
 
 :::warning

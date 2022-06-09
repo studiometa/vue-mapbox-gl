@@ -1,31 +1,31 @@
-<template>
-  <div class="preview">
-    <mapbox-geocoder
-      :access-token="MAPBOX_API_KEY"
-      :reverse-geocode="reverseGeocode"
-      @mb-loading="log('loading', $event)"
-      @mb-results="log('results', $event)"
-      @mb-result="log('result', $event)"
-      @mb-error="log('error', $event)" />
-  </div>
-</template>
-
-<script>
+<script setup>
+  import { ref } from 'vue';
+  import { MapboxGeocoder } from '@studiometa/vue-mapbox-gl';
   import '@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css';
 
-  export default {
-    name: 'MapboxGeocoderDemoWithoutMap',
-    props: {
-      reverseGeocode: {
-        type: Boolean,
-        default: false,
-      },
+  const props = defineProps({
+    reverseGeocode: {
+      type: Boolean,
+      default: false,
     },
-    methods: {
-      log: console.log,
-    },
-  };
+  });
+
+  const log = console.log.bind(null, '[MapboxGeocoderDemoWithoutMap]');
 </script>
+
+<template>
+  <div class="preview">
+    <div>
+      <MapboxGeocoder
+        :access-token="MAPBOX_API_KEY"
+        :reverse-geocode="reverseGeocode"
+        @mb-loading="log('loading', $event)"
+        @mb-results="log('results', $event)"
+        @mb-result="log('result', $event)"
+        @mb-error="log('error', $event)" />
+    </div>
+  </div>
+</template>
 
 <style>
   .preview {

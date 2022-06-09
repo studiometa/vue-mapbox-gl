@@ -15,10 +15,10 @@ Add multiple images at once to be used used in `icon-image`, `background-pattern
 ### Add multiple icons to the map
 
 <ClientOnly>
-  <MapboxImagesDemo api-key="MAPBOX_API_KEY" />
+  <MapboxImagesDemo style="margin-top: 1rem;" api-key="MAPBOX_API_KEY" />
 </ClientOnly>
 
-<<< @/.vitepress/components/MapboxImagesDemo.vue{8-12,20-31,42,52,63}
+<<< @/.vitepress/components/MapboxImagesDemo.vue{4-13,15-49,59-61}
 
 ## Props
 

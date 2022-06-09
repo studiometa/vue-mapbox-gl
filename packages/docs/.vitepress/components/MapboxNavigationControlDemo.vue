@@ -1,8 +1,12 @@
+<script setup>
+  import { MapboxMap, MapboxNavigationControl } from '@studiometa/vue-mapbox-gl';
+</script>
+
 <template>
-  <mapbox-map
+  <MapboxMap
     style="height: 400px"
     :access-token="MAPBOX_API_KEY"
     map-style="mapbox://styles/mapbox/streets-v11">
-    <mapbox-navigation-control position="bottom-right" />
-  </mapbox-map>
+    <MapboxNavigationControl position="bottom-right" />
+  </MapboxMap>
 </template>

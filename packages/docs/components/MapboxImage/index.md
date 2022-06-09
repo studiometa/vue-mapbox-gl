@@ -57,17 +57,23 @@ Add an image to be used used in `icon-image`, `background-pattern`, `fill-patter
   </MapboxMap>
 </ClientOnly>
 
-```vue{7-9}
-<MapboxMap
-  style="height: 400px"
-  access-token="..."
-  map-style="mapbox://styles/mapbox/streets-v11"
-  :center="[0, 0]"
-  :zoom="1">
-  <MapboxImage
-    src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Cat_silhouette.svg/400px-Cat_silhouette.svg.png"
-    id="cat" />
-</MapboxMap>
+```vue {12-14}
+<script setup>
+  import { MapboxMap, MapboxImage } from '@studiometa/vue-mapbox-gl';
+</script>
+
+<template>
+  <MapboxMap
+    style="height: 400px"
+    access-token="..."
+    map-style="mapbox://styles/mapbox/streets-v11"
+    :center="[0, 0]"
+    :zoom="1">
+    <MapboxImage
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Cat_silhouette.svg/400px-Cat_silhouette.svg.png"
+      id="cat" />
+  </MapboxMap>
+</template>
 ```
 
 ## Props

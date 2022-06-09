@@ -22,7 +22,7 @@ Display a popup on the map.
   <MapboxPopupDemo api-key="MAPBOX_API_KEY" />
 </ClientOnly>
 
-<<< @/.vitepress/components/MapboxPopupDemo.vue{6-8}
+<<< @/.vitepress/components/MapboxPopupDemo.vue{10-12}
 
 
 ## Props
