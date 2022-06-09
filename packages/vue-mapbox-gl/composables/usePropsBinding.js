@@ -37,7 +37,10 @@ export function usePropsBinding(props, mapboxElement, propsConfig) {
           prop === 'mapStyle' ? 'setStyle' : `set${capitalizeFirstLetter(prop)}`;
 
         const methodExists = typeof element[setMethodName] === 'function';
-        const propNeedsBinding = 'bind' in propsConfig[prop] ? propsConfig[prop].bind : true;
+        const propNeedsBinding =
+          typeof propsConfig[prop] === 'undefined' || 'bind' in propsConfig[prop]
+            ? propsConfig[prop]?.bind ?? false
+            : true;
 
         // Do nothing if `setMethodName` is not a function of `mapBoxElement`
         // or if the props is not to be bounded
@@ -62,7 +65,6 @@ export function usePropsBinding(props, mapboxElement, propsConfig) {
   }
 
   if (unref(mapboxElement)) {
-    console.log('ccc', unref(mapboxElement))
     bindProps(unref(mapboxElement));
   } else {
     const unwatch = watch(mapboxElement, (newValue) => {
