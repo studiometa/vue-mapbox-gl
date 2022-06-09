@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/studiometa/vue-mapbox-gl.git"
   },
-  "license": "GPL-3.0-or-later",
+  "license": "MIT",
   "author": {
     "name": "Studio Meta",
     "email": "agence@studiometa.fr",

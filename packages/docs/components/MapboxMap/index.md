@@ -1,8 +1,6 @@
----
-sidebar: auto
-prev: false
-next: ./MapboxMarker.md
----
+<script setup>
+import { MapboxMap } from '@studiometa/vue-mapbox-gl';
+</script>
 
 # MapboxMap
 
@@ -18,22 +16,28 @@ It is recommended to have a look at their [API reference](https://docs.mapbox.co
 
 ### Basic usage
 
-<client-only>
-  <mapbox-map
+<ClientOnly>
+  <MapboxMap
     style="margin-top: 1em; height: 400px;"
     :access-token="MAPBOX_API_KEY"
     map-style="mapbox://styles/mapbox/streets-v11"
     :center="[0, 0]"
     :zoom="1" />
-</client-only>
+</ClientOnly>
 
 ```vue
-<mapbox-map
-  style="height: 400px"
-  access-token="..."
-  map-style="mapbox://styles/mapbox/streets-v11"
-  :center="[0, 0]"
-  :zoom="1" />
+<script setup>
+  import { MapboxMap } from '@studiometa/vue-mapbox-gl';
+</script>
+
+<template>
+  <MapboxMap
+    style="height: 400px"
+    access-token="..."
+    map-style="mapbox://styles/mapbox/streets-v11"
+    :center="[0, 0]"
+    :zoom="1" />
+</template>
 ```
 
 ### Accessing the Mapbox instance
@@ -42,7 +46,7 @@ You will probably need to use the Mapbox instance to use some of its methods suc
 
 ```vue{5,18}
 <template>
-  <mapbox-map
+  <MapboxMap
     access-token="..."
     map-style="..."
     @mb-created="(mapInstance) => map = mapInstance" />

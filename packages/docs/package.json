@@ -1,0 +1,12 @@
+{
+  "name": "@studiometa/vue-mapbox-gl-docs",
+  "private": true,
+  "version": "1.4.7",
+  "scripts": {
+    "dev": "vitepress",
+    "build": "vitepress build"
+  },
+  "devDependencies": {
+    "vitepress": "^1.0.0-alpha.1"
+  }
+}
