@@ -4,13 +4,12 @@
 
 <script>
   import mapboxgl from 'mapbox-gl';
-  import { injectMap } from '../mixins/provide-inject-map';
-  import bindProps from '../utils/bind-props';
-  import { bindEvents, unbindEvents } from '../utils/bind-events';
 
   if (!mapboxgl) {
     throw new Error('mapboxgl is not installed.');
   }
+
+  const { GeolocateControl } = mapboxgl;
 
   /**
    * Component's props definition, we need to declare it outside the component
@@ -18,7 +17,7 @@
    * @see https://docs.mapbox.com/mapbox-gl-js/api/#geolocatecontrol
    * @type {Object}
    */
-  const props = {
+  const propsConfig = {
     positionOptions: {
       type: Object,
       default: () => ({ enableHighAccuracy: false, timeout: 6000 }),
@@ -58,26 +57,29 @@
     'outofmaxbounds',
     'trackuserlocationstart',
   ];
+</script>
 
-  export default {
-    name: 'MapboxGeolocateControl',
-    mixins: [ injectMap() ],
-    props,
-    mounted() {
-      this.control = new mapboxgl.GeolocateControl(this.$props);
+<script setup>
+  import { onMounted, onUnmounted, ref, unref } from 'vue';
+  import { useMap, useEventsBinding, usePropsBinding } from '../composables/index.js';
 
-      // Bind props and events
-      bindProps(this, this.control, props);
-      bindEvents(this, this.control, events);
+  const props = defineProps(propsConfig);
+  const emit = defineEmits();
 
-      // Add GeolocationControl to the map
-      this.map.addControl(this.control, this.position);
-    },
-    destroyed() {
-      if (this.control) {
-        unbindEvents(this, this.control, events);
-        this.map.removeControl(this.control);
-      }
-    },
-  };
+  const { map } = useMap();
+  const control = ref();
+
+  useEventsBinding(emit, control, events);
+  usePropsBinding(props, control, propsConfig);
+
+  onMounted(() => {
+    control.value = new GeolocateControl(props);
+    unref(map).addControl(unref(control), props.position);
+  });
+
+  onUnmounted(() => {
+    if (unref(control)) {
+      unref(map).removeControl(unref(control));
+    }
+  });
 </script>

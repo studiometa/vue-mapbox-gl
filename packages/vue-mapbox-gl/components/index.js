@@ -1,5 +1,4 @@
 // export MapboxCluster from './MapboxCluster.vue';
-// export MapboxGeolocateControl from './MapboxGeolocateControl.vue';
 // export MapboxImage from './MapboxImage.vue';
 // export MapboxImages from './MapboxImages.vue';
 // export MapboxLayer from './MapboxLayer.vue';
@@ -9,3 +8,4 @@ export { default as MapboxPopup } from './MapboxPopup.vue';
 export { default as MapboxMarker } from './MapboxMarker.vue';
 export { default as MapboxNavigationControl } from './MapboxNavigationControl.vue';
 export { default as MapboxGeocoder } from './MapboxGeocoder.vue';
+export { default as MapboxGeolocateControl } from './MapboxGeolocateControl.vue';
