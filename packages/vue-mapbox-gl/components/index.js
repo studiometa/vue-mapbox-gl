@@ -1,10 +1,10 @@
 // export MapboxCluster from './MapboxCluster.vue';
-// export MapboxImages from './MapboxImages.vue';
-export { default as MapboxLayer } from './MapboxLayer.vue';
 // export MapboxSource from './MapboxSource.vue';
 export { default as MapboxGeocoder } from './MapboxGeocoder.vue';
 export { default as MapboxGeolocateControl } from './MapboxGeolocateControl.vue';
 export { default as MapboxImage } from './MapboxImage.vue';
+export { default as MapboxImages } from './MapboxImages.vue';
+export { default as MapboxLayer } from './MapboxLayer.vue';
 export { default as MapboxMap } from './MapboxMap.vue';
 export { default as MapboxMarker } from './MapboxMarker.vue';
 export { default as MapboxNavigationControl } from './MapboxNavigationControl.vue';
