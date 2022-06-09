@@ -1,5 +1,5 @@
 <script setup>
-import { MapboxMap } from '@studiometa/vue-mapbox-gl';
+  import { MapboxMap } from '@studiometa/vue-mapbox-gl';
 </script>
 
 # MapboxMap
@@ -287,6 +287,7 @@ A map style definition, can be a JSON object following the [Mapbox Style specifi
 Emitted when the Mapbox instance has been created.
 
 **Params**
+
 - `map` (`Map`): the Mapbox map instance
 
 ### Other events
