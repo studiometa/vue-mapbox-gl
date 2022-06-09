@@ -128,19 +128,13 @@
 </script>
 
 <script setup>
-  import { onMounted, onUnmounted, ref, unref, computed, useAttrs } from 'vue';
-  import { useMap, useEventsBinding, usePropsBinding } from '../composables/index.js';
+  import { onMounted, ref, unref, computed } from 'vue';
+  import { useControl } from '../composables/index.js';
 
   const props = defineProps(propsConfig);
   const emit = defineEmits();
 
-  const { map } = useMap();
   const root = ref();
-  const control = ref();
-
-  useEventsBinding(emit, control, events);
-  usePropsBinding(props, control, propsConfig);
-
   const options = computed(() => {
     const opts = {
       mapboxgl,
@@ -171,15 +165,17 @@
     return opts;
   });
 
-  onMounted(() => {
-    control.value = new MapboxGeocoder(unref(options));
-    emit('mb-created', control);
-    control.value.addTo(unref(map) || unref(root));
+  const { control, map } = useControl(MapboxGeocoder, {
+    propsConfig,
+    props: unref(options),
+    emit,
+    events,
   });
 
-  onUnmounted(() => {
-    if (unref(map)) {
-      unref(map).removeControl(unref(control));
+  // Add to root element if map does not exist.
+  onMounted(() => {
+    if (!unref(map)) {
+      unref(control).addTo(unref(root));
     }
   });
 </script>

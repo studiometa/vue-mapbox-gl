@@ -60,26 +60,12 @@
 </script>
 
 <script setup>
-  import { onMounted, onUnmounted, ref, unref } from 'vue';
-  import { useMap, useEventsBinding, usePropsBinding } from '../composables/index.js';
+  import { useControl } from '../composables/index.js';
 
   const props = defineProps(propsConfig);
   const emit = defineEmits();
 
-  const { map } = useMap();
-  const control = ref();
+  const { control } = useControl(GeolocateControl, { propsConfig, events, props, emit });
 
-  useEventsBinding(emit, control, events);
-  usePropsBinding(props, control, propsConfig);
-
-  onMounted(() => {
-    control.value = new GeolocateControl(props);
-    unref(map).addControl(unref(control), props.position);
-  });
-
-  onUnmounted(() => {
-    if (unref(control)) {
-      unref(map).removeControl(unref(control));
-    }
-  });
+  defineExpose({ control });
 </script>

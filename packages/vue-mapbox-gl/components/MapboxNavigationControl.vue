@@ -35,25 +35,11 @@
 
 <script setup>
   import { onMounted, onUnmounted, ref, unref } from 'vue';
-  import { useMap, usePropsBinding } from '../composables/index.js';
+  import { useControl } from '../composables/index.js';
 
   const props = defineProps(propsConfig);
 
-  const { map } = useMap();
-  const control = ref();
-
-  usePropsBinding(props, control, propsConfig);
-
-  onMounted(() => {
-    control.value = new NavigationControl(props);
-    unref(map).addControl(unref(control), props.position);
-  });
-
-  onUnmounted(() => {
-    if (unref(control)) {
-      unref(map).removeControl(unref(control));
-    }
-  });
+  const { control } = useControl(NavigationControl, { props, propsConfig });
 
   defineExpose({ control });
 </script>
