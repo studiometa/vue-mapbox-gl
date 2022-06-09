@@ -112,7 +112,7 @@
   });
 
   usePropsBinding(props, () => marker.value, propsConfig);
-  useEventsBinding(emit, () => marker.value, events);
+  useEventsBinding(emit, marker, events);
 
   onMounted(() => {
     const { map } = useMap();

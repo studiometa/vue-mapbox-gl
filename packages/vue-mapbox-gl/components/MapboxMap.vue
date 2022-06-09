@@ -276,7 +276,7 @@
     return { style, ...options };
   });
 
-  useEventsBinding(emit, () => map.value, events);
+  useEventsBinding(emit, map, events);
   usePropsBinding(props, () => map.value, propsConfig);
 
   onMounted(() => {

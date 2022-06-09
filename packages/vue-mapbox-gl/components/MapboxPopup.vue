@@ -82,7 +82,7 @@
   });
 
   usePropsBinding(props, () => popup.value, propsConfig);
-  useEventsBinding(emit, () => popup.value, events);
+  useEventsBinding(emit, popup, events);
 
   onMounted(() => {
     const { map } = useMap();
