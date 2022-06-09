@@ -1,4 +1,8 @@
-import { onMounted, nextTick } from 'vue';
+import { watch, unref } from 'vue';
+
+/**
+ * @typedef {import('vue').Ref} Ref
+ */
 
 /**
  * Capitalize the first letter of a string
@@ -13,26 +17,29 @@ function capitalizeFirstLetter(string) {
 /**
  * Map a mapbox element's events to the given vue element
  *
- * @param  {Vue}    vueElement    The Vue component in question
- * @param  {Mixed}  mapboxElement The Mapbox element bound to the component
- * @param  {Array}  events        The events to map
- * @param  {String} layerId       The layer on which the events are delegated
- * @return {Array}                The list of event/handler pair bounded
+ * @template {any}    T
+ * @param    {any}    props          The component props.
+ * @param    {Ref<T>} mapboxElement  The Mapbox element bound to the component.
+ * @param    {any}    propsConfig    The props original configuration.
  */
-export function usePropsBinding(props, getMapboxElement, propsConfig) {
-  onMounted(async () => {
-    await nextTick();
-    const mapboxElement = getMapboxElement();
+export function usePropsBinding(props, mapboxElement, propsConfig) {
+  /**
+   * Bind props to the given mapboxElement in order to update them when they change.
+   *
+   * @param   {T} element
+   * @returns {void}
+   */
+  function bindProps(element) {
     Object.keys(props)
       .filter((prop) => props[prop] !== undefined && props[prop] !== null)
       .forEach((prop) => {
         const setMethodName =
           prop === 'mapStyle' ? 'setStyle' : `set${capitalizeFirstLetter(prop)}`;
 
-        const methodExists = typeof mapboxElement[setMethodName] === 'function';
+        const methodExists = typeof element[setMethodName] === 'function';
         const propNeedsBinding = 'bind' in propsConfig[prop] ? propsConfig[prop].bind : true;
 
-        // Do nothin if `setMethodName` is not a function of `mapBoxElement`
+        // Do nothing if `setMethodName` is not a function of `mapBoxElement`
         // or if the props is not to be bounded
         if (!methodExists || !propNeedsBinding) {
           return;
@@ -47,10 +54,22 @@ export function usePropsBinding(props, getMapboxElement, propsConfig) {
         watch(
           () => props[prop],
           (newValue) => {
-            mapboxElement[setMethodName](newValue);
+            element[setMethodName](newValue);
           },
           options
         );
       });
-  });
+  }
+
+  if (unref(mapboxElement)) {
+    console.log('ccc', unref(mapboxElement))
+    bindProps(unref(mapboxElement));
+  } else {
+    const unwatch = watch(mapboxElement, (newValue) => {
+      if (newValue) {
+        bindProps(newValue);
+        unwatch();
+      }
+    });
+  }
 }

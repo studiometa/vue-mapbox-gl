@@ -111,7 +111,7 @@
     return options;
   });
 
-  usePropsBinding(props, () => marker.value, propsConfig);
+  usePropsBinding(props, marker, propsConfig);
   useEventsBinding(emit, marker, events);
 
   onMounted(() => {

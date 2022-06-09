@@ -81,7 +81,7 @@
     return options;
   });
 
-  usePropsBinding(props, () => popup.value, propsConfig);
+  usePropsBinding(props, popup, propsConfig);
   useEventsBinding(emit, popup, events);
 
   onMounted(() => {

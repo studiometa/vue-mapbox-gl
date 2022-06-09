@@ -277,7 +277,7 @@
   });
 
   useEventsBinding(emit, map, events);
-  usePropsBinding(props, () => map.value, propsConfig);
+  usePropsBinding(props, map, propsConfig);
 
   onMounted(() => {
     mapboxgl.accessToken = props.accessToken;
