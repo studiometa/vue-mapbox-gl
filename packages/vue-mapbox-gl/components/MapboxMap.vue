@@ -1,12 +1,10 @@
 <template>
-  <div>
-    <div ref="root" v-bind="$attrs"></div>
-    <div v-if="isLoaded">
-      <slot />
-    </div>
-    <div v-else>
-      <slot name="loader" />
-    </div>
+  <div ref="root" v-bind="$attrs"></div>
+  <div v-if="isLoaded">
+    <slot />
+  </div>
+  <div v-else>
+    <slot name="loader" />
   </div>
 </template>
 
@@ -258,7 +256,7 @@
   import { useEventsBinding, usePropsBinding } from '../composables/index.js';
 
   const props = defineProps(propsConfig);
-  const emit = defineEmits()
+  const emit = defineEmits();
 
   const map = ref();
   provide('mapbox-map', map);
