@@ -182,4 +182,6 @@
       unref(control).addTo(unref(root));
     }
   });
+
+  defineExpose({ control });
 </script>
