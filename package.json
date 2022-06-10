@@ -12,16 +12,22 @@
     "demo:build": "npm run build -w @studiometa/vue-mapbox-gl-demo",
     "lint": "eslint packages/vue-mapbox-gl --ext=.js,.vue",
     "fix": "npm run lint -- --fix",
+    "build": "rm -rf dist && npm run build:esbuild && npm run build:cp",
+    "build:esbuild": "node scripts/build.mjs",
+    "build:cp": "cp packages/vue-mapbox-gl/package.json dist/",
     "prepublishOnly": "npm run build",
-    "test": "echo '@todo add tests.'"
+    "test": "echo '@todo add tests.'",
+    "postinstall": "patch-package"
   },
   "devDependencies": {
     "@studiometa/eslint-config": "^3.0.1",
     "@studiometa/prettier-config": "^2.1.1",
-    "esbuild": "^0.14.41",
     "eslint": "^8.11.0",
-    "fast-glob": "^3.2.11",
-    "prettier": "^2.6.0",
+    "prettier": "^2.6.0"
+  },
+  "dependencies": {
+    "esbuild": "^0.14.41",
+    "patch-package": "^6.4.7",
     "unplugin-vue": "^2.2.0"
   }
 }

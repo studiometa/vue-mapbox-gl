@@ -65,7 +65,7 @@
   </div>
 </template>
 
-<style lang="scss">
+<style>
   .scroller,
   .scroller__inner {
     width: 100%;
@@ -75,43 +75,39 @@
   .scroller {
     position: relative;
     overflow: hidden;
-
-    // Pseudo element
-    &::after,
-    &::before {
-      content: '';
-      z-index: 1;
-      position: absolute;
-      left: 0;
-      width: 100%;
-      height: 5em;
-      pointer-events: none;
-      border-radius: 30%;
-      box-shadow: 0 0 1em rgba(black, 0.25), 0 0 2em rgba(black, 0.05);
-      transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1);
-    }
-
-    &::before {
-      bottom: 100%;
-    }
-
-    &::after {
-      top: 100%;
-    }
   }
 
-  .scroller--is-top,
-  .scroller--has-no-scroll {
-    &::before {
-      opacity: 0;
-    }
+  /* Pseudo element */
+  .scroller::after,
+  .scroller::before {
+    content: '';
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 5em;
+    pointer-events: none;
+    border-radius: 30%;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.25), 0 0 2em rgba(0, 0, 0, 0.05);
+    transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1);
   }
 
-  .scroller--is-bottom,
-  .scroller--has-no-scroll {
-    &::after {
-      opacity: 0;
-    }
+  .scroller::before {
+    bottom: 100%;
+  }
+
+  .scroller::after {
+    top: 100%;
+  }
+
+  .scroller--is-top::before,
+  .scroller--has-no-scroll::before {
+    opacity: 0;
+  }
+
+  .scroller--is-bottom::after,
+  .scroller--has-no-scroll::after {
+    opacity: 0;
   }
 
   .scroller__inner {
