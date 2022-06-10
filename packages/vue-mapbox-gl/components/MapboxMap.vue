@@ -29,7 +29,7 @@
       default: 'no-token',
     },
     container: {
-      type: [String],
+      type: [typeof HTMLElement !== 'undefined' && HTMLElement, String],
       default: undefined,
     },
     minZoom: {
