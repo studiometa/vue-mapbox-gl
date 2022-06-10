@@ -6,16 +6,14 @@
       :options="clustersLayer"
       @mb-click="clustersClickHandler"
       @mb-mouseenter="clustersMouseenterHandler"
-      @mb-mouseleave="clustersMouseleaveHandler"
-    />
+      @mb-mouseleave="clustersMouseleaveHandler" />
     <MapboxLayer :id="clusterCountLayer.id" :options="clusterCountLayer" />
     <MapboxLayer
       :id="unclusteredPointLayer.id"
       :options="unclusteredPointLayer"
       @mb-click="unclusteredPointClickHandler"
       @mb-mouseenter="unclusteredPointMouseenterHandler"
-      @mb-mouseleave="unclusteredPointMouseleaveHandler"
-    />
+      @mb-mouseleave="unclusteredPointMouseleaveHandler" />
   </div>
 </template>
 
@@ -24,7 +22,7 @@
     /**
      * The source of the data for the clustered points,
      * must be a String or an Object of GeoJSON format.
-     * @type {String|GeoJSON}
+     * @type {string | GeoJSON}
      */
     data: {
       type: [String, Object],
@@ -32,7 +30,7 @@
     },
     /**
      * The max zoom to cluster points on
-     * @type {Number}
+     * @type {number}
      */
     clusterMaxZoom: {
       type: Number,
@@ -40,7 +38,7 @@
     },
     /**
      * Radius of each cluster when clustering point
-     * @type {Number}
+     * @type {number}
      */
     clusterRadius: {
       type: Number,
@@ -92,7 +90,7 @@
     /**
      * The type of the unclustered points layer
      * @see  https://docs.mapbox.com/mapbox-gl-js/example/cluster/
-     * @type {String}
+     * @type {string}
      */
     unclusteredPointLayerType: {
       type: String,
@@ -120,8 +118,6 @@
       }),
     },
   };
-
-  let index = 0;
 </script>
 
 <script setup>
@@ -130,16 +126,17 @@
   import MapboxLayer from './MapboxLayer.vue';
   import MapboxSource from './MapboxSource.vue';
 
+  let index = 0;
+
   const props = defineProps(propsConfig);
+  // eslint-disable-next-line vue/valid-define-emits
   const emit = defineEmits();
 
   const { map } = useMap();
   const id = ref(`mb-cluster-${index}`);
   index += 1;
 
-  function getId(suffix) {
-    return `${unref(id)}-${suffix}`;
-  }
+  const getId = (suffix) => `${unref(id)}-${suffix}`;
 
   const sourceId = computed(() => getId('source'));
   const source = computed(() => {
@@ -188,7 +185,7 @@
    * Click handler for the clusters layer to zoom on the clicked cluster
    *
    * @param  {Object} event The Mapbox click event's object
-   * @return {void}
+   * @returns {void}
    */
   function clustersClickHandler(event) {
     const feature = unref(map).queryRenderedFeatures(event.point, {
@@ -198,21 +195,23 @@
 
     // Emit a cluster click event
     emit('mb-cluster-click', clusterId, event);
-    unref(map).getSource(unref(sourceId)).getClusterExpansionZoom(clusterId, (err, zoom) => {
-      if (err) {
-        return;
-      }
+    unref(map)
+      .getSource(unref(sourceId))
+      .getClusterExpansionZoom(clusterId, (err, zoom) => {
+        if (err) {
+          return;
+        }
 
-      unref(map).easeTo({
-        center: feature.geometry.coordinates,
-        zoom,
+        unref(map).easeTo({
+          center: feature.geometry.coordinates,
+          zoom,
+        });
       });
-    });
   }
   /**
    * Mouseenter handler for the clusters layer to set a pointer cursor
    *
-   * @return {void}
+   * @returns {void}
    */
   function clustersMouseenterHandler() {
     unref(map).getCanvas().style.cursor = 'pointer';
@@ -220,7 +219,7 @@
   /**
    * Mouseleave handler for the clusters layer to unset the pointer cursor
    *
-   * @return {void}
+   * @returns {void}
    */
   function clustersMouseleaveHandler() {
     unref(map).getCanvas().style.cursor = '';
@@ -231,7 +230,7 @@
    * the feature object and the original event object
    *
    * @param  {Object} event The Mapbox click event's object
-   * @return {void}
+   * @returns {void}
    */
   function unclusteredPointClickHandler(event) {
     const [feature] = event.features;
@@ -244,7 +243,7 @@
    * parameters, and sets the cursor style to pointer.
    *
    * @param  {Object} event The Mapbox mouseenter event's object
-   * @return {void}
+   * @returns {void}
    */
   function unclusteredPointMouseenterHandler(event) {
     const [feature] = event.features;
@@ -258,7 +257,7 @@
    * the cursor style to its default value.
    *
    * @param  {Object} event The Mapbox mouselvea event‘s object
-   * @return {void}
+   * @returns {void}
    */
   function unclusteredPointMouseleaveHandler(event) {
     emit('mb-feature-mouseleave', event);

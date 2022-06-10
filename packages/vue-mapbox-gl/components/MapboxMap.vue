@@ -1,5 +1,5 @@
 <template>
-  <div ref="root" v-bind="$attrs"></div>
+  <div ref="root" v-bind="$attrs" />
   <div v-if="isLoaded">
     <slot />
   </div>

@@ -4,14 +4,16 @@
       v-for="(source, index) in sources"
       :key="`mapbox-images-${source.id}`"
       v-bind="source"
-      @mb-add="addHandler($event, index + 1, sources.length)"
-    />
+      @mb-add="addHandler($event, index + 1)" />
     <slot v-if="isReady" />
   </div>
 </template>
 
-<script>
-  const propsConfig = {
+<script setup>
+  import { ref } from 'vue';
+  import MapboxImage from './MapboxImage.vue';
+
+  const props = defineProps({
     /**
      * A list of sources to add to the map
      * @see  https://docs.mapbox.com/mapbox-gl-js/api/#map#addimage
@@ -22,24 +24,21 @@
       type: Array,
       required: true,
     },
-  };
-</script>
-
-<script setup>
-  import { ref } from 'vue';
-  import MapboxImage from './MapboxImage.vue';
-
-  const props = defineProps(propsConfig);
+  });
   const emit = defineEmits();
 
   const isReady = ref(false);
   const addedImages = new Map();
 
-  function addHandler(image, index, total) {
-    console.log('addHandler', image, index, total)
+  /**
+   * Handle the add of a single image.
+   * @param {ImageBitmap} image
+   * @param {number} index
+   */
+  function addHandler(image, index) {
     if (!addedImages.has(image.id)) {
       addedImages.set(image.id, image);
-      emit('mb-add', image, index, total);
+      emit('mb-add', image, index, props.sources.length);
     }
 
     if (addedImages.size === props.sources.length) {

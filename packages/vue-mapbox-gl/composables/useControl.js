@@ -1,9 +1,19 @@
 import { onMounted, onUnmounted, ref, unref, watch } from 'vue';
-import { useMap } from './useMap.js'
-import { useEventsBinding } from './useEventsBinding.js'
-import { usePropsBinding } from './usePropsBinding.js'
+import { useMap } from './useMap.js';
+import { useEventsBinding } from './useEventsBinding.js';
+import { usePropsBinding } from './usePropsBinding.js';
 
-
+/**
+ * Use a Mapbox control.
+ * @template {any} T
+ * @param   {T}        ControlConstructor  A Mapbox control constructor function.
+ * @param   {Object}   options
+ * @param   {any}      options.propsConfig Props configuration for the component.
+ * @param   {an}       options.props       Resolved props of the component.
+ * @param   {Function} options.emit        Emit function of the component.
+ * @param   {string[]} options.events      List of events for the Mapbox control.
+ * @returns {{ control: Ref<InstanceType<T>>, map: Ref<any> }}
+ */
 export function useControl(ControlConstructor, { propsConfig, props, emit, events = [] }) {
   const { map } = useMap();
   const control = ref();

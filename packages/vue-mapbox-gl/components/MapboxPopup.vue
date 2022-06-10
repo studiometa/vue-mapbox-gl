@@ -68,7 +68,7 @@
 </script>
 
 <script setup>
-  import { ref, computed, nextTick, onMounted, onUnmounted } from 'vue';
+  import { ref, computed, onMounted, onUnmounted } from 'vue';
   import { useMap, usePropsBinding, useEventsBinding } from '../composables/index.js';
 
   const props = defineProps(propsConfig);

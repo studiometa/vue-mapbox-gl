@@ -1,11 +1,15 @@
-import { inject, watch } from 'vue';
+import { inject } from 'vue';
 
+/**
+ * @typedef {import('vue').Ref} Ref
+ */
+
+/**
+ * Inject the provided map instance.
+ * @returns {{ map: Ref<any> }}
+ */
 export function useMap() {
   const map = inject('mapbox-map');
-
-  watch(map, (newValue) => {
-    console.log('map has changed');
-  });
 
   return {
     map,

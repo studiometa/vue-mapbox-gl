@@ -7,8 +7,8 @@ import { watch, unref } from 'vue';
 /**
  * Capitalize the first letter of a string
  *
- * @param  {String} string The string to capitalize
- * @return {String}        The capitalized string
+ * @param  {string} string The string to capitalize
+ * @returns {string}        The capitalized string
  */
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);

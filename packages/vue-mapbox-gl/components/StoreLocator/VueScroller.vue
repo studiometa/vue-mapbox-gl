@@ -20,7 +20,7 @@
     data() {
       return {
         scrollTop: 0,
-        scrollMax: Infinity,
+        scrollMax: Number.POSITIVE_INFINITY,
       };
     },
     updated() {
@@ -39,7 +39,7 @@
       await this.$nextTick();
       this.setVars();
     },
-    beforeDestroy() {
+    beforeUnmount() {
       this.$refs.scroller.removeEventListener('scroll', this.setVars);
       window.removeEventListener('resize', this.debouncedSetVars);
     },

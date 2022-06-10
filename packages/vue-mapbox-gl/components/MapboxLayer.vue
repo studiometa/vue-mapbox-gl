@@ -7,7 +7,7 @@
     /**
      * Id of the layer
      * @see  https://docs.mapbox.com/mapbox-gl-js/api/#map#addlayer
-     * @type {String}
+     * @type {string}
      */
     id: {
       type: String,
@@ -26,7 +26,7 @@
     /**
      * The ID of an existing layer to insert the new layer before.
      * @see  https://docs.mapbox.com/mapbox-gl-js/api/#map#addlayer
-     * @type {String}
+     * @type {string}
      */
     beforeId: {
       type: String,
@@ -81,8 +81,7 @@
   useEventsBinding(emit, map, events, props.id);
 
   /**
-   * Test if the component's layer exists
-   * @return {Boolean}
+   * Remove the layer.
    */
   function removeLayer() {
     if (typeof unref(map).getLayer(props.id) !== 'undefined') {
@@ -91,8 +90,7 @@
   }
 
   /**
-   * Test if a source with the layer's ID exists
-   * @return {Boolean}
+   * Remove the source.
    */
   function removeSource() {
     if (typeof unref(map).getSource(props.id) !== 'undefined') {

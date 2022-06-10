@@ -2,8 +2,11 @@
   <div :id="id" />
 </template>
 
-<script>
-  const propsConfig = {
+<script setup>
+  import { unref, watch, onMounted, onUnmounted } from 'vue';
+  import { useMap } from '../composables/index.js';
+
+  const props = defineProps({
     options: {
       type: Object,
       default: () => {},
@@ -12,14 +15,7 @@
       type: String,
       required: true,
     },
-  };
-</script>
-
-<script setup>
-  import { unref, watch, onMounted, onUnmounted } from 'vue';
-  import { useMap } from '../composables/index.js';
-
-  const props = defineProps(propsConfig);
+  });
 
   const { map } = useMap();
 

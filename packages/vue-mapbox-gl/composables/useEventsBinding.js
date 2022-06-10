@@ -1,4 +1,4 @@
-import { watch, computed, useAttrs, onMounted, onUnmounted, unref } from 'vue';
+import { watch, computed, useAttrs, unref } from 'vue';
 
 /**
  * @typedef (import('vue').Ref) Ref
@@ -27,11 +27,11 @@ function getOriginalEvent(vueEventName) {
 /**
  * Map a mapbox element's events to a Vue component.
  *
- * @param  {(event:string, ...payload:any[]) => void} emitFn        The emit function for the current component
- * @param  {Ref<any>}                                 mapboxElement The Mapbox element bound to the component
- * @param  {string[]                                  [events]      The events to map
- * @param  {string}                                   [layerId]     The layer on which the events are delegated
- * @return {void}
+ * @param  {Function} emitFn        The emit function for the current component
+ * @param  {Ref<any>} mapboxElement The Mapbox element bound to the component
+ * @param  {string[]} [events]      The events to map
+ * @param  {string}   [layerId]     The layer on which the events are delegated
+ * @returns {void}
  */
 export function useEventsBinding(emitFn, mapboxElement, events = [], layerId = null) {
   const attrs = useAttrs();
@@ -71,34 +71,33 @@ export function useEventsBinding(emitFn, mapboxElement, events = [], layerId = n
       return;
     }
 
-    eventNames
-      .forEach((eventName) => {
-        const originalEvent = getOriginalEvent(eventName);
+    eventNames.forEach((eventName) => {
+      const originalEvent = getOriginalEvent(eventName);
 
-        if (!events.includes(originalEvent)) {
-          return;
-        }
+      if (!events.includes(originalEvent)) {
+        return;
+      }
 
-        const handler = (...payload) => {
-          emitFn(`mb-${originalEvent}`, ...payload);
-        };
+      const handler = (...payload) => {
+        emitFn(`mb-${originalEvent}`, ...payload);
+      };
 
-        // If layerId is not null, all events must be
-        // delegated from the map to the given layerId
-        if (layerId) {
-          unref(mapboxElement).on(originalEvent, layerId, handler);
+      // If layerId is not null, all events must be
+      // delegated from the map to the given layerId
+      if (layerId) {
+        unref(mapboxElement).on(originalEvent, layerId, handler);
 
-          unbindFunctions.set(eventName, () => {
-            unref(mapboxElement).off(originalEvent, layerId, handler);
-          });
-        } else {
-          unref(mapboxElement).on(originalEvent, handler);
+        unbindFunctions.set(eventName, () => {
+          unref(mapboxElement).off(originalEvent, layerId, handler);
+        });
+      } else {
+        unref(mapboxElement).on(originalEvent, handler);
 
-          unbindFunctions.set(eventName, () => {
-            unref(mapboxElement).off(originalEvent, handler);
-          });
-        }
-      });
+        unbindFunctions.set(eventName, () => {
+          unref(mapboxElement).off(originalEvent, handler);
+        });
+      }
+    });
   }
 
   watch(

@@ -5,8 +5,6 @@
 <script>
   import mapboxgl from 'mapbox-gl';
 
-  const { NavigationControl } = mapboxgl;
-
   /**
    * Component's props definition, we need to declare it outside the component
    * to be able to test the default values and the types.
@@ -34,8 +32,9 @@
 </script>
 
 <script setup>
-  import { onMounted, onUnmounted, ref, unref } from 'vue';
   import { useControl } from '../composables/index.js';
+
+  const { NavigationControl } = mapboxgl;
 
   const props = defineProps(propsConfig);
 

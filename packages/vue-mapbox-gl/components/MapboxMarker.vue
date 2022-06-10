@@ -90,9 +90,7 @@
   const popupRef = ref();
   const hasPopup = computed(() => typeof slots.popup !== 'undefined');
 
-  const popupInstance = computed(() => {
-    return hasPopup.value ? popupRef.value.popup : null;
-  });
+  const popupInstance = computed(() => (hasPopup.value ? popupRef.value.popup : null));
 
   const popupOptions = computed(() => ({
     lngLat: props.lngLat,

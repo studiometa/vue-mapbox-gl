@@ -15,7 +15,7 @@
   }
 
   /**
-   ** Component's props definition, we need to declare it outside the component
+   *Component's props definition, we need to declare it outside the component
    * to be able to test the default values and the types.
    * @see https://github.com/mapbox/mapbox-gl-geocoder/blob/master/API.md#parameters
    * @type {object}
@@ -27,35 +27,35 @@
     },
     zoom: {
       type: Number,
-      default: () => 16,
+      default: 16,
     },
     flyTo: {
       type: [Boolean, Object],
-      default: () => true,
+      default: true,
     },
     placeholder: {
       type: String,
-      default: () => 'Search',
+      default: 'Search',
     },
     proximity: {
       type: Object,
-      default: () => {},
+      default: () => ({}),
     },
     trackProximity: {
       type: Boolean,
-      default: () => true,
+      default: true,
     },
     collapsed: {
       type: Boolean,
-      default: () => false,
+      default: false,
     },
     clearAndBlurOnEsc: {
       type: Boolean,
-      default: () => false,
+      default: false,
     },
     clearOnBlur: {
       type: Boolean,
-      default: () => false,
+      default: false,
     },
     bbox: {
       type: Array,
@@ -63,47 +63,51 @@
     },
     countries: {
       type: String,
-      default: () => '',
+      default: '',
     },
     types: {
       type: String,
-      default: () => 'place',
+      default: 'place',
     },
     minLength: {
       type: Number,
-      default: () => 2,
+      default: 2,
     },
     limit: {
       type: Number,
-      default: () => 5,
+      default: 5,
     },
     language: {
       type: String,
+      default: undefined,
     },
     filter: {
       type: Function,
+      default: undefined,
     },
     localGeocoder: {
       type: Function,
+      default: undefined,
     },
     reverseMode: {
       type: String,
-      default: () => 'distance',
+      default: 'distance',
     },
     reverseGeocode: {
       type: Boolean,
-      default: () => false,
+      default: false,
     },
     enableEventLogging: {
       type: Boolean,
-      default: () => false,
+      default: false,
     },
     marker: {
       type: Boolean,
-      default: () => true,
+      default: true,
     },
     render: {
       type: Function,
+      default: undefined,
     },
     getItemValue: {
       type: Function,
@@ -111,11 +115,11 @@
     },
     mode: {
       type: String,
-      default: () => 'mapbox.places',
+      default: 'mapbox.places',
     },
     localGeocoderOnly: {
       type: Boolean,
-      default: () => false,
+      default: false,
     },
   };
 

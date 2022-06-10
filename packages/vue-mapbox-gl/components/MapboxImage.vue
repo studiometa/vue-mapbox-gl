@@ -9,7 +9,7 @@
     /**
      * The ID of the image
      * @see  https://docs.mapbox.com/mapbox-gl-js/api/#map#addimage
-     * @type {String}
+     * @type {string}
      */
     id: {
       type: String,
@@ -19,10 +19,15 @@
      * The image as String, an HTMLImageElement, ImageData, or object with
      * width, height, and data properties with the same format as ImageData.
      * @see  https://docs.mapbox.com/mapbox-gl-js/api/#map#addimage
-     * @type {String|HTMLImageElement|ImageData|Object}
+     * @type {string | HTMLImageElement | ImageData | Object}
      */
     src: {
-      type: [String, typeof HTMLImageElement !== 'undefined' && HTMLImageElement, typeof ImageData !== 'undefined' && ImageData, Object],
+      type: [
+        String,
+        typeof HTMLImageElement !== 'undefined' && HTMLImageElement,
+        typeof ImageData !== 'undefined' && ImageData,
+        Object,
+      ],
       required: true,
     },
     /**
@@ -50,8 +55,8 @@
   /**
    * Load the given image with the Mapbox `loadImage` method
    *
-   * @param  {String}  src The source URL for the image
-   * @return {Promise}     A promise which will resolve on load
+   * @param  {string}  src The source URL for the image
+   * @returns {Promise}     A promise which will resolve on load
    */
   async function loadImage(src) {
     return new Promise((resolve, reject) => {
@@ -69,7 +74,7 @@
   watch(
     () => props.src,
     async (newValue) => {
-      const image = typeof newValue !== 'string' ? newValue : await loadImage(src);
+      const image = typeof newValue !== 'string' ? newValue : await loadImage(newValue);
       unref(map).updateImage(props.id, image);
     },
     { deep: true }
