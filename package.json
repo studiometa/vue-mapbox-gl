@@ -22,12 +22,12 @@
   "devDependencies": {
     "@studiometa/eslint-config": "^3.0.1",
     "@studiometa/prettier-config": "^2.1.1",
-    "eslint": "^8.11.0",
-    "prettier": "^2.6.0"
+    "eslint": "^8.17.0",
+    "prettier": "^2.6.2"
   },
   "dependencies": {
-    "esbuild": "^0.14.41",
+    "esbuild": "^0.14.43",
     "patch-package": "^6.4.7",
-    "unplugin-vue": "^2.2.0"
+    "unplugin-vue": "^2.2.1"
   }
 }
