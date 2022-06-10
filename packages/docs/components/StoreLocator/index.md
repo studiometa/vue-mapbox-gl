@@ -1,5 +1,5 @@
 <script setup>
-  import { StoreLocatorDemo } from '../../.vitepress/components/index.js';
+  import { StoreLocatorDemo, StoreLocatorArchitecture } from '../../.vitepress/components/index.js';
 </script>
 
 # StoreLocator
@@ -119,21 +119,21 @@ Your Mapbox access token or no-token if you are not using a map style from Mapbo
 - Type `MapboxMapProps`
 - Default `{}`
 
-Props for the [MapboxMap component](./MapboxMap/index.md#props).
+Props for the [MapboxMap component](/components/MapboxMap/#props).
 
 ### `mapboxCluster`
 
 - Type `MapboxClusterProps`
 - Default `{}`
 
-Props for the [MapboxCluster component](./MapboxCluster/index.md#props).
+Props for the [MapboxCluster component](/components/MapboxCluster/#props).
 
 ### `mappboxGeocoder`
 
 - Type `MapboxGeocoder`
 - Default `{}`
 
-Props for the [MapboxGeocoder component](./MapboxGeocoder/index.md#props).
+Props for the [MapboxGeocoder component](/components/MapboxGeocoder/#props).
 
 ### `transitions`
 
@@ -237,19 +237,19 @@ Emitted when the Geocoder component is ready.
 
 ### `cluster-cluster-click`
 
-Emitted when the user clicks on a cluster. See the [MapboxCluster component API](./MapboxCluster/index.md#mb-cluster-click) for more information.
+Emitted when the user clicks on a cluster. See the [MapboxCluster component API](/components/MapboxCluster/#mb-cluster-click) for more information.
 
 ### `cluster-feature-click`
 
-Emitted when the user clicks on a unclustered point (a feature). See the [MapboxCluster component API](./MapboxCluster/index.md#mb-feature-click) for more information.
+Emitted when the user clicks on a unclustered point (a feature). See the [MapboxCluster component API](/components/MapboxCluster/#mb-feature-click) for more information.
 
 ### `cluster-feature-mouseenter`
 
-Emitted when the user's mouse enters an unclustered point. See the [MapboxCluster component API](./MapboxCluster/index.md#mb-feature-mouseenter) for more information.
+Emitted when the user's mouse enters an unclustered point. See the [MapboxCluster component API](/components/MapboxCluster/#mb-feature-mouseenter) for more information.
 
 ### `cluster-feature-mouseleave`
 
-Emitted when the user's mouse leaves an unclustered point. See the [MapboxCluster component API](./MapboxCluster/index.md#mb-feature-mouseleave) for more information.
+Emitted when the user's mouse leaves an unclustered point. See the [MapboxCluster component API](/components/MapboxCluster/#mb-feature-mouseleave) for more information.
 
 ### `select-item`
 

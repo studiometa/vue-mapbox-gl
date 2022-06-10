@@ -11,17 +11,17 @@ Check the detailed documentation on each components for a more advanced usage:
 |                             Component                              |                                                         Description                                                         |
 |--------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
 | [MapboxMap](/components/MapboxMap/)                             | Display a map with the given style.                                                                                         |
-| [MapboxMarker](/components/MapboxMarker.md)                       | Display a simple or custom marker.                                                                                          |
-| [MapboxCluster](/components/MapboxCluster.md)                     | Display a GeoJSON as clusters.                                                                                              |
-| [MapboxGeocoder](/components/MapboxGeocoder.md)                   | Display a geocoder search input with the [@mapbox/mapbox-gl-geocoder](https://github.com/mapbox/mapbox-gl-geocoder) plugin. |
-| [MapboxImage](/components/MapboxImage.md)                         | Load an image to be used on the map.                                                                                        |
-| [MapboxImages](/components/MapboxImages.md)                       | Load multiple images to be used on the map.                                                                                 |
-| [MapboxLayer](/components/MapboxLayer.md)                         | Display a layer on the map.                                                                                                 |
-| [MapboxNavigationControl](/components/MapboxNavigationControl.md) | Display the map's navigation controls                                                                                       |
-| [MapboxGeolocateControl](/components/MapboxGeolocateControl.md)   | Display the map's geolocation control                                                                                 |
-| [MapboxPopup](/components/MapboxPopup.md)                         | Display a popup on the map                                                                                                  |
-| [MapboxSource](/components/MapboxSource.md)                       | Load a source of data to be used on the map                                                                                 |
-| [StoreLocator](/components/StoreLocator.md)                       | Easily create a Store Locator                                                                                 |
+| [MapboxMarker](/components/MapboxMarker/)                       | Display a simple or custom marker.                                                                                          |
+| [MapboxCluster](/components/MapboxCluster/)                     | Display a GeoJSON as clusters.                                                                                              |
+| [MapboxGeocoder](/components/MapboxGeocoder/)                   | Display a geocoder search input with the [@mapbox/mapbox-gl-geocoder](https://github.com/mapbox/mapbox-gl-geocoder) plugin. |
+| [MapboxImage](/components/MapboxImage/)                         | Load an image to be used on the map.                                                                                        |
+| [MapboxImages](/components/MapboxImages/)                       | Load multiple images to be used on the map.                                                                                 |
+| [MapboxLayer](/components/MapboxLayer/)                         | Display a layer on the map.                                                                                                 |
+| [MapboxNavigationControl](/components/MapboxNavigationControl/) | Display the map's navigation controls                                                                                       |
+| [MapboxGeolocateControl](/components/MapboxGeolocateControl/)   | Display the map's geolocation control                                                                                 |
+| [MapboxPopup](/components/MapboxPopup/)                         | Display a popup on the map                                                                                                  |
+| [MapboxSource](/components/MapboxSource/)                       | Load a source of data to be used on the map                                                                                 |
+| [StoreLocator](/components/StoreLocator/)                       | Easily create a Store Locator                                                                                 |
 
 
 ## Note

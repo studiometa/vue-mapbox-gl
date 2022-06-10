@@ -1,91 +1,89 @@
+<script setup>
+  import { h } from 'vue';
+
+  function DataElement(props, { attrs, slots }) {
+    return h(
+      'div',
+      {
+        class: `shadow-lg rounded p-4 ${props.color} ${attrs.class ? data.class : ''}`,
+        'data-element': props.el
+      },
+      slots
+    );
+  }
+  DataElement.props = ['el', 'color', 'class'];
+
+  function createDataComponent(name, color) {
+    function Component(props, { slots }) {
+      return h(DataElement, { el: `${name} → ${props.name}`, color }, slots);
+    }
+
+    Component.props = ['name'];
+
+    return Component;
+  };
+
+  const DataRegion = createDataComponent('region', 'bg-blue-200');
+  const DataSlot = createDataComponent('slot', 'bg-green-300');
+  const DataRender = createDataComponent('render', 'bg-indigo-300');
+  const DataTransition = createDataComponent('transition', 'bg-purple-300');
+</script>
+
 <template>
-  <div class="store-locator-architecture">
-    <data-element el="root (classes.root)" color="gray-200" class="space-y-4 text-xs font-mono">
-      <data-region name="map (classes.region.map)">
-        <data-transition name="loader.map">
-          <data-slot name="map-loader">
-            <data-transition name="loader.default">
-              <data-slot name="loader" />
-            </data-transition>
-          </data-slot>
-        </data-transition>
-        <data-slot name="before-map" />
-        <data-render name="MapboxMap">
-          <data-slot name="map" />
-        </data-render>
-        <data-slot name="after-map" />
-      </data-region>
-      <data-region name="search (classes.region.search)">
-        <data-transition name="loader.search">
-          <data-slot name="search-loader">
-            <data-transition name="loader.default">
-              <data-slot name="loader" />
-            </data-transition>
-          </data-slot>
-        </data-transition>
-        <data-slot name="before-search" />
-        <data-render name="MapboxGeocoder (classes.search)" />
-        <data-slot name="after-search" />
-      </data-region>
-      <data-region name="list (classes.region.list)">
-        <data-transition name="loader.list">
-          <data-slot name="list-loader">
-            <data-transition name="loader.default">
-              <data-slot name="loader" />
-            </data-transition>
-          </data-slot>
-        </data-transition>
-        <data-slot name="before-list" />
-        <data-render name="VueScroller">
-          <data-render name="ul (classes.list)">
-            <data-render name="li (classes.listItem)">
-              <data-slot name="list-item" />
-            </data-render>
-          </data-render>
-        </data-render>
-        <data-slot name="after-list" />
-      </data-region>
-      <data-region name="panel (classes.region.panel)">
-        <data-render name="div (classes.panel)">
-          <data-slot name="panel" />
-        </data-render>
-      </data-region>
-    </data-element>
+  <div class="store-locator-architecture space-y-4 text-xs font-mono">
+    <DataElement el="root (classes.root)" color="bg-gray-200">
+      <DataRegion name="map (classes.region.map)">
+        <DataTransition name="loader.map">
+          <DataSlot name="map-loader">
+            <DataTransition name="loader.default">
+              <DataSlot name="loader" />
+            </DataTransition>
+          </DataSlot>
+        </DataTransition>
+        <DataSlot name="before-map" />
+        <DataRender name="MapboxMap">
+          <DataSlot name="map" />
+        </DataRender>
+        <DataSlot name="after-map" />
+      </DataRegion>
+      <DataRegion name="search (classes.region.search)">
+        <DataTransition name="loader.search">
+          <DataSlot name="search-loader">
+            <DataTransition name="loader.default">
+              <DataSlot name="loader" />
+            </DataTransition>
+          </DataSlot>
+        </DataTransition>
+        <DataSlot name="before-search" />
+        <DataRender name="MapboxGeocoder (classes.search)" />
+        <DataSlot name="after-search" />
+      </DataRegion>
+      <DataRegion name="list (classes.region.list)">
+        <DataTransition name="loader.list">
+          <DataSlot name="list-loader">
+            <DataTransition name="loader.default">
+              <DataSlot name="loader" />
+            </DataTransition>
+          </DataSlot>
+        </DataTransition>
+        <DataSlot name="before-list" />
+        <DataRender name="VueScroller">
+          <DataRender name="ul (classes.list)">
+            <DataRender name="li (classes.listItem)">
+              <DataSlot name="list-item" />
+            </DataRender>
+          </DataRender>
+        </DataRender>
+        <DataSlot name="after-list" />
+      </DataRegion>
+      <DataRegion name="panel (classes.region.panel)">
+        <DataRender name="div (classes.panel)">
+          <DataSlot name="panel" />
+        </DataRender>
+      </DataRegion>
+    </DataElement>
   </div>
 </template>
-
-<script>
-  const createDataComponent = (name, color) => ({
-    functional: true,
-    props: ['name'],
-    render: (h, { props, children }) =>
-      h('data-element', { props: { el: `${name} → ${props.name}`, color } }, children),
-  });
-
-  export default {
-    components: {
-      DataElement: {
-        functional: true,
-        props: ['el', 'color', 'class'],
-        render: (h, { props, children, data }) =>
-          h(
-            'div',
-            {
-              class: `shadow-lg rounded p-4 bg-${props.color} ${
-                data.staticClass ? data.staticClass : ''
-              }`,
-              attrs: { 'data-element': props.el },
-            },
-            children
-          ),
-      },
-      DataRegion: createDataComponent('region', 'blue-200'),
-      DataSlot: createDataComponent('slot', 'green-400'),
-      DataRender: createDataComponent('render', 'indigo-400'),
-      DataTransition: createDataComponent('transition', 'purple-400'),
-    },
-  };
-</script>
 
 <style lang="scss">
   @import 'tailwindcss/components';

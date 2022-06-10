@@ -4,7 +4,7 @@
 
 # MapboxImages
 
-Add multiple images at once to be used used in `icon-image`, `background-pattern`, `fill-pattern`, and `line-pattern`. This component is a wrapper around the [`MapboxImage`](./MapboxImage.md) component.
+Add multiple images at once to be used used in `icon-image`, `background-pattern`, `fill-pattern`, and `line-pattern`. This component is a wrapper around the [`MapboxImage`](/components/MapboxImage/) component.
 
 <h2>Table of contents</h2>
 
