@@ -1,6 +1,6 @@
 <script setup>
   import { MapboxMap, MapboxMarker } from '@studiometa/vue-mapbox-gl';
-  import { MapboxMarkerCustomHTMLDemo, MapboxMarkerPopupDemo } from '../../.vitepress/components/index.js';
+  import { MapboxMarkerCustomHtmlDemo, MapboxMarkerPopupDemo } from '../../.vitepress/components/index.js';
 </script>
 
 # MapboxMarker
@@ -44,7 +44,7 @@ Display a marker on the map.
 ### Custom HTML
 
 <ClientOnly>
-<MapboxMarkerCustomHTMLDemo style="margin-top: 1em;" />
+<MapboxMarkerCustomHtmlDemo style="margin-top: 1em;" />
 </ClientOnly>
 
 <<< @/.vitepress/components/MapboxMarkerCustomHtmlDemo.vue{12-14,19-23}

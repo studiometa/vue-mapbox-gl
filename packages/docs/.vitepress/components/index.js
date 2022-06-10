@@ -4,7 +4,6 @@ export { default as MapboxGeocoderDemo } from './MapboxGeocoderDemo.vue';
 export { default as MapboxGeocoderDemoWithoutMap } from './MapboxGeocoderDemoWithoutMap.vue';
 export { default as MapboxGeolocateControlDemo } from './MapboxGeolocateControlDemo.vue';
 export { default as MapboxImagesDemo } from './MapboxImagesDemo.vue';
-export { default as MapboxMarkerCustomHTMLDemo } from './MapboxMarkerCustomHTMLDemo.vue';
 export { default as MapboxMarkerCustomHtmlDemo } from './MapboxMarkerCustomHtmlDemo.vue';
 export { default as MapboxMarkerPopupDemo } from './MapboxMarkerPopupDemo.vue';
 export { default as MapboxNavigationControlDemo } from './MapboxNavigationControlDemo.vue';
