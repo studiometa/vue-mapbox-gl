@@ -1,3 +1,53 @@
+<script setup>
+  import { ref, unref, onUpdated, onMounted, onUnmounted, nextTick } from 'vue';
+  import { debounce } from '@studiometa/js-toolkit/utils';
+
+  const emit = defineEmits(['scroll-top', 'scroll-bottom']);
+
+  const scroller = ref();
+  const scrollTop = ref(0);
+  const scrollMax = ref(Number.POSITIVE_INFINITY);
+
+  /**
+   * Set variable values and emit events.
+   */
+  function setVars() {
+    if (!unref(scroller)) {
+      return;
+    }
+
+    const unrefScroller = unref(scroller);
+    scrollTop.value = unrefScroller.scrollTop;
+    scrollMax.value = unrefScroller.scrollHeight - unrefScroller.clientHeight;
+
+    if (scrollTop.value === 0) {
+      emit('scroll-top');
+    }
+
+    if (scrollTop.value === scrollMax.value) {
+      emit('scroll-bottom');
+    }
+  }
+
+  const debouncedSetVars = debounce(setVars);
+
+  onUpdated(() => {
+    setVars();
+  });
+
+  onMounted(async () => {
+    unref(scroller).addEventListener('scroll', setVars, { passive: true });
+    window.addEventListener('resized', debouncedSetVars);
+    await nextTick();
+    setVars();
+  });
+
+  onUnmounted(() => {
+    unref(scroller).removeEventListener('scroll', setVars);
+    window.removeEventListener('resized', debouncedSetVars);
+  });
+</script>
+
 <template>
   <div
     class="scroller"
@@ -14,57 +64,6 @@
     </div>
   </div>
 </template>
-
-<script>
-  export default {
-    data() {
-      return {
-        scrollTop: 0,
-        scrollMax: Number.POSITIVE_INFINITY,
-      };
-    },
-    updated() {
-      this.setVars();
-    },
-    async mounted() {
-      this.$refs.scroller.addEventListener('scroll', () => this.setVars(), { passive: true });
-
-      let timer;
-      this.debouncedSetVars = () => {
-        clearTimeout(timer);
-        timer = setTimeout(() => this.setVars(), 300);
-      };
-      window.addEventListener('resize', this.debouncedSetVars);
-
-      await this.$nextTick();
-      this.setVars();
-    },
-    beforeUnmount() {
-      this.$refs.scroller.removeEventListener('scroll', this.setVars);
-      window.removeEventListener('resize', this.debouncedSetVars);
-    },
-    methods: {
-      setVars() {
-        const { scroller } = this.$refs;
-
-        if (!scroller) {
-          return;
-        }
-
-        this.scrollTop = scroller.scrollTop;
-        this.scrollMax = scroller.scrollHeight - scroller.clientHeight;
-
-        if (this.scrollTop === 0) {
-          this.$emit('scroll-top');
-        }
-
-        if (this.scrollTop === this.scrollMax) {
-          this.$emit('scoll-bottom');
-        }
-      },
-    },
-  };
-</script>
 
 <style lang="scss">
   .scroller,
