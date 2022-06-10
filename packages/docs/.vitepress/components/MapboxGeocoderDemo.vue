@@ -14,7 +14,8 @@
       @mb-loading="log('loading', $event)"
       @mb-results="log('results', $event)"
       @mb-result="log('result', $event)"
-      @mb-error="log('error', $event)" />
+      @mb-error="log('error', $event)"
+      @mb-clear="log('clear', $event)" />
   </MapboxMap>
 </template>
 

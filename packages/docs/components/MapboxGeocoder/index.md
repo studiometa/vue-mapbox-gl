@@ -229,20 +229,24 @@ All events available on the `MapboxGeocoder` class are also available on the `Ma
 
 ### `mb-created`
 
-Fired when the `MapboxGeocoder` instance is created with the instance as parameter.
+Emitted when the `MapboxGeocoder` instance is created with the instance as parameter.
 
 ### `mb-loading`
 
-Fired when the geocoder is looking up a query. Receive a `{ query }` parameter.
+Emitted when the geocoder is looking up a query. Receive a `{ query }` parameter.
 
 ### `mb-results`
 
-Fired when the geocoder returns a response. Receive a `{ results }` parameter.
+Emitted when the geocoder returns a response. Receive a `{ results }` parameter.
 
 ### `mb-result`
 
-Fired when input is set. Receive a `{ result }` parameter.
+Emitted when input is set. Receive a `{ result }` parameter.
 
 ### `mb-error`
 
-Fired when input is set. Receive a `error` parameter.
+Emitted when input is set. Receive a `error` parameter.
+
+### `mb-clear`
+
+Emitted when the input is cleared.

@@ -128,7 +128,7 @@
    * @see  https://github.com/mapbox/mapbox-gl-geocoder/blob/master/API.md#on
    * @type {Array}
    */
-  const events = ['loading', 'results', 'result', 'error'];
+  const events = ['clear', 'loading', 'results', 'result', 'error'];
 </script>
 
 <script setup>
