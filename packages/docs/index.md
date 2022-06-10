@@ -12,11 +12,4 @@ hero:
     - theme: alt
       text: View on GitHub
       link: https://github.com/studiometa/vue-mapbox-gl
-features:
-  - icon: ⚡️
-    title: Vite, The DX that can't be beat
-    details: Lorem ipsum...
-  - icon: 🖖
-    title: Power of Vue meets Markdown
-    details: Lorem ipsum...
 ---
