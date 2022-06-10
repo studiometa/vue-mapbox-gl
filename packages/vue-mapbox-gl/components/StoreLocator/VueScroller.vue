@@ -1,5 +1,6 @@
 <script setup>
   import { ref, unref, onUpdated, onMounted, onBeforeUnmount, nextTick } from 'vue';
+  // eslint-disable-next-line import/no-extraneous-dependencies
   import { debounce } from '@studiometa/js-toolkit/utils';
 
   const emit = defineEmits(['scroll-top', 'scroll-bottom']);
