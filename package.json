@@ -14,7 +14,7 @@
     "fix": "npm run lint -- --fix",
     "build": "rm -rf dist && npm run build:esbuild && npm run build:cp",
     "build:esbuild": "node scripts/build.mjs",
-    "build:cp": "cp packages/vue-mapbox-gl/package.json dist/",
+    "build:cp": "cp packages/vue-mapbox-gl/package.json dist/ && cp README.md dist/",
     "prepublishOnly": "npm run build",
     "test": "echo '@todo add tests.'",
     "postinstall": "patch-package"
