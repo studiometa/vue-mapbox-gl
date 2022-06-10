@@ -1,5 +1,5 @@
 <script setup>
-  import { ref, unref, onUpdated, onMounted, onUnmounted, nextTick } from 'vue';
+  import { ref, unref, onUpdated, onMounted, onBeforeUnmount, nextTick } from 'vue';
   import { debounce } from '@studiometa/js-toolkit/utils';
 
   const emit = defineEmits(['scroll-top', 'scroll-bottom']);
@@ -42,7 +42,7 @@
     setVars();
   });
 
-  onUnmounted(() => {
+  onBeforeUnmount(() => {
     unref(scroller).removeEventListener('scroll', setVars);
     window.removeEventListener('resized', debouncedSetVars);
   });
