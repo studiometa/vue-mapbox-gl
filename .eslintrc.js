@@ -1,10 +1,18 @@
 module.exports = {
   extends: ['@studiometa/eslint-config'],
-  settings: {
-    'import/resolver': {
-      alias: {
-        map: [['@', './src/']],
+  overrides: [
+    {
+      files: '**/*.vue',
+      globals: {
+        defineProps: false,
+        defineEmits: false,
+        defineExpose: false,
+      },
+      rules: {
+        'vue/no-boolean-default': 'off',
+        'import/first': 'off',
+        'vue/valid-define-emits': 'off',
       },
     },
-  },
+  ],
 };
