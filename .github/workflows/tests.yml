@@ -1,31 +1,47 @@
-name: Code Quality & Tests
-on: [push, pull_request]
+name: Tests
+
+on:
+  push:
+    branches:
+      - feature/vue-3
+  pull_request:
 
 jobs:
-  code-quality:
+
+  Build:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 16
+        cache: npm
+    - name: Install modules
+      run: npm install
+    - name: Build the package
+      run: npm run build
+
+  Code-Quality:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 16
+        cache: npm
+    - name: Install modules
+      run: npm install
+    - name: Run code quality tests
+      run: npm run lint -- --format=compact
+
+  Export-Size:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - uses: actions/setup-node@v1
-      with:
-        node-version: '12.x'
-    - name: npm install, and lint
-      run: |
-        npm ci
-        npm run lint
-      env:
-        CI: true
-  tests:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - uses: actions/setup-node@v1
-      with:
-        node-version: '12.x'
-    - name: npm install, build, and test
-      run: |
-        npm ci
-        npm run build 
-        npm test
-      env:
-        CI: true
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: '0'
+      - uses: antfu/export-size-action@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          build_script: npm run build
+          paths: dist

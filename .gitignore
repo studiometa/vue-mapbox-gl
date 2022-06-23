@@ -22,5 +22,6 @@ yarn-error.log*
 
 # Build files
 .env
-dist/*.html
-docs/.vuepress/dist/
+/dist/
+/packages/docs/.vitepress/dist/
+/packages/demo/.nuxt/

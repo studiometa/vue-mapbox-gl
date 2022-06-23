@@ -10,16 +10,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
-      - uses: actions/setup-node@v1
         with:
-          node-version: 12
+          fetch-depth: '0'
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: npm
           registry-url: https://registry.npmjs.org/
 
       - run: npm ci
+
       - run: npm run build
-      - run: npm test
-      - run: npm publish
+
+      - run: |
+          cd dist
+          ls -al
+          VERSION=${GITHUB_REF/refs\/tags\//}
+          TAG='latest'
+          if [[ $VERSION =~ 'alpha' || $VERSION =~ 'beta' || $VERSION =~ 'rc' ]]; then
+            TAG='next'
+          fi
+          npm publish --tag $TAG
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
@@ -33,10 +45,20 @@ jobs:
           echo "Setting release version to $VERSION"
           echo "release_version=$VERSION" >> $GITHUB_ENV
 
-          # Parse tag message
-          CHANGELOG=$(git for-each-ref $GITHUB_REF | tail -n+3)
+          echo "$GITHUB_REF"
+          echo "$GITHUB_REF_NAME"
 
-          echo $CHANGELOG
+          PRERELEASE=false
+          # Check release type
+          if [[ $VERSION =~ 'alpha' || $VERSION =~ 'beta' || $VERSION =~ 'rc' ]]; then
+            echo "This is a prerelease."
+            PRERELEASE=true
+          fi
+          echo "is_prerelease=$PRERELEASE" >> $GITHUB_ENV
+
+          git show $GITHUB_REF
+
+          CHANGELOG=$(git show $GITHUB_REF | tail -n+7)
 
           # Set markdown titles
           CHANGELOG=${CHANGELOG/Added/## Added}
@@ -46,19 +68,16 @@ jobs:
           CHANGELOG=${CHANGELOG/Deprecated/## Deprecated}
           CHANGELOG=${CHANGELOG/Security/## Security}
 
-          echo $CHANGELOG
-
           # Remove PGP signature
           CHANGELOG="${CHANGELOG%-----BEGIN*}"
 
-          echo $CHANGELOG
+          echo "$CHANGELOG"
 
           # Change linebreaks and other special characters
           CHANGELOG="${CHANGELOG//'%'/'%25'}"
           CHANGELOG="${CHANGELOG//$'\n'/'%0A'}"
           CHANGELOG="${CHANGELOG//$'\r'/'%0D'}"
 
-          echo "Setting changelog body to:"
           echo $CHANGELOG
 
           echo 'changelog<<EOF' >> $GITHUB_ENV
@@ -76,4 +95,4 @@ jobs:
           release_name: v${{ env.release_version }}
           body: ${{ env.changelog }}
           draft: false
-          prerelease: false
+          prerelease: ${{ env.is_prerelease }}

@@ -1,0 +1,45 @@
+{
+  "name": "@studiometa/vue-mapbox-gl",
+  "version": "2.0.0",
+  "description": "A small components library to use Mapbox GL in Vue 3.",
+  "homepage": "https://github.com/studiometa/vue-mapbox-gl#readme",
+  "bugs": {
+    "url": "https://github.com/studiometa/vue-mapbox-gl/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/studiometa/vue-mapbox-gl.git"
+  },
+  "license": "GPL-3.0-or-later",
+  "author": {
+    "name": "Studio Meta",
+    "email": "agence@studiometa.fr",
+    "url": "https://www.studiometa.fr"
+  },
+  "contributors": [
+    {
+      "name": "Titouan Mathis",
+      "email": "titouan@studiometa.fr"
+    },
+    {
+      "name": "Ludovic Janot",
+      "email": "ludovic@studiometa.fr"
+    }
+  ],
+  "type": "module",
+  "module": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@mapbox/mapbox-gl-geocoder": "^5.0.1",
+    "@studiometa/js-toolkit": "^2.2.0",
+    "mapbox-gl": "^2.8.2",
+    "vue": "^3.2.37"
+  },
+  "peerDependencies": {
+    "@mapbox/mapbox-gl-geocoder": "^5.0.1",
+    "mapbox-gl": "^2.8.2",
+    "vue": "^3.2.37"
+  }
+}
