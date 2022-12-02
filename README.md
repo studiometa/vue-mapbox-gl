@@ -6,6 +6,8 @@
 
 > A small components library to use Mapbox GL in Vue.
 
+**⚠️ This is the support branche for v1 supporting Vue 2.**
+
 ## Installation & usage
 
 Have a look at the [small guide](https://vue-mapbox-gl.meta.fr/guide/) for information on how to setup a simple map.
