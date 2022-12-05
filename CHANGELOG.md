@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+### Fixed
+
+- Fix links in the README.md ([#65](https://github.com/studiometa/vue-mapbox-gl/pull/65))
+
 ### Changed
 
 - Move release notes to the [CHANGELOG.md](https://github.com/studiometa/vue-mapbox-gl/blob/develop/CHANGELOG.md) file
