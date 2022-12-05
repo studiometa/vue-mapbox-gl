@@ -281,9 +281,7 @@
           <slot name="map-loader">
             <Transition v-bind="(transitions.loader || {}).default || {}">
               <!-- @slot Use this slot to define a custom loader. -->
-              <slot name="loader">
-                Loading...
-              </slot>
+              <slot name="loader">Loading...</slot>
             </Transition>
           </slot>
         </Transition>
@@ -334,9 +332,7 @@
           <slot name="search-loader">
             <Transition v-bind="(transitions.loader || {}).default || {}">
               <!-- @slot Use this slot to define a custom loader. -->
-              <slot name="loader">
-                Loading...
-              </slot>
+              <slot name="loader">Loading...</slot>
             </Transition>
           </slot>
         </Transition>
@@ -369,9 +365,7 @@
           <slot name="list-loader">
             <Transition v-bind="(transitions.loader || {}).default || {}">
               <!-- @slot Use this slot to define a custom loader. -->
-              <slot name="loader">
-                Loading...
-              </slot>
+              <slot name="loader">Loading...</slot>
             </Transition>
           </slot>
         </Transition>
@@ -402,13 +396,9 @@
                 @binding {Object} item          An item.
                 @binding {Object} selected-item The currently selected item.
               -->
-              <slot
-                name="list-item"
-                :item="item"
-                :index="index"
-                :selected-item="selectedItem">
+              <slot name="list-item" :item="item" :index="index" :selected-item="selectedItem">
                 Lat: {{ item.lat }}
-                <br>
+                <br />
                 Lng: {{ item.lng }}
               </slot>
             </li>
