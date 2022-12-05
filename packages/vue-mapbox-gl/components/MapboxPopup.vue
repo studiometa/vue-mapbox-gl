@@ -102,5 +102,5 @@
     }
   });
 
-  defineExpose({ popup })
+  defineExpose({ popup });
 </script>

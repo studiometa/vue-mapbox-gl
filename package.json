@@ -1,7 +1,7 @@
 {
   "name": "@studiometa/vue-mapbox-gl-workspace",
   "private": true,
-  "version": "2.0.1",
+  "version": "2.0.2",
   "workspaces": [
     "packages/*"
   ],
@@ -20,14 +20,14 @@
     "postinstall": "patch-package"
   },
   "devDependencies": {
-    "@studiometa/eslint-config": "^3.0.1",
+    "@studiometa/eslint-config": "^3.1.1",
     "@studiometa/prettier-config": "^2.1.1",
-    "eslint": "^8.17.0",
-    "prettier": "^2.6.2"
+    "eslint": "^8.29.0",
+    "prettier": "^2.8.0"
   },
   "dependencies": {
-    "esbuild": "^0.14.43",
-    "patch-package": "^6.4.7",
-    "unplugin-vue": "^2.2.1"
+    "esbuild": "^0.15.18",
+    "patch-package": "^6.5.0",
+    "unplugin-vue": "^3.1.3"
   }
 }
