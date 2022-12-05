@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+## [v2.0.2](https://github.com/studiometa/vue-mapbox-gl/compare/2.0.1...2.0.2) (2022-12-05)
+
 ### Fixed
 
 - Fix links in the README.md ([#65](https://github.com/studiometa/vue-mapbox-gl/pull/65))
