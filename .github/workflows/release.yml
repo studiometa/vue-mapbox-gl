@@ -40,49 +40,13 @@ jobs:
       - name: Prepare the changelog from the tag message
         id: prepare_changelog
         run: |
-          # Parse version
-          VERSION=${GITHUB_REF/refs\/tags\//}
-          echo "Setting release version to $VERSION"
-          echo "release_version=$VERSION" >> $GITHUB_ENV
-
-          echo "$GITHUB_REF"
-          echo "$GITHUB_REF_NAME"
-
           PRERELEASE=false
           # Check release type
-          if [[ $VERSION =~ 'alpha' || $VERSION =~ 'beta' || $VERSION =~ 'rc' ]]; then
+          if [[ $GITHUB_REF_NAME =~ 'alpha' || $GITHUB_REF_NAME =~ 'beta' || $GITHUB_REF_NAME =~ 'rc' ]]; then
             echo "This is a prerelease."
             PRERELEASE=true
           fi
           echo "is_prerelease=$PRERELEASE" >> $GITHUB_ENV
-
-          git show $GITHUB_REF
-
-          CHANGELOG=$(git show $GITHUB_REF | tail -n+7)
-
-          # Set markdown titles
-          CHANGELOG=${CHANGELOG/Added/## Added}
-          CHANGELOG=${CHANGELOG/Fixed/## Fixed}
-          CHANGELOG=${CHANGELOG/Changed/## Changed}
-          CHANGELOG=${CHANGELOG/Removed/## Removed}
-          CHANGELOG=${CHANGELOG/Deprecated/## Deprecated}
-          CHANGELOG=${CHANGELOG/Security/## Security}
-
-          # Remove PGP signature
-          CHANGELOG="${CHANGELOG%-----BEGIN*}"
-
-          echo "$CHANGELOG"
-
-          # Change linebreaks and other special characters
-          CHANGELOG="${CHANGELOG//'%'/'%25'}"
-          CHANGELOG="${CHANGELOG//$'\n'/'%0A'}"
-          CHANGELOG="${CHANGELOG//$'\r'/'%0D'}"
-
-          echo $CHANGELOG
-
-          echo 'changelog<<EOF' >> $GITHUB_ENV
-          echo $CHANGELOG >> $GITHUB_ENV
-          echo 'EOF' >> $GITHUB_ENV
 
       # @see https://github.com/actions/create-release
       - name: Create Release
@@ -92,7 +56,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: v${{ env.release_version }}
-          body: ${{ env.changelog }}
+          release_name: v${{ github.ref_name }}
+          body: Please refer to [CHANGELOG.md](https://github.com/studiometa/vue-mapbox-gl/blob/${{ github.ref_name }}/CHANGELOG.md) for details.
           draft: false
           prerelease: ${{ env.is_prerelease }}
+
