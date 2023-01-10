@@ -118,6 +118,8 @@
       }),
     },
   };
+
+  let index = 0;
 </script>
 
 <script setup>
@@ -125,8 +127,6 @@
   import { useMap } from '../composables/index.js';
   import MapboxLayer from './MapboxLayer.vue';
   import MapboxSource from './MapboxSource.vue';
-
-  let index = 0;
 
   const props = defineProps(propsConfig);
   // eslint-disable-next-line vue/valid-define-emits
