@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+## [v2.0.3](https://github.com/studiometa/vue-mapbox-gl/compare/2.0.2...2.0.3) (2023-01-10)
+
 ### Fixed
 
 - Fix cluster IDs not being incremented ([#83](https://github.com/studiometa/vue-mapbox-gl/pull/83), fix [#75](https://github.com/studiometa/vue-mapbox-gl/issues/75))
