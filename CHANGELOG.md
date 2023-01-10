@@ -9,6 +9,10 @@ All notable changes to this project will be documented in this file. The format 
 - Fix Node warning about package.json fields ([3b5e4e7](https://github.com/studiometa/vue-mapbox-gl/commit/3b5e4e7), fix [#74](https://github.com/studiometa/vue-mapbox-gl/issues/74))
 - Fix CSS build file containing an invalid comment ([612c9e8](https://github.com/studiometa/vue-mapbox-gl/commit/612c9e8))
 
+### Changed
+
+- Update NPM dependencies ([#81](https://github.com/studiometa/vue-mapbox-gl/pull/81))
+
 ## [v2.0.2](https://github.com/studiometa/vue-mapbox-gl/compare/2.0.1...2.0.2) (2022-12-05)
 
 ### Fixed
