@@ -112,7 +112,7 @@ The zoom level to use when zooming in on an item.
 - Type `String`
 - Default `no-token`
 
-Your Mapbox access token or no-token if you are not using a map style from Mapbox.
+Your Mapbox access token.
 
 ### `mapboxMap`
 
