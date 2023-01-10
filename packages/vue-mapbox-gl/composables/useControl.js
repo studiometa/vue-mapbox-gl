@@ -36,11 +36,13 @@ export function useControl(ControlConstructor, { propsConfig, props, emit, event
   );
 
   onMounted(() => {
-    control.value = new ControlConstructor(props);
+    const ctrl = new ControlConstructor(props);
 
     if (unref(map)) {
-      unref(map).addControl(unref(control), props.position);
+      unref(map).addControl(ctrl, props.position);
     }
+
+    control.value = ctrl;
   });
 
   onUnmounted(() => {
