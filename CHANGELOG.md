@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file. The format 
 
 ### Fixed
 
+- Fix cluster IDs not being incremented ([#83](https://github.com/studiometa/vue-mapbox-gl/pull/83), fix [#75](https://github.com/studiometa/vue-mapbox-gl/issues/75))
 - Fix a bug where controls could be accessed before being added to the map ([#82](https://github.com/studiometa/vue-mapbox-gl/pull/82), fix [#77](https://github.com/studiometa/vue-mapbox-gl/issues/77))
 - Fix Node warning about package.json fields ([3b5e4e7](https://github.com/studiometa/vue-mapbox-gl/commit/3b5e4e7), fix [#74](https://github.com/studiometa/vue-mapbox-gl/issues/74))
 - Fix CSS build file containing an invalid comment ([612c9e8](https://github.com/studiometa/vue-mapbox-gl/commit/612c9e8))
