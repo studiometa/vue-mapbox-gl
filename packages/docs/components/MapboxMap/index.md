@@ -76,7 +76,7 @@ You will probably need to use the Mapbox instance to use some of its methods suc
 - Type `String`
 - Required `true`
 
-Your Mapbox access token or `no-token` if you are not using a map style from Mapbox.
+Your Mapbox access token.
 
 ### `mapStyle`
 
