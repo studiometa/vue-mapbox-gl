@@ -1,4 +1,4 @@
-import { onMounted, onUnmounted, ref, unref, watch } from 'vue';
+import { onMounted, onUnmounted, ref, unref, watch, nextTick } from 'vue';
 import { useMap } from './useMap.js';
 import { useEventsBinding } from './useEventsBinding.js';
 import { usePropsBinding } from './usePropsBinding.js';
@@ -35,13 +35,14 @@ export function useControl(ControlConstructor, { propsConfig, props, emit, event
     }
   );
 
-  onMounted(() => {
+  onMounted(async () => {
     const ctrl = new ControlConstructor(props);
 
     if (unref(map)) {
       unref(map).addControl(ctrl, props.position);
     }
 
+    await nextTick();
     control.value = ctrl;
   });
 

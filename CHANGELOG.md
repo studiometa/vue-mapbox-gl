@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+## [v2.0.4](https://github.com/studiometa/vue-mapbox-gl/compare/2.0.3...2.0.4) (2023-01-11)
+
+### Fixed
+
+- Fix a bug where controls could be accessed before being added to the map ([eefaee2](https://github.com/studiometa/vue-mapbox-gl/commit/eefaee2), fix [#77](https://github.com/studiometa/vue-mapbox-gl/issues/77))
+- Fix doc regarding access token ([#78](https://github.com/studiometa/vue-mapbox-gl/pull/78), fix [#67](https://github.com/studiometa/vue-mapbox-gl/issues/67))
+
 ## [v2.0.3](https://github.com/studiometa/vue-mapbox-gl/compare/2.0.2...2.0.3) (2023-01-10)
 
 ### Fixed
