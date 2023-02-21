@@ -34,11 +34,11 @@
       type: Boolean,
       default: true,
     },
-    showUserLocation: {
+    showUserHeading: {
       type: Boolean,
       default: true,
     },
-    showUserHeading: {
+    showUserLocation: {
       type: Boolean,
       default: true,
     },
