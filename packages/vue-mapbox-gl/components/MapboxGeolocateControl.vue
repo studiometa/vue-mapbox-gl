@@ -38,6 +38,10 @@
       type: Boolean,
       default: true,
     },
+    showUserHeading: {
+      type: Boolean,
+      default: true,
+    },
     position: {
       type: String,
       default: 'top-right',
