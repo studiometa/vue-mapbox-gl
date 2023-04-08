@@ -74,6 +74,13 @@ If true the Geolocate Control becomes a toggle button and when active the map wi
 
 By default, if showUserLocation is true , a transparent circle will be drawn around the user location indicating the accuracy (95% confidence level) of the user's location. Set to false to disable. Always disabled when showUserLocation is false .
 
+### `showUserHeading`
+- Type `[ Boolean ]`
+- Required: `false`
+- Default `false`
+
+If `true` an arrow will be drawn next to the user location dot indicating the device's heading. This only has affect when `trackUserLocation` is `true`.
+
 ### `showUserLocation`
 - Type `[ Boolean ]`
 - Required: `false`
