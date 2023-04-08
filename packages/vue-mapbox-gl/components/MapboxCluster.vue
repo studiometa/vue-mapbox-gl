@@ -198,7 +198,7 @@
 
     // Return before move map if event is defaultPrevented
     if (event.defaultPrevented) {
-        return;
+      return;
     }
 
     unref(map)
