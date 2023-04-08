@@ -1,5 +1,8 @@
 <script setup>
+  import { ref } from "vue";
   import { MapboxMap, MapboxMarker } from '@studiometa/vue-mapbox-gl';
+
+  const mapCenter = ref([0, 0]);
 </script>
 
 <template>
@@ -7,7 +10,7 @@
     style="height: 400px"
     :access-token="MAPBOX_API_KEY"
     map-style="mapbox://styles/mapbox/streets-v11"
-    :center="[0, 0]"
+    :center="mapCenter"
     :zoom="1">
     <MapboxMarker :lng-lat="[0, 0]">
       <p class="custom-marker">Hello world!</p>

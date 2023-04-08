@@ -1,5 +1,8 @@
 <script setup>
+  import { ref } from "vue";
   import { MapboxMap, MapboxImages, MapboxLayer } from '@studiometa/vue-mapbox-gl';
+
+  const mapCenter = ref([0, 0]);
 
   const images = [
     {
@@ -54,7 +57,7 @@
     style="height: 400px"
     :access-token="MAPBOX_API_KEY"
     map-style="mapbox://styles/mapbox/streets-v11"
-    :center="[0, 0]"
+    :center="mapCenter"
     :zoom="1">
     <MapboxImages :sources="images">
       <MapboxLayer id="pois" :options="layerOptions" />

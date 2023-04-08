@@ -1,5 +1,5 @@
 <script setup>
-  import { ref } from 'vue';
+  import { ref, computed } from 'vue';
   import {
     MapboxGeocoder,
     MapboxGeolocateControl,
@@ -20,6 +20,7 @@
   const lng = ref(0);
   const lat = ref(0);
   const zoom = ref(1);
+  const mapCenter = computed(() => [lng.value, lat.value]);
   const createdHandler = () => console.log('Map created!');
 
   const eventHandler = console.log.bind(null, '[Event]');
@@ -81,7 +82,7 @@
         style="height: 400px"
         :access-token="accessToken"
         map-style="mapbox://styles/mapbox/streets-v11"
-        :center="[lng, lat]"
+        :center="mapCenter"
         :zoom="zoom"
       >
         <MapboxImages :sources="iconSources">
@@ -139,12 +140,12 @@
       <fieldset class="controls__group">
         <legend>Longitude</legend>
         <input type="text" readonly="readonly" :value="lng" />
-        <input type="range" step="1" v-model="lng" />
+        <input type="range" step="1"  min="-100" max="100" v-model="lng" />
       </fieldset>
       <fieldset class="controls__group">
         <legend>Latitude</legend>
         <input type="text" readonly="readonly" :value="lat" />
-        <input type="range" step="1" v-model="lat" />
+        <input type="range" step="1" min="-90" max="90" v-model="lat" />
       </fieldset>
       <fieldset class="controls__group">
         <legend>Zoom</legend>

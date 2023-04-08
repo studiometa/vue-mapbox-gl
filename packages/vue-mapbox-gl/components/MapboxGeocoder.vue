@@ -132,7 +132,7 @@
 </script>
 
 <script setup>
-  import { onMounted, ref, unref, computed } from 'vue';
+  import { onMounted, ref, unref, computed, watch } from 'vue';
   import { useControl } from '../composables/index.js';
 
   const props = defineProps(propsConfig);
@@ -178,9 +178,12 @@
 
   // Add to root element if map does not exist.
   onMounted(() => {
-    if (!unref(map)) {
-      unref(control).addTo(unref(root));
-    }
+    const stop = watch(control, (newValue) => {
+      if (newValue && !unref(map) && unref(root)) {
+        newValue.addTo(unref(root));
+        stop();
+      }
+    });
   });
 
   defineExpose({ control });

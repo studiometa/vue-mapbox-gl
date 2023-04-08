@@ -195,6 +195,12 @@
 
     // Emit a cluster click event
     emit('mb-cluster-click', clusterId, event);
+
+    // Return before move map if event is defaultPrevented
+    if (event.defaultPrevented) {
+      return;
+    }
+
     unref(map)
       .getSource(unref(sourceId))
       .getClusterExpansionZoom(clusterId, (err, zoom) => {
