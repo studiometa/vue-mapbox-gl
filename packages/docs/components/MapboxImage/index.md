@@ -1,5 +1,8 @@
 <script setup>
+  import { ref } from "vue";
   import { MapboxMap, MapboxImage, MapboxLayer } from '@studiometa/vue-mapbox-gl';
+
+  const mapCenter = ref([0, 0]);
 </script>
 
 # MapboxImage
@@ -24,7 +27,7 @@ Add an image to be used used in `icon-image`, `background-pattern`, `fill-patter
     style="margin-top: 1em; height: 400px;"
     :access-token="MAPBOX_API_KEY"
     map-style="mapbox://styles/mapbox/streets-v11"
-    :center="[0, 0]"
+    :center="mapCenter"
     :zoom="1">
   <MapboxImage
     src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Cat_silhouette.svg/400px-Cat_silhouette.svg.png"
@@ -59,7 +62,10 @@ Add an image to be used used in `icon-image`, `background-pattern`, `fill-patter
 
 ```vue {12-14}
 <script setup>
+  import { ref } from "vue";
   import { MapboxMap, MapboxImage } from '@studiometa/vue-mapbox-gl';
+
+  const mapCenter = ref([0, 0]);
 </script>
 
 <template>
@@ -67,7 +73,7 @@ Add an image to be used used in `icon-image`, `background-pattern`, `fill-patter
     style="height: 400px"
     access-token="..."
     map-style="mapbox://styles/mapbox/streets-v11"
-    :center="[0, 0]"
+    :center="mapCenter"
     :zoom="1">
     <MapboxImage
       src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Cat_silhouette.svg/400px-Cat_silhouette.svg.png"

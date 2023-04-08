@@ -1,5 +1,8 @@
 <script setup>
+  import { ref } from "vue";
   import { MapboxMap } from '@studiometa/vue-mapbox-gl';
+
+  const mapCenter = ref([0, 0]);
 </script>
 
 # MapboxMap
@@ -21,13 +24,16 @@ It is recommended to have a look at their [API reference](https://docs.mapbox.co
     style="margin-top: 1em; height: 400px;"
     :access-token="MAPBOX_API_KEY"
     map-style="mapbox://styles/mapbox/streets-v11"
-    :center="[0, 0]"
+    :center="mapCenter"
     :zoom="1" />
 </ClientOnly>
 
 ```vue
 <script setup>
+  import { ref } from "vue";
   import { MapboxMap } from '@studiometa/vue-mapbox-gl';
+
+  const mapCenter = ref([0, 0]);
 </script>
 
 <template>
@@ -35,7 +41,7 @@ It is recommended to have a look at their [API reference](https://docs.mapbox.co
     style="height: 400px"
     access-token="..."
     map-style="mapbox://styles/mapbox/streets-v11"
-    :center="[0, 0]"
+    :center="mapCenter"
     :zoom="1" />
 </template>
 ```
