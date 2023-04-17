@@ -14,6 +14,9 @@ export default defineConfig({
       message: 'Released under the GPL 3.0 License.',
       copyright: 'Copyright © 2019-present Studio Meta',
     },
+    search: {
+      provider: 'local',
+    },
     editLink: {
       pattern: 'https://github.com/studiometa/vue-mapbox-gl/edit/master/packages/docs/:path',
       text: 'Edit this page on GitHub',
