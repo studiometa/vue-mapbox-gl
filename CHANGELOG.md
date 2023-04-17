@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+## [v2.1.1](https://github.com/studiometa/vue-mapbox-gl/compare/2.1.0...2.1.1) (2023-04-17)
+
+### Changed
+
+- Add search to the docs (1c92956)
+
 ## [v2.1.0](https://github.com/studiometa/vue-mapbox-gl/compare/2.0.4...2.1.0) (2023-04-08)
 
 ### Added
@@ -19,7 +25,6 @@ All notable changes to this project will be documented in this file. The format 
 
 - Update NPM dependencies ([#89](https://github.com/studiometa/vue-mapbox-gl/pull/89), [#92](https://github.com/studiometa/vue-mapbox-gl/pull/92), [#86](https://github.com/studiometa/vue-mapbox-gl/pull/86), [#80](https://github.com/studiometa/vue-mapbox-gl/pull/80), [#99](https://github.com/studiometa/vue-mapbox-gl/pull/99))
 - Update docs with center as ref ([#95](https://github.com/studiometa/vue-mapbox-gl/pull/95), [@michaelklopf](https://github.com/michaelklopf))
-
 
 ## [v2.0.4](https://github.com/studiometa/vue-mapbox-gl/compare/2.0.3...2.0.4) (2023-01-11)
 
