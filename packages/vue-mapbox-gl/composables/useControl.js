@@ -8,7 +8,7 @@ import { usePropsBinding } from './usePropsBinding.js';
  * Use a Mapbox control.
  * @template {any} T
  * @param   {T}        ControlConstructor  A Mapbox control constructor function.
- * @param   {Object}   options
+ * @param   {object}   options
  * @param   {any}      options.propsConfig Props configuration for the component.
  * @param   {an}       options.props       Resolved props of the component.
  * @param   {Function} options.emit        Emit function of the component.

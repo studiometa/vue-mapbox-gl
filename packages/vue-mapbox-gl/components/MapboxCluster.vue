@@ -47,7 +47,7 @@
     /**
      * The layout configuration for the clusters circles
      * @see  https://docs.mapbox.com/mapbox-gl-js/example/cluster/
-     * @type {Object}
+     * @type {object}
      */
     clustersLayout: {
       type: Object,
@@ -56,7 +56,7 @@
     /**
      * The paint configuration for the clusters circles
      * @see  https://docs.mapbox.com/mapbox-gl-js/example/cluster/
-     * @type {Object}
+     * @type {object}
      */
     clustersPaint: {
       type: Object,
@@ -68,7 +68,7 @@
     /**
      * The layout configuration for the clusters count
      * @see  https://docs.mapbox.com/mapbox-gl-js/example/cluster/
-     * @type {Object}
+     * @type {object}
      */
     clusterCountLayout: {
       type: Object,
@@ -79,7 +79,7 @@
     /**
      * The paint configuration for the clusters count
      * @see  https://docs.mapbox.com/mapbox-gl-js/example/cluster/
-     * @type {Object}
+     * @type {object}
      */
     clusterCountPaint: {
       type: Object,
@@ -99,7 +99,7 @@
     /**
      * The layout configuration for the unclustered points
      * @see  https://docs.mapbox.com/mapbox-gl-js/example/cluster/
-     * @type {Object}
+     * @type {object}
      */
     unclusteredPointLayout: {
       type: Object,
@@ -108,7 +108,7 @@
     /**
      * The paint configuration for the unclustered points
      * @see  https://docs.mapbox.com/mapbox-gl-js/example/cluster/
-     * @type {Object}
+     * @type {object}
      */
     unclusteredPointPaint: {
       type: Object,
@@ -170,7 +170,7 @@
 
   /**
    * The unclustered points layer
-   * @type {Object}
+   * @type {object}
    */
   const unclusteredPointLayer = computed(() => ({
     id: getId('unclustered-point'),
@@ -183,8 +183,7 @@
 
   /**
    * Click handler for the clusters layer to zoom on the clicked cluster
-   *
-   * @param  {Object} event The Mapbox click event's object
+   * @param  {object} event The Mapbox click event's object
    * @returns {void}
    */
   function clustersClickHandler(event) {
@@ -216,7 +215,6 @@
   }
   /**
    * Mouseenter handler for the clusters layer to set a pointer cursor
-   *
    * @returns {void}
    */
   function clustersMouseenterHandler() {
@@ -224,7 +222,6 @@
   }
   /**
    * Mouseleave handler for the clusters layer to unset the pointer cursor
-   *
    * @returns {void}
    */
   function clustersMouseleaveHandler() {
@@ -234,8 +231,7 @@
   /**
    * Handler for the click event on a single feature, emits an event with
    * the feature object and the original event object
-   *
-   * @param  {Object} event The Mapbox click event's object
+   * @param  {object} event The Mapbox click event's object
    * @returns {void}
    */
   function unclusteredPointClickHandler(event) {
@@ -247,8 +243,7 @@
    * Handler for the mouseenter event on a single feature.
    * Emits an event with the feature object and the original event as
    * parameters, and sets the cursor style to pointer.
-   *
-   * @param  {Object} event The Mapbox mouseenter event's object
+   * @param  {object} event The Mapbox mouseenter event's object
    * @returns {void}
    */
   function unclusteredPointMouseenterHandler(event) {
@@ -261,8 +256,7 @@
    * Handler for the mouseleave event on a single feature.
    * Emits an event with the original event object as parameter, and resets
    * the cursor style to its default value.
-   *
-   * @param  {Object} event The Mapbox mouselvea event‘s object
+   * @param  {object} event The Mapbox mouselvea event‘s object
    * @returns {void}
    */
   function unclusteredPointMouseleaveHandler(event) {

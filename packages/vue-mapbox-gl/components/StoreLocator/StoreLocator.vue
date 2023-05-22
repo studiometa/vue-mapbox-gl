@@ -9,7 +9,6 @@
     /**
      * A list of items to display.
      * The only required properties are `lat` and `lng` and `id`.
-     *
      * @type {Array<{ lat: number, lng: number, id: string } & Record<string, unknown>>}
      */
     items: {
@@ -19,7 +18,6 @@
 
     /**
      * The zoom level to use when zooming in on an item.
-     *
      * @type {number}
      */
     itemZoomLevel: {
@@ -28,7 +26,7 @@
     },
     /**
      * A Mapbox access token.
-     * @type {Object}
+     * @type {object}
      */
     accessToken: {
       type: String,
@@ -36,9 +34,8 @@
     },
     /**
      * Props for the MapboxMap component.
-     *
      * @see  https://vue-mapbox-gl.meta.fr/components/MapboxMap.html#props
-     * @type {Object}
+     * @type {object}
      */
     mapboxMap: {
       type: Object,
@@ -46,9 +43,8 @@
     },
     /**
      * Props fof the MapboxCluster component.
-     *
      * @see  https://vue-mapbox-gl.meta.fr/components/MapboxCluster.html#props
-     * @type {Object}
+     * @type {object}
      */
     mapboxCluster: {
       type: Object,
@@ -56,9 +52,8 @@
     },
     /**
      * Props for the MapboxGeocoder component.
-     *
      * @see  https://vue-mapbox-gl.meta.fr/components/MapboxGeocoder.html#props
-     * @type {Object}
+     * @type {object}
      */
     mapboxGeocoder: {
       type: Object,
@@ -67,7 +62,7 @@
 
     /**
      * Configuration for each transition component.
-     * @type {Object}
+     * @type {object}
      */
     transitions: {
       type: Object,
@@ -84,7 +79,7 @@
 
     /**
      * Define custom classes for each element of the component.
-     * @type {Object}
+     * @type {object}
      */
     classes: {
       type: Object,
@@ -119,8 +114,7 @@
 
   /**
    * Transform an item into a valid GeoJSON feature.
-   *
-   * @param  {Object} item
+   * @param  {object} item
    * @param  {number} item.lat
    * @param  {number} item.lng
    * @returns {Feature}
@@ -176,9 +170,8 @@
 
   /**
    * Handler for the geocoder result event.
-   *
-   * @param {Object} options
-   * @param {Object} options.result The place selected in the geocoder component.
+   * @param {object} options
+   * @param {object} options.result The place selected in the geocoder component.
    */
   function onGeocoderResult({ result }) {
     if (result.bbox) {
@@ -190,7 +183,6 @@
 
   /**
    * Propagate the `mb-created` event from the MapboxGeocoder component.
-   *
    * @param  {Geocoder} geocoder The geocoder instance.
    * @returns {void}
    */
@@ -200,7 +192,6 @@
 
   /**
    * Handler for the map created event.
-   *
    * @param  {MapboxMap} instance The Mapbox instance.
    */
   async function onMapCreated(instance) {
@@ -239,8 +230,7 @@
 
   /**
    * Handler for the click event on a list item.
-   *
-   * @param {Object} item A GeoJSON feature.;
+   * @param {object} item A GeoJSON feature.;
    */
   function onListItemClick(item) {
     selectedItem.value = item;
@@ -256,8 +246,7 @@
 
   /**
    * Handler for the click event on a GeoJSON feature.
-   *
-   * @param {Object} feature The GeoJSON feature being clicked.
+   * @param {object} feature The GeoJSON feature being clicked.
    * @param {any}    event   The event object emitted.
    */
   function onClusterFeatureClick(feature, event) {

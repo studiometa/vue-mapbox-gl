@@ -6,7 +6,6 @@ import { watch, unref } from 'vue';
 
 /**
  * Capitalize the first letter of a string
- *
  * @param  {string} string The string to capitalize
  * @returns {string}        The capitalized string
  */
@@ -16,7 +15,6 @@ function capitalizeFirstLetter(string) {
 
 /**
  * Map a mapbox element's events to the given vue element
- *
  * @template {any}    T
  * @param    {any}    props          The component props.
  * @param    {Ref<T>} mapboxElement  The Mapbox element bound to the component.
@@ -25,7 +23,6 @@ function capitalizeFirstLetter(string) {
 export function usePropsBinding(props, mapboxElement, propsConfig) {
   /**
    * Bind props to the given mapboxElement in order to update them when they change.
-   *
    * @param   {T} element
    * @returns {void}
    */

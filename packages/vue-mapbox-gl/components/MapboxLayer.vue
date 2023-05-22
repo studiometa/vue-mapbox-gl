@@ -17,7 +17,7 @@
      * Options for the layer
      * @see  https://docs.mapbox.com/mapbox-gl-js/api/#map#addlayer
      * @see  https://docs.mapbox.com/mapbox-gl-js/style-spec/#layers
-     * @type {Object}
+     * @type {object}
      */
     options: {
       type: Object,
