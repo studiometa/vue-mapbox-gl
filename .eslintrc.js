@@ -9,6 +9,7 @@ module.exports = {
         defineExpose: false,
       },
       rules: {
+        'no-unused-vars': 'off',
         'vue/no-boolean-default': 'off',
         'import/first': 'off',
         'vue/valid-define-emits': 'off',
