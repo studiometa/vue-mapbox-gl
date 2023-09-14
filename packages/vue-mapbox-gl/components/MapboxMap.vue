@@ -219,9 +219,6 @@
       type: [String, Object],
       default: 'mercator',
     },
-    style: {
-      type: [Object, String],
-    },
     testMode: {
       type: Boolean,
       default: false,
