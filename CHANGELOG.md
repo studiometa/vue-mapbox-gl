@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+### Added
+
+- Add support for the `clusterProperties` option ([4a55844](https://github.com/studiometa/vue-mapbox-gl/commit/4a55844), [#119](https://github.com/studiometa/vue-mapbox-gl/pull/119), fix [#117](https://github.com/studiometa/vue-mapbox-gl/issues/117))
+- Add support for the `clusterMinPoints` option ([4e403c7](https://github.com/studiometa/vue-mapbox-gl/commit/4e403c7), [#119](https://github.com/studiometa/vue-mapbox-gl/pull/119))
+
 ### Fixed
 
 - Fix a bug where the geolocate control could be accessed before being added to the map ([3f8eaef](https://github.com/studiometa/vue-mapbox-gl/commit/3f8eaef), [#106](https://github.com/studiometa/vue-mapbox-gl/pull/106), fix [#77](https://github.com/studiometa/vue-mapbox-gl/issues/77))
