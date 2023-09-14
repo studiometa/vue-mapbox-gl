@@ -192,11 +192,11 @@
       type: Boolean,
     },
     language: {
-      type: ["auto", String, Array],
+      type: [String, Array],
       default: null,
     },
     locale: {
-      type: 'Object',
+      type: Object,
       default: null,
     },
     localFontFamily: {
@@ -216,7 +216,7 @@
       default: true,
     },
     projection: {
-      type: 'ProjectionSpecification',
+      type: [String, Object],
       default: 'mercator',
     },
     style: {
