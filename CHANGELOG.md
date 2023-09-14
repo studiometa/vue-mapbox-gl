@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file. The format 
 
 - Add support for the `clusterProperties` option ([4a55844](https://github.com/studiometa/vue-mapbox-gl/commit/4a55844), [#119](https://github.com/studiometa/vue-mapbox-gl/pull/119), fix [#117](https://github.com/studiometa/vue-mapbox-gl/issues/117))
 - Add support for the `clusterMinPoints` option ([4e403c7](https://github.com/studiometa/vue-mapbox-gl/commit/4e403c7), [#119](https://github.com/studiometa/vue-mapbox-gl/pull/119))
+- Add props to the `MapboxMap` component ([79d2929](https://github.com/studiometa/vue-mapbox-gl/commit/79d2929), [#121](https://github.com/studiometa/vue-mapbox-gl/pull/121), fix [#108](https://github.com/studiometa/vue-mapbox-gl/issues/108))
 
 ### Fixed
 
