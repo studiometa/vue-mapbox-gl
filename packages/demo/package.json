@@ -7,8 +7,8 @@
   },
   "dependencies": {
     "@studiometa/vue-mapbox-gl": "file:../vue-mapbox-gl",
-    "mapbox-gl": "^2.14.1",
-    "nuxt": "^3.5.1",
+    "mapbox-gl": "^2.15.0",
+    "nuxt": "^3.7.0",
     "vue": "^3.3.4"
   }
 }
