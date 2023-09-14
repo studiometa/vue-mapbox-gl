@@ -188,6 +188,56 @@
       type: Boolean,
       default: true,
     },
+    cooperativeGestures: {
+      type: Boolean,
+    },
+    language: {
+      type: ["auto", String, Array],
+      default: null,
+    },
+    locale: {
+      type: 'Object',
+      default: null,
+    },
+    localFontFamily: {
+      type: String,
+      default: false,
+    },
+    minTileCacheSize: {
+      type: Number,
+      default: null,
+    },
+    optimizeForTerrain: {
+      type: Boolean,
+      default: true,
+    },
+    performanceMetricsCollection: {
+      type: Boolean,
+      default: true,
+    },
+    projection: {
+      type: 'ProjectionSpecification',
+      default: 'mercator',
+    },
+    style: {
+      type: [Object, String],
+    },
+    testMode: {
+      type: Boolean,
+      default: false,
+    },
+    touchPitch: {
+      type: [Boolean, Object],
+      default: true,
+    },
+    useWebGL2: {
+      type: Boolean,
+      default: false,
+    },
+    worldview: {
+      type: String,
+      default: null,
+    },
   };
 
   /**
