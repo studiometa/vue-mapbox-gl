@@ -30,7 +30,7 @@ It is recommended to have a look at their [API reference](https://docs.mapbox.co
 
 ```vue
 <script setup>
-  import { ref } from "vue";
+  import { ref } from 'vue';
   import { MapboxMap } from '@studiometa/vue-mapbox-gl';
 
   const mapCenter = ref([0, 0]);
@@ -285,6 +285,70 @@ A map style definition, can be a JSON object following the [Mapbox Style specifi
 
 - Type `Boolean`
 - Default `true`
+
+### `cooperativeGestures`
+
+- Type: `Boolean`
+- Default: `false`
+
+### `language`
+
+- Type: `["auto", String, Array]`
+- Default: `null`
+
+### `locale`
+
+- Type: `Object`
+- Default: `null`
+
+### `localFontFamily`
+
+- Type: `String`
+- Default: `false`
+
+### `minTileCacheSize`
+
+- Type: `Number`
+- Default: `null`
+
+### `optimizeForTerrain`
+
+- Type: `Boolean`
+- Default: `true`
+
+### `performanceMetricsCollection`
+
+- Type: `Boolean`
+- Default: `true`
+
+### `projection`
+
+- Type: `ProjectionSpecification`
+- Default: `'mercator'`
+
+### `style`
+
+- Type: `[Object, String]`
+
+### `testMode`
+
+- Type: `Boolean`
+- Default: `false`
+
+### `touchPitch`
+
+- Type: `[Boolean, Object]`
+- Default: `true`
+
+### `useWebGL2`
+
+- Type: `Boolean`
+- Default: `false`
+
+### `worldview`
+
+- Type: `String`
+- Default: `null`
 
 ## Events
 
