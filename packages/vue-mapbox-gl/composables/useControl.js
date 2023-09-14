@@ -1,4 +1,5 @@
-import { onMounted, onUnmounted, ref, unref, watch, nextTick } from 'vue';
+import mapboxgl from 'mapbox-gl';
+import { onMounted, onUnmounted, ref, shallowReactive, unref, watch, nextTick } from 'vue';
 import { useMap } from './useMap.js';
 import { useEventsBinding } from './useEventsBinding.js';
 import { usePropsBinding } from './usePropsBinding.js';
@@ -7,7 +8,7 @@ import { usePropsBinding } from './usePropsBinding.js';
  * Use a Mapbox control.
  * @template {any} T
  * @param   {T}        ControlConstructor  A Mapbox control constructor function.
- * @param   {Object}   options
+ * @param   {object}   options
  * @param   {any}      options.propsConfig Props configuration for the component.
  * @param   {an}       options.props       Resolved props of the component.
  * @param   {Function} options.emit        Emit function of the component.
@@ -43,7 +44,22 @@ export function useControl(ControlConstructor, { propsConfig, props, emit, event
     }
 
     await nextTick();
-    control.value = ctrl;
+
+    // The GeolocateControl setup includes some async tasks, so we need to wait
+    // for its _setup property to become true to set it as the control ref value.
+    /* eslint-disable no-underscore-dangle */
+    if (ControlConstructor === mapboxgl.GeolocateControl && !ctrl._setup) {
+      const tmpControl = shallowReactive(ctrl);
+      const unwatch = watch(tmpControl, (reactiveCtrl) => {
+        if (reactiveCtrl._setup) {
+          control.value = ctrl;
+          unwatch();
+        }
+      });
+    } else {
+      control.value = ctrl;
+    }
+    /* eslint-enable no-underscore-dangle */
   });
 
   onUnmounted(() => {

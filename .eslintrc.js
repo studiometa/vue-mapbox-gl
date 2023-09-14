@@ -9,6 +9,7 @@ module.exports = {
         defineExpose: false,
       },
       rules: {
+        'no-unused-vars': 'off',
         'vue/no-boolean-default': 'off',
         'import/first': 'off',
         'vue/valid-define-emits': 'off',
@@ -16,6 +17,7 @@ module.exports = {
         'vue/max-attributes-per-line': 'off',
         'vue/singleline-html-element-content-newline': 'off',
         'import/extensions': ['error', 'ignorePackages'],
+        'vue/component-name-in-template-casing': ['error', 'PascalCase'],
       },
     },
   ],

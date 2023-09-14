@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+### Fixed
+
+- Fix a bug where the geolocate control could be accessed before being added to the map ([3f8eaef](https://github.com/studiometa/vue-mapbox-gl/commit/3f8eaef), [#106](https://github.com/studiometa/vue-mapbox-gl/pull/106), fix [#77](https://github.com/studiometa/vue-mapbox-gl/issues/77))
+
 ## [v2.1.1](https://github.com/studiometa/vue-mapbox-gl/compare/2.1.0...2.1.1) (2023-04-17)
 
 ### Changed

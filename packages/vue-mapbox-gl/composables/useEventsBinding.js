@@ -9,7 +9,6 @@ const regex = /onMb([A-Z])(.+)/;
 
 /**
  * Get a Mapbox event name from a Vue event name.
- *
  * @param   {string} vueEventName
  * @returns {string}
  */
@@ -26,7 +25,6 @@ function getOriginalEvent(vueEventName) {
 
 /**
  * Map a mapbox element's events to a Vue component.
- *
  * @param  {Function} emitFn        The emit function for the current component
  * @param  {Ref<any>} mapboxElement The Mapbox element bound to the component
  * @param  {string[]} [events]      The events to map

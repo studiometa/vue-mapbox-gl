@@ -8,7 +8,7 @@
   /**
    * Component's props definition, we need to declare it outside the component
    * to be able to test the default values and the types.
-   * @type {Object}
+   * @type {object}
    */
   const propsConfig = {
     showCompass: {

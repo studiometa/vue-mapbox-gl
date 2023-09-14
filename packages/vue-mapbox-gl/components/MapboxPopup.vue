@@ -13,7 +13,7 @@
    * Component's props definition, we need to declare it outside the component
    * to be able to test the default values and the types.
    * @see  https://docs.mapbox.com/mapbox-gl-js/api/#popup
-   * @type {Object}
+   * @type {object}
    */
   const propsConfig = {
     lngLat: {
@@ -50,7 +50,7 @@
     },
     /**
      * Do not render the popup on the map.
-     * @type {Object}
+     * @type {object}
      */
     renderless: {
       type: Boolean,

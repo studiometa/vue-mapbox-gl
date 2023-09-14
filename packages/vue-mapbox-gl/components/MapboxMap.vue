@@ -21,7 +21,7 @@
    * Component's props definition, we need to declare it outside the component
    * to be able to test the default values and the types.
    * @see  https://docs.mapbox.com/mapbox-gl-js/api/#map
-   * @type {Object}
+   * @type {object}
    */
   const propsConfig = {
     accessToken: {

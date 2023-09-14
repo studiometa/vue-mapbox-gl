@@ -19,7 +19,7 @@
      * The image as String, an HTMLImageElement, ImageData, or object with
      * width, height, and data properties with the same format as ImageData.
      * @see  https://docs.mapbox.com/mapbox-gl-js/api/#map#addimage
-     * @type {string | HTMLImageElement | ImageData | Object}
+     * @type {string | HTMLImageElement | ImageData | object}
      */
     src: {
       type: [
@@ -33,7 +33,7 @@
     /**
      * The options object for the image to add
      * @see  https://docs.mapbox.com/mapbox-gl-js/api/#map#addimage
-     * @type {Object}
+     * @type {object}
      */
     options: {
       type: Object,
@@ -54,7 +54,6 @@
 
   /**
    * Load the given image with the Mapbox `loadImage` method
-   *
    * @param  {string}  src The source URL for the image
    * @returns {Promise}     A promise which will resolve on load
    */
