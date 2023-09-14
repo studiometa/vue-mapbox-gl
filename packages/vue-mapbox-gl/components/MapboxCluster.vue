@@ -53,6 +53,16 @@
       default: 2
     },
     /**
+     * An object defining custom properties on the generated clusters.
+     * @see  https://docs.mapbox.com/style-spec/reference/sources/#geojson-clusterProperties
+     * @see  https://docs.mapbox.com/mapbox-gl-js/example/cluster-html/
+     * @type {Object}
+     */
+    clusterProperties: {
+      type: Object,
+      default: () => ({}),
+    },
+    /**
      * The layout configuration for the clusters circles
      * @see  https://docs.mapbox.com/mapbox-gl-js/example/cluster/
      * @type {object}
@@ -148,7 +158,7 @@
 
   const sourceId = computed(() => getId('source'));
   const source = computed(() => {
-    const { data, clusterMaxZoom, clusterRadius, clusterMinPoints } = props;
+    const { data, clusterMaxZoom, clusterRadius, clusterMinPoints, clusterProperties } = props;
     return {
       type: 'geojson',
       cluster: true,
@@ -156,6 +166,7 @@
       clusterMaxZoom,
       clusterRadius,
       clusterMinPoints,
+      clusterProperties,
     };
   });
 
