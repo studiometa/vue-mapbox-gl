@@ -50,13 +50,13 @@
      */
     clusterMinPoints: {
       type: Number,
-      default: 2
+      default: 2,
     },
     /**
      * An object defining custom properties on the generated clusters.
      * @see  https://docs.mapbox.com/style-spec/reference/sources/#geojson-clusterProperties
      * @see  https://docs.mapbox.com/mapbox-gl-js/example/cluster-html/
-     * @type {Object}
+     * @type {object}
      */
     clusterProperties: {
       type: Object,
