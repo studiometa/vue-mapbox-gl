@@ -45,6 +45,14 @@
       default: 50,
     },
     /**
+     * Minimum number of points necessary to form a cluster.
+     * @type {number}
+     */
+    clusterMinPoints: {
+      type: Number,
+      default: 2
+    },
+    /**
      * The layout configuration for the clusters circles
      * @see  https://docs.mapbox.com/mapbox-gl-js/example/cluster/
      * @type {object}
@@ -140,13 +148,14 @@
 
   const sourceId = computed(() => getId('source'));
   const source = computed(() => {
-    const { data, clusterMaxZoom, clusterRadius } = props;
+    const { data, clusterMaxZoom, clusterRadius, clusterMinPoints } = props;
     return {
       type: 'geojson',
       cluster: true,
       data,
       clusterMaxZoom,
       clusterRadius,
+      clusterMinPoints,
     };
   });
 
