@@ -21,7 +21,7 @@
    * Component's props definition, we need to declare it outside the component
    * to be able to test the default values and the types.
    * @see  https://docs.mapbox.com/mapbox-gl-js/api/#map
-   * @type {Object}
+   * @type {object}
    */
   const propsConfig = {
     accessToken: {
@@ -187,6 +187,53 @@
     crossSourceCollisions: {
       type: Boolean,
       default: true,
+    },
+    cooperativeGestures: {
+      type: Boolean,
+    },
+    language: {
+      type: [String, Array],
+      default: null,
+    },
+    locale: {
+      type: Object,
+      default: null,
+    },
+    localFontFamily: {
+      type: [Boolean, String],
+      default: false,
+    },
+    minTileCacheSize: {
+      type: Number,
+      default: null,
+    },
+    optimizeForTerrain: {
+      type: Boolean,
+      default: true,
+    },
+    performanceMetricsCollection: {
+      type: Boolean,
+      default: true,
+    },
+    projection: {
+      type: [String, Object],
+      default: 'mercator',
+    },
+    testMode: {
+      type: Boolean,
+      default: false,
+    },
+    touchPitch: {
+      type: [Boolean, Object],
+      default: true,
+    },
+    useWebGL2: {
+      type: Boolean,
+      default: false,
+    },
+    worldview: {
+      type: String,
+      default: null,
     },
   };
 

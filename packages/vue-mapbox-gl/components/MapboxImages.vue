@@ -18,7 +18,7 @@
      * A list of sources to add to the map
      * @see  https://docs.mapbox.com/mapbox-gl-js/api/#map#addimage
      * @see  ./MapboxImage.vue
-     * @type {Object}
+     * @type {object}
      */
     sources: {
       type: Array,

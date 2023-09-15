@@ -86,7 +86,21 @@ The max zoom to cluster points on.
 - Type `Number`
 - Default `50`
 
-Radius of each cluster when clustering point
+Radius of each cluster when clustering point.
+
+### `clusterMinPoints`
+
+- Type `Number`
+- Default `2`
+
+Minimum number of points necessary to form a cluster.
+
+### `clusterProperties`
+
+- Type `Object`
+- Default `{}}`
+
+An object defining custom properties on the generated clusters.
 
 ### `clustersLayout`
 
