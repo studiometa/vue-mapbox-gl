@@ -19,13 +19,13 @@
     "test": "echo '@todo add tests.'"
   },
   "devDependencies": {
-    "@studiometa/eslint-config": "^3.1.2",
+    "@studiometa/eslint-config": "^3.1.3",
     "@studiometa/prettier-config": "^2.1.1",
-    "eslint": "^8.41.0",
+    "eslint": "^8.48.0",
     "prettier": "^2.8.8"
   },
   "dependencies": {
     "esbuild": "^0.16.17",
-    "unplugin-vue": "^4.1.0"
+    "unplugin-vue": "^4.3.5"
   }
 }

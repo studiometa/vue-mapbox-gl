@@ -40,8 +40,8 @@
   },
   "devDependencies": {
     "@mapbox/mapbox-gl-geocoder": "^5.0.1",
-    "@studiometa/js-toolkit": "^2.7.0",
-    "mapbox-gl": "^2.12.0",
+    "@studiometa/js-toolkit": "^2.11.2",
+    "mapbox-gl": "^2.15.0",
     "vue": "^3.2.45"
   },
   "peerDependencies": {
