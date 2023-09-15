@@ -200,7 +200,7 @@
       default: null,
     },
     localFontFamily: {
-      type: String,
+      type: [Boolean, String],
       default: false,
     },
     minTileCacheSize: {
