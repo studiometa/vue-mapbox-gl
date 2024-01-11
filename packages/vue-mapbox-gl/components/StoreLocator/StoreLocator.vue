@@ -110,7 +110,7 @@
     filterItemsCallback: {
       type: [Function, Boolean],
       default: false,
-    }
+    },
   });
   const emit = defineEmits();
 
