@@ -102,6 +102,15 @@
         };
       },
     },
+
+    /**
+     * Filter items callback function
+     * @type {Function}
+     */
+    filterItemsCallback: {
+      type: [Function, Boolean],
+      default: false,
+    }
   });
   const emit = defineEmits();
 
@@ -163,6 +172,10 @@
 
         return 0;
       });
+
+    if (props.filterItemsCallback && typeof props.filterItemsCallback === 'function') {
+      filteredItems.value = await props.filterItemsCallback(filteredItems.value, map.value);
+    }
 
     await nextTick();
     listIsLoading.value = false;
