@@ -212,6 +212,13 @@ interface StoreLocatorClassesProp {
 }
 ```
 
+### `filterItemsCallback`
+
+- Type `Function|Boolean`
+- Default `false`
+
+Props to add a custom filtering on the `items` props. That is triggered on `onMapCreated` `onMapMoveend` event.
+
 ## Events
 
 ### `map-created`
