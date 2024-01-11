@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+## [v2.3.2](https://github.com/studiometa/vue-mapbox-gl/compare/2.3.1...2.3.2) (2024-01-11)
+- Fix NPM release deploy.
+
 ## [v2.3.1](https://github.com/studiometa/vue-mapbox-gl/compare/2.3.0...2.3.1) (2024-01-11)
 - Fix NPM critical dependencies.
 
