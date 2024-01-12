@@ -4,14 +4,29 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+## [v2.3.3](https://github.com/studiometa/vue-mapbox-gl/compare/2.3.2...2.3.3) (2024-01-12)
+
+### Fixed
+
+- Fix NPM publication ([#131](https://github.com/studiometa/vue-mapbox-gl/pull/131))
+
 ## [v2.3.2](https://github.com/studiometa/vue-mapbox-gl/compare/2.3.1...2.3.2) (2024-01-11)
-- Fix NPM release deploy.
+
+### Fixed
+
+- Fix NPM publication
 
 ## [v2.3.1](https://github.com/studiometa/vue-mapbox-gl/compare/2.3.0...2.3.1) (2024-01-11)
-- Fix NPM critical dependencies.
+
+### Fixed
+
+- Fix NPM critical dependencies ([#130](https://github.com/studiometa/vue-mapbox-gl/pull/130))
 
 ## [v2.3.0](https://github.com/studiometa/vue-mapbox-gl/compare/2.2.0...2.3.0) (2024-01-11)
-- Add `filterItemsCallback` props to `StoreLocator` component, that allow to filter the order of the items list.
+
+### Added
+
+- Add `filterItemsCallback` props to `StoreLocator` component to enable filtering the items list ([#128](https://github.com/studiometa/vue-mapbox-gl/pull/128))
 
 ## [v2.2.0](https://github.com/studiometa/vue-mapbox-gl/compare/2.1.1...2.2.0) (2023-09-15)
 
