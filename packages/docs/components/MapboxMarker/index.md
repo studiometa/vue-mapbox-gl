@@ -82,7 +82,7 @@ Display a marker on the map.
 ### `anchor`
 
 - Type `String`
-- Default: `center'`
+- Default: `'center'`
 
 ### `color`
 
