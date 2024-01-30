@@ -38,8 +38,8 @@
       default: 'Search',
     },
     proximity: {
-      type: Object,
-      default: () => ({}),
+      type: [Object, Array, String],
+      default: 'ip',
     },
     trackProximity: {
       type: Boolean,
