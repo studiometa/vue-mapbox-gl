@@ -316,6 +316,10 @@ A map style definition, can be a JSON object following the [Mapbox Style specifi
 - Type: `Boolean`
 - Default: `true`
 
+::: warning
+The `optimizeForTerrain` prop will only work with `mapbox-gl@2`, as it has been removed in v3.0.0 of the package (see [release notes](https://github.com/mapbox/mapbox-gl-js/releases/tag/v3.0.0)).
+:::
+
 ### `performanceMetricsCollection`
 
 - Type: `Boolean`

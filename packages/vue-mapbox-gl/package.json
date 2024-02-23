@@ -1,6 +1,6 @@
 {
   "name": "@studiometa/vue-mapbox-gl",
-  "version": "2.3.4",
+  "version": "2.4.0",
   "description": "A small components library to use Mapbox GL in Vue 3.",
   "homepage": "https://github.com/studiometa/vue-mapbox-gl#readme",
   "bugs": {
@@ -46,7 +46,7 @@
   },
   "peerDependencies": {
     "@mapbox/mapbox-gl-geocoder": "^5.0.1",
-    "mapbox-gl": "^2.8.2",
+    "mapbox-gl": "^2.8.2 || ^3.0.0",
     "vue": "^3.2.37"
   }
 }

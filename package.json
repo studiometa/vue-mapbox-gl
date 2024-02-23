@@ -1,7 +1,7 @@
 {
   "name": "@studiometa/vue-mapbox-gl-workspace",
   "private": true,
-  "version": "2.3.4",
+  "version": "2.4.0",
   "workspaces": [
     "packages/*"
   ],
@@ -10,7 +10,7 @@
     "docs:build": "npm run build -w @studiometa/vue-mapbox-gl-docs",
     "demo:dev": "npm run dev -w @studiometa/vue-mapbox-gl-demo",
     "demo:build": "npm run build -w @studiometa/vue-mapbox-gl-demo",
-    "lint": "eslint packages/vue-mapbox-gl --ext=.js,.vue",
+    "lint": "eslint packages/{vue-mapbox-gl,demo} --ext=.js,.vue",
     "fix": "npm run lint -- --fix",
     "build": "rm -rf dist && npm run build:esbuild && npm run build:cp",
     "build:esbuild": "node scripts/build.mjs",
