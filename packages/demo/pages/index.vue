@@ -77,21 +77,19 @@
   <div>
     <ClientOnly>
       <MapboxMap
-        @mb-created="createdHandler"
-        @mb-click="eventHandler"
         style="height: 400px"
         :access-token="accessToken"
         map-style="mapbox://styles/mapbox/streets-v11"
         :center="mapCenter"
         :zoom="zoom"
-      >
+        @mb-created="createdHandler"
+        @mb-click="eventHandler">
         <MapboxImages :sources="iconSources">
           <MapboxLayer id="pois" :options="layerOptions" />
         </MapboxImages>
         <MapboxImage
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Cat_silhouette.svg/400px-Cat_silhouette.svg.png"
           id="cat"
-        >
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Cat_silhouette.svg/400px-Cat_silhouette.svg.png">
           <MapboxCluster
             data="/earthquakes.json"
             unclustered-point-layer-type="symbol"
@@ -123,13 +121,12 @@
                 'icon-image': 'cat',
                 'icon-size': 0.25,
               },
-            }"
-          />
+            }" />
         </MapboxImage>
         <MapboxGeolocateControl position="top-left" />
         <MapboxNavigationControl position="bottom-right" />
         <MapboxGeocoder @mb-result="eventHandler" />
-        <MapboxMarker @mb-click="eventHandler" :lng-lat="[lng - 30, lat]" />
+        <MapboxMarker :lng-lat="[lng - 30, lat]" @mb-click="eventHandler" />
         <MapboxPopup :lng-lat="[lng, lat]">
           <p>Hello world !</p>
         </MapboxPopup>
@@ -140,17 +137,17 @@
       <fieldset class="controls__group">
         <legend>Longitude</legend>
         <input type="text" readonly="readonly" :value="lng" />
-        <input type="range" step="1"  min="-100" max="100" v-model="lng" />
+        <input v-model="lng" type="range" step="1" min="-100" max="100" />
       </fieldset>
       <fieldset class="controls__group">
         <legend>Latitude</legend>
         <input type="text" readonly="readonly" :value="lat" />
-        <input type="range" step="1" min="-90" max="90" v-model="lat" />
+        <input v-model="lat" type="range" step="1" min="-90" max="90" />
       </fieldset>
       <fieldset class="controls__group">
         <legend>Zoom</legend>
         <input type="text" readonly="readonly" :value="zoom" />
-        <input type="range" step="0.1" min="0" max="15" v-model.number="zoom" />
+        <input v-model.number="zoom" type="range" step="0.1" min="0" max="15" />
       </fieldset>
     </div>
   </div>
