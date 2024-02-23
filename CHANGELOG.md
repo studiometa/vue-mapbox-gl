@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+## [v2.4.0](https://github.com/studiometa/vue-mapbox-gl/compare/2.3.4...2.4.0) (2024-02-23)
+
 ### Added
 
 - Add support for mapbox-gl ^3.0.0 ([f8a9b21](https://github.com/studiometa/vue-mapbox-gl/commit/f8a9b21))
