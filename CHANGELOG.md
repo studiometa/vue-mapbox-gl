@@ -4,9 +4,18 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+### Added
+
+- Add support for mapbox-gl ^3.0.0 ([f8a9b21](https://github.com/studiometa/vue-mapbox-gl/commit/f8a9b21))
+
+### Fixed
+
+- Fix a warning when using MapboxGeocoder outside MapboxMap ([e4202ea](https://github.com/studiometa/vue-mapbox-gl/commit/e4202ea))
+
 ## [v2.3.4](https://github.com/studiometa/vue-mapbox-gl/compare/2.3.3...2.3.4) (2024-01-30)
 
 ### Fixed
+
 - Fix Geocoder proximity props default ([#133](https://github.com/studiometa/vue-mapbox-gl/pull/133))
 
 ## [v2.3.3](https://github.com/studiometa/vue-mapbox-gl/compare/2.3.2...2.3.3) (2024-01-12)
