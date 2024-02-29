@@ -44,6 +44,10 @@
       @mb-close="() => (isOpen = false)">
       <pre>{{ content }}</pre>
     </MapboxPopup>
-    <MapboxCluster data="/earthquakes.json" @mb-feature-click="openPopup" />
+    <MapboxCluster
+      divId="cluster-popup-demo"
+      idPrefix="cluster-popup"
+      data="/earthquakes.json"
+      @mb-feature-click="openPopup" />
   </MapboxMap>
 </template>

@@ -49,7 +49,7 @@ Display a cluster on the map with data coming from a GeoJSON source.
 <MapboxClusterWithPopupDemo style="margin-top: 1em; height: 400px;" />
 </ClientOnly>
 
-<<< @/.vitepress/components/MapboxClusterWithPopupDemo.vue{6-8,10-28,38-47}
+<<< @/.vitepress/components/MapboxClusterWithPopupDemo.vue{6-8,10-30,39-51}
 
   :::warning
   The `:center` prop of the `MapboxMap` component must be set via a data property (see `mapCenter` in the example above) instead of directly in the template, as it can create unexpected behaviours when clicking on a cluster feature.
@@ -65,6 +65,29 @@ Display a cluster on the map with data coming from a GeoJSON source.
 
 ## Props
 
+### `idPrefix`
+
+- Type `String`
+- Default `''`
+
+Prefix of the ids of the auto-generated MapboxSource and MapboxLayers, which will be assigned the following IDs automatically:
+
+- MapboxSource: `${idPrefix}-source`
+- MapboxLayer (clusters circles): `${idPrefix}-clusters`
+- MapboxLayer (clusters count): `${idPrefix}-cluster-count`
+- MapboxLayer (unclustered points layer): `${idPrefix}-unclustered-point`
+
+If `idPrefix` is not provided, a default prefix `mb-cluster-${index}` will be assigned, where index is a number which will increment with each new MapboxCluster instance.
+
+### `divId`
+
+- Type `String`
+- Default `''`
+
+id of `<div>` element encapsulating the component. If none is provided, a default id will be assigned:
+
+- `mb-cluster-${idPrefix}` if `idPrefix` is provided
+- `mb-cluster-${index}` if not
 
 ### `data`
 
