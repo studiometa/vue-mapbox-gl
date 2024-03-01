@@ -3,7 +3,7 @@
     <div ref="contentRef">
       <slot />
     </div>
-    <MapboxPopup v-if="hasPopup" ref="popupRef" v-bind="popupOptions">
+    <MapboxPopup v-if="hasPopup" ref="popupRef" v-bind="popupOptions" @mb-open="emitPopupOpen" @mb-close="emitPopupClose">
       <slot name="popup" />
     </MapboxPopup>
   </div>
@@ -126,4 +126,11 @@
       marker.value.remove();
     }
   });
+
+function emitPopupOpen(event) {
+ emit('mb-open', event )
+  }
+function emitPopupClose(event) {
+     emit('mb-close', event)
+  }
 </script>
