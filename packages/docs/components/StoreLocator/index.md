@@ -219,6 +219,13 @@ interface StoreLocatorClassesProp {
 
 Props to add a custom filtering on the `items` props. That is triggered on `onMapCreated` `onMapMoveend` event.
 
+### `disableFeatureClickZoom`
+
+- Type `Boolean`
+- Default `false`
+
+Disable the zoom on a feature click.
+
 ## Events
 
 ### `map-created`
