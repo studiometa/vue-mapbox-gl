@@ -271,13 +271,14 @@
     const item = props.items.find(({ id }) => id === feature.properties.id);
     emit('cluster-feature-click', feature, event);
 
-    if (props.disableFeatureClickZoom) {
-      return;
-    }
-
     if (item) {
       emit('select-item', item);
       selectedItem.value = item;
+
+      if (props.disableFeatureClickZoom) {
+        return;
+      }
+
       unref(map).flyTo({ center: feature.geometry.coordinates, zoom: props.itemZoomLevel });
     }
   }
