@@ -111,6 +111,11 @@
       type: [Function, Boolean],
       default: false,
     },
+
+    /**
+     * Disable the zoom when clicking on a Feature.
+     */
+    disableFeatureClickZoom: Boolean,
   });
   const emit = defineEmits();
 
@@ -269,6 +274,11 @@
     if (item) {
       emit('select-item', item);
       selectedItem.value = item;
+
+      if (props.disableFeatureClickZoom) {
+        return;
+      }
+
       unref(map).flyTo({ center: feature.geometry.coordinates, zoom: props.itemZoomLevel });
     }
   }
