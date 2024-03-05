@@ -111,6 +111,11 @@
       type: [Function, Boolean],
       default: false,
     },
+
+    /**
+     * Disable the zoom when clicking on a Feature.
+     */
+    disableFeatureClickZoom: Boolean,
   });
   const emit = defineEmits();
 
@@ -265,6 +270,10 @@
   function onClusterFeatureClick(feature, event) {
     const item = props.items.find(({ id }) => id === feature.properties.id);
     emit('cluster-feature-click', feature, event);
+
+    if (props.disableFeatureClickZoom) {
+      return;
+    }
 
     if (item) {
       emit('select-item', item);
