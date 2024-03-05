@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file. The format 
 
 ### Added
 
-- Add `disableFeatureClickZoom` prop to disable the zoom on feature click ([#136](https://github.com/studiometa/vue-mapbox-gl/pull/136))
+- **StoreLocator:** add `disableFeatureClickZoom` prop to disable the zoom on feature click ([#136](https://github.com/studiometa/vue-mapbox-gl/pull/136))
 
 ## [v2.4.0](https://github.com/studiometa/vue-mapbox-gl/compare/2.3.4...2.4.0) (2024-02-23)
 
