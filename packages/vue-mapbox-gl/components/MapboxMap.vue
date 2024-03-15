@@ -299,10 +299,11 @@
 </script>
 
 <script setup>
-  import { ref, computed, onMounted, onUnmounted, provide } from 'vue';
+  import { ref, computed, onMounted, onUnmounted, provide, useAttrs } from 'vue';
   import { useEventsBinding, usePropsBinding } from '../composables/index.js';
 
   const props = defineProps(propsConfig);
+  const attrs = useAttrs();
   const emit = defineEmits();
 
   const map = ref();
@@ -327,7 +328,7 @@
   onMounted(() => {
     mapboxgl.accessToken = props.accessToken;
 
-    map.value = new mapboxgl.Map(options.value);
+    map.value = new mapboxgl.Map({ ...options.value, ...attrs });
     map.value.on('load', () => {
       isLoaded.value = true;
     });
