@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "sass": "1.77.4",
-    "tailwindcss": "3.4.3",
+    "tailwindcss": "3.4.4",
     "vitepress": "1.2.2"
   }
 }
