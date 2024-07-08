@@ -10,3 +10,4 @@ export { default as MapboxMarker } from './MapboxMarker.vue';
 export { default as MapboxNavigationControl } from './MapboxNavigationControl.vue';
 export { default as MapboxPopup } from './MapboxPopup.vue';
 export { default as MapboxSource } from './MapboxSource.vue';
+export { default as MapboxFullscreenControl } from './MapboxFullscreenControl.vue';

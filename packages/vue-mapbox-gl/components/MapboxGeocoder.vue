@@ -15,7 +15,7 @@
   }
 
   /**
-   *Component's props definition, we need to declare it outside the component
+   * Component's props definition, we need to declare it outside the component
    * to be able to test the default values and the types.
    * @see https://github.com/mapbox/mapbox-gl-geocoder/blob/master/API.md#parameters
    * @type {object}
