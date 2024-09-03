@@ -68,7 +68,7 @@ This feature requires a minimal version of `4.5.0` for the `@mapbox/mapbox-gl-ge
 
 ## Props
 
-### `acccessToken`
+### `accessToken`
 - Type `String`
 - Required: only when used without a map
 - Default: `no-token`
