@@ -77,7 +77,7 @@
 </script>
 
 <script setup>
-  import { computed, ref, onMounted, onUnmounted, useSlots } from 'vue';
+  import { computed, ref, shallowRef, onMounted, onUnmounted, useSlots } from 'vue';
   import { useMap, useEventsBinding, usePropsBinding } from '../composables/index.js';
   import MapboxPopup from './MapboxPopup.vue';
 
@@ -85,7 +85,7 @@
   const emit = defineEmits();
   const slots = useSlots();
 
-  const marker = ref();
+  const marker = shallowRef();
   const contentRef = ref();
   const popupRef = ref();
   const hasPopup = computed(() => typeof slots.popup !== 'undefined');

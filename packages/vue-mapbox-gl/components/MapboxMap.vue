@@ -299,13 +299,13 @@
 </script>
 
 <script setup>
-  import { ref, computed, onMounted, onUnmounted, provide } from 'vue';
+  import { ref, shallowRef, computed, onMounted, onUnmounted, provide } from 'vue';
   import { useEventsBinding, usePropsBinding } from '../composables/index.js';
 
   const props = defineProps(propsConfig);
   const emit = defineEmits();
 
-  const map = ref();
+  const map = shallowRef();
   provide('mapbox-map', map);
 
   const root = ref();

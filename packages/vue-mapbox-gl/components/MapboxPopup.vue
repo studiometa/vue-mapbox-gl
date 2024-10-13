@@ -68,13 +68,13 @@
 </script>
 
 <script setup>
-  import { ref, computed, onMounted, onUnmounted } from 'vue';
+  import { ref, shallowRef, computed, onMounted, onUnmounted } from 'vue';
   import { useMap, usePropsBinding, useEventsBinding } from '../composables/index.js';
 
   const props = defineProps(propsConfig);
   const emit = defineEmits();
 
-  const popup = ref();
+  const popup = shallowRef();
   const root = ref();
   const options = computed(() => {
     const { lngLat, ...options } = props;
