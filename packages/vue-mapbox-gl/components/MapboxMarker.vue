@@ -126,4 +126,6 @@
       marker.value.remove();
     }
   });
+
+  defineExpose({ marker, popup: popupInstance });
 </script>
