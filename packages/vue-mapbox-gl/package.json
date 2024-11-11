@@ -39,7 +39,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "@mapbox/mapbox-gl-geocoder": "5.0.2",
+    "@mapbox/mapbox-gl-geocoder": "5.0.3",
     "@studiometa/js-toolkit": "2.12.1",
     "mapbox-gl": "3.5.2",
     "vue": "3.4.34"
