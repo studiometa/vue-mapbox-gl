@@ -1,5 +1,5 @@
 <template>
-  <div :id="id">
+  <div :id="divId">
     <MapboxSource :id="sourceId" :options="source" />
     <MapboxLayer
       :id="clustersLayer.id"
@@ -19,6 +19,22 @@
 
 <script>
   const propsConfig = {
+    /**
+     * Prefix of the ids of the auto-generated MapboxSource and MapboxLayers
+     * @type {string}
+     */
+    idPrefix: {
+      type: String,
+      default: '',
+    },
+    /**
+     * id of the <div> element encapsulating the component
+     * @type {string}
+     */
+    divId: {
+      type: String,
+      default: '',
+    },
     /**
      * The source of the data for the clustered points,
      * must be a String or an Object of GeoJSON format.
@@ -141,7 +157,7 @@
 </script>
 
 <script setup>
-  import { ref, unref, computed } from 'vue';
+  import { unref, computed } from 'vue';
   import { useMap } from '../composables/index.js';
   import MapboxLayer from './MapboxLayer.vue';
   import MapboxSource from './MapboxSource.vue';
@@ -151,10 +167,16 @@
   const emit = defineEmits();
 
   const { map } = useMap();
-  const id = ref(`mb-cluster-${index}`);
-  index += 1;
 
-  const getId = (suffix) => `${unref(id)}-${suffix}`;
+  const prefix = computed(() => (props.idPrefix ? props.idPrefix : `mb-cluster-${index}`));
+  if (!props.idPrefix) index += 1;
+  const divId = computed(() => {
+    if (props.divId) return props.divId;
+    if (props.idPrefix) return `mb-cluster-${props.idPrefix}`;
+    return `mb-cluster-${index}`;
+  });
+
+  const getId = (suffix) => `${unref(prefix)}-${suffix}`;
 
   const sourceId = computed(() => getId('source'));
   const source = computed(() => {
