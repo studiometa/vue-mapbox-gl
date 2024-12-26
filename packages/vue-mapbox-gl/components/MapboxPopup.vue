@@ -93,7 +93,7 @@
       popup.value.addTo(map.value);
     }
 
-    emit('mb-open', popup.value);
+    // emit('mb-open', popup.value);
   });
 
   onUnmounted(() => {
