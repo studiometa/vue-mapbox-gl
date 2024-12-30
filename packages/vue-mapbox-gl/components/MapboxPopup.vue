@@ -68,10 +68,11 @@
 </script>
 
 <script setup>
-  import { ref, computed, onMounted, onUnmounted } from 'vue';
+  import { ref, computed, onMounted, onUnmounted, useAttrs } from 'vue';
   import { useMap, usePropsBinding, useEventsBinding } from '../composables/index.js';
 
   const props = defineProps(propsConfig);
+  const attrs = useAttrs();
   const emit = defineEmits();
 
   const popup = ref();
@@ -87,7 +88,9 @@
   onMounted(() => {
     const { map } = useMap();
 
-    popup.value = new Popup(options.value).setLngLat(props.lngLat).setDOMContent(root.value);
+    popup.value = new Popup({ ...options.value, ...attrs })
+      .setLngLat(props.lngLat)
+      .setDOMContent(root.value);
 
     if (!props.renderless) {
       popup.value.addTo(map.value);
