@@ -27,6 +27,6 @@
   },
   "dependencies": {
     "esbuild": "^0.24.2",
-    "unplugin-vue": "^4.1.0"
+    "unplugin-vue": "^5.0.0"
   }
 }
