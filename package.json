@@ -2,6 +2,7 @@
   "name": "@studiometa/vue-mapbox-gl-workspace",
   "private": true,
   "version": "2.6.0",
+  "type": "module",
   "workspaces": [
     "packages/*"
   ],
@@ -10,7 +11,7 @@
     "docs:build": "npm run build -w @studiometa/vue-mapbox-gl-docs",
     "demo:dev": "npm run dev -w @studiometa/vue-mapbox-gl-demo",
     "demo:build": "npm run build -w @studiometa/vue-mapbox-gl-demo",
-    "lint": "eslint packages/{vue-mapbox-gl,demo} --ext=.js,.vue",
+    "lint": "eslint packages/{vue-mapbox-gl,demo}",
     "fix": "npm run lint -- --fix",
     "build": "rm -rf dist && npm run build:esbuild && npm run build:cp",
     "build:esbuild": "node scripts/build.mjs",
@@ -19,13 +20,13 @@
     "test": "npm run test -w @studiometa/vue-mapbox-gl-tests"
   },
   "devDependencies": {
-    "@studiometa/eslint-config": "3.1.3",
-    "@studiometa/prettier-config": "2.1.1",
-    "eslint": "8.57.1",
-    "prettier": "2.8.8"
+    "@studiometa/eslint-config": "4.2.0",
+    "@studiometa/prettier-config": "4.1.0",
+    "eslint": "9.17.0",
+    "prettier": "3.4.2"
   },
   "dependencies": {
-    "esbuild": "^0.24.0",
+    "esbuild": "^0.24.2",
     "unplugin-vue": "^4.1.0"
   }
 }
