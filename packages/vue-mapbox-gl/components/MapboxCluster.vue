@@ -1,23 +1,6 @@
-<template>
-  <div :id="id">
-    <MapboxSource :id="sourceId" :options="source" />
-    <MapboxLayer
-      :id="clustersLayer.id"
-      :options="clustersLayer"
-      @mb-click="clustersClickHandler"
-      @mb-mouseenter="clustersMouseenterHandler"
-      @mb-mouseleave="clustersMouseleaveHandler" />
-    <MapboxLayer :id="clusterCountLayer.id" :options="clusterCountLayer" />
-    <MapboxLayer
-      :id="unclusteredPointLayer.id"
-      :options="unclusteredPointLayer"
-      @mb-click="unclusteredPointClickHandler"
-      @mb-mouseenter="unclusteredPointMouseenterHandler"
-      @mb-mouseleave="unclusteredPointMouseleaveHandler" />
-  </div>
-</template>
+<script lang="ts">
+  import type { GeoJSONSource } from 'mapbox-gl';
 
-<script>
   const propsConfig = {
     /**
      * The source of the data for the clustered points,
@@ -140,21 +123,25 @@
   let index = 0;
 </script>
 
-<script setup>
+<script lang="ts" setup>
   import { ref, unref, computed } from 'vue';
   import { useMap } from '../composables/index.js';
   import MapboxLayer from './MapboxLayer.vue';
   import MapboxSource from './MapboxSource.vue';
 
   const props = defineProps(propsConfig);
-  // eslint-disable-next-line vue/valid-define-emits
-  const emit = defineEmits();
+  const emit = defineEmits([
+    'mb-cluster-click',
+    'mb-feature-click',
+    'mb-feature-mouseenter',
+    'mb-feature-mouseleave',
+  ]);
 
   const { map } = useMap();
   const id = ref(`mb-cluster-${index}`);
   index += 1;
 
-  const getId = (suffix) => `${unref(id)}-${suffix}`;
+  const getId = (suffix: string) => `${unref(id)}-${suffix}`;
 
   const sourceId = computed(() => getId('source'));
   const source = computed(() => {
@@ -221,7 +208,7 @@
     }
 
     unref(map)
-      .getSource(unref(sourceId))
+      .getSource<GeoJSONSource>(unref(sourceId))
       .getClusterExpansionZoom(clusterId, (err, zoom) => {
         if (err) {
           return;
@@ -284,3 +271,22 @@
     unref(map).getCanvas().style.cursor = '';
   }
 </script>
+
+<template>
+  <div :id="id">
+    <MapboxSource :id="sourceId" :options="source" />
+    <MapboxLayer
+      :id="clustersLayer.id"
+      :options="clustersLayer"
+      @mb-click="clustersClickHandler"
+      @mb-mouseenter="clustersMouseenterHandler"
+      @mb-mouseleave="clustersMouseleaveHandler" />
+    <MapboxLayer :id="clusterCountLayer.id" :options="clusterCountLayer" />
+    <MapboxLayer
+      :id="unclusteredPointLayer.id"
+      :options="unclusteredPointLayer"
+      @mb-click="unclusteredPointClickHandler"
+      @mb-mouseenter="unclusteredPointMouseenterHandler"
+      @mb-mouseleave="unclusteredPointMouseleaveHandler" />
+  </div>
+</template>

@@ -4,8 +4,9 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
   import mapboxgl from 'mapbox-gl';
+  import type { PopupOptions, LngLatLike } from 'mapbox-gl';
 
   const { Popup, Point, LngLat } = mapboxgl;
 
@@ -67,19 +68,18 @@
   const events = ['open', 'close'];
 </script>
 
-<script setup>
+<script lang="ts" setup>
   import { ref, shallowRef, computed, onMounted, onUnmounted } from 'vue';
   import { useMap, usePropsBinding, useEventsBinding } from '../composables/index.js';
 
   const props = defineProps(propsConfig);
-  const emit = defineEmits(['mb-open']);
+  const emit = defineEmits(['mb-open', 'mb-close']);
 
   const popup = shallowRef();
   const root = ref();
-  const options = computed(() => {
-    // eslint-disable-next-line no-unused-vars
+  const options = computed<PopupOptions>(() => {
     const { lngLat, ...options } = props;
-    return options;
+    return options as PopupOptions;
   });
 
   usePropsBinding(props, popup, propsConfig);
@@ -88,7 +88,9 @@
   onMounted(() => {
     const { map } = useMap();
 
-    popup.value = new Popup(options.value).setLngLat(props.lngLat).setDOMContent(root.value);
+    popup.value = new Popup(options.value)
+      .setLngLat(props.lngLat as LngLatLike)
+      .setDOMContent(root.value);
 
     if (!props.renderless) {
       popup.value.addTo(map.value);

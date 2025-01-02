@@ -1,28 +1,22 @@
-<template>
-  <div :id="id" />
-</template>
+<script lang="ts">
+  import type { GeoJSONSource, GeoJSONSourceSpecification } from 'mapbox-gl';
+</script>
 
-<script setup>
+<script lang="ts" setup>
   import { unref, watch, onMounted, onUnmounted } from 'vue';
   import { useMap } from '../composables/index.js';
 
-  const props = defineProps({
-    options: {
-      type: Object,
-      default: () => ({}),
-    },
-    id: {
-      type: String,
-      required: true,
-    },
-  });
+  const props = defineProps<{
+    options?: GeoJSONSourceSpecification;
+    id: string;
+  }>();
 
   const { map } = useMap();
 
   watch(
     () => props.options.data,
     (newValue) => {
-      unref(map).getSource(props.id).setData(newValue);
+      unref(map).getSource<GeoJSONSource>(props.id).setData(newValue);
     },
   );
 
@@ -44,3 +38,7 @@
     unref(map).removeSource(props.id);
   });
 </script>
+
+<template>
+  <div :id="id" />
+</template>

@@ -1,8 +1,8 @@
-import { defineConfig, js, vue, prettier, globals } from '@studiometa/eslint-config';
+import { defineConfig, ts, vueTs, prettier, globals } from '@studiometa/eslint-config';
 
 export default defineConfig(
-  js,
-  vue,
+  ts,
+  vueTs,
   prettier,
   {
     files: ['packages/{demo,vue-mapbox-gl}/**/*.{js,vue}'],

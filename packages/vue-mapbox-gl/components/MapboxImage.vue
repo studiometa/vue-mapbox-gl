@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
   const propsConfig = {
     /**
      * The ID of the image
@@ -42,7 +42,7 @@
   };
 </script>
 
-<script setup>
+<script lang="ts" setup>
   import { ref, unref, watch, onMounted, onUnmounted } from 'vue';
   import { useMap } from '../composables/index.js';
 

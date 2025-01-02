@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
   import { ref, unref, onUpdated, onMounted, onBeforeUnmount, nextTick } from 'vue';
   import { debounce } from '@studiometa/js-toolkit/utils';
 

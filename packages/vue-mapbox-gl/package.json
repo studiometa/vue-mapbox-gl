@@ -27,10 +27,12 @@
     }
   ],
   "type": "module",
-  "main": "./index.js",
+  "sideEffects": false,
+  "main": "index.ts",
   "exports": {
     ".": {
-      "import": "./index.js",
+      "types": "./index.d.ts",
+      "import": "./index.ts",
       "require": "./index.cjs"
     },
     "./*": "./*"
