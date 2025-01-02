@@ -25,7 +25,7 @@
       required: true,
     },
   });
-  const emit = defineEmits();
+  const emit = defineEmits(['mb-add', 'mb-ready']);
 
   const isReady = ref(false);
   const addedImages = new Map();

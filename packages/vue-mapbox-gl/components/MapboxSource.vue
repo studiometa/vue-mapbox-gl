@@ -9,7 +9,7 @@
   const props = defineProps({
     options: {
       type: Object,
-      default: () => {},
+      default: () => ({}),
     },
     id: {
       type: String,
@@ -23,7 +23,7 @@
     () => props.options.data,
     (newValue) => {
       unref(map).getSource(props.id).setData(newValue);
-    }
+    },
   );
 
   onMounted(() => {

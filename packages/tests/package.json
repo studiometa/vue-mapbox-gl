@@ -6,12 +6,12 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@mapbox/mapbox-gl-geocoder": "^5.0.2",
+    "@mapbox/mapbox-gl-geocoder": "^5.0.3",
     "@studiometa/vue-mapbox-gl": "*",
     "@vitejs/plugin-vue": "5.2.1",
-    "mapbox-gl": "^3.1.2",
+    "mapbox-gl": "^3.9.1",
     "vitest": "2.1.8",
-    "vue": "^3.4.19"
+    "vue": "^3.5.13"
   },
   "devDependencies": {
     "@vitest/coverage-v8": "2.1.8"

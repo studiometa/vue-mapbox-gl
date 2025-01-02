@@ -91,7 +91,7 @@
   import MapboxPopup from './MapboxPopup.vue';
 
   const props = defineProps(propsConfig);
-  const emit = defineEmits();
+  const emit = defineEmits(events.map((event) => `mb-${event}`));
   const slots = useSlots();
 
   const marker = shallowRef();
@@ -108,6 +108,7 @@
   }));
 
   const options = computed(() => {
+    // eslint-disable-next-line no-unused-vars
     const { lngLat, popup, ...options } = props;
 
     // Use current component's element if container is not set

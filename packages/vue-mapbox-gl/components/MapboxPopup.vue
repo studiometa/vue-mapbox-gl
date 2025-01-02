@@ -72,11 +72,12 @@
   import { useMap, usePropsBinding, useEventsBinding } from '../composables/index.js';
 
   const props = defineProps(propsConfig);
-  const emit = defineEmits();
+  const emit = defineEmits(['mb-open']);
 
   const popup = shallowRef();
   const root = ref();
   const options = computed(() => {
+    // eslint-disable-next-line no-unused-vars
     const { lngLat, ...options } = props;
     return options;
   });

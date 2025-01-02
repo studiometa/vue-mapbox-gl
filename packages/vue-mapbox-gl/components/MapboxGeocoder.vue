@@ -136,7 +136,7 @@
   import { useControl } from '../composables/index.js';
 
   const props = defineProps(propsConfig);
-  const emit = defineEmits();
+  const emit = defineEmits(events.map((event) => `mb-${event}`));
 
   const root = ref();
   const options = computed(() => {
