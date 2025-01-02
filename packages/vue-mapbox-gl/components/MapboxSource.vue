@@ -2,7 +2,7 @@
   <div :id="id" />
 </template>
 
-<script setup>
+<script lang="ts" setup>
   import { unref, watch, onMounted, onUnmounted } from 'vue';
   import { useMap } from '../composables/index.js';
 

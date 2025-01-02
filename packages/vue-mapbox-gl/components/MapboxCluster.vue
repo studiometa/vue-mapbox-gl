@@ -17,7 +17,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
   const propsConfig = {
     /**
      * The source of the data for the clustered points,
@@ -140,7 +140,7 @@
   let index = 0;
 </script>
 
-<script setup>
+<script lang="ts" setup>
   import { ref, unref, computed } from 'vue';
   import { useMap } from '../composables/index.js';
   import MapboxLayer from './MapboxLayer.vue';

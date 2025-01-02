@@ -2,7 +2,7 @@
   <div :id="id" />
 </template>
 
-<script>
+<script lang="ts">
   const propsConfig = {
     /**
      * Id of the layer
@@ -56,7 +56,7 @@
   ];
 </script>
 
-<script setup>
+<script lang="ts" setup>
   import { onMounted, onUnmounted, computed, unref } from 'vue';
   import { useEventsBinding, useMap } from '../composables/index.js';
 

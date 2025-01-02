@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
   import { ref, unref, computed, nextTick } from 'vue';
   import MapboxCluster from '../MapboxCluster.vue';
   import MapboxGeocoder from '../MapboxGeocoder.vue';

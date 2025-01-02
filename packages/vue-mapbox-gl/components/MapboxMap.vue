@@ -8,7 +8,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
   import mapboxgl from 'mapbox-gl';
 
   if (!mapboxgl) {
@@ -298,7 +298,7 @@
   };
 </script>
 
-<script setup>
+<script lang="ts" setup>
   import { ref, shallowRef, computed, onMounted, onUnmounted, provide } from 'vue';
   import { useEventsBinding, usePropsBinding } from '../composables/index.js';
 

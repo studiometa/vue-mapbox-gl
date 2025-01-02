@@ -9,7 +9,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
   import mapboxgl from 'mapbox-gl';
 
   const { Marker, Point } = mapboxgl;
@@ -85,7 +85,7 @@
   const events = ['dragstart', 'drag', 'dragend'];
 </script>
 
-<script setup>
+<script lang="ts" setup>
   import { computed, ref, shallowRef, onMounted, onUnmounted, useSlots } from 'vue';
   import { useMap, useEventsBinding, usePropsBinding } from '../composables/index.js';
   import MapboxPopup from './MapboxPopup.vue';

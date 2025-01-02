@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
   import mapboxgl from 'mapbox-gl';
 
   const { Popup, Point, LngLat } = mapboxgl;
@@ -67,7 +67,7 @@
   const events = ['open', 'close'];
 </script>
 
-<script setup>
+<script lang="ts" setup>
   import { ref, shallowRef, computed, onMounted, onUnmounted } from 'vue';
   import { useMap, usePropsBinding, useEventsBinding } from '../composables/index.js';
 

@@ -2,7 +2,7 @@
   <div ref="root" />
 </template>
 
-<script>
+<script lang="ts">
   import mapboxgl from 'mapbox-gl';
   import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
@@ -131,7 +131,7 @@
   const events = ['clear', 'loading', 'results', 'result', 'error'];
 </script>
 
-<script setup>
+<script lang="ts" setup>
   import { onMounted, ref, unref, computed, watch } from 'vue';
   import { useControl } from '../composables/index.js';
 
