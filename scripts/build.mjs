@@ -23,11 +23,7 @@ async function build(format = 'esm') {
     target: 'es2019',
     outExtension: { '.js': format === 'cjs' ? '.cjs' : '.js' },
     sourcemap: true,
-    plugins: [
-      vue({
-        sourceMap: true,
-      }),
-    ],
+    plugins: [vue({ sourceMap: false })],
     external: ['@mapbox/mapbox-gl-geocoder', 'mapbox-gl', 'vue'],
   });
   writeFileSync(path.resolve(outdir, `meta.${format}.json`), JSON.stringify(result.metafile));
