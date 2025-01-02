@@ -11,6 +11,7 @@
     MapboxNavigationControl,
     MapboxPopup,
     MapboxCluster,
+    MapboxFullscreenControl,
   } from '@studiometa/vue-mapbox-gl';
   import 'mapbox-gl/dist/mapbox-gl.css';
   import '@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css';
@@ -84,6 +85,7 @@
         :zoom="zoom"
         @mb-created="createdHandler"
         @mb-click="eventHandler">
+        <MapboxFullscreenControl position="bottom-left" />
         <MapboxImages :sources="iconSources">
           <MapboxLayer id="pois" :options="layerOptions" />
         </MapboxImages>

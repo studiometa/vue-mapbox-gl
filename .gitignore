@@ -27,3 +27,4 @@ yarn-error.log*
 /packages/docs/.vitepress/cache
 /packages/demo/.nuxt/
 /packages/demo/.output/
+/packages/coverage/

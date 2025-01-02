@@ -46,7 +46,7 @@ export function usePropsBinding(props, mapboxElement, propsConfig) {
         }
 
         // Set deep option to true if prop type is or can be Object
-        const { type } = props[prop];
+        const { type } = propsConfig[prop];
         const options = {
           deep: type === Object || (Array.isArray(type) && type.includes(Object)),
         };

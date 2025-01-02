@@ -66,6 +66,15 @@
       type: String,
       default: 'auto',
     },
+    /**
+     * Do not render the popup on the map.
+     * @type {object}
+     */
+    renderless: {
+      type: Boolean,
+      default: false,
+      bind: false,
+    },
   };
 
   /**
@@ -77,7 +86,7 @@
 </script>
 
 <script setup>
-  import { computed, ref, onMounted, onUnmounted, useSlots } from 'vue';
+  import { computed, ref, shallowRef, onMounted, onUnmounted, useSlots } from 'vue';
   import { useMap, useEventsBinding, usePropsBinding } from '../composables/index.js';
   import MapboxPopup from './MapboxPopup.vue';
 
@@ -85,7 +94,7 @@
   const emit = defineEmits();
   const slots = useSlots();
 
-  const marker = ref();
+  const marker = shallowRef();
   const contentRef = ref();
   const popupRef = ref();
   const hasPopup = computed(() => typeof slots.popup !== 'undefined');
@@ -114,7 +123,11 @@
 
   onMounted(() => {
     const { map } = useMap();
-    marker.value = new Marker(options.value).setLngLat(props.lngLat).addTo(map.value);
+    marker.value = new Marker(options.value).setLngLat(props.lngLat);
+
+    if (!props.renderless) {
+      marker.value.addTo(map.value);
+    }
 
     if (hasPopup.value) {
       marker.value.setPopup(popupInstance.value);
@@ -126,4 +139,6 @@
       marker.value.remove();
     }
   });
+
+  defineExpose({ marker, popup: popupInstance });
 </script>

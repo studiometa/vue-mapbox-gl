@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+## [v2.6.0](https://github.com/studiometa/vue-mapbox-gl/compare/2.5.0...2.6.0) (2025-01-02)
+
+### Added
+
+- Add a `MapboxFullscreenControl` component ([#177](https://github.com/studiometa/vue-mapbox-gl/pull/177), [36fff83](https://github.com/studiometa/vue-mapbox-gl/commit/36fff83))
+- Expose the marker instance ([#195](https://github.com/studiometa/vue-mapbox-gl/pull/195), [08b1cab](https://github.com/studiometa/vue-mapbox-gl/commit/08b1cab))
+- Add support for renderless marker ([#196](https://github.com/studiometa/vue-mapbox-gl/pull/196), [91cb2e3](https://github.com/studiometa/vue-mapbox-gl/commit/91cb2e3))
+
+### Changed
+
+- Improve performance by using shallowRef instead of ref ([#194](https://github.com/studiometa/vue-mapbox-gl/pull/194), [a34ce76](https://github.com/studiometa/vue-mapbox-gl/commit/a34ce76))
+
+### Fixed
+
+- Fix typo in heading of accessToken prop ([#192](https://github.com/studiometa/vue-mapbox-gl/pull/192), [f0d6587](https://github.com/studiometa/vue-mapbox-gl/commit/f0d6587))
+- Fix binding of events ([#124](https://github.com/studiometa/vue-mapbox-gl/pull/124), [9d71b7e](https://github.com/studiometa/vue-mapbox-gl/commit/9d71b7e))
+
 ## [v2.5.0](https://github.com/studiometa/vue-mapbox-gl/compare/2.4.0...2.5.0) (2024-03-05)
 
 ### Added

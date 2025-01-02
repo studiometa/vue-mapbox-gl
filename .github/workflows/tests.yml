@@ -1,47 +1,57 @@
-name: Tests
+name: tests
 
 on:
   push:
     branches:
-      - feature/vue-3
+      - master
+      - develop
   pull_request:
 
 jobs:
-
-  Build:
+  build:
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-      with:
-        node-version: 20
-        cache: npm
-    - name: Install modules
-      run: npm install
-    - name: Build the package
-      run: npm run build
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
 
-  Code-Quality:
+  code-quality:
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-      with:
-        node-version: 20
-        cache: npm
-    - name: Install modules
-      run: npm install
-    - name: Run code quality tests
-      run: npm run lint -- --format=compact
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm install
+      - name: Run code quality tests
+        run: npm run lint
 
-  Export-Size:
-    runs-on: ubuntu-latest
+  unit:
+    runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          fetch-depth: '0'
-      - uses: titouanmathis/export-size-action@main
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm install
+      - name: Run tests
+        run: npm run test -- -- --retry=3 --coverage.enabled
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          build_script: npm run build
-          paths: dist
+          files: ./packages/coverage/clover.xml
+          flags: unittests
+          fail_ci_if_error: false
+          verbose: true
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
