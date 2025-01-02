@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-unresolved
 import { defineNuxtPlugin } from '#imports';
 
 export default defineNuxtPlugin((nuxtApp) => {

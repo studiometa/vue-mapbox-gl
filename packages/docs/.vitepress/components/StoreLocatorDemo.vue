@@ -70,8 +70,8 @@
 </template>
 
 <style lang="scss">
-  @import 'tailwindcss/components';
-  @import 'tailwindcss/utilities';
+  @use 'tailwindcss/components';
+  @use 'tailwindcss/utilities';
 
   .bg-vp {
     background-color: var(--vp-c-bg);

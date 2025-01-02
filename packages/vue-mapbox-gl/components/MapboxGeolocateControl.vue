@@ -2,7 +2,7 @@
   <div />
 </template>
 
-<script>
+<script lang="ts">
   import mapboxgl from 'mapbox-gl';
 
   if (!mapboxgl) {
@@ -63,11 +63,11 @@
   ];
 </script>
 
-<script setup>
+<script lang="ts" setup>
   import { useControl } from '../composables/index.js';
 
   const props = defineProps(propsConfig);
-  const emit = defineEmits();
+  const emit = defineEmits(events.map((event) => `mb-${event}`));
 
   const { control } = useControl(GeolocateControl, { propsConfig, events, props, emit });
 

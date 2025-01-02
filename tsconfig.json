@@ -1,0 +1,21 @@
+{
+  "extends": ["@vue/tsconfig/tsconfig.dom.json", "@vue/tsconfig/tsconfig.lib.json"],
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["esnext", "dom"],
+    "strict": false,
+    "noEmit": true,
+    "noImplicitThis": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "baseUrl": "./packages/vue-mapbox-gl/",
+    "paths": {
+      "#private/*": ["./*"]
+    }
+  },
+  "include": [
+    "packages/vue-mapbox-gl/**/*.ts",
+    "packages/vue-mapbox-gl/**/*.vue",
+  ]
+}

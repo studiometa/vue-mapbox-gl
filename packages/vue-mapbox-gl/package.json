@@ -1,6 +1,6 @@
 {
   "name": "@studiometa/vue-mapbox-gl",
-  "version": "2.6.0",
+  "version": "2.7.0-alpha.0",
   "description": "A small components library to use Mapbox GL in Vue 3.",
   "homepage": "https://github.com/studiometa/vue-mapbox-gl#readme",
   "bugs": {
@@ -27,10 +27,12 @@
     }
   ],
   "type": "module",
-  "main": "./index.js",
+  "sideEffects": false,
+  "main": "index.ts",
   "exports": {
     ".": {
-      "import": "./index.js",
+      "types": "./index.d.ts",
+      "import": "./index.ts",
       "require": "./index.cjs"
     },
     "./*": "./*"

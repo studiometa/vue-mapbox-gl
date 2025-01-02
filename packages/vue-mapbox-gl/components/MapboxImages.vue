@@ -9,7 +9,7 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
   import { ref } from 'vue';
   import MapboxImage from './MapboxImage.vue';
 
@@ -25,7 +25,7 @@
       required: true,
     },
   });
-  const emit = defineEmits();
+  const emit = defineEmits(['mb-add', 'mb-ready']);
 
   const isReady = ref(false);
   const addedImages = new Map();

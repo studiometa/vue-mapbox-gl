@@ -2,7 +2,7 @@
   <div :id="id" />
 </template>
 
-<script>
+<script lang="ts">
   const propsConfig = {
     /**
      * Id of the layer
@@ -21,7 +21,7 @@
      */
     options: {
       type: Object,
-      default: () => {},
+      default: () => ({}),
     },
     /**
      * The ID of an existing layer to insert the new layer before.
@@ -56,12 +56,12 @@
   ];
 </script>
 
-<script setup>
+<script lang="ts" setup>
   import { onMounted, onUnmounted, computed, unref } from 'vue';
   import { useEventsBinding, useMap } from '../composables/index.js';
 
   const props = defineProps(propsConfig);
-  const emit = defineEmits();
+  const emit = defineEmits(events.map((event) => `mb-${event}`));
 
   const { map } = useMap();
   const options = computed(() => {

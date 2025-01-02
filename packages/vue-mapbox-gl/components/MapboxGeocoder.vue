@@ -2,7 +2,7 @@
   <div ref="root" />
 </template>
 
-<script>
+<script lang="ts">
   import mapboxgl from 'mapbox-gl';
   import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
@@ -131,12 +131,12 @@
   const events = ['clear', 'loading', 'results', 'result', 'error'];
 </script>
 
-<script setup>
+<script lang="ts" setup>
   import { onMounted, ref, unref, computed, watch } from 'vue';
   import { useControl } from '../composables/index.js';
 
   const props = defineProps(propsConfig);
-  const emit = defineEmits();
+  const emit = defineEmits(events.map((event) => `mb-${event}`));
 
   const root = ref();
   const options = computed(() => {
@@ -161,7 +161,6 @@
     // @see https://github.com/mapbox/mapbox-sdk-js/blob/main/services/geocoding.js (92-104)
     // @see https://github.com/mapbox/mapbox-sdk-js/blob/main/services/geocoding.js (161-172)
     // @see https://github.com/mapbox/mapbox-gl-geocoder/blob/master/lib/index.js (437-458)
-    // eslint-disable-next-line no-constant-condition
     if (!opts.reverseGeocode || true) {
       delete opts.reverseMode;
     }

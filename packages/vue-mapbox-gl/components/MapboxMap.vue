@@ -8,8 +8,9 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
   import mapboxgl from 'mapbox-gl';
+  import type { Map } from 'mapbox-gl';
 
   if (!mapboxgl) {
     throw new Error('mapboxgl is not installed.');
@@ -298,14 +299,14 @@
   };
 </script>
 
-<script setup>
+<script lang="ts" setup>
   import { ref, shallowRef, computed, onMounted, onUnmounted, provide } from 'vue';
   import { useEventsBinding, usePropsBinding } from '../composables/index.js';
 
   const props = defineProps(propsConfig);
-  const emit = defineEmits();
+  const emit = defineEmits(events.map((event) => `mb-${event}`));
 
-  const map = shallowRef();
+  const map = shallowRef<Map>(null);
   provide('mapbox-map', map);
 
   const root = ref();

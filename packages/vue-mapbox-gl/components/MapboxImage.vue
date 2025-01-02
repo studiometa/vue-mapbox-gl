@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
   const propsConfig = {
     /**
      * The ID of the image
@@ -42,12 +42,12 @@
   };
 </script>
 
-<script setup>
+<script lang="ts" setup>
   import { ref, unref, watch, onMounted, onUnmounted } from 'vue';
   import { useMap } from '../composables/index.js';
 
   const props = defineProps(propsConfig);
-  const emit = defineEmits();
+  const emit = defineEmits(['mb-add']);
 
   const { map } = useMap();
   const isReady = ref(false);
@@ -76,7 +76,7 @@
       const image = typeof newValue !== 'string' ? newValue : await loadImage(newValue);
       unref(map).updateImage(props.id, image);
     },
-    { deep: true }
+    { deep: true },
   );
 
   onMounted(async () => {
