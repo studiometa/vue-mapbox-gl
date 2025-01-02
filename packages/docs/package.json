@@ -2,7 +2,7 @@
   "name": "@studiometa/vue-mapbox-gl-docs",
   "private": true,
   "type": "module",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "scripts": {
     "dev": "vitepress",
     "build": "vitepress build"
