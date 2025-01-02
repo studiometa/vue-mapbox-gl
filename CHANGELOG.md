@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+## [v2.6.0](https://github.com/studiometa/vue-mapbox-gl/compare/2.5.0...2.6.0) (2025-01-02)
+
 ### Added
 
 - Add a `MapboxFullscreenControl` component ([#177](https://github.com/studiometa/vue-mapbox-gl/pull/177), [36fff83](https://github.com/studiometa/vue-mapbox-gl/commit/36fff83))
