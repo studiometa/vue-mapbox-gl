@@ -2,14 +2,19 @@
   "name": "@studiometa/vue-mapbox-gl-demo",
   "version": "2.5.0",
   "scripts": {
+    "build": "nuxt build",
     "dev": "nuxt dev",
-    "build": "nuxt build"
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
     "@mapbox/mapbox-gl-geocoder": "^5.0.2",
     "@studiometa/vue-mapbox-gl": "*",
     "mapbox-gl": "^3.1.2",
-    "nuxt": "^3.10.3",
     "vue": "^3.4.19"
+  },
+  "devDependencies": {
+    "nuxt": "3.15.0"
   }
 }
