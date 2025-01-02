@@ -1,6 +1,10 @@
 # 🗺 Vue 3 Mapbox GL
 
-[![NPM Version](https://img.shields.io/npm/v/@studiometa/vue-mapbox-gl.svg?style=flat-square)](https://www.npmjs.com/package/@studiometa/vue-mapbox-gl)
+[![NPM Version](https://img.shields.io/npm/v/@studiometa/vue-mapbox-gl.svg?style=flat&colorB=3e63dd&colorA=414853)](https://www.npmjs.com/package/@studiometa/vue-mapbox-gl/)
+[![Downloads](https://img.shields.io/npm/dm/@studiometa/vue-mapbox-gl?style=flat&colorB=3e63dd&colorA=414853)](https://www.npmjs.com/package/@studiometa/vue-mapbox-gl/)
+[![Size](https://img.shields.io/bundlephobia/minzip/@studiometa/vue-mapbox-gl?style=flat&colorB=3e63dd&colorA=414853&label=size)](https://bundlephobia.com/package/@studiometa/vue-mapbox-gl)
+[![Dependency Status](https://img.shields.io/librariesio/release/npm/@studiometa/vue-mapbox-gl?style=flat&colorB=3e63dd&colorA=414853)](https://david-dm.org/studiometa/vue-mapbox-gl)
+![Codecov](https://img.shields.io/codecov/c/github/studiometa/vue-mapbox-gl?style=flat&colorB=3e63dd&colorA=414853)
 
 > A small components library to use Mapbox GL in Vue 3 app.
 
