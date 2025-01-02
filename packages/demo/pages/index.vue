@@ -13,7 +13,7 @@
     MapboxPopup,
     MapboxCluster,
     MapboxFullscreenControl,
-  } from '../../../dist/index.js';
+  } from '@studiometa/vue-mapbox-gl';
   import 'mapbox-gl/dist/mapbox-gl.css';
   import '@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css';
 
