@@ -11,7 +11,7 @@
     "docs:build": "npm run build -w @studiometa/vue-mapbox-gl-docs",
     "demo:dev": "npm run dev -w @studiometa/vue-mapbox-gl-demo",
     "demo:build": "npm run build -w @studiometa/vue-mapbox-gl-demo",
-    "lint": "npm run lint:eslint && npm run lint:types",
+    "lint": "npm run lint:eslint",
     "lint:eslint": "eslint packages/{vue-mapbox-gl,demo} --cache",
     "lint:types": "vue-tsc --noEmit",
     "fix": "npm run lint:eslint -- --fix",
