@@ -11,6 +11,7 @@
 
 <script lang="ts">
   import mapboxgl from 'mapbox-gl';
+  import type { MarkerOptions, PopupOptions, LngLatLike } from 'mapbox-gl';
 
   const { Marker, Point } = mapboxgl;
 
@@ -101,14 +102,16 @@
 
   const popupInstance = computed(() => (hasPopup.value ? popupRef.value.popup : null));
 
-  const popupOptions = computed(() => ({
-    lngLat: props.lngLat,
-    ...(props.popup ? props.popup : {}),
-    renderless: true,
-  }));
+  const popupOptions = computed<MarkerOptions>(
+    () =>
+      ({
+        lngLat: props.lngLat,
+        ...(props.popup ? (props.popup as PopupOptions) : {}),
+        renderless: true,
+      }) as MarkerOptions,
+  );
 
   const options = computed(() => {
-    // eslint-disable-next-line no-unused-vars
     const { lngLat, popup, ...options } = props;
 
     // Use current component's element if container is not set
@@ -124,7 +127,7 @@
 
   onMounted(() => {
     const { map } = useMap();
-    marker.value = new Marker(options.value).setLngLat(props.lngLat);
+    marker.value = new Marker(options.value as MarkerOptions).setLngLat(props.lngLat as LngLatLike);
 
     if (!props.renderless) {
       marker.value.addTo(map.value);

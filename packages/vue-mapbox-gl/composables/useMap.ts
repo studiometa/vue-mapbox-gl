@@ -1,15 +1,12 @@
 import { inject } from 'vue';
-
-/**
- * @typedef {import('vue').Ref} Ref
- */
+import type { ShallowRef } from 'vue';
+import type { Map } from 'mapbox-gl';
 
 /**
  * Inject the provided map instance.
- * @returns {{ map: Ref<any> }}
  */
-export function useMap() {
-  const map = inject('mapbox-map', null);
+export function useMap(): { map: ShallowRef<Map | null> } {
+  const map = inject<ShallowRef<Map | null>>('mapbox-map', null);
 
   return {
     map,

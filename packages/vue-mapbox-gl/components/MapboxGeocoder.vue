@@ -161,7 +161,6 @@
     // @see https://github.com/mapbox/mapbox-sdk-js/blob/main/services/geocoding.js (92-104)
     // @see https://github.com/mapbox/mapbox-sdk-js/blob/main/services/geocoding.js (161-172)
     // @see https://github.com/mapbox/mapbox-gl-geocoder/blob/master/lib/index.js (437-458)
-    // eslint-disable-next-line no-constant-condition
     if (!opts.reverseGeocode || true) {
       delete opts.reverseMode;
     }

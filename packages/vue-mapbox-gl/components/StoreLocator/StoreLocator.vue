@@ -1,3 +1,11 @@
+<script lang="ts">
+  export type StoreLocatorItem = {
+    lat: number;
+    lng: number;
+    id: string;
+  } & Record<string, unknown>;
+</script>
+
 <script lang="ts" setup>
   import { ref, unref, computed, nextTick } from 'vue';
   import MapboxCluster from '../MapboxCluster.vue';
@@ -132,8 +140,10 @@
   const map = ref();
   const isLoading = ref(true);
   const mapIsMoving = ref(false);
-  const selectedItem = ref(null);
-  const filteredItems = ref(props.items.map((item) => item));
+  const selectedItem = ref<null | StoreLocatorItem>(null);
+  const filteredItems = ref<StoreLocatorItem[]>(
+    (props.items as StoreLocatorItem[]).map((item) => item),
+  );
   const listIsLoading = ref(false);
 
   /**
@@ -171,7 +181,7 @@
     const mapBounds = unref(map).getBounds();
     const center = unref(map).getCenter();
 
-    filteredItems.value = props.items
+    filteredItems.value = (props.items as StoreLocatorItem[])
       .filter(({ lng, lat }) => mapBounds.contains([lng, lat]))
       .sort((a, b) => {
         const distanceFromA = center.distanceTo(a);
@@ -283,7 +293,7 @@
 
     if (item) {
       emit('select-item', item);
-      selectedItem.value = item;
+      selectedItem.value = item as StoreLocatorItem;
 
       if (props.disableFeatureClickZoom) {
         return;
