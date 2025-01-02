@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+### Added
+
+- Add types ([#107](https://github.com/studiometa/vue-mapbox-gl/issues/107), [#226](https://github.com/studiometa/vue-mapbox-gl/pull/226), [539cc32](https://github.com/studiometa/vue-mapbox-gl/commit/539cc32))
+
 ## [v2.6.0](https://github.com/studiometa/vue-mapbox-gl/compare/2.5.0...2.6.0) (2025-01-02)
 
 ### Added
