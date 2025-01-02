@@ -25,7 +25,7 @@
   import { useControl } from '../composables/index.js';
 
   const props = defineProps(propsConfig);
-  const { control, map } = useControl(mapboxgl.FullscreenControl, {
+  const { control } = useControl(mapboxgl.FullscreenControl, {
     propsConfig,
     props,
   });

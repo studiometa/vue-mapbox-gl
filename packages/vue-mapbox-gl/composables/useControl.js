@@ -33,7 +33,7 @@ export function useControl(ControlConstructor, { propsConfig, props, emit, event
       if (unref(map)) {
         unref(map).removeControl(unref(control)).addControl(unref(control), newValue);
       }
-    }
+    },
   );
 
   onMounted(async () => {
@@ -47,7 +47,7 @@ export function useControl(ControlConstructor, { propsConfig, props, emit, event
 
     // The GeolocateControl setup includes some async tasks, so we need to wait
     // for its _setup property to become true to set it as the control ref value.
-    /* eslint-disable no-underscore-dangle */
+
     if (ControlConstructor === mapboxgl.GeolocateControl && !ctrl._setup) {
       const tmpControl = shallowReactive(ctrl);
       const unwatch = watch(tmpControl, (reactiveCtrl) => {
@@ -59,7 +59,6 @@ export function useControl(ControlConstructor, { propsConfig, props, emit, event
     } else {
       control.value = ctrl;
     }
-    /* eslint-enable no-underscore-dangle */
   });
 
   onUnmounted(() => {

@@ -1,6 +1,5 @@
 <script setup>
   import { ref, unref, onUpdated, onMounted, onBeforeUnmount, nextTick } from 'vue';
-  // eslint-disable-next-line import/no-extraneous-dependencies
   import { debounce } from '@studiometa/js-toolkit/utils';
 
   const emit = defineEmits(['scroll-top', 'scroll-bottom']);
@@ -89,7 +88,9 @@
     height: 5em;
     pointer-events: none;
     border-radius: 30%;
-    box-shadow: 0 0 1em rgba(0, 0, 0, 0.25), 0 0 2em rgba(0, 0, 0, 0.05);
+    box-shadow:
+      0 0 1em rgba(0, 0, 0, 0.25),
+      0 0 2em rgba(0, 0, 0, 0.05);
     transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1);
   }
 

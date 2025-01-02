@@ -36,7 +36,7 @@ export function usePropsBinding(props, mapboxElement, propsConfig) {
         const methodExists = typeof element[setMethodName] === 'function';
         const propNeedsBinding =
           typeof propsConfig[prop] === 'undefined' || 'bind' in propsConfig[prop]
-            ? propsConfig[prop]?.bind ?? false
+            ? (propsConfig[prop]?.bind ?? false)
             : true;
 
         // Do nothing if `setMethodName` is not a function of `mapBoxElement`
@@ -56,7 +56,7 @@ export function usePropsBinding(props, mapboxElement, propsConfig) {
           (newValue) => {
             element[setMethodName](newValue);
           },
-          options
+          options,
         );
       });
   }

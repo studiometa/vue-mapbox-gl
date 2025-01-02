@@ -117,7 +117,17 @@
      */
     disableFeatureClickZoom: Boolean,
   });
-  const emit = defineEmits();
+  const emit = defineEmits([
+    'geocoder-created',
+    'map-created',
+    'map-load',
+    'select-item',
+    'cluster-feature-click',
+    'select-item',
+    'cluster-feature-mouseenter',
+    'cluster-feature-mouseleave',
+    'cluster-cluster-click',
+  ]);
 
   const map = ref();
   const isLoading = ref(true);

@@ -303,7 +303,7 @@
   import { useEventsBinding, usePropsBinding } from '../composables/index.js';
 
   const props = defineProps(propsConfig);
-  const emit = defineEmits();
+  const emit = defineEmits(events.map((event) => `mb-${event}`));
 
   const map = shallowRef();
   provide('mapbox-map', map);
@@ -311,6 +311,7 @@
   const root = ref();
   const isLoaded = ref(false);
   const options = computed(() => {
+    // eslint-disable-next-line no-unused-vars
     const { accessToken, mapStyle: style, ...options } = props;
 
     // Use current component's element if container is not set

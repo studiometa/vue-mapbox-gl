@@ -16,7 +16,7 @@ function getOriginalEvent(vueEventName) {
   if (!cache.has(vueEventName)) {
     cache.set(
       vueEventName,
-      vueEventName.replace(regex, (match, $1, $2) => $1.toLowerCase() + $2)
+      vueEventName.replace(regex, (match, $1, $2) => $1.toLowerCase() + $2),
     );
   }
 
@@ -36,7 +36,7 @@ export function useEventsBinding(emitFn, mapboxElement, events = [], layerId = n
   const vueEventNames = computed(() =>
     Object.entries(attrs)
       .filter(([name, value]) => name.startsWith('on') && typeof value === 'function')
-      .map(([name]) => name)
+      .map(([name]) => name),
   );
 
   const unbindFunctions = new Map();
@@ -104,16 +104,16 @@ export function useEventsBinding(emitFn, mapboxElement, events = [], layerId = n
       // Get old event names not in the new event names
       const eventNamesToDelete = Array.isArray(newVueEventNames)
         ? (oldVueEventNames ?? []).filter(
-            (oldVueEventName) => !newVueEventNames.includes(oldVueEventName)
+            (oldVueEventName) => !newVueEventNames.includes(oldVueEventName),
           )
-        : oldVueEventNames ?? [];
+        : (oldVueEventNames ?? []);
 
       // Get new event names not in the old event names
       const eventNamesToAdd = Array.isArray(oldVueEventNames)
         ? (newVueEventNames ?? []).filter(
-            (newVueEventName) => !oldVueEventNames.includes(newVueEventName)
+            (newVueEventName) => !oldVueEventNames.includes(newVueEventName),
           )
-        : newVueEventNames ?? [];
+        : (newVueEventNames ?? []);
 
       if (unref(mapboxElement)) {
         unbindEvents(eventNamesToDelete);
@@ -130,6 +130,6 @@ export function useEventsBinding(emitFn, mapboxElement, events = [], layerId = n
         });
       }
     },
-    { immediate: true }
+    { immediate: true },
   );
 }

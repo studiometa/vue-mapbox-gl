@@ -12,9 +12,8 @@
   // The private `_setup` property can also be watched,
   // as it is the property tested in the `trigger()` method.
   watch(
-    // eslint-disable-next-line no-underscore-dangle
     () => control.value?._setup,
-    () => console.log('Can use the `trigger()` method.')
+    () => console.log('Can use the `trigger()` method.'),
   );
 
   watch(control, (geolocateControl) => {
