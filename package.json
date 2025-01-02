@@ -17,7 +17,7 @@
     "fix": "npm run lint:eslint -- --fix",
     "build": "rm -rf dist && npm run build:vite && npm run build:cp",
     "build:vite": "vite build",
-    "build:cp": "cp packages/vue-mapbox-gl/package.json dist/ && cp README.md dist/",
+    "build:cp": "cp packages/vue-mapbox-gl/package.json dist/ && cp README.md dist/ && sed -i '' 's/index\\.ts/index\\.js/' dist/package.json",
     "prepublishOnly": "npm run build",
     "test": "npm run test -w @studiometa/vue-mapbox-gl-tests"
   },

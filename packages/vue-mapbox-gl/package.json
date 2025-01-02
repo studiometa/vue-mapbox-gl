@@ -28,10 +28,11 @@
   ],
   "type": "module",
   "sideEffects": false,
+  "main": "index.ts",
   "exports": {
     ".": {
       "types": "./index.d.ts",
-      "import": "./index.js",
+      "import": "./index.ts",
       "require": "./index.cjs"
     },
     "./*": "./*"
