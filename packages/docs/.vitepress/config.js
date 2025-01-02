@@ -31,6 +31,7 @@ export default defineConfig({
           { text: 'MapboxMap', link: '/components/MapboxMap/' },
           { text: 'MapboxMarker', link: '/components/MapboxMarker/' },
           { text: 'MapboxCluster', link: '/components/MapboxCluster/' },
+          { text: 'MapboxFullscreenControl', link: '/components/MapboxFullscreenControl/' },
           { text: 'MapboxGeocoder', link: '/components/MapboxGeocoder/' },
           { text: 'MapboxGeolocateControl', link: '/components/MapboxGeolocateControl/' },
           { text: 'MapboxImage', link: '/components/MapboxImage/' },
