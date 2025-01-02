@@ -1,0 +1,78 @@
+name: publish-and-release
+
+on:
+  push:
+    tags:
+      - '*.*.*'
+
+jobs:
+  publish-and-release:
+    runs-on: macos-latest
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org/
+
+      - name: Get npm cache directory
+        id: npm-cache-dir
+        shell: bash
+        run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
+
+      - uses: actions/cache@v4
+        id: npm-cache
+        with:
+          path: |
+            ${{ steps.npm-cache-dir.outputs.dir }}
+            **/node_modules
+            .eslintcache
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node-
+
+      - run: npm install --no-audit --no-fund
+
+      - run: npm run build
+
+      - name: Test
+        run: npm run test -- -- --retry=3 --coverage.enabled
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          directory: ./packages/coverage
+          flags: unittests
+          fail_ci_if_error: false
+          verbose: true
+
+      - run: |
+          NPM_TAG='latest'
+          IS_PRERELEASE=false
+
+          if [[ $GITHUB_REF_NAME =~ 'alpha' || $GITHUB_REF_NAME =~ 'beta' || $GITHUB_REF_NAME =~ 'rc' ]]; then
+            NPM_TAG='next'
+            IS_PRERELEASE=true
+          fi
+
+          echo "NPM_TAG=$NPM_TAG" >> $GITHUB_ENV
+          echo "IS_PRERELEASE=$IS_PRERELEASE" >> $GITHUB_ENV
+
+      - uses: JS-DevTools/npm-publish@v3
+        with:
+          provenance: true
+          package: dist/
+          tag: ${{ env.NPM_TAG }}
+          token: ${{ secrets.NPM_TOKEN }}
+
+      - uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ github.ref }}
+          name: v${{ github.ref_name }}
+          body: Please refer to [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/${{ github.ref_name }}/CHANGELOG.md) for details.
+          draft: false
+          prerelease: ${{ env.IS_PRERELEASE }}

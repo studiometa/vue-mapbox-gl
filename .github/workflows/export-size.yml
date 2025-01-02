@@ -1,0 +1,21 @@
+name: export-size
+
+on:
+  pull_request:
+    branches:
+      - master
+      - develop
+
+jobs:
+  export-size:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: '0'
+      - uses: titouanmathis/export-size-action@main
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          build_script: npm run build
+          paths: dist
+          node-version: 22
