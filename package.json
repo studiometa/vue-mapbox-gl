@@ -11,10 +11,12 @@
     "docs:build": "npm run build -w @studiometa/vue-mapbox-gl-docs",
     "demo:dev": "npm run dev -w @studiometa/vue-mapbox-gl-demo",
     "demo:build": "npm run build -w @studiometa/vue-mapbox-gl-demo",
-    "lint": "eslint packages/{vue-mapbox-gl,demo} --cache",
-    "fix": "npm run lint -- --fix",
-    "build": "rm -rf dist && npm run build:esbuild && npm run build:cp",
-    "build:esbuild": "node scripts/build.mjs",
+    "lint": "npm run lint:eslint && npm run lint:types",
+    "lint:eslint": "eslint packages/{vue-mapbox-gl,demo} --cache",
+    "lint:types": "vue-tsc --noEmit",
+    "fix": "npm run lint:eslint -- --fix",
+    "build": "rm -rf dist && npm run build:vite && npm run build:cp",
+    "build:vite": "vite build",
     "build:cp": "cp packages/vue-mapbox-gl/package.json dist/ && cp README.md dist/",
     "prepublishOnly": "npm run build",
     "test": "npm run test -w @studiometa/vue-mapbox-gl-tests"
@@ -26,7 +28,10 @@
     "prettier": "3.4.2"
   },
   "dependencies": {
-    "esbuild": "^0.24.2",
-    "unplugin-vue": "^5.0.0"
+    "@vitejs/plugin-vue": "5.2.1",
+    "@vue/tsconfig": "0.7.0",
+    "vite": "6.0.6",
+    "vite-plugin-dts": "4.4.0",
+    "vue-tsc": "2.1.10"
   }
 }

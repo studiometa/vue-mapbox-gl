@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "declaration": true,
+    "outDir": "dist/",
+    "emitDeclarationOnly": true,
+    "types": []
+  },
+  "include": [
+    "packages/global.d.ts",
+    "packages/vue-mapbox-gl/**/*.ts",
+    "packages/vue-mapbox-gl/**/*.vue"
+  ]
+}
