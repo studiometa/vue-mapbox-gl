@@ -73,7 +73,7 @@
   import { useMap, usePropsBinding, useEventsBinding } from '../composables/index.js';
 
   const props = defineProps(propsConfig);
-  const emit = defineEmits(['mb-open', 'mb-close']);
+  const emit = defineEmits();
 
   const popup = shallowRef();
   const root = ref();

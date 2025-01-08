@@ -67,7 +67,7 @@
   import { useControl } from '../composables/index.js';
 
   const props = defineProps(propsConfig);
-  const emit = defineEmits(events.map((event) => `mb-${event}`));
+  const emit = defineEmits();
 
   const { control } = useControl(GeolocateControl, { propsConfig, events, props, emit });
 
