@@ -3,11 +3,10 @@ import * as pkg from '@studiometa/vue-mapbox-gl';
 
 describe('The package', () => {
   it('should export all components', () => {
-    expect(Object.keys(pkg)).toMatchInlineSnapshot(`
+    expect(Object.keys(pkg).sort()).toMatchInlineSnapshot(`
       [
-        "StoreLocator",
-        "VueScroller",
         "MapboxCluster",
+        "MapboxFullscreenControl",
         "MapboxGeocoder",
         "MapboxGeolocateControl",
         "MapboxImage",
@@ -18,7 +17,8 @@ describe('The package', () => {
         "MapboxNavigationControl",
         "MapboxPopup",
         "MapboxSource",
-        "MapboxFullscreenControl",
+        "StoreLocator",
+        "VueScroller",
         "useControl",
         "useEventsBinding",
         "useMap",
