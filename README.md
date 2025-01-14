@@ -1,4 +1,4 @@
-# 🗺 Vue 3 Mapbox GL
+# 🗺 @studiometa/vue-mapbox-gl
 
 [![NPM Version](https://img.shields.io/npm/v/@studiometa/vue-mapbox-gl.svg?style=flat&colorB=3e63dd&colorA=414853)](https://www.npmjs.com/package/@studiometa/vue-mapbox-gl/)
 [![Downloads](https://img.shields.io/npm/dm/@studiometa/vue-mapbox-gl?style=flat&colorB=3e63dd&colorA=414853)](https://www.npmjs.com/package/@studiometa/vue-mapbox-gl/)
