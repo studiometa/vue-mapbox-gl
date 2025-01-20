@@ -43,7 +43,7 @@
   "devDependencies": {
     "@mapbox/mapbox-gl-geocoder": "5.0.3",
     "@studiometa/js-toolkit": "2.12.1",
-    "mapbox-gl": "3.9.1",
+    "mapbox-gl": "3.9.3",
     "vue": "3.5.13"
   },
   "peerDependencies": {
