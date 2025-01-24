@@ -18,5 +18,3 @@
       @mb-clear="log('clear', $event)" />
   </MapboxMap>
 </template>
-
-

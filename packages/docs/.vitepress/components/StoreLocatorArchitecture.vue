@@ -6,9 +6,9 @@
       'div',
       {
         class: `shadow-lg rounded p-4 ${props.color} ${attrs.class ? data.class : ''}`,
-        'data-element': props.el
+        'data-element': props.el,
       },
-      slots
+      slots,
     );
   }
   DataElement.props = ['el', 'color', 'class'];
@@ -21,7 +21,7 @@
     Component.props = ['name'];
 
     return Component;
-  };
+  }
 
   const DataRegion = createDataComponent('region', 'bg-blue-200');
   const DataSlot = createDataComponent('slot', 'bg-green-300');

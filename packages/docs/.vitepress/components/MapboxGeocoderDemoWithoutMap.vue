@@ -1,9 +1,8 @@
 <script setup>
-  import { ref } from 'vue';
   import { MapboxGeocoder } from '@studiometa/vue-mapbox-gl';
   import '@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css';
 
-  const props = defineProps({
+  defineProps({
     reverseGeocode: {
       type: Boolean,
       default: false,
