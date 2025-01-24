@@ -47,7 +47,7 @@
   import { useMap } from '../composables/index.js';
 
   const props = defineProps(propsConfig);
-  const emit = defineEmits(['mb-add']);
+  const emit = defineEmits();
 
   const { map } = useMap();
   const isReady = ref(false);

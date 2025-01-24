@@ -304,7 +304,7 @@
   import { useEventsBinding, usePropsBinding } from '../composables/index.js';
 
   const props = defineProps(propsConfig);
-  const emit = defineEmits(events.map((event) => `mb-${event}`));
+  const emit = defineEmits();
 
   const map = shallowRef<Map>(null);
   provide('mapbox-map', map);

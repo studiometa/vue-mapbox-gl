@@ -130,12 +130,7 @@
   import MapboxSource from './MapboxSource.vue';
 
   const props = defineProps(propsConfig);
-  const emit = defineEmits([
-    'mb-cluster-click',
-    'mb-feature-click',
-    'mb-feature-mouseenter',
-    'mb-feature-mouseleave',
-  ]);
+  const emit = defineEmits();
 
   const { map } = useMap();
   const id = ref(`mb-cluster-${index}`);
