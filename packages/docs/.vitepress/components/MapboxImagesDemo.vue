@@ -1,5 +1,5 @@
 <script setup>
-  import { ref } from "vue";
+  import { ref } from 'vue';
   import { MapboxMap, MapboxImages, MapboxLayer } from '@studiometa/vue-mapbox-gl';
 
   const mapCenter = ref([0, 0]);

@@ -2,7 +2,7 @@
   "name": "@studiometa/vue-mapbox-gl-docs",
   "private": true,
   "type": "module",
-  "version": "2.7.0-alpha.2",
+  "version": "2.7.0-alpha.3",
   "scripts": {
     "dev": "vitepress",
     "build": "vitepress build"
@@ -10,6 +10,6 @@
   "devDependencies": {
     "sass": "1.83.4",
     "tailwindcss": "3.4.17",
-    "vitepress": "1.5.0"
+    "vitepress": "1.6.3"
   }
 }

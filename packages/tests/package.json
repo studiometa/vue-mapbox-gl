@@ -1,6 +1,6 @@
 {
   "name": "@studiometa/vue-mapbox-gl-tests",
-  "version": "2.7.0-alpha.2",
+  "version": "2.7.0-alpha.3",
   "type": "module",
   "scripts": {
     "test": "vitest"
@@ -9,11 +9,11 @@
     "@mapbox/mapbox-gl-geocoder": "^5.0.3",
     "@studiometa/vue-mapbox-gl": "*",
     "@vitejs/plugin-vue": "5.2.1",
-    "@vitest/browser": "2.1.8",
-    "@vitest/coverage-v8": "2.1.8",
-    "mapbox-gl": "^3.9.1",
-    "playwright": "1.49.1",
-    "vitest": "2.1.8",
+    "@vitest/browser": "3.0.4",
+    "@vitest/coverage-v8": "3.0.4",
+    "mapbox-gl": "^3.9.3",
+    "playwright": "1.50.0",
+    "vitest": "3.0.4",
     "vitest-browser-vue": "0.1.0",
     "vue": "^3.5.13"
   }

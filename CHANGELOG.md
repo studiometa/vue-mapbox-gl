@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+## [v2.7.0-alpha.3](https://github.com/studiometa/vue-mapbox-gl/compare/2.7.0-alpha.2...2.7.0-alpha.3) (2025-01-24)
+
+### Fixed
+
+- Fix build on ubuntu ([23ca250](https://github.com/studiometa/vue-mapbox-gl/commit/23ca250))
+
+### Changed
+
+- Update dependencies ([#243](https://github.com/studiometa/vue-mapbox-gl/pull/243))
+
 ## [v2.7.0-alpha.2](https://github.com/studiometa/vue-mapbox-gl/compare/2.7.0-alpha.1...2.7.0-alpha.2) (2025-01-24)
 
 ### Fixed

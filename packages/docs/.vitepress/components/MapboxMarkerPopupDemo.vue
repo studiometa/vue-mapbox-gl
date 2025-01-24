@@ -1,5 +1,5 @@
 <script setup>
-  import { ref } from "vue";
+  import { ref } from 'vue';
   import { MapboxMap, MapboxMarker } from '@studiometa/vue-mapbox-gl';
 
   const mapCenter = ref([0, 0]);
@@ -13,7 +13,7 @@
     :center="mapCenter"
     :zoom="1">
     <MapboxMarker :lng-lat="[0, 0]" popup>
-      <template v-slot:popup>
+      <template #popup>
         <p>Hello world!</p>
       </template>
     </MapboxMarker>
