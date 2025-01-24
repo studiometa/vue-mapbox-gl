@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+## [v2.7.0-alpha.1](https://github.com/studiometa/vue-mapbox-gl/compare/2.7.0-alpha.0...2.7.0-alpha.1) (2025-01-24)
+
+### Fixed
+
+- Fix Mapbox event binding ([#231](https://github.com/studiometa/vue-mapbox-gl/issues/231), [#232](https://github.com/studiometa/vue-mapbox-gl/pull/232), [882baca](https://github.com/studiometa/vue-mapbox-gl/commit/882baca))
+
 ## [v2.7.0-alpha.0](https://github.com/studiometa/vue-mapbox-gl/compare/2.6.0...2.7.0-alpha.0) (2025-01-02)
 
 ### Added

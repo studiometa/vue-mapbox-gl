@@ -61,7 +61,7 @@
   import { useEventsBinding, useMap } from '../composables/index.js';
 
   const props = defineProps(propsConfig);
-  const emit = defineEmits(events.map((event) => `mb-${event}`));
+  const emit = defineEmits();
 
   const { map } = useMap();
   const options = computed(() => {

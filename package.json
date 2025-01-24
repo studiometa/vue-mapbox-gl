@@ -1,7 +1,7 @@
 {
   "name": "@studiometa/vue-mapbox-gl-workspace",
   "private": true,
-  "version": "2.7.0-alpha.0",
+  "version": "2.7.0-alpha.1",
   "type": "module",
   "workspaces": [
     "packages/*"
@@ -24,14 +24,14 @@
   "devDependencies": {
     "@studiometa/eslint-config": "4.2.0",
     "@studiometa/prettier-config": "4.1.0",
-    "eslint": "9.17.0",
+    "eslint": "9.18.0",
     "prettier": "3.4.2"
   },
   "dependencies": {
     "@vitejs/plugin-vue": "5.2.1",
     "@vue/tsconfig": "0.7.0",
-    "vite": "6.0.6",
-    "vite-plugin-dts": "4.4.0",
+    "vite": "6.0.9",
+    "vite-plugin-dts": "4.5.0",
     "vue-tsc": "2.1.10"
   }
 }

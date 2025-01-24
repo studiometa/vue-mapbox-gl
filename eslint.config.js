@@ -11,6 +11,9 @@ export default defineConfig(
         ...globals.browser,
       },
     },
+    rules: {
+      'vue/valid-define-emits': 'off',
+    },
   },
   {
     ignores: ['**/.nuxt/**', '**/.output/**'],

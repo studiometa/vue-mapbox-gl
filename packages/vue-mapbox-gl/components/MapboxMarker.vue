@@ -92,7 +92,7 @@
   import MapboxPopup from './MapboxPopup.vue';
 
   const props = defineProps(propsConfig);
-  const emit = defineEmits(events.map((event) => `mb-${event}`));
+  const emit = defineEmits();
   const slots = useSlots();
 
   const marker = shallowRef();
