@@ -1,6 +1,6 @@
 {
   "name": "@studiometa/vue-mapbox-gl-demo",
-  "version": "2.7.0-alpha.1",
+  "version": "2.7.0-alpha.2",
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build"
