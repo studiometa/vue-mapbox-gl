@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+### Fixed
+
+- Fix build on ubuntu ([23ca250](https://github.com/studiometa/vue-mapbox-gl/commit/23ca250))
+
 ### Changed
 
 - Update dependencies ([#243](https://github.com/studiometa/vue-mapbox-gl/pull/243))
