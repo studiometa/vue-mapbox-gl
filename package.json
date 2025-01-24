@@ -1,7 +1,7 @@
 {
   "name": "@studiometa/vue-mapbox-gl-workspace",
   "private": true,
-  "version": "2.7.0-alpha.2",
+  "version": "2.7.0-alpha.3",
   "type": "module",
   "workspaces": [
     "packages/*"
@@ -18,7 +18,7 @@
     "build": "rm -rf dist && npm run build:vite && npm run build:cp",
     "build:vite": "vite build",
     "build:cp": "cp packages/vue-mapbox-gl/package.json dist/ && cp README.md dist/ && npm run build:fix-extension",
-    "build:fix-extension": "echo \"$(cat dist/package.json | sed 's/index\\.ts/index\\.js/')\" > dist/package.json",
+    "build:fix-extension": "echo \"$(cat dist/package.json | sed 's/index\\.ts/index\\.js/')\" > dist/package.json && cat dist/package.json",
     "prepublishOnly": "npm run build",
     "test": "npm run test -w @studiometa/vue-mapbox-gl-tests"
   },
