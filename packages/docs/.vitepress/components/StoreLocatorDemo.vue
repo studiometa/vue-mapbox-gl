@@ -19,7 +19,7 @@
       lng: geometry.coordinates[0],
       id: getId(),
       ...properties,
-    }))
+    })),
   );
 </script>
 
@@ -78,7 +78,7 @@
   }
 
   .bg-vp-mute {
-    background-color: var(--vp-c-bg-mute);;
+    background-color: var(--vp-c-bg-mute);
   }
 
   .store-locator-demo {
@@ -107,7 +107,7 @@
   }
 
   .store-locator-demo__inner {
-    @apply rounded;
+    border-radius: 0.25rem;
     position: relative;
     width: 100%;
     height: 80vh;
@@ -147,7 +147,7 @@
   \*============================================================================*/
 
   .store-locator__region {
-    @apply rounded;
+    border-radius: 0.25rem;
     position: relative;
   }
 
