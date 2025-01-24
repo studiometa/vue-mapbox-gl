@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+## [v2.7.0-alpha.2](https://github.com/studiometa/vue-mapbox-gl/compare/2.7.0-alpha.1...2.7.0-alpha.2) (2025-01-24)
+
+### Fixed
+
+- Fix NPM publish ([8a9df54](https://github.com/studiometa/vue-mapbox-gl/commit/8a9df54))
+
+### Dependencies
+
+- Update dependency vue-tsc to v2.2.0 ([#229](https://github.com/studiometa/vue-mapbox-gl/pull/229), [40dce9e](https://github.com/studiometa/vue-mapbox-gl/commit/40dce9e))
+
 ## [v2.7.0-alpha.1](https://github.com/studiometa/vue-mapbox-gl/compare/2.7.0-alpha.0...2.7.0-alpha.1) (2025-01-24)
 
 ### Fixed

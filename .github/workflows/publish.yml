@@ -7,7 +7,7 @@ on:
 
 jobs:
   publish-and-release:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     permissions:
       contents: write
       id-token: write
@@ -35,6 +35,9 @@ jobs:
           restore-keys: ${{ runner.os }}-node-
 
       - run: npm install --no-audit --no-fund
+
+      - name: Install Playwright Dependencies
+        run: npx playwright install chromium --with-deps
 
       - run: npm run build
 
