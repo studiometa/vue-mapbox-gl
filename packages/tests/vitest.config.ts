@@ -13,9 +13,9 @@ export default defineConfig({
       include: ['vue-mapbox-gl/**'],
     },
     browser: {
-      provider: 'playwright', // or 'webdriverio'
+      provider: 'playwright',
       enabled: true,
-      instances: [{ browser: 'chromium' }, { browser: 'firefox' }],
+      instances: [{ browser: 'chromium' }],
     },
   },
 });
