@@ -1,6 +1,6 @@
 {
   "name": "@studiometa/vue-mapbox-gl-tests",
-  "version": "2.7.0-alpha.3",
+  "version": "2.7.0",
   "type": "module",
   "scripts": {
     "test": "vitest"
