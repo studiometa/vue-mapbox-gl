@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+## [v2.7.0](https://github.com/studiometa/vue-mapbox-gl/compare/2.6.0...2.7.0) (2025-01-25)
+
+### Added
+
+- Add initial support for types ([#107](https://github.com/studiometa/vue-mapbox-gl/issues/107), [#226](https://github.com/studiometa/vue-mapbox-gl/pull/226), [539cc32](https://github.com/studiometa/vue-mapbox-gl/commit/539cc32))
+
+### Changed
+
+- Update dependencies ([#243](https://github.com/studiometa/vue-mapbox-gl/pull/243), [#229](https://github.com/studiometa/vue-mapbox-gl/pull/229))
+
 ## [v2.7.0-alpha.3](https://github.com/studiometa/vue-mapbox-gl/compare/2.7.0-alpha.2...2.7.0-alpha.3) (2025-01-24)
 
 ### Fixed
