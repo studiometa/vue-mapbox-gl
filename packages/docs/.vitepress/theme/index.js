@@ -5,6 +5,6 @@ export default {
   ...DefaultTheme,
   enhanceApp({ app }) {
     app.config.globalProperties.MAPBOX_API_KEY =
-      'pk.eyJ1IjoiYWdlbmNlc3R1ZGlvbWV0YSIsImEiOiJjanh5ZW81aHEwOHV3M2lwZzhhNW1vdXl5In0.3hbV2QKVzZWf511JK9xCug';
+      'pk.eyJ1IjoiYWdlbmNlc3R1ZGlvbWV0YSIsImEiOiJjbTZxZXZidzYxaXR3MmtzaG5qNzc3NGxqIn0.c_YVpXQptiZtOgzj_5jvaw';
   },
 };

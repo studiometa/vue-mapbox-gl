@@ -8,7 +8,7 @@ describe('The MapboxMap component', () => {
     const { emitted, getByTestId } = render(MapboxMap, {
       props: {
         accessToken:
-          'pk.eyJ1IjoiYWdlbmNlc3R1ZGlvbWV0YSIsImEiOiJjanh5ZW81aHEwOHV3M2lwZzhhNW1vdXl5In0.3hbV2QKVzZWf511JK9xCug',
+          'pk.eyJ1IjoiYWdlbmNlc3R1ZGlvbWV0YSIsImEiOiJjbTZxZXZidzYxaXR3MmtzaG5qNzc3NGxqIn0.c_YVpXQptiZtOgzj_5jvaw',
         mapStyle: 'mapbox://styles/mapbox/streets-v11',
       },
       attrs: {
