@@ -3,8 +3,7 @@
   import { MapboxMap, MapboxGeolocateControl } from '@studiometa/vue-mapbox-gl';
   import 'mapbox-gl/dist/mapbox-gl.css';
 
-  const accessToken =
-    'pk.eyJ1IjoiYWdlbmNlc3R1ZGlvbWV0YSIsImEiOiJjanh5ZW81aHEwOHV3M2lwZzhhNW1vdXl5In0.3hbV2QKVzZWf511JK9xCug';
+  const { accessToken } = useRuntimeConfig();
 
   const geolocate = ref();
   const control = computed(() => geolocate.value?.control);

@@ -17,8 +17,7 @@
   import 'mapbox-gl/dist/mapbox-gl.css';
   import '@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css';
 
-  const accessToken =
-    'pk.eyJ1IjoiYWdlbmNlc3R1ZGlvbWV0YSIsImEiOiJjanh5ZW81aHEwOHV3M2lwZzhhNW1vdXl5In0.3hbV2QKVzZWf511JK9xCug';
+  const { accessToken } = useRuntimeConfig();
   const lng = ref(0);
   const lat = ref(0);
   const zoom = ref(1);
