@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+## [v2.7.1](https://github.com/studiometa/vue-mapbox-gl/compare/2.7.0...2.7.1) (2025-02-04)
+
+### Changed
+
+- **Docs:** update mapbox token ([3de06ed](https://github.com/studiometa/vue-mapbox-gl/commit/3de06ed))
+
 ## [v2.7.0](https://github.com/studiometa/vue-mapbox-gl/compare/2.6.0...2.7.0) (2025-01-25)
 
 ### Added
