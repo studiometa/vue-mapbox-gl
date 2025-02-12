@@ -62,7 +62,7 @@ export function useControl(ControlConstructor, { propsConfig, props, emit, event
   });
 
   onUnmounted(() => {
-    if (unref(control) && unref(map)) {
+    if (unref(control) && unref(map) && unref(map).hasControl(unref(control))) {
       unref(map).removeControl(unref(control));
     }
   });
