@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+## [v2.7.2](https://github.com/studiometa/vue-mapbox-gl/compare/2.7.1...2.7.2) (2025-02-12)
+
 ### Fixed
 
 - Fix Mapbox trying to remove controls already removed ([#249](https://github.com/studiometa/vue-mapbox-gl/issues/249), [#259](https://github.com/studiometa/vue-mapbox-gl/pull/259), [0bfaea6](https://github.com/studiometa/vue-mapbox-gl/commit/0bfaea6))
