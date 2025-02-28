@@ -8,7 +8,7 @@
     "build": "vitepress build"
   },
   "devDependencies": {
-    "sass": "1.84.0",
+    "sass": "1.85.1",
     "tailwindcss": "3.4.17",
     "vitepress": "1.6.3"
   }
