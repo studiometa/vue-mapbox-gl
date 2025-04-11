@@ -26,7 +26,7 @@
     "@studiometa/eslint-config": "4.2.0",
     "@studiometa/prettier-config": "4.1.0",
     "eslint": "9.22.0",
-    "prettier": "3.4.2"
+    "prettier": "3.5.3"
   },
   "dependencies": {
     "@vitejs/plugin-vue": "5.2.1",
