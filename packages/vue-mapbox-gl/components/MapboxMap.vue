@@ -237,11 +237,50 @@
       default: null,
     },
   };
+</script>
+
+<script lang="ts" setup>
+  import {
+    ref,
+    shallowRef,
+    computed,
+    defineProps,
+    defineEmits,
+    onMounted,
+    onUnmounted,
+    provide,
+    nextTick,
+  } from 'vue';
+  import { useEventsBinding, usePropsBinding } from '../composables/index.js';
+
+  interface MapWithResizeObserver extends Map {
+    _resizeObserver?: ResizeObserver;
+  }
+
+  const props = defineProps(propsConfig);
+  const emit = defineEmits();
+
+  const map = shallowRef<Map>(null);
+
+  provide('mapbox-map', map);
+
+  const root = ref<HTMLDivElement | null>(null);
+  const isLoaded = ref<boolean>(false);
+
+  const options = computed(() => {
+    const { accessToken, mapStyle: style, ...options } = props;
+
+    // Use current component's element if container is not set
+    if (!options.container && root.value) {
+      options.container = root.value;
+    }
+
+    return { style, ...options };
+  });
 
   /**
    * All Map events which will be mapped/bounded to the component
    * @see  https://docs.mapbox.com/mapbox-gl-js/api/#map.event:resize
-   * @type {Array}
    */
   const events = [
     'boxzoomcancel',
@@ -294,34 +333,6 @@
     'zoomstart',
   ];
 
-  export default {
-    inheritAttrs: false,
-  };
-</script>
-
-<script lang="ts" setup>
-  import { ref, shallowRef, computed, onMounted, onUnmounted, provide } from 'vue';
-  import { useEventsBinding, usePropsBinding } from '../composables/index.js';
-
-  const props = defineProps(propsConfig);
-  const emit = defineEmits();
-
-  const map = shallowRef<Map>(null);
-  provide('mapbox-map', map);
-
-  const root = ref();
-  const isLoaded = ref(false);
-  const options = computed(() => {
-    const { accessToken, mapStyle: style, ...options } = props;
-
-    // Use current component's element if container is not set
-    if (!options.container && root.value) {
-      options.container = root.value;
-    }
-
-    return { style, ...options };
-  });
-
   useEventsBinding(emit, map, events);
   usePropsBinding(props, map, propsConfig);
 
@@ -343,10 +354,20 @@
     });
     resizeObserver.observe(options.value.container);
 
-    onUnmounted(() => {
-      resizeObserver.disconnect();
-      map.value.remove();
-    });
+    // save observer for later cleanup in `onUnmounted`
+    (map.value as MapWithResizeObserver)._resizeObserver = resizeObserver;
+  });
+
+  onUnmounted(() => {
+    if (map.value) {
+      const observer = (map.value as MapWithResizeObserver)._resizeObserver;
+      if (observer) observer.disconnect();
+
+      nextTick(() => {
+        map.value?.remove();
+        map.value = null;
+      });
+    }
   });
 
   defineExpose({ map });
