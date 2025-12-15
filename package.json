@@ -23,10 +23,10 @@
     "test": "npm run test -w @studiometa/vue-mapbox-gl-tests"
   },
   "devDependencies": {
-    "@studiometa/eslint-config": "4.2.0",
-    "@studiometa/prettier-config": "4.1.0",
-    "eslint": "9.26.0",
-    "prettier": "3.5.3"
+    "@studiometa/eslint-config": "4.3.1",
+    "@studiometa/prettier-config": "4.4.0",
+    "eslint": "9.39.2",
+    "prettier": "3.7.4"
   },
   "dependencies": {
     "@vitejs/plugin-vue": "5.2.4",
